@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{&lt;u,v&gt; | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java数据结构与算法--图">
+<meta property="og:url" content="https://lao-biao.github.io/articles/c88bf7ec.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{&lt;u,v&gt; | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/IVHT4lDUem3WJnC.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/gfWwLFYU1rIuy9d.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/PGmLUVzS4YaNoTk.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/CAftQBO9Rzvrlaq.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/11/eU6MfF7P9EnOpAu.png">
+<meta property="article:published_time" content="2020-04-11T13:59:01.000Z">
+<meta property="article:modified_time" content="2020-05-15T10:11:37.152Z">
+<meta property="article:author" content="周超">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/c88bf7ec.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>java数据结构与算法--图 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/c88bf7ec.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java数据结构与算法--图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-11 21:59:01" itemprop="dateCreated datePublished" datetime="2020-04-11T21:59:01+08:00">2020-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-15 18:11:37" itemprop="dateModified" datetime="2020-05-15T18:11:37+08:00">2020-05-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h4 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h4><h6 id="图的基本概念：多对多关系"><a href="#图的基本概念：多对多关系" class="headerlink" title="图的基本概念：多对多关系"></a>图的基本概念：多对多关系</h6><p>图(<code>graph</code>)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成</p>
+<p>形式化定义：</p>
+<ul>
+<li><p>Graph = (V,E)  </p>
+</li>
+<li><p>V={x | x∈某个数据对象}  </p>
+</li>
+<li><p>E={&lt;u,v&gt; | P(u,v)^(u,v∈V)}</p>
+<p>V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex)</p>
+<p>E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性</p>
+</li>
+<li><p>若&lt;u,v&gt;∈E，则&lt;u,v&gt;表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
+</li>
+<li><p>若&lt;u,v&gt;∈E，则必有&lt;v,u&gt;∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<p>在无向图和有向图中V的元素都称为顶点，而顶点之间的关系却又不同的称谓，即<strong>弧</strong>或<strong>边</strong>，在不影响理解的前提下，统称为<strong>边</strong>(<code>edge</code>)</p>
+<p>顶点集与边集都是有限的，并记顶点与边的数量为|V|和|E|</p>
+<p><img src="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png" alt="有向图与无向图.png"></p>
+<p>无向图实际上也是有向图，是双向图</p>
+<hr>
+<p>带权图：图的每条边都与它相关的实数，称之为权，这些权值可以并表示一个顶点到另一个顶点的距离或消耗等信息，这种边上具有权值的图称为<strong>带权图</strong>(<code>weighted graph</code>)</p>
+<p><img src="https://i.loli.net/2020/04/11/IVHT4lDUem3WJnC.png" alt="加权图.png"></p>
+<h4 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h4><h6 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h6><p>二维数组（顺序存储结构），无向图关于对角线对称</p>
+<p><img src="https://i.loli.net/2020/04/11/gfWwLFYU1rIuy9d.png" alt="图的存储-邻接矩阵.png"></p>
+<h6 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h6><p>链表（链式存储结构）</p>
+<p><img src="https://i.loli.net/2020/04/11/PGmLUVzS4YaNoTk.png" alt="图的存储-邻接表.png"></p>
+<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><p>图的遍历：从图中某个顶点出发，按某种方法对图中所有顶点访问且仅访问一次</p>
+<p>图的遍历算法是求解图的连通性问题、拓扑排序和求关键路径等算法的基础</p>
+<ul>
+<li><strong>深度优先排序</strong>(DFS depth-first search)：类似于树的先根排序，是树的先根遍历的推广（可采用递归和借助栈的非递归方式实现）</li>
+<li><strong>广度优先排序</strong>(BFS breadth-first search)：类似于树的层次遍历，是树的按层次遍历的推广（借助队列的非递归方式实现）</li>
+</ul>
+<p><img src="https://i.loli.net/2020/04/11/CAftQBO9Rzvrlaq.png" alt="图的遍历-图例.png"></p>
+<ul>
+<li>无向图的深度优先遍历：0-&gt;1-&gt;3-&gt;7-&gt;4-&gt;2-&gt;5-&gt;6</li>
+<li>无向图的广度优先遍历：0-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7</li>
+</ul>
+<p><img src="https://i.loli.net/2020/04/11/eU6MfF7P9EnOpAu.png" alt="图的遍历-图例2.png"></p>
+<ul>
+<li>无向图的深度优先遍历：A-&gt;B-&gt;E-&gt;F-&gt;C-&gt;D-&gt;G-&gt;H-&gt;I</li>
+<li>无向图的广度优先遍历：A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F-&gt;G-&gt;H-&gt;I</li>
+</ul>
+<h4 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h4><h6 id="最短路径概念"><a href="#最短路径概念" class="headerlink" title="最短路径概念"></a>最短路径概念</h6><p>带权图两点之间的最小消耗路径</p>
+<ul>
+<li><p><strong>段数最少的最短路径</strong>：类似于树的层次遍历，需要借助队列来实现（广度优先搜索）</p>
+<p>算法：对于已经检查过结点，标记为已检查，且不再检查它，可以使用另一个列表存放已经检查过的结点，找到即为可达，第一次找到，即为跳转最少，如果到最后队列为空，则表明没有路径可以到达</p>
+</li>
+<li><p><strong>权值最小的最短路径</strong>：权值之和最小，狄克斯特拉算法</p>
+<p>狄克斯特拉算法是从一个顶点到其余各顶点的最短路径算法，解决的是有权图中最短路径问题。迪杰斯特拉算法主要特点是从起始点开始，采用贪心算法的策略，每次遍历到始点距离最近且未访问过的顶点的邻接节点，直到扩展到终点为止。</p>
+</li>
+</ul>
+<h4 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h4><h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><p>该算法复杂度为$n^2$,我们可以发现，如果边数远小于$n^2$,对此可以考虑用堆这种数据结构进行优化，取出最短路径的复杂度降为O(1)；每次调整的复杂度降为$O（e log_2 n）$；e为该点的边数，所以复杂度降为$O((m+n)log_2 n)$。</p>
+<h6 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h6><ul>
+<li>将源点加入堆，并调整堆</li>
+<li>选出堆顶元素u（即代价最小的元素），从堆中删除，并对堆进行调整</li>
+<li>处理与u相邻的，未被访问过的，满足三角不等式的顶点</li>
+<li>若该点在堆里，更新距离，并调整该元素在堆中的位置</li>
+<li>若该点不在堆里，加入堆，更新堆</li>
+<li>若取到的u为终点，结束算法；否则重复步骤2、3</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设起点为src, 终点为dst, 图以二维矩阵的形式存储，若graph[i][j] == 0, 代表i,j不相连    </span></span><br><span class="line"><span class="comment">//visit[i] == 0,代表未访问,visit[0] == -1代表已访问    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span>[][] graph,<span class="keyword">int</span>[] visit)</span></span>&#123;</span><br><span class="line">    <span class="comment">//节点个数        </span></span><br><span class="line">    <span class="keyword">int</span> n = graph.length;        </span><br><span class="line">    PriorityQueue&lt;Node&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Node());        </span><br><span class="line">    <span class="comment">//将起点加入pq        </span></span><br><span class="line">    pq.add(<span class="keyword">new</span> Node(src, <span class="number">0</span>));        </span><br><span class="line">    <span class="keyword">while</span> (!pq.isEmpty())&#123;            </span><br><span class="line">        Node t = pq.poll();            </span><br><span class="line">        <span class="comment">//当前节点是终点，即可返回最短路径            </span></span><br><span class="line">        <span class="keyword">if</span>(t.node == dst)                </span><br><span class="line">            <span class="keyword">return</span> t.cost;            </span><br><span class="line">        <span class="comment">//t节点表示还未访问            </span></span><br><span class="line">        <span class="keyword">if</span> (visit[t.node]==<span class="number">0</span>)&#123;                </span><br><span class="line">            <span class="comment">//将节点设置为已访问                </span></span><br><span class="line">            visit[t.node] = -<span class="number">1</span>;                </span><br><span class="line">            <span class="comment">//将当前节点相连且未访问的节点遍历                </span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;                    </span><br><span class="line">                <span class="keyword">if</span> (graph[t.node][i]!=<span class="number">0</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;                        </span><br><span class="line">                    pq.add(<span class="keyword">new</span> Node(i, t.cost + graph[t.node][i]));                    </span><br><span class="line">                &#125;                </span><br><span class="line">            &#125;            </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">//定义一个存储节点和离起点相应距离的数据结构    </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Node</span>&gt; </span>&#123;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> node;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> cost;</span><br><span class="line">             </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> cost)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">this</span>.node = node;            </span><br><span class="line">        <span class="keyword">this</span>.cost = cost;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="meta">@Override</span>        </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Node node1, Node node2)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">return</span> node1.cost-node2.cost;       </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/c88bf7ec.html" title="java数据结构与算法--图">https://lao-biao.github.io/articles/c88bf7ec.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">1.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">图的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#图的基本概念：多对多关系"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">图的基本概念：多对多关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图的存储"><span class="nav-number">1.0.2.</span> <span class="nav-text">图的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#邻接表"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">邻接表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图的遍历"><span class="nav-number">1.0.3.</span> <span class="nav-text">图的遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最短路径"><span class="nav-number">1.0.4.</span> <span class="nav-text">最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#最短路径概念"><span class="nav-number">1.0.4.0.1.</span> <span class="nav-text">最短路径概念</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#狄克斯特拉算法"><span class="nav-number">1.0.5.</span> <span class="nav-text">狄克斯特拉算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#思路"><span class="nav-number">1.0.5.0.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现"><span class="nav-number">1.0.5.0.2.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

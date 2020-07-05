@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="泛型引入集合：存放多个不同类型对象，容易出现转型错误 ClassCastException 泛型：Generic Programming JDK1.5推出的特性 编写的代码可以被很多不同类型的对象所重用 List &lt;String&gt; list &#x3D; new ArrayList&lt;String&gt;(); List &lt;String&gt; list &#x3D; new ArrayList">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java--泛型">
+<meta property="og:url" content="https://lao-biao.github.io/articles/8b379c6c.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="泛型引入集合：存放多个不同类型对象，容易出现转型错误 ClassCastException 泛型：Generic Programming JDK1.5推出的特性 编写的代码可以被很多不同类型的对象所重用 List &lt;String&gt; list &#x3D; new ArrayList&lt;String&gt;(); List &lt;String&gt; list &#x3D; new ArrayList">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-29T11:38:50.000Z">
+<meta property="article:modified_time" content="2020-05-31T00:36:46.912Z">
+<meta property="article:author" content="周超">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="泛型">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/8b379c6c.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java--泛型 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/8b379c6c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java--泛型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-29 19:38:50" itemprop="dateCreated datePublished" datetime="2020-05-29T19:38:50+08:00">2020-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-31 08:36:46" itemprop="dateModified" datetime="2020-05-31T08:36:46+08:00">2020-05-31</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h6 id="泛型引入"><a href="#泛型引入" class="headerlink" title="泛型引入"></a>泛型引入</h6><p>集合：存放多个不同类型对象，容易出现转型错误 <code>ClassCastException</code></p>
+<p>泛型：Generic Programming JDK1.5推出的特性</p>
+<p>编写的代码可以被很多不同类型的对象所重用</p>
+<p><code>List &lt;String&gt; list = new ArrayList&lt;String&gt;();</code></p>
+<p><code>List &lt;String&gt; list = new ArrayList&lt;&gt;();</code>Java 7菱形语法</p>
+<ul>
+<li>泛型类：<code>ArrayList</code>，<code>HashSet</code>，<code>HashMap</code>等</li>
+<li>泛型方法：<code>Collections.binarySearch()</code>，<code>Arrays.sort()</code>等</li>
+<li>泛型接口：<code>List</code>，<code>Iterator</code>等</li>
+</ul>
+<p>泛型的本质：参数化类型，避免类型转换，代码可复用</p>
+<p>同类：</p>
+<ul>
+<li>C++的模板(Template)</li>
+<li>C#的泛型</li>
+</ul>
+<p>ArrayList源码</p>
+<p><code>public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
+        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    rangeCheck(index);	<span class="comment">//检查是否越界</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> elementData(index);	<span class="comment">//返回对应的元素值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h6 id="自定义泛型设计"><a href="#自定义泛型设计" class="headerlink" title="自定义泛型设计"></a>自定义泛型设计</h6><p>泛型类</p>
+<ul>
+<li>具有泛型变量的类</li>
+<li>在类名后用代表引入类型<ul>
+<li>多个字母表示多个引入类型<br>如<code>&lt;T,U&gt;</code>等 </li>
+<li>引入类型可以修饰成员变量 /局部变量/参数/返回值</li>
+<li>没有专门的<code>template</code>关键字</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Interval</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T lower;</span><br><span class="line">    <span class="keyword">private</span> T upper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Interval</span><span class="params">(T lower, T upper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lower = lower;</span><br><span class="line">        <span class="keyword">this</span>.upper = upper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getLower</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.lower;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>泛型类调用</p>
+<ul>
+<li><p>传入具体的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interval&lt;Integer\&gt; v1 = <span class="keyword">new</span> Interval&lt;Integer\&gt;(<span class="number">1</span>,<span class="number">2</span>); </span><br><span class="line">Interval&lt;Integer\&gt; v1 = <span class="keyword">new</span> Interval&lt;\&gt;(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>泛型方法</p>
+<ul>
+<li>具有泛型参数的方法</li>
+<li>该方法可在普通类/泛型类中</li>
+<li><code>&lt;T&gt;</code>在修饰符后，返回类型前</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T... a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a == <span class="keyword">null</span> ? <span class="keyword">null</span> : a[a.length / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>泛型接口</p>
+<ul>
+<li>和泛型类相似，在类名后加<code>&lt;T&gt;</code></li>
+<li>T用来指定方法返回值和参数</li>
+<li>实现接口时，指定类型</li>
+<li>T也可以再是一个泛型类，可嵌套</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">add</span><span class="params">(T t1, T t2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<ul>
+<li>泛型类：整个类都被泛化，包括变量和方法</li>
+<li>泛型方法：方法被泛化，包括返回值和参数</li>
+<li>泛型接口：泛化子类方法</li>
+</ul>
+<h6 id="泛型类型限定"><a href="#泛型类型限定" class="headerlink" title="泛型类型限定"></a>泛型类型限定</h6><p>泛型</p>
+<ul>
+<li>编写的代码可以被很多不同类型的对象所重用</li>
+<li>特定场合下，需要对类型进行限定(使用某些特定方法)</li>
+</ul>
+<p>泛型限定</p>
+<ul>
+<li><code>&lt;T extends Comparable&gt;</code>约定T必须是Comparable的子类</li>
+<li>extends固定，后面可以多个，以&amp;拼接，如<code>&lt;T extends Comparable &amp; Serializable&gt;</code></li>
+<li>extends限定可以有多个接口，但只能一个类，且类必须排第一位 –逗号隔参数，如<code>&lt;T extends File &amp;Cloneable, U extends Serializable&gt;</code></li>
+</ul>
+<p>泛型类之间的继承</p>
+<ul>
+<li><code>Pair&lt;S&gt;</code>和<code>Pair&lt;T&gt;</code>没有任何关系，无论S和T之间是什么关系</li>
+<li>泛型类可以扩展或实现其他的类，如<code>ArrayList&lt;T&gt; implemetsList&lt;T&gt;</code></li>
+</ul>
+<hr>
+<p>上限界定符</p>
+<p>Pair&lt;? extends S&gt;</p>
+<p>Pair能接收的参数类型，是S自身或子类</p>
+<p>eg <code>Pair&lt;? extends Fruit&gt;</code>代表<code>Pair&lt;Fruit&gt;</code>, <code>Pair&lt;Apple&gt;</code>, <code>Pair&lt;ornage&gt;</code> 等</p>
+<blockquote>
+<p>Apple extends Fruit<br>Orange extends Fruit</p>
+</blockquote>
+<p><font color="red">只能get/不能set，编译器只能保证出来的类型，但不保证放入的 对象是什么类型</font></p>
+<p><code>? extends Fruit getFirst();</code>    //肯定可以转型到Fruit</p>
+<p><code>void setFirst(? extend Fruit)</code> //未知具体的类型[错误]</p>
+<hr>
+<p>下限界定符</p>
+<p>Pair&lt;？super S&gt;</p>
+<p>Pair能接收的类型参数，是S的自身或超类</p>
+<p>eg <code>Pair&lt;? super Apple&gt;</code> 代表 <code>Pair&lt;Object&gt;</code>,<code>Pair&lt;Fruit&gt;</code>,<code>Pair&lt;Apple&gt;</code>等</p>
+<p><font color="red">只能set/不能get，编译器保证放入的是S本身或超类，但不保证 出来是什么具体类型</font></p>
+<p>void setFirst(? super Apple)    //可以放入Apple及子类对象</p>
+<p>? super Apple getFirst()            //无法得知出来的对象类型，只能是Object</p>
+<hr>
+<p>泛型PECS原则</p>
+<ul>
+<li>Producer Extends, Consumer Super</li>
+<li>要从泛型类读取类型T的数据，并且不能写入，可以使用 ? extends 通配符；(Producer Extends，泛型类是生产者，往外输出 东西)</li>
+<li>如果要向泛型类写入类型T的数据，并且不需要读取，可以使用 ? super 通配符；(Consumer Super，泛型类是消费者，往内增加东西)</li>
+<li>如果既想写入又想读出，那就不用通配符</li>
+</ul>
+<hr>
+<p>无限定类型的泛型</p>
+<ul>
+<li><code>Pair&lt;T&gt;</code>，原始类型</li>
+<li><code>Pair&lt;?&gt;</code> ，无限定通配符，表示任意类型<ul>
+<li>如<code>Pair&lt;Obejct&gt;</code>, <code>Pair&lt;Apple&gt;</code>, <code>Pair&lt;Orange&gt;</code></li>
+<li>? getFirst() //不确定出来是什么类型，只能赋值给Object</li>
+<li>void setFirst() //无法放入任何对象，甚至是Object</li>
+</ul>
+</li>
+</ul>
+<h6 id="泛型实现的本质和约束"><a href="#泛型实现的本质和约束" class="headerlink" title="泛型实现的本质和约束"></a>泛型实现的本质和约束</h6><p>JDK的版本是向后兼容的:即低版本的class文件可以在高版本的JDK上运行<br>因此，JVM里面没有泛型对象，而是采用<font color="red">类型擦除</font>技术， 只有普通的类和方法</p>
+<p>类型擦除</p>
+<ul>
+<li><p>擦除泛型变量，替换为原始类型(raw type)，无限定为Object</p>
+</li>
+<li><p>擦除泛型变量，替换为原始类型(raw type)，有限定则为第 一个类型</p>
+</li>
+<li><p>擦除泛型变量后，为了保证类型的安全性，需要自动进行类型转换</p>
+<p>泛型表达式翻译</p>
+<p><code>Fruit f=fruits.getFirst();</code><br><code>Object o=fruits.getFirst();</code> <code>Fruit f=(Fruit) o;</code></p>
+</li>
+<li><p>擦除泛型变量后，为了保证类型的安全性，需要自动进行 类型转换</p>
+</li>
+<li><p>重载泛型方法翻译(自动桥方法)</p>
+</li>
+</ul>
+<p>泛型的约束</p>
+<ul>
+<li>不能用基本类型(8种)来实例化泛型</li>
+<li>运行时类型查询只适用于原始类型</li>
+<li>不能创建参数化类型的数组</li>
+<li>可变参数警告</li>
+<li>不能实例化类型变量</li>
+<li>不能构造泛型数组</li>
+<li>泛型类的静态上下文中类型变量无效</li>
+<li>不能抛出或捕获泛型类的异常实例</li>
+<li>可以消除对受查异常(checked exception)的检查</li>
+<li>类型擦除后引发的方法冲突</li>
+</ul>
+<h6 id="Java类型协变和逆变"><a href="#Java类型协变和逆变" class="headerlink" title="Java类型协变和逆变"></a>Java类型协变和逆变</h6><p>面向对象语言，支持子类型(Subtyping) </p>
+<ul>
+<li><p>类型变化关系(type variance)</p>
+<p>更复杂类型中的子类型关系，与子类型之间的关系相关联。</p>
+</li>
+</ul>
+<p>Type Variance形式化定义: </p>
+<ul>
+<li>A、B是类型，f(·)表示类型转换，≤表示继承关系，如A ≤ B， 表示A继承于B</li>
+<li>f(·)是<font color="red">协变(covariant)</font>的，如果A ≤ B，有f(A) ≤f(B)</li>
+<li>f(·)是<font color="red">逆变(contravariant)</font>的，如果A ≤ B，有f(B) ≤f(A)</li>
+<li>f(·)是<font color="red">不变(invariant)</font>的，当上述两种都不成立，即f(A)和f(B)没有关系 </li>
+<li>f(·)是<font color="red">双变(bivariant)</font>的，如果A ≤ B，有f(B) ≤f(A) 和f(A) ≤f(B) 同时成立</li>
+</ul>
+<hr>
+<p>Java数组是协变的</p>
+<p>String是Object的子类，<code>String[]</code>是<code>Object[]</code>的子类</p>
+<hr>
+<p>Java的(原始的)泛型是不变的</p>
+<p>String是Object的子类，<code>List&lt;String&gt;</code>和<code>List&lt;Object&gt;</code>没有关系</p>
+<hr>
+<p>泛型可采用通配符，支持协变和逆变(PECS原则)</p>
+<p>假设 B是A的子类</p>
+<p><code>ArrayList&lt;? extends A&gt; list3 = new ArrayList&lt;B&gt;();</code>  协变<br><code>ArrayList&lt;? super B&gt; list4 = new ArrayList&lt;A&gt;();</code>  逆变</p>
+<hr>
+<p>复合情况：数组协变，泛型不变</p>
+<p>假设 B是A的子类，C是B的子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testArrayAndList</span><span class="params">()</span></span>&#123;</span><br><span class="line">	B[] r1=test(<span class="keyword">new</span> ArrayList&lt;B&gt;();	<span class="comment">// 编译错误</span></span><br><span class="line">	A[] r2=test(<span class="keyword">new</span> ArrayList&lt;B&gt;();	<span class="comment">// 编译错误</span></span><br><span class="line">	Object[] r3=test(<span class="keyword">new</span> ArrayList&lt;Object&gt;());	<span class="comment">// 编译错误</span></span><br><span class="line">	</span><br><span class="line">	A[] r4=test(<span class="keyword">new</span> ArrayList&lt;A&gt;());</span><br><span class="line">	Object[] r5=test(<span class="keyword">new</span> ArrayList&lt;A&gt;());	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> A[] test(ArratList&lt;A&gt; list)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> A[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>方法情况</p>
+<ul>
+<li>JDK 1.4 重写的方法参数和返回值要求一样</li>
+<li>JDK 1.5 +重写的方法，参数要求一样的，返回值是协变的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> B <span class="title">f1</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Father.f1()"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> B();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> B <span class="title">f1</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">	<span class="comment">//public C f1(B obj)&#123;&#125;	返回值是C，也是对的</span></span><br><span class="line">		System.out.println(<span class="string">"Son.f1()"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> C();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">Father foo=<span class="keyword">new</span> Son();</span><br><span class="line">foo.f1(<span class="keyword">new</span> B());</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>总结Java类型变化(type variance)</p>
+<ul>
+<li>数组是协变的(covariant)</li>
+<li>原始的泛型是不变的(invariant)</li>
+<li><code>&lt;? extends A&gt;</code>支持协变(covariant)</li>
+<li><code>&lt;? super B&gt;</code>支持逆变(contravariant)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/8b379c6c.html" title="Java--泛型">https://lao-biao.github.io/articles/8b379c6c.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/%E6%B3%9B%E5%9E%8B/" rel="tag"># 泛型</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#泛型引入"><span class="nav-number">1.</span> <span class="nav-text">泛型引入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义泛型设计"><span class="nav-number">2.</span> <span class="nav-text">自定义泛型设计</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#泛型类型限定"><span class="nav-number">3.</span> <span class="nav-text">泛型类型限定</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#泛型实现的本质和约束"><span class="nav-number">4.</span> <span class="nav-text">泛型实现的本质和约束</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Java类型协变和逆变"><span class="nav-number">5.</span> <span class="nav-text">Java类型协变和逆变</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

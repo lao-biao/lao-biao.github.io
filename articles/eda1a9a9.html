@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="css声明1、在head标签中使用style标签声明：作用：此声明一般声明当前网页的公共样式或者给某个标签的单独样式 2、在标签上使用style属性进行声明：作用：此声明会将css样式直接作用于当前标签3、在head标签中使用link标签引入外部声明好的css文件作用：此声明相当于调用,解决了不同网页间样式重复使用的问题 一次声明，随处使用问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css基础">
+<meta property="og:url" content="https://lao-biao.github.io/articles/eda1a9a9.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="css声明1、在head标签中使用style标签声明：作用：此声明一般声明当前网页的公共样式或者给某个标签的单独样式 2、在标签上使用style属性进行声明：作用：此声明会将css样式直接作用于当前标签3、在head标签中使用link标签引入外部声明好的css文件作用：此声明相当于调用,解决了不同网页间样式重复使用的问题 一次声明，随处使用问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-03T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T10:48:08.870Z">
+<meta property="article:author" content="周超">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/eda1a9a9.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>css基础 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/eda1a9a9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-15 18:48:08" itemprop="dateModified" datetime="2020-05-15T18:48:08+08:00">2020-05-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="css声明"><a href="#css声明" class="headerlink" title="css声明"></a>css声明</h4><p>1、在head标签中使用style标签声明：<br>作用：此声明一般声明当前网页的公共样式或者给某个标签的单独样式<br> 2、在标签上使用style属性进行声明：<br>作用：此声明会将css样式直接作用于当前标签<br>3、在head标签中使用link标签引入外部声明好的css文件<br>作用：此声明相当于调用,解决了不同网页间样式重复使用的问题</p>
+<p>一次声明，随处使用<br>问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？<br>如果CSS的声明全部在head标签中，则遵循<font color="red">就近原则</font>，谁离标签近，谁就会被显示</p>
+<a id="more"></a>
+
+<h4 id="css的选择器"><a href="#css的选择器" class="headerlink" title="css的选择器"></a>css的选择器</h4><ul>
+<li>标签选择器：<br>&nbsp;&nbsp;标签名{样式名1： 样式值1；……}<br>&nbsp;&nbsp;作用：会将当前网页内的所有该标签增加相同的样式</li>
+<li>id选择器：<br>&nbsp;&nbsp;#标签名的id属性值{样式名1：样式值1；……}<br>&nbsp;&nbsp;作用：给某个指定的标签添加指定的样式</li>
+<li>类选择器：<br>&nbsp;&nbsp;.类选择器名{样式名1：样式值1……}<br>&nbsp;&nbsp;作用：给不同的标签添加相同的样式</li>
+<li>全部选择选择器：<br>&nbsp;&nbsp;*{样式名1：样式值1……}<br>&nbsp;&nbsp;作用：选择所有的HTML标签，并添加相同的样式                </li>
+<li>组合选择器：<br>&nbsp;&nbsp;选择器1，选择器2，……{样式名1：样式值1……}<br>&nbsp;&nbsp;作用：解决不同的选择器之间重复样式的问题</li>
+<li>子标签选择器：<br>&nbsp;&nbsp;选择器1 子标签选择器{样式名1：样式值1……}</li>
+<li>属性选择器：<br>&nbsp;&nbsp;标签名[属性名=属性值]{样式名1：样式值1……}<br>&nbsp;&nbsp;作用：选择某标签指定具备某属性并且属性值为某属性值的标签</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">css</span>的使用过程：</span><br><span class="line">1、声明<span class="selector-tag">css</span>代码域</span><br><span class="line">2、使用选择选择器要添加样式的标签</span><br><span class="line">根据需要来：</span><br><span class="line">	使用*选择器来给整个页面添加基础样式</span><br><span class="line">	使用类选择器给不同的标签添加基础样式</span><br><span class="line">	使用标签选择器给某类标签添加基础样式</span><br><span class="line">	使用<span class="selector-tag">id</span>、属性选择器、<span class="selector-tag">style</span>属性声明方式给某个标签添加个性化样式</span><br><span class="line">3、书写样式单</span><br><span class="line">边框设置	<span class="selector-tag">border</span>：<span class="selector-tag">solid</span> 1<span class="selector-tag">px</span>；</span><br><span class="line">字体设置</span><br><span class="line">    <span class="selector-tag">font-size</span><span class="selector-pseudo">:10px</span>;</span><br><span class="line">    <span class="selector-tag">font-family</span><span class="selector-pseudo">:"</span>宋体";(设置字体格式）</span><br><span class="line">    <span class="selector-tag">font-weight</span><span class="selector-pseudo">:bold</span>;（设置字体加粗）</span><br><span class="line">字体颜色设置	<span class="selector-tag">color</span>:颜色;</span><br><span class="line">背景颜色设置	<span class="selector-tag">background-color</span>:颜色;</span><br><span class="line">背景图片设置</span><br><span class="line">    <span class="selector-tag">background-img</span><span class="selector-pseudo">:url</span>;(图片相对路径)</span><br><span class="line">    <span class="selector-tag">background-repeate</span>：<span class="selector-tag">no-repeate</span>；（设置图片不重复）</span><br><span class="line">    <span class="selector-tag">background-size</span>：<span class="selector-tag">cover</span>； （图片平铺整个页面）</span><br><span class="line">高和宽设置	width/height:数值px</span><br><span class="line">浮动设置	float：left/right</span><br><span class="line">行高设置	<span class="selector-tag">line-height</span>：10；</span><br></pre></td></tr></table></figure>
+
+<h4 id="样式使用"><a href="#样式使用" class="headerlink" title="样式使用"></a>样式使用</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*添加网页背景图*/</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(img/<span class="number">1</span>.jpg);<span class="comment">/*添加背景图片*/</span></span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;<span class="comment">/*设置图片不同重复*/</span></span><br><span class="line">    <span class="attribute">background-size</span>:cover;    <span class="comment">/*设置图片平铺*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*使用标签选择器*/</span></span><br><span class="line"><span class="selector-tag">table</span>&#123;</span><br><span class="line">    <span class="comment">/*background-image: url(img/0.jpg);</span></span><br><span class="line"><span class="comment">    backgroud-size: cover;*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*设置table的行高 */</span></span><br><span class="line"><span class="selector-tag">tr</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*设置td*/</span></span><br><span class="line"><span class="selector-tag">td</span>&#123;</span><br><span class="line">    width：100px;</span><br><span class="line">    <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 1<span class="selector-tag">px</span> <span class="selector-tag">red</span>;</span><br><span class="line">    <span class="selector-tag">border-radius</span>: 10<span class="selector-tag">px</span>; <span class="comment">/*圆环*/</span></span><br><span class="line">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:orange</span>;</span><br><span class="line">    <span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">blueviolet</span>;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">    <span class="selector-tag">letter-spacing</span>: 10<span class="selector-tag">px</span>; <span class="comment">/*字间距*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*------------------------------------------------------*/</span></span><br><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: gray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">list-style-type</span>: none;<span class="comment">/*去除li的标识符*/</span></span><br><span class="line">    <span class="comment">/*display: inline;*/</span></span><br><span class="line">    <span class="attribute">float</span>: left;<span class="comment">/*设置菜单左悬浮*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;     </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: black;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;<span class="comment">/*设置超链接去除下划线*/</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: blod;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="css盒子模型"><a href="#css盒子模型" class="headerlink" title="css盒子模型"></a>css盒子模型</h4><p>div标签：<br>块级标签：主要用来进行网页布局的， 会将其中的子元素内容作为一个独立的整体存在。<br>&nbsp;&nbsp;特点：默认宽度是页面的宽度，但可以设置<br>&nbsp;&nbsp;高度默认是没有的，但是可以设置（可以顶开）<br>&nbsp;&nbsp;如果子元素设置了百分比的高或者宽，占据的是div的百分比，不是页面的。<br>盒子模型：<br>&nbsp;&nbsp;外边距：margin    作用：用来设置元素与元素之间的间隔<br>&nbsp;&nbsp;居中设置：<code>margin：0px auto；</code>上下间隔是0px，水平居中<br>&nbsp;&nbsp;可以根据需求单独的设置上下左右的外边距<br>&nbsp;&nbsp;边框：border    作用：用来设置元素的边框大小，可以设置上下左右<br>&nbsp;&nbsp;内边距：padding    作用：设置内容和边框之间的间隔<br>注意：内边距不会改变内容区域的大小，可以单独设置上下左右的内边距<br>内容区域：<br>&nbsp;&nbsp;作用：改变内容区域的大小<br>&nbsp;&nbsp;设置宽和高即可改变内容区域大小</p>
+<h4 id="css的定位"><a href="#css的定位" class="headerlink" title="css的定位"></a>css的定位</h4><p>position</p>
+<ul>
+<li>相对定位：relative<br>作用：相对于原有位置移动指定的距离<br>可以使用top，left，right，bottom来进行设置<br>注意：其他元素的位置是不改变的</li>
+<li>绝对定位：absolute<br>作用：可以使用元素参照界面或者相对父元素来进行移动<br>注意：如果父级元素成为参照元素，必须使用相对定位属性<br>默认情况下以界面为基准进行移动的</li>
+<li>固定定位：fixed<br>作用：将元素固定显示在页面的指定位置，不会随着滚动条的移动而改变位置<br>以上定位都可以使用top，bottom，left，right来进行移动；</li>
+</ul>
+<p>如果相对应的元素的父级元素没有对应的position属性，会逐级向上匹配，直到body元素为止。</p>
+<p>z-index:此属性是用来声明元素的显示级别的，等级高的会比等级低的优先显示</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/eda1a9a9.html" title="css基础">https://lao-biao.github.io/articles/eda1a9a9.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#css声明"><span class="nav-number">1.</span> <span class="nav-text">css声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css的选择器"><span class="nav-number">2.</span> <span class="nav-text">css的选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样式使用"><span class="nav-number">3.</span> <span class="nav-text">样式使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css盒子模型"><span class="nav-number">4.</span> <span class="nav-text">css盒子模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css的定位"><span class="nav-number">5.</span> <span class="nav-text">css的定位</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

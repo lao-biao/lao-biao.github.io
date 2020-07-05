@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="head标签1&lt;title&gt;&lt;&#x2F;title&gt;网页标题标签  1234&lt;meta charset&#x3D;&quot;utf-8&quot;&#x2F;&gt; HTML5网页解析编码格式配置&lt;meta http-equiv&#x3D;&quot;content-type&quot;  content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&#x2F;&gt;HTML4文档编码格式设置   搜索优化标签：关键字、网页描述、作者">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html基础">
+<meta property="og:url" content="https://lao-biao.github.io/articles/1a147173.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="head标签1&lt;title&gt;&lt;&#x2F;title&gt;网页标题标签  1234&lt;meta charset&#x3D;&quot;utf-8&quot;&#x2F;&gt; HTML5网页解析编码格式配置&lt;meta http-equiv&#x3D;&quot;content-type&quot;  content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&#x2F;&gt;HTML4文档编码格式设置   搜索优化标签：关键字、网页描述、作者">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-03T04:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T10:11:37.152Z">
+<meta property="article:author" content="周超">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="html">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/1a147173.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>html基础 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/1a147173.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          html基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-15 18:11:37" itemprop="dateModified" datetime="2020-05-15T18:11:37+08:00">2020-05-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="head标签"><a href="#head标签" class="headerlink" title="head标签"></a>head标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span>网页标题标签</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span> HTML5网页解析编码格式配置</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span>  <span class="attr">content</span>=<span class="string">"text/html; charset</span></span></span><br><span class="line"><span class="tag"><span class="string">=utf-8"</span>/&gt;</span>HTML4文档编码格式设置</span><br></pre></td></tr></table></figure>
+
+
+<p>搜索优化标签：关键字、网页描述、作者</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"关键字，关键字"</span>/&gt;</span>	网页关键字</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"描述"</span>/&gt;</span>		网页描述</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"人名"</span>/&gt;</span>	网页作者</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span>  <span class="attr">content</span>=<span class="string">"5(秒数) ; url= (网址)"</span>&gt;</span>	设置网页自动跳转</span><br></pre></td></tr></table></figure>
+
+<p>其他：css引入标签，js引入标签</p>
+<a id="more"></a>
+
+<h4 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h(序号)</span> &gt;</span> <span class="tag">&lt;/<span class="name">h(序号)</span>&gt;</span>s</span><br></pre></td></tr></table></figure>
+
+<p>h1到h6：数据加粗显示，显示依次减弱，标题标签自动换行(属于块级标签)</p>
+<p>属性 align：center，left，right    设置位置（对齐）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span> /&gt;</span>  水平线 默认居中</span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span> <span class="attr">width</span>=<span class="string">"600px"</span> <span class="attr">size</span>=<span class="string">"20px"</span> <span class="attr">color</span>=<span class="string">" "</span> <span class="attr">align</span>=<span class="string">" "</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>width：水平线宽度</p>
+</li>
+<li><p>size：水平线高度</p>
+</li>
+<li><p>color：水平线颜色</p>
+</li>
+<li><p>align：水平线位置</p>
+</li>
+</ul>
+<p>像素单位(px)：占据电脑屏幕的大小</p>
+<p>百分比单位(%)：占据浏览器比例的大小</p>
+<h4 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h4><p>段落标签 p：会将一段数据作为整体进行显示，主要是进行css和js操作时比较方便，会自动换行(块级标签)</p>
+<p>特点：段与段的间距比较大</p>
+<p>换行符：br 告诉浏览器此位置进行换行    </p>
+<p>空格符：&amp;nbsp 告诉浏览器在此位置增加空格</p>
+<p>权重标签:</p>
+<ul>
+<li>b 会将内容加黑显示</li>
+<li>i 会将内容斜体显示</li>
+<li>u 会将内容增加下划线</li>
+<li>del 增加中划线         </li>
+</ul>
+<p>(以上不会自动换行可嵌套使用)</p>
+<h4 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h4><ol>
+<li><p>无序列表 </p>
+<p>ul    li 该标签中书写列表内容，一个li标签代表列表中的一行数据</p>
+<p>特点：默认数据前有一个黑圆圈</p>
+</li>
+<li><p>有序列表 </p>
+<p>ol   li 该标签中书写列表内容，一个li标签代表列表中的一行数据</p>
+<p>特点：会自动的给列表进行顺序编码，格式从小到大并且是连续的</p>
+<p>属性：type 可以改变顺序编码的值，可以是1，A，a，Ⅰ默认使用阿拉伯数字进行顺序编码</p>
+</li>
+<li><p>自定义列表</p>
+<p>dl  dt数据的标题</p>
+<p>dd数据的具体内容，一个dd表示一条数据</p>
+</li>
+</ol>
+<h4 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h4><p>img 图片资源：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地资源 <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/1.png "</span> <span class="attr">width</span>=<span class="string">" px"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">网络资源<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">" URL "</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>src 图片路径：</p>
+<ul>
+<li>相对路径 从当前文件出发查找另一个文件所经过的路径</li>
+<li>绝对路径 从根盘符出发所查找文件的路径</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>width 设置图片的宽度，如果是单独设置，则在图片保证不失真的情况下自动缩小或放大，单位可以是px也可以是百分比 </li>
+<li>height 设置图片的高度</li>
+<li>title 设置图片标题，鼠标放在图片上的时候显示</li>
+<li>alt 图片加载失败显示</li>
+</ul>
+<p><font color="#f00">图片不会自动换行(图片属于行内元素)</font></p>
+<h4 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h4><p>a标签   href 要跳转的网页资源路径</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地资源       <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"相对路径"</span>/&gt;</span>文字描述<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">网络资源      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"URL"</span>/&gt;</span>文字描述<span class="tag">&lt;/<span class="name">a</span>&gt;</span>        网络资源(网页)的URL</span><br></pre></td></tr></table></figure>
+
+<p>属性：target =”_” 指明要跳转的网页资源的显示位置</p>
+<ul>
+<li>_self在当前页中刷新显示</li>
+<li>_blank在新的标签页中显示</li>
+<li>_top在顶层页面中显示</li>
+<li>_parent在父级页面中显示</li>
+</ul>
+<p><font color="#f00">超链接标签中一定要声明访问方式，可以是文字也可以是图片</font></p>
+<p>锚点：</p>
+<p>作用：在一张网页中进行资源跳转</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用：先使用超链接标签在指定的网页位置增加锚点              格式为<span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span> =<span class="string">"锚点名"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>   </span><br><span class="line"></span><br><span class="line">再使用a标签可以跳转指定的锚点，达到网页内部资源跳转的目的    格式为<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"#锚点名"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">回到网页顶部   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"#"</span>&gt;</span>文字描述<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h4><p>table </p>
+<ul>
+<li>tr 声明一行</li>
+<li>th声明一个单元格，表头格，默认居中加黑显示</li>
+<li>td声明一个单元格，默认局左显示原始数据</li>
+</ul>
+<p><font color="#f00">行高即改行所有单元格的宽度，单元格的宽度即列宽</font>&gt;</p>
+<p>属性：</p>
+<ul>
+<li>border 给表格添加边框</li>
+<li>width 设置表格的宽度</li>
+<li>height 设置表格的高度</li>
+<li>cellpadding 设置内容居边框的距离</li>
+<li>cellspacing 设置边框的大小(以上单位均为px)</li>
+<li>colspan=”个数” 合并左右单元格(实现行合并)</li>
+<li>rowspan=”个数” 合并上下单元格(实现列合并)</li>
+</ul>
+<p>特点：默认根据数据的多少进行表格的大小显示</p>
+<p>单元格的合并</p>
+<ol>
+<li><p>首先确保表格是一个规整的表格</p>
+</li>
+<li><p>根据要合并的单元格，找到其所在的源码位置</p>
+</li>
+<li><p>行合并：在要合并的单元格的第一个单元格使用其属性colspan，并删除其要合并的单元格</p>
+<p>列合并：在要合并的单元格的任一个单元格使用其属性rowspan，并删除其要合并的单元格</p>
+</li>
+</ol>
+<h4 id="内嵌标签"><a href="#内嵌标签" class="headerlink" title="内嵌标签"></a>内嵌标签</h4><p>iframe </p>
+<p>src：要显示的网页资源路径(本地资源or网络资源)</p>
+<p>​        默认当前页面打开及加载src指向的资源</p>
+<p>width：设置显示区域的宽度</p>
+<p>height：设置显示区域的高度</p>
+<p>name：设置内嵌区域的名字，结合超链接标签的target属性使用</p>
+<p><font color="#f00">作用 在当前网页中加载其他网页的资源，达到不同网页资源之间不相互干扰，并能在同一个页面中展现给用户的目的。</font></p>
+<h4 id="框架标签"><a href="#框架标签" class="headerlink" title="框架标签"></a>框架标签</h4><p>frameset</p>
+<p>rows：按照行进行切分页面</p>
+<p>cols：按照列进行切分页面</p>
+<p>子标签frame：进行分区域的占位，一个frame可以单独加载网页资源</p>
+<p> 属性：</p>
+<ul>
+<li>src：资源路径 (本地资源or网络资源)</li>
+<li>name：区域名</li>
+</ul>
+<p><font color="#ff0000">构建frameset，一定要删除body标签</font></p>
+<h4 id="form标签"><a href="#form标签" class="headerlink" title="form标签"></a>form标签</h4><p>form表单标签</p>
+<p>作用：收集并提交用户的数据给指定服务器</p>
+<p>属性：</p>
+<p>action：收集的数据提交地址(URL)</p>
+<p>method：收集的数据的提交方式</p>
+<ul>
+<li>get：适合小量数据，表单数据以？隔开拼接在URL后面，不同键值对使用&amp;符号隔开，不安全</li>
+<li>post：适合大量数据，安全，隐式提交</li>
+</ul>
+<p><font color="#f00">表单数据的提交，要提交的表单项必须拥有name属性值，否则不会提交。提交的表单数据为键值对，键为name属性的值，值为用户书写的数据</font></p>
+<p><font color="#f00">form标签会收集其标签内部的数据</font></p>
+<p><font color="#f00">form表单的数据提交需要依赖于submit提交按钮(value)</font></p>
+<p>form表单域标签</p>
+<p>作用：给用户提供可以进行数据书写或者选择的标签</p>
+<p>使用：</p>
+<h6 id="文本框：input"><a href="#文本框：input" class="headerlink" title="文本框：input"></a>文本框：input</h6><ul>
+<li><p>type：</p>
+<ul>
+<li>text  收集少量文本数据，用户可见</li>
+<li>password 收集用户密码数据</li>
+</ul>
+</li>
+<li><p>name：数据提交的键，也会被js使用</p>
+</li>
+<li><p>value：默认值</p>
+</li>
+</ul>
+<h6 id="单选框：input"><a href="#单选框：input" class="headerlink" title="单选框：input"></a>单选框：input</h6><p>type：<code>radio</code></p>
+<ul>
+<li>name：属性值相同的单选框只能选择一项数据</li>
+<li>value：要提交的数据</li>
+<li>checked：使用此属性的单选默认是选择状态</li>
+</ul>
+<h6 id="多选框：input"><a href="#多选框：input" class="headerlink" title="多选框：input"></a>多选框：input</h6><p><code>type：  checkbox</code></p>
+<ul>
+<li>name：一个多远组需要使用相同的name属性值</li>
+<li>value：要提交的数据</li>
+<li>checked：使用此属性的多选框默认是选择状态</li>
+</ul>
+<h6 id="下拉框：select"><a href="#下拉框：select" class="headerlink" title="下拉框：select"></a>下拉框：select</h6><p>name：数据提交的键名，必须声明</p>
+<p>子标签 option：一个option标签表示一个下拉选项   </p>
+<p>​    value：要提交的数据</p>
+<h6 id="文本域-input"><a href="#文本域-input" class="headerlink" title="文本域 input"></a>文本域 input</h6><p> textarea：声明一个可以书写大量文字的文本区域</p>
+<p> name：数据提交的键名，js和css会使用</p>
+<p> rows：声明文本框的行数</p>
+<p> cols：声明文本框的列数</p>
+<h6 id="普通按钮-input"><a href="#普通按钮-input" class="headerlink" title="普通按钮: input"></a>普通按钮: input</h6><p>​    type：button</p>
+<p>​    value</p>
+<h6 id="隐藏标签-input"><a href="#隐藏标签-input" class="headerlink" title="隐藏标签 input"></a>隐藏标签 input</h6><p>​    type：hidden</p>
+<p>​    name</p>
+<p>​    value</p>
+<p><font color="#f00">表单数据提交的是表单域标签的value值</font>&gt;</p>
+<p>form表单标签的使用：在点击数据提交时，form标签会将其内部所有form表单域标签中用户书写的数据按照method指明的提交方式提交给action属性所指明的提交地址</p>
+<p>将源代码显示在浏览器页面中  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span>浏览预显示</span><br><span class="line"><span class="tag">&lt;&gt;</span>需要进行替换，否则浏览器会编译执行</span><br><span class="line"><span class="tag">&lt;     &amp;<span class="attr">lt</span>   尖括号不会被编码</span></span><br><span class="line"><span class="tag">&gt;</span>     &amp;gt</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/1a147173.html" title="html基础">https://lao-biao.github.io/articles/1a147173.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/html/" rel="tag"># html</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#head标签"><span class="nav-number">1.</span> <span class="nav-text">head标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标题标签"><span class="nav-number">2.</span> <span class="nav-text">标题标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段落标签"><span class="nav-number">3.</span> <span class="nav-text">段落标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表标签"><span class="nav-number">4.</span> <span class="nav-text">列表标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片标签"><span class="nav-number">5.</span> <span class="nav-text">图片标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超链接标签"><span class="nav-number">6.</span> <span class="nav-text">超链接标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格标签"><span class="nav-number">7.</span> <span class="nav-text">表格标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内嵌标签"><span class="nav-number">8.</span> <span class="nav-text">内嵌标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#框架标签"><span class="nav-number">9.</span> <span class="nav-text">框架标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form标签"><span class="nav-number">10.</span> <span class="nav-text">form标签</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#文本框：input"><span class="nav-number">10.0.1.</span> <span class="nav-text">文本框：input</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#单选框：input"><span class="nav-number">10.0.2.</span> <span class="nav-text">单选框：input</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多选框：input"><span class="nav-number">10.0.3.</span> <span class="nav-text">多选框：input</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下拉框：select"><span class="nav-number">10.0.4.</span> <span class="nav-text">下拉框：select</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文本域-input"><span class="nav-number">10.0.5.</span> <span class="nav-text">文本域 input</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#普通按钮-input"><span class="nav-number">10.0.6.</span> <span class="nav-text">普通按钮: input</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#隐藏标签-input"><span class="nav-number">10.0.7.</span> <span class="nav-text">隐藏标签 input</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

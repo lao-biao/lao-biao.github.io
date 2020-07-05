@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="多进程与多线程多进程当前的操作系统都是多任务OS ，每个独立执行的任务就是一个进程，OS将时间划分为多个时间片（时间很短） 每个时间片内将CPU分配给某一个任务，时间片结束，CPU将自动回收，再分配给另外任务。从外部看，所有任务是同时在执行。但是在CPU上，任务是按照串行依次运行（单核CPU）。如果是多核，多个进程任务可以并行。但是单个核上，多进程只能串行执行。 多进程的优点  可以同时运行多个任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java--多线程">
+<meta property="og:url" content="https://lao-biao.github.io/articles/83776954.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="多进程与多线程多进程当前的操作系统都是多任务OS ，每个独立执行的任务就是一个进程，OS将时间划分为多个时间片（时间很短） 每个时间片内将CPU分配给某一个任务，时间片结束，CPU将自动回收，再分配给另外任务。从外部看，所有任务是同时在执行。但是在CPU上，任务是按照串行依次运行（单核CPU）。如果是多核，多个进程任务可以并行。但是单个核上，多进程只能串行执行。 多进程的优点  可以同时运行多个任">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-15T14:33:51.000Z">
+<meta property="article:modified_time" content="2020-05-24T04:02:22.415Z">
+<meta property="article:author" content="周超">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="多线程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/83776954.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java--多线程 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/83776954.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java--多线程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-15 22:33:51" itemprop="dateCreated datePublished" datetime="2020-05-15T22:33:51+08:00">2020-05-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-24 12:02:22" itemprop="dateModified" datetime="2020-05-24T12:02:22+08:00">2020-05-24</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="多进程与多线程"><a href="#多进程与多线程" class="headerlink" title="多进程与多线程"></a>多进程与多线程</h4><h6 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h6><p>当前的操作系统都是多任务OS ，每个独立执行的任务就是一个进程，OS将时间划分为多个时间片（时间很短）</p>
+<p>每个时间片内将CPU分配给某一个任务，时间片结束，CPU将自动回收，再分配给另外任务。从外部看，所有任务是同时在执行。但是在CPU上，任务是按照串行依次运行（单核CPU）。如果是多核，多个进程任务可以并行。但是单个核上，多进程只能串行执行。</p>
+<p>多进程的优点</p>
+<ul>
+<li>可以同时运行多个任务</li>
+<li>程序因IO堵塞时，可以释放CPU，让CPU为其他程序服务</li>
+<li>当系统有多个CPU时，可以为多个程序同时服务<ul>
+<li>CPU不再提高频率，而是提高核数</li>
+<li>多核和并行程序才是提高程序性能的唯一办法</li>
+</ul>
+</li>
+</ul>
+<p>多进程的缺点：太笨重，不好管理，不好切换</p>
+<h6 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h6><p>一个程序可以包括多个子任务，可串/并行，每个子任务可以称为一个线程</p>
+<p>如果一个子任务阻塞，程序可以将CPU调度另外一个子任务进行工作。这样CPU还是保留在本程序中，而不是被调度到别的程序(进程)去。这样，提高本程序所获得CPU时间和利用率。</p>
+<h6 id="多进程-vs-多线程"><a href="#多进程-vs-多线程" class="headerlink" title="多进程 vs 多线程"></a>多进程 vs 多线程</h6><ul>
+<li>线程共享数据</li>
+<li>线程通讯更高效</li>
+<li>线程更轻量级，更容易切换</li>
+<li>多个线程更容易管理</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="Java多线程实现"><a href="#Java多线程实现" class="headerlink" title="Java多线程实现"></a>Java多线程实现</h4><h6 id="多线程创建"><a href="#多线程创建" class="headerlink" title="多线程创建"></a>多线程创建</h6><ul>
+<li><p><code>java.lang.Thread</code> </p>
+<p>线程继承Thread类，实现run方法</p>
+</li>
+<li><p><code>java.lang.Runnable</code>接口</p>
+</li>
+<li><p>线程实现Runnable接口，实现run方法</p>
+</li>
+</ul>
+<h6 id="多线程启动"><a href="#多线程启动" class="headerlink" title="多线程启动"></a>多线程启动</h6><ul>
+<li>start方法，会自动以新进程调用run方法</li>
+<li>直接调用run方法，将变成串行执行</li>
+<li>同一个线程，多次start会报错，只执行第一次start方法</li>
+<li>多个线程启动，其启动的先后顺序是随机的</li>
+<li>线程无需关闭，只要其run方法执行结束后，自动关闭</li>
+<li>main函数(线程)可能早于新线程结束，整个程序并不终止</li>
+<li>整个程序终止是等所有的线程都终止(包括main函数线程)</li>
+</ul>
+<h6 id="多线程实现对比"><a href="#多线程实现对比" class="headerlink" title="多线程实现对比"></a>多线程实现对比</h6><ul>
+<li>Thread占据了父类的名额，不如Runnable方便 </li>
+<li>Thread 类实现Runnable</li>
+<li>Runnable启动时需要Thread类的支持</li>
+<li>Runnable 更容易实现多线程中资源共享</li>
+</ul>
+<p>结论：建议实现Runnable接口来完成多线程</p>
+<h4 id="Java多线程信息共享"><a href="#Java多线程信息共享" class="headerlink" title="Java多线程信息共享"></a>Java多线程信息共享</h4><p>线程类</p>
+<ul>
+<li>通过继承Thread或实现Runnable</li>
+<li>通过start方法，调用run方法， run方法工作</li>
+<li>线程run结束后，线程退出 </li>
+</ul>
+<p>粗粒度：子线程与子线程之间、和main线程之间缺乏交流</p>
+<p>细粒度：线程之间有信息交流通讯</p>
+<ul>
+<li>通过共享变量达到信息共享</li>
+<li>JDK原生库暂不支持发送消息(类似MPI并行库直接发送消息)</li>
+</ul>
+<h6 id="信息共享"><a href="#信息共享" class="headerlink" title="信息共享"></a>信息共享</h6><p>通过共享变量在多个线程中共享消息</p>
+<ul>
+<li>static变量</li>
+<li>同一个Runnable类的成员变量</li>
+</ul>
+<p>多线程信息共享问题</p>
+<ul>
+<li>工作缓存副本</li>
+<li>关键步骤缺乏加锁限制 </li>
+</ul>
+<blockquote>
+<p> 举例：i++，并非原子性操作</p>
+<ul>
+<li>读取主存i (正本)到工作缓存(副本)中</li>
+<li>每个CPU执行(副本)i+1操作</li>
+<li>CPU将结果写入到缓存(副本)中 </li>
+<li>数据从工作缓存(副本)刷到主存(正本)中</li>
+</ul>
+</blockquote>
+<p>变量副本问题的解决方法</p>
+<ul>
+<li>采用<code>volatile</code> 关键字修饰变量</li>
+<li>保证不同线程对共享变量操作时的<em>可见性</em></li>
+</ul>
+<p>关键步骤<em>加锁限制</em></p>
+<ul>
+<li><strong>互斥</strong>：某一个线程运行一个代码段(关键区)，其他线程不能同时 运行这个代码段</li>
+<li><strong>同步</strong>：多个线程的运行，必须按照某一种规定的先后顺序来运行</li>
+<li><strong>互斥</strong>是<strong>同步</strong>的一种特例 </li>
+</ul>
+<p>互斥的关键字是<code>synchronized</code></p>
+<ul>
+<li><code>synchronized</code>代码块/函数，只能一个线程进入 </li>
+<li><code>synchronized</code>加大性能负担，但是使用简便</li>
+</ul>
+<h4 id="Java多线程管理"><a href="#Java多线程管理" class="headerlink" title="Java多线程管理"></a>Java多线程管理</h4><p>线程类</p>
+<ul>
+<li>通过继承Thread或实现Runnable</li>
+<li>通过start方法，调用run方法，run方法工作</li>
+<li>线程run结束后，线程退出</li>
+</ul>
+<p>粗粒度：子线程与子线程之间、和main线程之间缺乏同步 </p>
+<p> 细粒度：线程之间有同步协作</p>
+<ul>
+<li>等待</li>
+<li>通知/唤醒</li>
+<li>终止</li>
+</ul>
+<h6 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h6><ul>
+<li>NEW 刚创建(new)</li>
+<li>RUNNABLE 就绪态(start)</li>
+<li>RUNNING 运行中(run)</li>
+<li>BLOCK 阻塞(sleep)</li>
+<li>TERMINATED 结束</li>
+</ul>
+<h6 id="Thread-API"><a href="#Thread-API" class="headerlink" title="Thread API"></a>Thread API</h6><p>Thread的部分API已经废弃（不建议再使用）</p>
+<ul>
+<li>暂停和恢复 <del>suspend/resume</del></li>
+<li>消亡 <del>stop/destroy</del></li>
+</ul>
+<p>线程阻塞/和唤醒</p>
+<ul>
+<li>sleep，时间一到，自己会醒来</li>
+<li>wait/notify/notifyAll，等待，需要别人来唤醒</li>
+<li>join，等待另外一个线程结束</li>
+<li>interrupt，向另外一个线程发送中断信号，该线程收到信号，会触发InterruptedException(可解除阻塞)，并进行下一步处理</li>
+</ul>
+<h6 id="线程暂停和中止–主动与被动"><a href="#线程暂停和中止–主动与被动" class="headerlink" title="线程暂停和中止–主动与被动"></a>线程暂停和中止–主动与被动</h6><p>线程被动地暂停和终止</p>
+<ul>
+<li>依靠别的线程来拯救自己<ul>
+<li>wait</li>
+<li>notify</li>
+<li>notifyAll</li>
+</ul>
+</li>
+<li>没有及时释放资源</li>
+</ul>
+<p>线程主动暂停和终止</p>
+<ul>
+<li>定期监测共享变量</li>
+<li>如果需要暂停或者终止，先释放资源，再主动动作</li>
+<li>暂停：<code>Thread.sleep()</code>，休眠</li>
+<li>终止：run方法结束，线程终止</li>
+</ul>
+<h6 id="多线程死锁"><a href="#多线程死锁" class="headerlink" title="多线程死锁"></a>多线程死锁</h6><ul>
+<li>每个线程互相持有别的线程需要的锁</li>
+<li>预防死锁，对资源进行等级排序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试死锁</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockThread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer one = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer two = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread12 thread12 = <span class="keyword">new</span> Thread12();</span><br><span class="line">        Thread21 thread21 = <span class="keyword">new</span> Thread21();</span><br><span class="line">        thread12.start();</span><br><span class="line">        thread21.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread12</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先拿1再拿2</span></span><br><span class="line">        <span class="keyword">synchronized</span> (DeadLockThread.one) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (DeadLockThread.two) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Thread 12 is running"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread21</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先拿2再拿1</span></span><br><span class="line">        <span class="keyword">synchronized</span> (DeadLockThread.two) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (DeadLockThread.one) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Thread 21 is running"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>线程报错信息：</p>
+<p>“Monitor Ctrl-Break” #6 daemon prio=5 os_prio=0 tid=0x0000000018bce000 nid=0x1280 runnable [0x000000001908e000]<br>java.lang.Thread.State: RUNNABLE<br>    at java.net.SocketInputStream.socketRead0(Native Method)<br>    at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)<br>    at java.net.SocketInputStream.read(SocketInputStream.java:170)<br>    at java.net.SocketInputStream.read(SocketInputStream.java:141)<br>    at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)<br>    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)<br>    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</p>
+<p>locked &lt;0x00000000d5fb3550&gt; (a java.io.InputStreamReader)<br>at java.io.InputStreamReader.read(InputStreamReader.java:184)<br>at java.io.BufferedReader.fill(BufferedReader.java:161)<br>at java.io.BufferedReader.readLine(BufferedReader.java:324)</p>
+<p>locked &lt;0x00000000d5fb3550&gt; (a java.io.InputStreamReader)</p>
+</blockquote>
+<h6 id="守护-后台-线程"><a href="#守护-后台-线程" class="headerlink" title="守护(后台)线程"></a>守护(后台)线程</h6><p><code>Thread.setDaemon()</code>设置线程为守护线程</p>
+<ul>
+<li>普通线程的结束，是run方法运行结束</li>
+<li>守护线程的结束，是run方法运行结束，或main函数结束</li>
+<li>守护线程永远不要访问资源，如文件或数据库等</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiThreading</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Main thread is running."</span>);</span><br><span class="line">        ThreadOne threadOne = <span class="keyword">new</span> ThreadOne();</span><br><span class="line">        <span class="comment">//守护线程</span></span><br><span class="line">        threadOne.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">        threadOne.start();</span><br><span class="line">        <span class="comment">//主线程休眠2秒</span></span><br><span class="line">        Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        System.out.println(<span class="string">"Main thread is finished."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadOne</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Thread one is running."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//休眠1秒</span></span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>输出：</p>
+<p>Main thread is running.<br>Thread one is running.<br>Thread one is running.<br>Thread one is running.<br>Main thread is finished.</p>
+<p>Process finished with exit code 0</p>
+</blockquote>
+<h6 id="线程查看工具-Jvisualvm"><a href="#线程查看工具-Jvisualvm" class="headerlink" title="线程查看工具 Jvisualvm"></a>线程查看工具 Jvisualvm</h6><blockquote>
+<p>参考：<a href="https://www.cnblogs.com/mzq123/p/11166640.html" target="_blank" rel="noopener">Jvisualvm简单使用教程</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/83776954.html" title="Java--多线程">https://lao-biao.github.io/articles/83776954.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程与多线程"><span class="nav-number">1.</span> <span class="nav-text">多进程与多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程"><span class="nav-number">1.0.1.</span> <span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程"><span class="nav-number">1.0.2.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程-vs-多线程"><span class="nav-number">1.0.3.</span> <span class="nav-text">多进程 vs 多线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程实现"><span class="nav-number">2.</span> <span class="nav-text">Java多线程实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程创建"><span class="nav-number">2.0.1.</span> <span class="nav-text">多线程创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程启动"><span class="nav-number">2.0.2.</span> <span class="nav-text">多线程启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程实现对比"><span class="nav-number">2.0.3.</span> <span class="nav-text">多线程实现对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程信息共享"><span class="nav-number">3.</span> <span class="nav-text">Java多线程信息共享</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#信息共享"><span class="nav-number">3.0.1.</span> <span class="nav-text">信息共享</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程管理"><span class="nav-number">4.</span> <span class="nav-text">Java多线程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#线程状态"><span class="nav-number">4.0.1.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Thread-API"><span class="nav-number">4.0.2.</span> <span class="nav-text">Thread API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程暂停和中止–主动与被动"><span class="nav-number">4.0.3.</span> <span class="nav-text">线程暂停和中止–主动与被动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程死锁"><span class="nav-number">4.0.4.</span> <span class="nav-text">多线程死锁</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#守护-后台-线程"><span class="nav-number">4.0.5.</span> <span class="nav-text">守护(后台)线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程查看工具-Jvisualvm"><span class="nav-number">4.0.6.</span> <span class="nav-text">线程查看工具 Jvisualvm</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
