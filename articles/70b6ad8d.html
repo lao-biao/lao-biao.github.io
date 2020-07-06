@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Spring框架概述1、Spring是轻量级的开源JavaEE框架2、Spring可以解决企业级应用开发的复杂性3、Spring的两个核心部分：IOC和Aop  IOC：控制反转，把创建对象过程交给Spring管理 Aop：面向切面编程，不修改源代码进行功能增强  4、Spring特点  方便解耦，简化开发 Aop编程支持 方便程序测试 方便和其他框架进行整合 方便进行事务操作 降低API开发难度">
@@ -30,9 +30,8 @@
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Spring/SpringFrame.png">
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Spring/WebFlux%E5%AF%B9%E6%AF%94SpringMVC.png">
 <meta property="article:published_time" content="2020-06-27T14:55:36.000Z">
-<meta property="article:modified_time" content="2020-06-28T02:36:15.032Z">
+<meta property="article:modified_time" content="2020-07-06T03:24:16.490Z">
 <meta property="article:author" content="周超">
-<meta property="article:tag" content="notes">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/zyy92/Pictures/raw/master/Spring/SpringFrame.png">
@@ -81,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="周超的博客" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -126,12 +126,27 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">55</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa  fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -220,8 +235,21 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-28 10:36:15" itemprop="dateModified" datetime="2020-06-28T10:36:15+08:00">2020-06-28</time>
+                <time title="修改时间：2020-07-06 11:24:16" itemprop="dateModified" datetime="2020-07-06T11:24:16+08:00">2020-07-06</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -256,7 +284,7 @@
 <li>降低API开发难度</li>
 </ol>
 <p>5、Spring5</p>
-<p><img src="https://gitee.com/zyy92/Pictures/raw/master/Spring/SpringFrame.png" alt="SpringFramework"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Spring/SpringFrame.png" alt="SpringFramework"></p>
 <a id="more"></a>
 
 <h4 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h4><p><a href="https://repo.spring.io/webapp/#/home" target="_blank" rel="noopener">Spring主页</a></p>
@@ -763,7 +791,7 @@
 <li>都可以使用注解方式，运行在Tomcat等容器中</li>
 <li>SpringMVC采用命令式编程，WebFlux采用异步响应式编程</li>
 </ul>
-<p><img src="https://gitee.com/zyy92/Pictures/raw/master/Spring/WebFlux%E5%AF%B9%E6%AF%94SpringMVC.png" alt="WebFlux对比SpringMVC"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Spring/WebFlux%E5%AF%B9%E6%AF%94SpringMVC.png" alt="WebFlux对比SpringMVC"></p>
 <h5 id="响应式编程ReactiveProgramming"><a href="#响应式编程ReactiveProgramming" class="headerlink" title="响应式编程ReactiveProgramming"></a>响应式编程ReactiveProgramming</h5><p>响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
 <p>Java8及其之前版本<br>提供的观察者模式两个类Observer和Observable    –伪响应式编程</p>
 <p>Flow：Publisher、Subscriber</p>
@@ -875,15 +903,25 @@
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/notes/" rel="tag"># notes</a>
-              <a href="/tags/spring/" rel="tag"># spring</a>
+              <a href="/tags/spring/" rel="tag"><i class="fa fa-tag"></i> spring</a>
           </div>
 
         
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/articles/e545fed0.html" rel="prev" title="SpringMVC笔记">
+      <i class="fa fa-chevron-left"></i> SpringMVC笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/articles/d97d56d4.html" rel="next" title="Java--AOP编程">
+      Java--AOP编程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -895,6 +933,13 @@
 
           </div>
           
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="lao-biao/lao-biao.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -959,10 +1004,16 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1003,8 +1054,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
 
         
 <div class="busuanzi-count">
@@ -1041,6 +1090,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
