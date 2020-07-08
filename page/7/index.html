@@ -23,27 +23,27 @@
   <meta name="description" content="湖北经济学院17级">
 <meta property="og:type" content="website">
 <meta property="og:title" content="周超的博客">
-<meta property="og:url" content="https://lao-biao.github.io/tags/java-script/index.html">
+<meta property="og:url" content="https://lao-biao.github.io/page/7/index.html">
 <meta property="og:site_name" content="周超的博客">
 <meta property="og:description" content="湖北经济学院17级">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="周超">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lao-biao.github.io/tags/java-script/">
+<link rel="canonical" href="https://lao-biao.github.io/page/7/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: java script | 周超的博客</title>
+  <title>周超的博客</title>
   
 
 
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">55</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">56</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">61</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -192,52 +192,102 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/9d9c9508.html">
 
-  
-  
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">java script
-          <small>标签</small>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/9d9c9508.html" class="post-title-link" itemprop="url">短暂解决ConnectionRefusedError:WinError 10061问题</a>
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:24:51" itemprop="dateModified" datetime="2020-07-06T11:24:51+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+          <h4 id="使用requests提示ConnectionRefusedError"><a href="#使用requests提示ConnectionRefusedError" class="headerlink" title="使用requests提示ConnectionRefusedError"></a>使用requests提示ConnectionRefusedError</h4><h6 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h6><p>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接</p>
+<h6 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h6><ul>
+<li>首先检查是否使用代理<ul>
+<li>打开win10的网络和Internet设置</li>
+<li>勾选自动检测设置，关闭使用设置脚本，关闭手动设置代理的使用代理服务器</li>
+</ul>
+</li>
+<li>打开注册表  </li>
+<li>删除路径：计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings下的<ul>
+<li>ProxyEnable</li>
+<li>ProxyOverride </li>
+<li>ProxyServer<br><img data-src="https://img-blog.csdnimg.cn/20191112200954515.png" alt=""></li>
+</ul>
+</li>
+<li>重新运行python程序<br>这种方式只能短暂解决问题，这三个文件会自动生成，需要重复删除</li>
+</ul>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-03T12:00:00+08:00"
-              content="2020-04-03">
-          04-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/articles/95725add.html" itemprop="url">
-            <span itemprop="name">javascrpit基础语法</span>
-          </a>
-      </div>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
-
-    </div>
-  </div>
   
   
   
 
+
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+  </nav>
 
 
 
@@ -302,7 +352,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -315,7 +365,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -445,6 +495,16 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://lao-biao.github.io/page/7/',]
+      });
+      });
+  </script>
 
 </body>
 </html>

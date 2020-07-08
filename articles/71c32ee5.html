@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="C&#x2F;S架构与B&#x2F;S架构C&#x2F;S架构：client&#x2F;server  socket、serversocket、awt&#x2F;swing做一个客户端软件 建好socket连接后，通过io流来交换，数据格式开发者自定义绑定  B&#x2F;S架构：browser&#x2F;server  浏览器也是一种客户端软件 HTTP协议定义了浏览器和服务器通讯的基本规则之一  浏览器和服务器之间的交互  交互模式：请求-响应 客户端先发出请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web技术复习笔记">
+<meta property="og:url" content="https://lao-biao.github.io/articles/71c32ee5.html">
+<meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="C&#x2F;S架构与B&#x2F;S架构C&#x2F;S架构：client&#x2F;server  socket、serversocket、awt&#x2F;swing做一个客户端软件 建好socket连接后，通过io流来交换，数据格式开发者自定义绑定  B&#x2F;S架构：browser&#x2F;server  浏览器也是一种客户端软件 HTTP协议定义了浏览器和服务器通讯的基本规则之一  浏览器和服务器之间的交互  交互模式：请求-响应 客户端先发出请求">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-08T00:54:33.000Z">
+<meta property="article:modified_time" content="2020-07-08T02:00:53.657Z">
+<meta property="article:author" content="周超">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lao-biao.github.io/articles/71c32ee5.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Web技术复习笔记 | 周超的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="周超的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周超的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习的历程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">56</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">61</span></a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa  fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/71c32ee5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="湖北经济学院17级">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Web技术复习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-08 08:54:33 / 修改时间：10:00:53" itemprop="dateCreated datePublished" datetime="2020-07-08T08:54:33+08:00">2020-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="C-S架构与B-S架构"><a href="#C-S架构与B-S架构" class="headerlink" title="C/S架构与B/S架构"></a>C/S架构与B/S架构</h5><p>C/S架构：client/server</p>
+<ul>
+<li>socket、serversocket、awt/swing做一个客户端软件</li>
+<li>建好socket连接后，通过io流来交换，数据格式开发者自定义绑定</li>
+</ul>
+<p>B/S架构：browser/server</p>
+<ul>
+<li>浏览器也是一种客户端软件</li>
+<li>HTTP协议定义了浏览器和服务器通讯的基本规则之一</li>
+</ul>
+<p>浏览器和服务器之间的交互</p>
+<ul>
+<li>交互模式：请求-响应</li>
+<li>客户端先发出请求，服务器根据请求内容发送响应的内容，客户端根据响应内容进行显示</li>
+</ul>
+<a id="more"></a>
+
+<h6 id="客户端发出请求的格式"><a href="#客户端发出请求的格式" class="headerlink" title="客户端发出请求的格式"></a>客户端发出请求的格式</h6><ol>
+<li><p>请求行：服务器的地址、端口、资源地址</p>
+</li>
+<li><p>请求头</p>
+</li>
+<li><p>请求实体</p>
+<p><font color="red">注：客户端向服务器传参，如果将参数放到请求行，即为<em>get</em>方式，如果将参数放在实体中，即为<em>post</em>请求</font></p>
+</li>
+</ol>
+<h6 id="服务器收到请求内容后发送响应内容"><a href="#服务器收到请求内容后发送响应内容" class="headerlink" title="服务器收到请求内容后发送响应内容"></a>服务器收到请求内容后发送响应内容</h6><ul>
+<li>响应内容定义<ul>
+<li>状态行 200、404、500</li>
+<li>响应行</li>
+<li>响应实体</li>
+</ul>
+</li>
+</ul>
+<h6 id="客户端收到响应内容后，显示内容"><a href="#客户端收到响应内容后，显示内容" class="headerlink" title="客户端收到响应内容后，显示内容"></a>客户端收到响应内容后，显示内容</h6><ul>
+<li>HTML超文本标记语言</li>
+<li>HTML元素动态 javascript（livescript）</li>
+<li>控制页面元素 css Cascading Style Sheets层叠样式表</li>
+</ul>
+<h6 id="服务器根据请求内容发送响应的内容"><a href="#服务器根据请求内容发送响应的内容" class="headerlink" title="服务器根据请求内容发送响应的内容"></a>服务器根据请求内容发送响应的内容</h6><ol>
+<li>收请求内容<ol>
+<li>建立监听，ServletSocket s.accept()</li>
+<li>启动一个线程（轻量级进程），为请求的客户提供服务</li>
+<li>为了封装客户端提供的请求信息，定义一个对象：HttpServletRequest</li>
+<li>为了封装回送给服务端的相应内容，定义一个对象：HTTPServletResponse</li>
+</ol>
+</li>
+<li>根据请求内容调用相应的程序（Servlet）<ol>
+<li>通过web.xml中定义的url和Servlet的关系，找到对应的Serlvet程序</li>
+<li>定义了HttpServlet抽象类，service(HttpServletRequset req,HttpServletResponse resp)方法</li>
+<li>将response对象中的信息，转译成基于http协议的响应内容，再将这些响应内容通过socket传送给客户端<br>为了统一处理上述流程，使用Tomcat服务器，也成为web容器，Servlet容器</li>
+</ol>
+</li>
+</ol>
+<h6 id="规范、增强Servlet程序"><a href="#规范、增强Servlet程序" class="headerlink" title="规范、增强Servlet程序"></a>规范、增强Servlet程序</h6><ul>
+<li>浏览器发送给服务器的请求内容    HttpServletRequest对象</li>
+<li>服务器回送给浏览器的相应内容    HttpServletResponse对象</li>
+<li>Serlvet类读取web.xml中自己的配置信息    ServletConfig</li>
+<li>需要读取web.xml中的公共信息    &lt;context-param&gt;    ServletContext</li>
+<li>将所有Servlet放入一个容器中统一管理        ServletContext</li>
+<li>保存以前操作的状态    客户端保存Cookie     服务器保存Session<br>Servlet擅于业务逻辑处理，不擅于页面展示的代码处理    改进Servlet—&gt;JSP<br>统一的转译程序，将jsp文件内容转译成java类代码，产生了jsp引擎（一般服务器自带了这个功能）</li>
+</ul>
+<h6 id="ajax异步模式局部刷新效果"><a href="#ajax异步模式局部刷新效果" class="headerlink" title="ajax异步模式局部刷新效果"></a>ajax异步模式局部刷新效果</h6><p>XmlHttpRequest</p>
+<p>通过增加XMLHttpRequet对象，使用XHR对象发送请求，获得数据后，也是先传给XHR对象，再通过js代码操作dom模型，实现局部刷新效果。</p>
+<h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><h6 id="非表单标签"><a href="#非表单标签" class="headerlink" title="非表单标签"></a>非表单标签</h6><ul>
+<li>b粗体    u下划线    i斜体    del删除效果</li>
+<li>a 超链接 href 、target </li>
+<li>img 图片</li>
+<li>frameset 框架 （frame）框架集</li>
+<li>table表格 th、tr、td（单元格table data cell）colspan、rowspan单元格合并</li>
+<li>ul li ol 列表标签</li>
+<li>embed 用来播放MP3、视频等</li>
+<li>div 虚拟矩形区域    span 行内元素（不会换行）    </li>
+</ul>
+<h6 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h6><ul>
+<li>form表单标签 action提交表单的地址 method表单提交的方式（） name（命名方式：regFrm）</li>
+<li>表单域（表单域一定要有name属性，否则该表单域的值不会被提交）<ul>
+<li>文本域 text单行文本域、password密码框、textarea多行文本域</li>
+<li>radio单选按钮（组，name属性一致即为一组，每组只能提交一个值）</li>
+<li>chcekbox复选框（组，name属性一致即为一组，每组恶意体骄傲多个值）</li>
+<li>select option下拉框（可以实现多选一，多选多）</li>
+<li>file 文件域，用来实现文件上传（method=past,enctype=”multipart/form-data”）</li>
+<li>hidden 隐藏域（不需要用用户输入，但是服务器又需要的值）</li>
+<li>reset 重置</li>
+<li>submit 提交按钮</li>
+<li>button 普通按钮（通常用来激活一个js函数）        </li>
+</ul>
+</li>
+</ul>
+<h5 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h5><ul>
+<li>引用css信息<ul>
+<li>通过html元素的style属性，class属性</li>
+<li>通过&lt;style&gt;块</li>
+<li>通过引入外部的css文件&lt;link&gt;</li>
+</ul>
+</li>
+<li>css选择器<ul>
+<li>id选择器    #id名字</li>
+<li>class选择器 .类名</li>
+<li>元素选择器</li>
+</ul>
+</li>
+<li>css属性<ul>
+<li>文本属性</li>
+<li>定位属性    静态定位、相对定位、绝对定位、固定定位、z-index</li>
+<li>列表属性</li>
+<li>布局属性</li>
+<li>边框属性</li>
+</ul>
+</li>
+</ul>
+<h5 id="JavScript"><a href="#JavScript" class="headerlink" title="JavScript"></a>JavScript</h5><h6 id="js的基本语法"><a href="#js的基本语法" class="headerlink" title="js的基本语法"></a>js的基本语法</h6><ul>
+<li>基本数据类型    undefined、null、number、字符串、Boolean、Object</li>
+<li>变量定义 var</li>
+<li>控制语句</li>
+<li>内置语句 eval()、escape()、unescape()</li>
+<li>常用的对象    Date、Math、String、RegExp</li>
+<li>数组 var a=[];    var b=new Array();</li>
+<li>对象的定义</li>
+<li>JSON:    声明：var user=(name:””,pwd:””,sleep:function(){});    使用：user.sleep;</li>
+<li>函数也是对象</li>
+<li>继承是通过prototype属性来模拟    String prototype.trim=function(){return this.replace(“(^\s+)||(\s+$)”,””)}     “ 123 “.trim()</li>
+<li>对话框    alert警告框    prompt询问框 confirm确认框</li>
+<li>浏览器对象<ul>
+<li>window<ul>
+<li>open 打开子窗口    close关闭窗口</li>
+<li>定时操作    setTimeout,clearTimeout    setInterval,clearInterval</li>
+</ul>
+</li>
+<li>navigator：浏览器信息</li>
+<li>history：访问历史    history.go(1)            </li>
+<li>location：地址栏信息</li>
+</ul>
+</li>
+</ul>
+<h6 id="dom操作"><a href="#dom操作" class="headerlink" title="dom操作"></a>dom操作</h6><ul>
+<li><p>获取节点</p>
+<ul>
+<li>直接获得<ul>
+<li>id</li>
+<li>name</li>
+<li>class</li>
+<li>tagName</li>
+</ul>
+</li>
+<li>间接获得<ul>
+<li>通过父节点获得子节点<ul>
+<li>childNode</li>
+<li>firstChild、lastChild</li>
+</ul>
+</li>
+<li>通过子节点获得父节点：parentNode</li>
+<li>兄弟节点：nextSibling、preSibling                    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作节点</p>
+<ul>
+<li>判断节点类型 nodeType    1元素节点    3文本节点</li>
+<li>节点的属性    通过点操作符</li>
+<li>节点的文本内容    innerHTML</li>
+</ul>
+</li>
+<li><p>改变DOM结构</p>
+<ul>
+<li>增加节点 appendChild，insertBefore</li>
+<li>删除节点 removeChild</li>
+<li>替换节点 replaceChild</li>
+</ul>
+</li>
+<li><p>表单的操作</p>
+<ul>
+<li><p>通用属性 value，disabled，表单对象.elements</p>
+</li>
+<li><p>单选按钮和复选框操作的时候，一般采用遍历</p>
+</li>
+<li><p>表单验证 </p>
+<p>&lt;submit value onclick=”return check(this.from)”</p>
+<p>&lt;form onsubmit=”return check(this)”</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h5><p>Tomcat服务器</p>
+<ul>
+<li>server.xml</li>
+<li>web.xml</li>
+<li>目录结构的作用<ul>
+<li>lib</li>
+<li>work（存放jsp编译后的Java文件）</li>
+<li>webapps（项目部署）</li>
+<li>conf</li>
+</ul>
+</li>
+</ul>
+<h5 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h5><p>浏览器发送给服务器的请求内容    HttpServletRequest对象</p>
+<ul>
+<li>getParameter()，getParameterValues()处理复选框</li>
+<li>作用域方法：setAttribute()，getAttibute()，removeAttribue()</li>
+<li>getReqeustURL()，getReqeuestURI()，getQueryString()，getContextPath()</li>
+<li>获取客户端ip和端口：getRemoteAddr(),getRemotePort()</li>
+<li>request.setCharacterEncoding()    设置请求实体的编码，对post请求有效，对get请求无效（可通过Tomcat调整<code>server.xml</code>）</li>
+<li><strong>请求转发</strong>：rqeuset.getReqeustDispatcher().forward(requset,response)</li>
+</ul>
+<p>服务器回送给浏览器的相应内容    HttpServletResponse对象</p>
+<ul>
+<li>setCharacterEndoding()设置响应编码格式</li>
+<li>setContentType()设置响应内容</li>
+<li>getWriter()输出文本    getOutSteam()    输出非文本</li>
+<li><strong>重定向</strong>：resposne.sendRedire()</li>
+</ul>
+<p>Serlvet类读取<code>web.xml</code>中自己的配置信息    ServletConfig</p>
+<ul>
+<li>getInitParameter</li>
+</ul>
+<p>需要读取<code>web.xml</code>中的公共信息    &lt;context-param&gt;    ServletContext</p>
+<ul>
+<li>获取：this.getServletContext()</li>
+<li>作用域：可以被所有的Servlt共享</li>
+<li>其他方法：getRealPath()，getResourcePaths()</li>
+</ul>
+<p>将所有Servlet放入一个容器中统一管理        ServletContext</p>
+<p>保存以前操作的状态    客户端保存<strong>Cookie</strong>     服务器保存<strong>Session</strong></p>
+<ul>
+<li>客户端保存cookie流程<ol>
+<li>服务器端写代码：Cookie c=new Cookie(); response.setCookie(c);</li>
+<li>响应头中就会有一个SetCookie</li>
+<li>浏览器收到以后，先放到内存中，如果cookie设置了有效期，则会写到硬盘的cookie文件中</li>
+<li>浏览器以后访问服务器时，就会自动携带（请求头）有效的cookie信息    </li>
+</ol>
+</li>
+<li>服务器端保存信息session的跟踪机制<ol>
+<li>服务器会new一个session对象，同时指定一个id给session对象</li>
+<li>通过响应头设置</li>
+<li>浏览器收到sessionId这个信息，下次访问一定会携带sessionId</li>
+<li>服务器收到session后，根据session找到对应的session对象，然后就可以查看对象里面的内容，从而，确定之前我们进行了什么操作，也就是实现了状态的保存</li>
+</ol>
+</li>
+</ul>
+<h6 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h6><ol>
+<li>加载<ul>
+<li>第一个请求的时候（Servlet是单例，只有一个Servlet对象）</li>
+<li>如果配置了load-on-startup，启动时加载</li>
+</ul>
+</li>
+<li>初始化：执行init()</li>
+<li>调用：service()、doGet()、doPost()</li>
+<li>销毁：destroy()</li>
+</ol>
+<h6 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h6><ul>
+<li>实现Filter相关接口</li>
+<li>doFilter</li>
+<li>配置位于&lt;servlet&gt;之前</li>
+</ul>
+<h6 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h6><ul>
+<li>实现Listener相关接口</li>
+<li>配置位于&lt;filter&gt;之后，&lt;servlet&gt;之前</li>
+</ul>
+<h5 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h5><p>&lt;%%&gt;java脚本段</p>
+<p>&lt;%=%&gt;表达式</p>
+<p>&lt;%! %&gt; 声明</p>
+<p>&lt;%—-%&gt; 注释</p>
+<p>&lt;%@ include file=”” %&gt;静态导入，两个jsp文件编译时合并到一起</p>
+<p>&lt;jsp:include&gt;相当于一个类调用另一个类</p>
+<p>jsp九个内置对象：</p>
+<ul>
+<li>page：<code>java.lang.object</code></li>
+<li><strong>request</strong>：<code>javax.servlet.http.HttpServletrequest</code> 获取用户的请求信息</li>
+<li><strong>resposne</strong>：<code>javax.servlet.http.HttpServletResponse</code> 服务器向客户端的回应信息</li>
+<li>out ：<code>javax.servlet.jsp.jspWriter</code> 页面输出</li>
+<li>session：<code>javax.servlet.http.HttpSession</code> 用来保存每一个用户的信息</li>
+<li><strong>pageContext</strong>：<code>javax.servlet.jsp.PageContext</code> JSP的页面容器</li>
+<li>exception：<code>java.lang.Throwable</code></li>
+<li>config：<code>javax.servlet.ServletConfig</code> 服务器配置信息，可以取得初始化参数</li>
+<li><strong>application</strong>：<code>javax.servlet.ServletContext</code>表示所有用户的共享信息</li>
+</ul>
+<h5 id="EL和JSTL"><a href="#EL和JSTL" class="headerlink" title="EL和JSTL"></a>EL和JSTL</h5><p>EL表达式：操作的是作用域中的属性</p>
+<p>使用：<code>${}</code></p>
+<p>JSTL标签库:</p>
+<ul>
+<li>foreach</li>
+<li>if</li>
+<li>choose when otherwise</li>
+<li>set</li>
+<li>remove</li>
+<li>import</li>
+</ul>
+<p>菜鸟教程JSTL：<a href="https://www.runoob.com/jsp/jsp-jstl.html" target="_blank" rel="noopener">https://www.runoob.com/jsp/jsp-jstl.html</a></p>
+<h5 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h5><p>核心技术：通过XHR对象发送请求，通过XHR对象接收响应，再通过js操作dom对象，将收到的新的信息，赋给某个元素，实现局部刷新效果    </p>
+<p>基本流程</p>
+<ol>
+<li>创建XHR对象</li>
+<li>创建一个请求</li>
+<li>设置监听，处理服务器发送的响应内容</li>
+<li>发送请求</li>
+</ol>
+<h5 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h5><p>XML基本语法</p>
+<p>XML的解析（DOM方式、SAX方式、JDOM、DOM4J）</p>
+<p>dtd/schema    定义xml数据的语法规则</p>
+<p>xslt    定义xml数据的显示方式</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周超
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lao-biao.github.io/articles/71c32ee5.html" title="Web技术复习笔记">https://lao-biao.github.io/articles/71c32ee5.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/articles/bf90371e.html" rel="next" title="Redis笔记">
+      Redis笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="lao-biao/lao-biao.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#C-S架构与B-S架构"><span class="nav-number">1.</span> <span class="nav-text">C&#x2F;S架构与B&#x2F;S架构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#客户端发出请求的格式"><span class="nav-number">1.1.</span> <span class="nav-text">客户端发出请求的格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#服务器收到请求内容后发送响应内容"><span class="nav-number">1.2.</span> <span class="nav-text">服务器收到请求内容后发送响应内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#客户端收到响应内容后，显示内容"><span class="nav-number">1.3.</span> <span class="nav-text">客户端收到响应内容后，显示内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#服务器根据请求内容发送响应的内容"><span class="nav-number">1.4.</span> <span class="nav-text">服务器根据请求内容发送响应的内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#规范、增强Servlet程序"><span class="nav-number">1.5.</span> <span class="nav-text">规范、增强Servlet程序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ajax异步模式局部刷新效果"><span class="nav-number">1.6.</span> <span class="nav-text">ajax异步模式局部刷新效果</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#非表单标签"><span class="nav-number">2.1.</span> <span class="nav-text">非表单标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表单标签"><span class="nav-number">2.2.</span> <span class="nav-text">表单标签</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CSS"><span class="nav-number">3.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JavScript"><span class="nav-number">4.</span> <span class="nav-text">JavScript</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#js的基本语法"><span class="nav-number">4.1.</span> <span class="nav-text">js的基本语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dom操作"><span class="nav-number">4.2.</span> <span class="nav-text">dom操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP协议"><span class="nav-number">5.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Servlet"><span class="nav-number">6.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">6.1.</span> <span class="nav-text">Servlet生命周期</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#过滤器"><span class="nav-number">6.2.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#监听器"><span class="nav-number">6.3.</span> <span class="nav-text">监听器</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JSP"><span class="nav-number">7.</span> <span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EL和JSTL"><span class="nav-number">8.</span> <span class="nav-text">EL和JSTL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ajax"><span class="nav-number">9.</span> <span class="nav-text">ajax</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#XML"><span class="nav-number">10.</span> <span class="nav-text">XML</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">周超</p>
+  <div class="site-description" itemprop="description">湖北经济学院17级</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lao-biao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lao-biao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周超</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
