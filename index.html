@@ -123,7 +123,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -222,13 +222,24 @@
 
               <time title="创建时间：2020-07-14 23:03:22" itemprop="dateCreated datePublished" datetime="2020-07-14T23:03:22+08:00">2020-07-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-15 08:24:55" itemprop="dateModified" datetime="2020-07-15T08:24:55+08:00">2020-07-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes-java/" itemprop="url" rel="index"><span itemprop="name">notes,java</span></a>
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -256,7 +267,7 @@
 <h6 id="jvm分代模型"><a href="#jvm分代模型" class="headerlink" title="jvm分代模型"></a>jvm分代模型</h6><ul>
 <li>新生代（Young Generation）</li>
 <li>老年代（(Old Generation）</li>
-<li><del>持久代（Permanent Generation）</del></li>
+<li><del>持久代（Permanent Generation）</del>：用于存储静态文件</li>
 </ul>
 <p>JDK 8 中已经把持久代（PermGen Space）移除了，取而代之的元空间（Metaspace）。Metaspace占用的是本地内存，不再占用虚拟机内存。</p>
 <h5 id="jvm与class文件格式"><a href="#jvm与class文件格式" class="headerlink" title="jvm与class文件格式"></a>jvm与class文件格式</h5><p>jvm与java无关，任何语言都可以通过编译成字节码文件在jvm上运行。</p>
@@ -270,9 +281,9 @@
 <li>BEA公司开发，曾经号称世界上最快的JVM</li>
 <li>被Oracle收购</li>
 </ul>
-<h6 id="J9-IBM"><a href="#J9-IBM" class="headerlink" title="J9-IBM"></a>J9-IBM</h6><p>IBM公司开发，类似于HotSpot，主要用于IBM自己的产品。</p>
+<h6 id="J9-IBM"><a href="#J9-IBM" class="headerlink" title="J9-IBM"></a>J9-IBM</h6><p>IBM公司开发，类似于Hotspot，主要用于IBM自己的产品。</p>
 <h6 id="Microsoft-VM"><a href="#Microsoft-VM" class="headerlink" title="Microsoft VM"></a>Microsoft VM</h6><p>微软虚拟机</p>
-<h6 id="TaobaoVM"><a href="#TaobaoVM" class="headerlink" title="TaobaoVM"></a>TaobaoVM</h6><p>Hotpost深度定制版</p>
+<h6 id="TaobaoVM"><a href="#TaobaoVM" class="headerlink" title="TaobaoVM"></a>TaobaoVM</h6><p>Hotspot深度定制版</p>
 <h6 id="LiquidVM"><a href="#LiquidVM" class="headerlink" title="LiquidVM"></a>LiquidVM</h6><p>直接针对硬件</p>
 <h6 id="azul-zing"><a href="#azul-zing" class="headerlink" title="azul zing"></a>azul zing</h6><p>最新垃圾回收的行业标杆</p>
 <h5 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK-JRE-JVM"></a>JDK-JRE-JVM</h5><p>JDK：开发集成工具+jre，java开发工具包，部署java开发环境</p>
@@ -1262,7 +1273,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
