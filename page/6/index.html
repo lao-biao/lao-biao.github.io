@@ -196,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/821fe050.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/eb7c6dc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -210,7 +210,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/articles/821fe050.html" class="post-title-link" itemprop="url">android动态权限申请</a>
+            <a href="/articles/eb7c6dc.html" class="post-title-link" itemprop="url">android sqlite学习</a>
         </h2>
 
         <div class="post-meta">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:08:39" itemprop="dateModified" datetime="2020-07-06T11:08:39+08:00">2020-07-06</time>
+                <time title="修改时间：2020-07-06 11:36:12" itemprop="dateModified" datetime="2020-07-06T11:36:12+08:00">2020-07-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,7 +235,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
                 </span>
             </span>
 
@@ -250,18 +254,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Android-6-0以上动态申请权限"><a href="#Android-6-0以上动态申请权限" class="headerlink" title="Android 6.0以上动态申请权限"></a>Android 6.0以上动态申请权限</h4><h6 id="添加相关权限"><a href="#添加相关权限" class="headerlink" title="添加相关权限"></a>添加相关权限</h6><p>在清单文件中添加相关权限</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.××××"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="检查权限-动态申请权限-申请结果"><a href="#检查权限-动态申请权限-申请结果" class="headerlink" title="检查权限-动态申请权限-申请结果"></a>检查权限-动态申请权限-申请结果</h6><ul>
-<li>检查权限</li>
-<li>动态申请权限</li>
-<li>处理权限申请结果</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String strPermission =Manifest.permission.××××;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ××××_REQUEST_CODE=<span class="number">1</span>;	<span class="comment">//请求码，不同的权限设置成不同的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String strPermission)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, strPermission) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, strPermission)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要××××权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                    strPermission&#125;,×××× _REQUEST_CODE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == ××××_REQUEST_CODE) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">requestPermissions(String strPermission);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//要执行的操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ol>
+<li>写一个类继承SQLOpenHelper  </li>
+<li>实现里面的方法，创建构造方法  </li>
+<li>调用子类对象，再使用getWriteableDatabase()或getReadableDatabase()方法即可创建数据库</li>
+</ol>
+<p>参数解释</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQLiteOpenHelper  </span><br><span class="line">context 上下文  </span><br><span class="line">name  数据库名称  </span><br><span class="line">factory 游标工厂  </span><br><span class="line">version 版本号</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/eb7c6dc.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -361,7 +368,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/eb7c6dc.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/821fe050.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -375,7 +382,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/articles/eb7c6dc.html" class="post-title-link" itemprop="url">android sqlite学习</a>
+            <a href="/articles/821fe050.html" class="post-title-link" itemprop="url">android动态权限申请</a>
         </h2>
 
         <div class="post-meta">
@@ -392,98 +399,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:36:12" itemprop="dateModified" datetime="2020-07-06T11:36:12+08:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ol>
-<li>写一个类继承SQLOpenHelper  </li>
-<li>实现里面的方法，创建构造方法  </li>
-<li>调用子类对象，再使用getWriteableDatabase()或getReadableDatabase()方法即可创建数据库</li>
-</ol>
-<p>参数解释</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQLiteOpenHelper  </span><br><span class="line">context 上下文  </span><br><span class="line">name  数据库名称  </span><br><span class="line">factory 游标工厂  </span><br><span class="line">version 版本号</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/eb7c6dc.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/de41b12e.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/de41b12e.html" class="post-title-link" itemprop="url">android界面跳转</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:09:47" itemprop="dateModified" datetime="2020-07-06T11:09:47+08:00">2020-07-06</time>
+                <time title="修改时间：2020-07-06 11:08:39" itemprop="dateModified" datetime="2020-07-06T11:08:39+08:00">2020-07-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -506,20 +422,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="非响应式跳转"><a href="#非响应式跳转" class="headerlink" title="非响应式跳转"></a>非响应式跳转</h2><h3 id="跳转后的界面"><a href="#跳转后的界面" class="headerlink" title="跳转后的界面"></a>跳转后的界面</h3><p>创建跳转后的界面代码和布局  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>activity_second.xml</code>布局文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_text"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在<code>AndroidManifest.xml</code>中注册</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/de41b12e.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h4 id="Android-6-0以上动态申请权限"><a href="#Android-6-0以上动态申请权限" class="headerlink" title="Android 6.0以上动态申请权限"></a>Android 6.0以上动态申请权限</h4><h6 id="添加相关权限"><a href="#添加相关权限" class="headerlink" title="添加相关权限"></a>添加相关权限</h6><p>在清单文件中添加相关权限</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.××××"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="检查权限-动态申请权限-申请结果"><a href="#检查权限-动态申请权限-申请结果" class="headerlink" title="检查权限-动态申请权限-申请结果"></a>检查权限-动态申请权限-申请结果</h6><ul>
+<li>检查权限</li>
+<li>动态申请权限</li>
+<li>处理权限申请结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String strPermission =Manifest.permission.××××;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ××××_REQUEST_CODE=<span class="number">1</span>;	<span class="comment">//请求码，不同的权限设置成不同的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String strPermission)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, strPermission) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, strPermission)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要××××权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                    strPermission&#125;,×××× _REQUEST_CODE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == ××××_REQUEST_CODE) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">requestPermissions(String strPermission);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//要执行的操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -691,6 +605,92 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/56c6f16a.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/de41b12e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/de41b12e.html" class="post-title-link" itemprop="url">android界面跳转</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:09:47" itemprop="dateModified" datetime="2020-07-06T11:09:47+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="非响应式跳转"><a href="#非响应式跳转" class="headerlink" title="非响应式跳转"></a>非响应式跳转</h2><h3 id="跳转后的界面"><a href="#跳转后的界面" class="headerlink" title="跳转后的界面"></a>跳转后的界面</h3><p>创建跳转后的界面代码和布局  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>activity_second.xml</code>布局文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_text"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在<code>AndroidManifest.xml</code>中注册</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/de41b12e.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1001,7 +1001,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:11:50" itemprop="dateModified" datetime="2020-07-06T11:11:50+08:00">2020-07-06</time>
+                <time title="修改时间：2020-07-20 09:58:50" itemprop="dateModified" datetime="2020-07-20T09:58:50+08:00">2020-07-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1028,8 +1028,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="css声明"><a href="#css声明" class="headerlink" title="css声明"></a>css声明</h4><p>1、在head标签中使用style标签声明：<br>作用：此声明一般声明当前网页的公共样式或者给某个标签的单独样式<br> 2、在标签上使用style属性进行声明：<br>作用：此声明会将css样式直接作用于当前标签<br>3、在head标签中使用link标签引入外部声明好的css文件<br>作用：此声明相当于调用,解决了不同网页间样式重复使用的问题</p>
-<p>一次声明，随处使用<br>问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？<br>如果CSS的声明全部在head标签中，则遵循<font color="red">就近原则</font>，谁离标签近，谁就会被显示</p>
+          <h5 id="css声明"><a href="#css声明" class="headerlink" title="css声明"></a>css声明</h5><ol>
+<li><p>在head标签中使用style标签声明：<br>作用：此声明一般声明当前网页的公共样式或者给某个标签的单独样式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">hr</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">    <span class="attribute">background-color</span>:red;</span><br><span class="line">&#125;	</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在标签上使用style属性进行声明：<br>作用：此声明会将css样式直接作用于当前标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span>  <span class="attr">style</span>=<span class="string">"background-color:blue; height:50px;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在head标签中使用link标签引入外部声明好的css文件<br>作用：此声明相当于调用,解决了不同网页间样式重复使用的问题</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"css/my.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>一次声明，随处使用</p>
+<p>问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？<br>如果CSS的声明全部在head标签中，则遵循<font color="red">就近原则</font>，谁离标签近，谁就会被显示</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/eda1a9a9.html#more" rel="contents">
