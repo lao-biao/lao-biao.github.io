@@ -5463,7 +5463,7 @@
 <ul>
 <li><code>node -v</code></li>
 <li><code>npm -v</code></li>
-<li><code>git -v</code></li>
+<li><code>git --version</code></li>
 </ul>
 <p>如果返回对应的版本号信息，说明安装成功</p>
 <a id="more"></a>
