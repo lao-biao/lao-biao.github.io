@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -297,25 +296,18 @@
 <li>类似函数指针的功能</li>
 </ul>
 <a id="more"></a>
-
 <h5 id="五种创建对象的方式"><a href="#五种创建对象的方式" class="headerlink" title="五种创建对象的方式"></a>五种创建对象的方式</h5><h6 id="1-静态编码和编译"><a href="#1-静态编码和编译" class="headerlink" title="1.静态编码和编译"></a>1.静态编码和编译</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from A."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>直接new 调用构造函数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A obj1 = <span class="keyword">new</span> A();</span><br><span class="line">obj1.hello();</span><br></pre></td></tr></table></figure>
-
 <p>2.克隆(clone)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from B."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>使用克隆的方法创建对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B obj2 =<span class="keyword">new</span> B();</span><br><span class="line">obj2.hello();</span><br><span class="line"></span><br><span class="line">B obj3=(B) obj2.clone();</span><br><span class="line">obj3.hello();</span><br></pre></td></tr></table></figure>
-
 <h6 id="3-序列化-serialization-和反序列化-deserialization"><a href="#3-序列化-serialization-和反序列化-deserialization" class="headerlink" title="3.序列化(serialization)和反序列化(deserialization)"></a>3.序列化(serialization)和反序列化(deserialization)</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID=<span class="number">1L</span>;  <span class="comment">// 序列化id</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from C."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>使用 transient 关键字可以使变量不被序列化</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C obj4 = <span class="keyword">new</span> C();</span><br><span class="line">ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">out.writeObject(obj4);</span><br><span class="line">out.close();</span><br><span class="line"></span><br><span class="line">ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">C obj5 = (C) in.readObject();</span><br><span class="line">in.close();</span><br><span class="line">obj5.hello();</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>注意：序列化会引发安全漏洞，未来将被移除出JDK</p>
 </blockquote>
@@ -324,12 +316,10 @@
 <p>注意：className 需要加上包名，否则会报 java.lang.ClassNotFoundException 的异常</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Object obj6 = Class.forName(<span class="string">"com.reflection.A"</span>).newInstance();</span><br><span class="line"><span class="comment">// A obj7 = (A) Class.forName("A").newInstance();</span></span><br><span class="line">Method m = Class.forName(<span class="string">"com.reflection.A"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">m.invoke(obj6);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>第五种    newInstance 调用构造函数</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Constructor&lt;A&gt; constructor = A<span class="class">.<span class="keyword">class</span>.<span class="title">getConstructor</span>()</span>;</span><br><span class="line">A obj8 = constructor.newInstance();</span><br><span class="line">obj8.hello();</span><br></pre></td></tr></table></figure>
-
 <h5 id="反射关键类"><a href="#反射关键类" class="headerlink" title="反射关键类"></a>反射关键类</h5><p>Class：类型标识</p>
 <ul>
 <li><p>JVM为每个对象都保留其类型标识信息(Runtime Type Identification)</p>
@@ -365,24 +355,18 @@
 </ul>
 <h6 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h6><p>JDBC：Connection，连接到不同数据库</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数据库之间的桥梁介质</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">    <span class="comment">// Class.forName(className,true,currentLoader);</span></span><br><span class="line">    <span class="comment">// 通知类加载器加载此类的class文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数库之间的桥梁：URL，用户名，密码</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url, <span class="string">"root"</span>, <span class="string">"123456"</span>);</span><br><span class="line"><span class="comment">// DriverManager将会挑选加载合适的驱动类，并采用getConnection()方法连接</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="数组扩充"><a href="#数组扩充" class="headerlink" title="数组扩充"></a>数组扩充</h6><p>给定一个数组(任意类型)，扩充指定到长度</p>
 <ul>
 <li>Java的数组一旦创建，其长度是不再更改的</li>
 <li>新建一个大数组(相同类型)，然后将旧数组的内容拷贝过去</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">arrCopy</span><span class="params">(Object oldArray, <span class="keyword">int</span> newLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Array类型</span></span><br><span class="line">    Class clazz = oldArray.getClass();</span><br><span class="line">    <span class="comment">// 获取数组中的单个元素类型</span></span><br><span class="line">    Class componentType = clazz.getComponentType();</span><br><span class="line">    <span class="comment">// 旧数组长度</span></span><br><span class="line">    <span class="keyword">int</span> oldLength = Array.getLength(oldArray);</span><br><span class="line">    <span class="comment">// 创建新数组</span></span><br><span class="line">    Object newArray = Array.newInstance(componentType, newLength);</span><br><span class="line">    <span class="comment">// 拷贝旧数据</span></span><br><span class="line">    System.arraycopy(newArray, <span class="number">0</span>, oldArray, <span class="number">0</span>, oldLength);</span><br><span class="line">    <span class="keyword">return</span> newArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="动态执行方法"><a href="#动态执行方法" class="headerlink" title="动态执行方法"></a>动态执行方法</h6><p>给定类名，方法名，即可执行</p>
 <p>加上定时器，即可做定时任务执行</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Method m= Class.forName(packageName+<span class="string">"Work"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">            m.invoke(<span class="keyword">null</span>);	<span class="comment">// 静态方法可以不用new对象</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Timer timer=<span class="keyword">new</span> Timer();</span><br><span class="line">Calendar now=Calendar.getInstance();</span><br><span class="line">now.set(Calendar.SECOND,now.get(Calendar.SECOND)+<span class="number">1</span>);</span><br><span class="line">Date runDate=now.getTime();</span><br><span class="line">MyTask task=<span class="keyword">new</span> Task();</span><br><span class="line">timer.scheduleAtFixedRate(task,runDate,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
 <h6 id="Json和Java对象互转"><a href="#Json和Java对象互转" class="headerlink" title="Json和Java对象互转"></a>Json和Java对象互转</h6><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Gson gson=<span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">// json 字符串转bean对象</span></span><br><span class="line">String s; 	<span class="comment">// 待转换的json字符串</span></span><br><span class="line">[Bean] json=gson.fromJson(s,[Bean.class]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// json bean对象转字符串</span></span><br><span class="line">Bean bean;</span><br><span class="line">String t=gson.toJson(bean,[Bean.class]);</span><br></pre></td></tr></table></figure>
-
 <h6 id="Tomcat的Servlet创建"><a href="#Tomcat的Servlet创建" class="headerlink" title="Tomcat的Servlet创建"></a>Tomcat的Servlet创建</h6><p>详见源码</p>
 <h6 id="MyBatis的OR-M"><a href="#MyBatis的OR-M" class="headerlink" title="MyBatis的OR/M"></a>MyBatis的OR/M</h6><p>MyBatis: OR/M(Object-Relation Mapping)<br>数据库表和Java的POJO/DAO类对应关系</p>
 <h6 id="Spring-Framework的Bean容器"><a href="#Spring-Framework的Bean容器" class="headerlink" title="Spring Framework的Bean容器"></a>Spring Framework的Bean容器</h6><p>Spring Framework: Java EE的主要框架<br>IoC 的Bean容器(HashMap)</p>
@@ -401,7 +385,9 @@
 <ul>
 <li>可以查看对象的类型标识</li>
 <li>可以动态创建对象、访问其属性，调用其方法</li>
-<li><font color="red">前提：类(class文件)必须先存在</font></li>
+<li><font color="red">前提：类(class文件)必须先存在</font>
+
+</li>
 </ul>
 <p>编译器API</p>
 <ul>
@@ -551,7 +537,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -564,7 +550,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -605,6 +591,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -703,7 +698,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -717,6 +712,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

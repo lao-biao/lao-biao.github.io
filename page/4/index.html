@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -192,7 +192,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -202,6 +201,111 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/ab1a490c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/ab1a490c.html" class="post-title-link" itemprop="url">Java语法糖--var类型和switch</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-20 13:06:13" itemprop="dateCreated datePublished" datetime="2020-04-20T13:06:13+08:00">2020-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:38:01" itemprop="dateModified" datetime="2020-07-06T11:38:01+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E8%AF%AD%E6%B3%95%E7%B3%96/" itemprop="url" rel="index"><span itemprop="name">语法糖</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="var类型"><a href="#var类型" class="headerlink" title="var类型"></a>var类型</h5><p>Java 10 推出var：局部变量推断</p>
+<ul>
+<li>避免信息冗余</li>
+<li>对齐了变量名</li>
+<li>更容易阅读</li>
+<li>本质上还是强类型语言，编译器负责推断类型，并写入字节码文件，推断后不能更改</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">0.25</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> URL(<span class="string">"https://github.com);</span></span><br><span class="line"><span class="string">c = 5; //编译器报错</span></span><br></pre></td></tr></table></figure>
+<h6 id="var的限制"><a href="#var的限制" class="headerlink" title="var的限制"></a>var的限制</h6><ul>
+<li>可以用在局部变量上，非类成员变量</li>
+<li>可以用在for/for-each循环中</li>
+<li>声明时必须初始化</li>
+<li>不能用在方法（形式）参数和返回类型</li>
+<li>大面积滥用会使代码整体阅读性变差</li>
+<li>var只在编译时起作用，没有在字节码中引入新的内容，也没有专门的JVM指令处理var</li>
+</ul>
+<h5 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h5><p>多分支选择语句</p>
+<ul>
+<li>支持的类型：<code>byte/Byte</code> <code>short/Short</code> <code>int/Integer</code> <code>char/Character</code> <code>String</code>(JDK7.0) <code>Enum</code>(JDK5.0) 不支持<code>long</code> <code>float</code> <code>double</code></li>
+</ul>
+<h6 id="多分支合并"><a href="#多分支合并" class="headerlink" title="多分支合并"></a>多分支合并</h6><p>采用 -&gt; 直接连接判定条件和动作(JDK12)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> days;</span><br><span class="line"><span class="keyword">switch</span>(month)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Jan"</span>,<span class="string">"Nar"</span>,<span class="string">"May"</span>,<span class="string">"July"</span>,<span class="string">"Aug"</span>,<span class="string">"Oct"</span>,<span class="string">"Dec"</span> -&gt; days = <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Apr"</span>,<span class="string">"June"</span>,<span class="string">"Sep"</span>,<span class="string">"Nov"</span> -&gt; days = <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"Feb"</span> -&gt; days = <span class="number">28</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; days = -<span class="number">1</span>;	<span class="comment">//必须有default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="直接在表达式赋值"><a href="#直接在表达式赋值" class="headerlink" title="直接在表达式赋值"></a>直接在表达式赋值</h6><p>直接在表达式赋值(JDK12)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> days = <span class="keyword">switch</span> (num)&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span> -&gt;<span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">11</span> -&gt; <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; &#123;</span><br><span class="line">		<span class="keyword">int</span> result = <span class="number">28</span>;</span><br><span class="line">		<span class="keyword">break</span> result;	<span class="comment">//代码块中的break返回结果</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -272,7 +376,6 @@
 <p>考虑到异常因素，Java提供<code>try-catch-finally</code>进行保证</p>
 <p>JDK7提供<code>try-with-resource</code>，比<code>try-catch-finally</code>更简便</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//try-catch-finally结构</span></span><br><span class="line">FileInputStream fis = ...;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">    <span class="comment">//处理异常</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fis!=<span class="keyword">null</span>)</span><br><span class="line">        fis.close();	<span class="comment">//关流</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//try-with-resource结构</span></span><br><span class="line"><span class="keyword">try</span>(FileInputStream fis = ...)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">    <span class="comment">//处理异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>JDK7提供<code>try-with-resource</code>要求<code>resource</code>定义在try中，若外部已经定义需要一个本地变量</p>
 <p>JDK9不再要求定义临时变量，可以直接使用外部资源变量</p>
           <!--noindex-->
@@ -366,7 +469,6 @@
           <h6 id="接口的默认方法"><a href="#接口的默认方法" class="headerlink" title="接口的默认方法"></a>接口的默认方法</h6><p>Java最初的设计中，接口的方法都是没有实现的、公开的</p>
 <p>Java 8推出接口的默认方法/静态方法(都带有实现的)，为Lambda表达式提供支持</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Java 8新特性</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">NewAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am moving."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>以<code>default</code>关键字标注，其他的定义和普通函数一样</li>
 <li>规则：<ul>
@@ -384,7 +486,6 @@
 <li>子类（子接口）没有继承该静态方法，只能通过所在的接口名来调用</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StaticAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"static animal move()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StaticLandAnimal</span> <span class="keyword">extends</span> <span class="title">StaticAnimal</span> </span>&#123;</span><br><span class="line">    <span class="comment">//不能继承StaticAnimal的move()方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStatic</span> <span class="keyword">implements</span> <span class="title">StaticLandAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        StaticAnimal.move();        </span><br><span class="line">        StaticLandAnimal.move();    <span class="comment">//编译器报错</span></span><br><span class="line">        <span class="keyword">new</span> TestStatic().move();    <span class="comment">//编译器报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="接口的私有方法"><a href="#接口的私有方法" class="headerlink" title="接口的私有方法"></a>接口的私有方法</h6><p>Java 9接口的私有方法（带实现的）</p>
 <ul>
 <li>解决多个默认方法/静态方法内容重复问题</li>
@@ -392,7 +493,7 @@
 <li>子类（子接口）没有继承该私有方法，也无法调用</li>
 <li>静态私有方法可以被静态/默认方法调用，非静态私有方法被默认方法调用</li>
 </ul>
-<h6 id="接口与抽象类比较"><a href="#接口与抽象类比较" class="headerlink" title="接口与抽象类比较"></a>接口与抽象类比较</h6><p>相同点（–Java 12）</p>
+<h6 id="接口与抽象类比较"><a href="#接口与抽象类比较" class="headerlink" title="接口与抽象类比较"></a>接口与抽象类比较</h6><p>相同点（—Java 12）</p>
 <ul>
 <li>都是抽象的，都不能被实例化</li>
 <li>都可以有实现方法</li>
@@ -494,7 +595,6 @@
 <li>对象：<code>Boolean</code> <code>Byte</code> <code>Character</code> <code>Integer</code> <code>Short</code> <code>Long</code> <code>Float</code> <code>Double</code></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = <span class="number">1</span>;    <span class="comment">//自动装箱</span></span><br><span class="line">Integer integer2 = Integer.valueOf(<span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> int1 = integer1;    <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> int2 = integer2.intValue();</span><br></pre></td></tr></table></figure>
-
 <h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
 <li>自动装箱和拆箱是编译器的工作，在class中已经添加转化，虚拟机没有自动装箱和拆箱的语句</li>
 <li>==判断：基本类型是内容相同，对象是指针是否相同(内存同一个区域)</li>
@@ -602,9 +702,7 @@
 <li>重载的优先级规则2：<strong>调用语句，同时与两个带可变参数的方法匹配，会报错</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 固定参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (message == <span class="keyword">null</span> || message.length == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"无参"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str, String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">print();    <span class="comment">//无参，调用print(String... message)</span></span><br><span class="line">print(<span class="string">"Hello world!"</span>); <span class="comment">//一个参数，调用固定参数方法print(String message)</span></span><br><span class="line">print(<span class="string">"Hello"</span>, <span class="string">"world"</span>);    <span class="comment">//编译器报错：Ambiguous method call. Both print(String... message) and (String str, String... message) in IndefiniteParameter match</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h5><h6 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h6><ul>
 <li><code>import</code>导入程序所需的类</li>
 <li><code>import static</code>导入一个类的静态方法和静态变量（JDK5开始引入）</li>
@@ -702,7 +800,6 @@
 <li>避免越界错误</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Object object:Set)&#123;</span><br><span class="line">	object	<span class="comment">//元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><code>for</code>与 <code>for-each</code>对比</p>
 <ul>
 <li>for可以删除元素，<code>for-each</code>不可以删除/替换元素</li>
@@ -721,7 +818,6 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> State &#123;</span><br><span class="line">    SUCCESS, LOADING, NETWORK_ERROR, EMPTY, NONE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>Java的enum类型<ul>
 <li>除了枚举的内容，还可以添加属性/构造函数/方法</li>
@@ -729,47 +825,50 @@
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">关键字</th>
-<th align="center">同一个类</th>
-<th align="center">同一个包</th>
-<th align="center">不同包的子类</th>
-<th align="center">不同包的非子类</th>
+<th style="text-align:center">关键字</th>
+<th style="text-align:center">同一个类</th>
+<th style="text-align:center">同一个包</th>
+<th style="text-align:center">不同包的子类</th>
+<th style="text-align:center">不同包的非子类</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">private</td>
-<td align="center">√</td>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center">-</td>
+<tbody>
+<tr>
+<td style="text-align:center">private</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
 </tr>
 <tr>
-<td align="center">default</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">-</td>
-<td align="center">-</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
 </tr>
 <tr>
-<td align="center">protected</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">-</td>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">-</td>
 </tr>
 <tr>
-<td align="center">public</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">public</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Fruit &#123;</span><br><span class="line">    APPLE(<span class="number">10</span>), ORANGE(<span class="number">8</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;	<span class="comment">//属性</span></span><br><span class="line"></span><br><span class="line">    Fruit(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        <span class="keyword">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Java的<code>enum</code>类型：所有的<code>enum</code>类型属于<code>Enum</code>的子类，也继承了相应的方法</p>
 <ul>
 <li><code>ordinal()</code> 返回枚举值所在的索引位置，从0开始</li>
@@ -853,10 +952,9 @@
 
       
           <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>在频繁调用Toast会造成较长的延时，不能及时显示最新的toast信息，使用ToastUtils解决延时bug</p>
-<h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p><code>BaseApplication.getAppContext()</code>见文章–<a href="/2020/04/03/Android非ui线程更新ui">Android子线程更新ui</a></p>
+<h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p><code>BaseApplication.getAppContext()</code>见文章—<a href="/2020/04/03/Android非ui线程更新ui">Android子线程更新ui</a></p>
 <p>使用：<code>ToastUtils.showToast(message);</code></p>
 <h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Toast sToast;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"ShowToast"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sToast == <span class="keyword">null</span>) &#123;	<span class="comment">//如果不存在就创建</span></span><br><span class="line">            sToast = Toast.makeText(BaseApplication.getAppContext(), <span class="string">""</span>, Toast.LENGTH_SHORT);</span><br><span class="line">        &#125;</span><br><span class="line">        sToast.setText(message);	<span class="comment">//设置内容</span></span><br><span class="line">        sToast.show();		<span class="comment">//显示toast内容</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -939,7 +1037,6 @@
 <li>message： log信息</li>
 </ul>
 <h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CURRENT_LEV = <span class="number">4</span>;	<span class="comment">//当前log等级</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG_LEV = <span class="number">4</span>;		<span class="comment">//debug</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO_LEV = <span class="number">3</span>;		<span class="comment">//info</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARMING_LEV = <span class="number">2</span>;	<span class="comment">//warming</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR_LEV = <span class="number">1</span>;		<span class="comment">//error</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= DEBUG_LEV) &#123;</span><br><span class="line">            Log.d(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= INFO_LEV) &#123;</span><br><span class="line">            Log.i(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= WARMING_LEV) &#123;</span><br><span class="line">            Log.w(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= ERROR_LEV) &#123;</span><br><span class="line">            Log.e(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -1094,117 +1191,14 @@
 <p>安装过淘宝镜像可使用 <code>cnpm install hexo--generator-feed</code> 命令</p>
 <h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><p>在<strong>根目录</strong>下的<code>_config.yml</code>文件中添加下列代码</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">#RSS订阅</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="string">hexo-generator-feed</span></span><br><span class="line"><span class="comment">#Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">atom.xml</span> <span class="comment"># 生成路径</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">20</span> <span class="comment"># 最新的20篇文章</span></span><br></pre></td></tr></table></figure>
-
 <p>在<strong>主题目录</strong>下的<code>_config.yml</code>文件中添加下列代码</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># subNav-子导航</span></span><br><span class="line"><span class="attr">subNav:</span></span><br><span class="line">	<span class="attr">rss:</span> <span class="string">"/atom.xml"</span> <span class="comment"># 或 "atom.xml" ，这个路径与path一致</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h6><p>在博客根目录下重新渲染 <code>hexo g</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo g</span></span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 955 ms</span><br><span class="line">INFO  Generated: atom.xml # 生成atom.xml文件</span><br><span class="line">INFO  1 files generated in 933 ms</span><br></pre></td></tr></table></figure>
-
 <p>在<code>public</code>文件夹下生成<code>atom.xml</code></p>
 <p>本地预览：<code>hexo s</code> 点击RSS会跳转保存窗口</p>
 <p>推送到远程仓库：<code>hexo d</code> 点击RSS跳转到<code>atom.xml</code>页面</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/765a6dde.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/765a6dde.html" class="post-title-link" itemprop="url">java数据结构与算法--排序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-13 10:08:34" itemprop="dateCreated datePublished" datetime="2020-04-13T10:08:34+08:00">2020-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:34:17" itemprop="dateModified" datetime="2020-07-06T11:34:17+08:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><h6 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h6><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列</p>
-<h6 id="内部排序和外部排序"><a href="#内部排序和外部排序" class="headerlink" title="内部排序和外部排序"></a>内部排序和外部排序</h6><p>内部排序：整个排序过程在内存储器中进行</p>
-<p>外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成</p>
-<h6 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a>稳定排序和不稳定排序</h6><p>如果在待排序的序列中存在多个具有相同关键字的元素</p>
-<p>假设K<sub>i</sub>=K<sub>j</sub> { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的R<sub>i</sub>在R<sub>j</sub>之前，经过排序后得到的序列R<sub>i</sub>仍在R<sub>j</sub>之前，则称所用排序方法是<strong>稳定的</strong>，反之则是<strong>不稳定的</strong></p>
-<h6 id="比较排序和非比较排序"><a href="#比较排序和非比较排序" class="headerlink" title="比较排序和非比较排序"></a>比较排序和非比较排序</h6><p>大部分排序需要通过比较来判断大小，作为排序的依据，而计数排序、基数排序不需要进行比较</p>
-<h6 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h6><ul>
-<li>插入排序：将无序子序列中的一个或几个记录“插入”到有序序列中，从而增加记录的有序子序列的长度</li>
-<li>交换排序：通过“交换”无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
-<li>选择排序：从记录的无序子序列中“选择”关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
-<li>归并排序：通过“归并”两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/765a6dde.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
@@ -1288,7 +1282,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1301,7 +1295,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1342,6 +1336,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -1440,7 +1443,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -1454,6 +1457,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>

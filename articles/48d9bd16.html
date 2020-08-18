@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -281,7 +280,6 @@
 <p>本质是一个浏览器端的技术</p>
 <p>异步刷新技术，用来在当前页面响应不同的请求内容。</p>
 <a id="more"></a>
-
 <h5 id="Ajax功能"><a href="#Ajax功能" class="headerlink" title="Ajax功能"></a>Ajax功能</h5><p>需求：需要将本次的响应结果和前面的响应结果内容在同一个页面中展现给用户</p>
 <p>解决:</p>
 <ul>
@@ -298,88 +296,91 @@
 <li>发送请求</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建ajax引擎对象</span></span><br><span class="line"><span class="keyword">var</span> ajax;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;  <span class="comment">// firefox</span></span><br><span class="line">    ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123; <span class="comment">// ie</span></span><br><span class="line">    ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 覆写onreadystatement函数</span></span><br><span class="line">ajax.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 会执行4次,判断ajax状态码，只在数据成功接收时执行以下代码</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="number">4</span> === ajax.readyState) &#123;</span><br><span class="line">        <span class="comment">// 获取元素对象</span></span><br><span class="line">        <span class="keyword">let</span> showdiv = <span class="built_in">document</span>.getElementById(<span class="string">"showDiv"</span>);</span><br><span class="line">        <span class="comment">// 判断响应状态码</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">200</span> === ajax.status) &#123;</span><br><span class="line">            <span class="comment">// 获取响应内容，修改元素内容</span></span><br><span class="line">            showdiv.innerHTML = ajax.responseText;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">404</span>===ajax.status)&#123;</span><br><span class="line">            showdiv.innerHTML=<span class="string">"请求资源不存在"</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">500</span>===ajax.status)&#123;</span><br><span class="line">            showdiv.innerHTML=<span class="string">"服务器繁忙"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发送请求 get/post</span></span><br><span class="line"><span class="comment">// get请求实体拼接在url后面，?隔开，键值对        </span></span><br><span class="line">ajax.open(<span class="string">"get"</span>, <span class="string">"ajax?name=value"</span>);</span><br><span class="line">ajax.send(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// post请求有单独的请求实体，    </span></span><br><span class="line">ajax.open(<span class="string">"post"</span>,<span class="string">"ajax"</span>);</span><br><span class="line">ajax.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">ajax.send(<span class="string">"name=value"</span>);</span><br></pre></td></tr></table></figure>
-
 <h5 id="Ajax状态码"><a href="#Ajax状态码" class="headerlink" title="Ajax状态码"></a>Ajax状态码</h5><p>readyState</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">readyState值</th>
-<th align="center">含义</th>
+<th style="text-align:center">readyState值</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">0</td>
-<td align="center">表示XMLHttpRequest已建立，但还未初始化，这是尚未调用open方法</td>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">表示XMLHttpRequest已建立，但还未初始化，这是尚未调用open方法</td>
 </tr>
 <tr>
-<td align="center">1</td>
-<td align="center">表示open方法已经调用，但未调用send方法（已创建，未发送）</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">表示open方法已经调用，但未调用send方法（已创建，未发送）</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">表示send方法已经调用，其他数据未知</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">表示send方法已经调用，其他数据未知</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">表示请求已经成功发送，正在接收数据</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">表示请求已经成功发送，正在接收数据</td>
 </tr>
 <tr>
-<td align="center">4</td>
-<td align="center">表示数据已经成功接收</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">表示数据已经成功接收</td>
 </tr>
-</tbody></table>
-<h6 id="常用Http状态码"><a href="#常用Http状态码" class="headerlink" title="常用Http状态码"></a>常用Http状态码</h6><table>
+</tbody>
+</table>
+</div>
+<h6 id="常用Http状态码"><a href="#常用Http状态码" class="headerlink" title="常用Http状态码"></a>常用Http状态码</h6><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">http状态码</th>
-<th align="center">含义</th>
+<th style="text-align:center">http状态码</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">200 OK</td>
-<td align="center">客户端请求成功</td>
+<tbody>
+<tr>
+<td style="text-align:center">200 OK</td>
+<td style="text-align:center">客户端请求成功</td>
 </tr>
 <tr>
-<td align="center">400 Bad Request</td>
-<td align="center">客户端请求有语法错误，不能被服务器所理解</td>
+<td style="text-align:center">400 Bad Request</td>
+<td style="text-align:center">客户端请求有语法错误，不能被服务器所理解</td>
 </tr>
 <tr>
-<td align="center">401 Unauthorized</td>
-<td align="center">请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</td>
+<td style="text-align:center">401 Unauthorized</td>
+<td style="text-align:center">请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</td>
 </tr>
 <tr>
-<td align="center">403 Forbidden</td>
-<td align="center">服务器收到请求，但是拒绝提供服务</td>
+<td style="text-align:center">403 Forbidden</td>
+<td style="text-align:center">服务器收到请求，但是拒绝提供服务</td>
 </tr>
 <tr>
-<td align="center">404 Not Found</td>
-<td align="center">请求资源不存在（可能输入了错误的URL）</td>
+<td style="text-align:center">404 Not Found</td>
+<td style="text-align:center">请求资源不存在（可能输入了错误的URL）</td>
 </tr>
 <tr>
-<td align="center">500 Internal Server Error</td>
-<td align="center">服务器发生不可预期的错误</td>
+<td style="text-align:center">500 Internal Server Error</td>
+<td style="text-align:center">服务器发生不可预期的错误</td>
 </tr>
 <tr>
-<td align="center">503 Server Unavailable</td>
-<td align="center">服务器当前不能处理客户端的请求，一段时间后可能恢复正常</td>
+<td style="text-align:center">503 Server Unavailable</td>
+<td style="text-align:center">服务器当前不能处理客户端的请求，一段时间后可能恢复正常</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="Ajax异步和同步"><a href="#Ajax异步和同步" class="headerlink" title="Ajax异步和同步"></a>Ajax异步和同步</h5><p>ajax.open(method, url,async); </p>
 <p>method：get方法，post方法</p>
 <p>url：请求的地址</p>
 <p>async：设置代码执行方式，false同步，true异步,默认为异步</p>
 <h5 id="Ajax请求"><a href="#Ajax请求" class="headerlink" title="Ajax请求"></a>Ajax请求</h5><p>get：携带的数据包含在url中</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ajax.open(<span class="string">"get"</span>, url + (data === <span class="literal">null</span> ? <span class="string">""</span> : <span class="string">"?"</span> + data), <span class="keyword">async</span>); <span class="comment">// false同步，true异步</span></span><br><span class="line">ajax.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
 <p>post</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ajax.open(<span class="string">"post"</span>, url, <span class="keyword">async</span>);	<span class="comment">// false同步，true异步</span></span><br><span class="line">ajax.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">ajax.send(data);</span><br></pre></td></tr></table></figure>
-
 <h5 id="Ajax响应数据类型"><a href="#Ajax响应数据类型" class="headerlink" title="Ajax响应数据类型"></a>Ajax响应数据类型</h5><h6 id="普通字符串"><a href="#普通字符串" class="headerlink" title="普通字符串"></a>普通字符串</h6><p>responseText</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取响应数据</span></span><br><span class="line"><span class="keyword">var</span> result = ajax.responseText;</span><br></pre></td></tr></table></figure>
-
 <h6 id="json"><a href="#json" class="headerlink" title="json"></a>json</h6><p>将数据按照json的格式拼接好的字符串，方便使用eval方法将接受的字符串直接转换成js的对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// json格式</span></span><br><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">    name:value,</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>需求分类</p>
 <ol>
 <li>在当前页面显示查询结果</li>
@@ -388,13 +389,10 @@
 <li>调用业务层获取对应的数据</li>
 </ol>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme() + <span class="string">"://"</span> + request.getServerName() + <span class="string">":"</span> + request.getServerPort() + path + <span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line">        &lt;title&gt;AjaxData&lt;/title&gt;</span><br><span class="line">        &lt;!--引入外部js文件，见ajax封装--&gt;</span><br><span class="line">        &lt;script type="text/javascript" src="js/ajaxutil.js"&gt;&lt;/script&gt; </span><br><span class="line">        &lt;!--声明js代码域--&gt;</span><br><span class="line">        &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">            <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">            <span class="function">function <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 获取用户请求信息</span></span><br><span class="line">                <span class="keyword">var</span> name = document.getElementById(<span class="string">"uname"</span>).value;</span><br><span class="line">                <span class="comment">// 创建ajax引擎对象</span></span><br><span class="line">                <span class="keyword">var</span> ajax;</span><br><span class="line">                <span class="keyword">if</span> (window.XMLHttpRequest) &#123;	<span class="comment">// firefox</span></span><br><span class="line">                    ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (window.ActiveXObject) &#123;	<span class="comment">// ie</span></span><br><span class="line">                    ajax = <span class="keyword">new</span> window.ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 覆写onreadystatementchange函数</span></span><br><span class="line">                ajax.onreadystatechange = function () &#123;</span><br><span class="line">                    <span class="comment">// 判断ajax状态码</span></span><br><span class="line">                    <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                        <span class="comment">// 判断响应状态码</span></span><br><span class="line">                        <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                            <span class="comment">// 获取响应数据</span></span><br><span class="line">                            <span class="keyword">var</span> result = ajax.responseText;</span><br><span class="line">                            eval(<span class="string">"u="</span> + result);</span><br><span class="line">                            <span class="comment">// 处理响应数据</span></span><br><span class="line">                            <span class="comment">// 获取table元素对象</span></span><br><span class="line">                            <span class="keyword">var</span> ta = document.getElementById(<span class="string">"table"</span>);</span><br><span class="line">                            ta.innerHTML = <span class="string">""</span>;</span><br><span class="line">                            <span class="comment">// 插入新的行</span></span><br><span class="line">                            <span class="keyword">var</span> tr = ta.insertRow(<span class="number">0</span>);</span><br><span class="line">                            <span class="keyword">var</span> uid = tr.insertCell(<span class="number">0</span>);</span><br><span class="line">                            uid.innerHTML = <span class="string">"编号"</span>;</span><br><span class="line">                            <span class="keyword">var</span> uname = tr.insertCell(<span class="number">1</span>);</span><br><span class="line">                            uname.innerHTML = <span class="string">"英雄"</span>;</span><br><span class="line">                            <span class="keyword">var</span> price = tr.insertCell(<span class="number">2</span>);</span><br><span class="line">                            price.innerHTML = <span class="string">"价格"</span>;</span><br><span class="line">                            <span class="keyword">var</span> location = tr.insertCell(<span class="number">3</span>);</span><br><span class="line">                            location.innerHTML = <span class="string">"位置"</span>;</span><br><span class="line">                            <span class="keyword">var</span> description = tr.insertCell(<span class="number">4</span>);</span><br><span class="line">                            description.innerHTML = <span class="string">"描述"</span>;</span><br><span class="line"></span><br><span class="line">                            <span class="keyword">var</span> tr = ta.insertRow(<span class="number">1</span>);</span><br><span class="line">                            <span class="keyword">var</span> uid = tr.insertCell(<span class="number">0</span>);</span><br><span class="line">                            uid.innerHTML = u.uid;</span><br><span class="line">                            <span class="keyword">var</span> uname = tr.insertCell(<span class="number">1</span>);</span><br><span class="line">                            uname.innerHTML = u.uname;</span><br><span class="line">                            <span class="keyword">var</span> price = tr.insertCell(<span class="number">2</span>);</span><br><span class="line">                            price.innerHTML = u.price;</span><br><span class="line">                            <span class="keyword">var</span> location = tr.insertCell(<span class="number">3</span>);</span><br><span class="line">                            location.innerHTML = u.location;</span><br><span class="line">                            <span class="keyword">var</span> description = tr.insertCell(<span class="number">4</span>);</span><br><span class="line">                            description.innerHTML = u.description;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 发送请求</span></span><br><span class="line">                ajax.open(<span class="string">"get"</span>, <span class="string">"user?name="</span> + name);</span><br><span class="line">                ajax.send(<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h3&gt;AjaxData&lt;/h3&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">        名称: &lt;input type=<span class="string">"text"</span> name=<span class="string">"uname"</span> value=<span class="string">""</span> id=<span class="string">"uname"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"button"</span> value=<span class="string">"搜索"</span> onclick=<span class="string">"getData()"</span>&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">        &lt;table border="1px" id="table"&gt;&lt;/table&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
 <h6 id="XML数据"><a href="#XML数据" class="headerlink" title="XML数据"></a>XML数据</h6><p>responseXML，返回document对象<br>通过document对象将数据从xml中获取出来</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme() + <span class="string">"://"</span> + request.getServerName() + <span class="string">":"</span> + request.getServerPort() + path + <span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line">        &lt;title&gt;XML数据格式学习&lt;/title&gt;</span><br><span class="line">        &lt;!--声明js代码域--&gt;</span><br><span class="line">        &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">            <span class="function">function <span class="title">getXML</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 创建ajax引擎对象</span></span><br><span class="line">                <span class="keyword">var</span> ajax;</span><br><span class="line">                <span class="keyword">if</span> (window.XMLHttpRequest) &#123;</span><br><span class="line">                    ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (window.ActiveXObject) &#123;</span><br><span class="line">                    ajax = <span class="keyword">new</span> window.ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 覆写onreadystatementchange函数</span></span><br><span class="line">                ajax.onreadystatechange = function () &#123;</span><br><span class="line">                    <span class="comment">// 判断ajax状态码</span></span><br><span class="line">                    <span class="keyword">if</span> (ajax.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                        <span class="comment">// 判断响应状态码</span></span><br><span class="line">                        <span class="keyword">if</span> (ajax.status === <span class="number">200</span>) &#123;</span><br><span class="line">                            <span class="comment">// 获取响应数据</span></span><br><span class="line">                            <span class="keyword">var</span> result = ajax.responseXML;</span><br><span class="line">                            alert(result.getElementsByTagName(<span class="string">"uname"</span>)[<span class="number">0</span>].innerHTML);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 发送请求</span></span><br><span class="line">                ajax.open(<span class="string">"get"</span>, <span class="string">"xml"</span>,<span class="keyword">true</span>);</span><br><span class="line">                ajax.send(<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h3&gt;XML数据格式学习&lt;/h3&gt;</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">        &lt;input type=<span class="string">"button"</span> value=<span class="string">"测试"</span> onclick=<span class="string">"getXML()"</span>&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
 <h5 id="Ajax封装"><a href="#Ajax封装" class="headerlink" title="Ajax封装"></a>Ajax封装</h5><p>封装ajax方便调用</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ajax封装</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>method 请求方式，get或post</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>url 请求地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>data 请求数据，格式"name=value&amp;..."，没有值需要传入null</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>deal200 接收一个带有一个形参的js函数对象，形参接收的实参是ajax引擎对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>deal404 接收一个js函数对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>deal500 接收一个js函数对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>async 异步或同步，boolean</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myAjax</span>(<span class="params">method, url, data, deal200, deal404, deal500, async=true</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建ajax引擎对象</span></span><br><span class="line">    <span class="keyword">var</span> ajax = getAjax();</span><br><span class="line">    <span class="comment">// 覆写onreadystatement函数</span></span><br><span class="line">    ajax.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 获取元素对象</span></span><br><span class="line">        <span class="keyword">let</span> showdiv = <span class="built_in">document</span>.getElementById(<span class="string">"showDiv"</span>);</span><br><span class="line">        <span class="comment">// 会执行4次,判断ajax状态码，只在数据成功接收时执行以下代码</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">4</span> === ajax.readyState) &#123;</span><br><span class="line">            <span class="comment">// 判断响应状态码</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">200</span> === ajax.status) &#123;</span><br><span class="line">                <span class="keyword">if</span> (deal200)</span><br><span class="line">                    deal200(ajax);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">404</span> === ajax.status) &#123;</span><br><span class="line">                <span class="keyword">if</span> (deal404)</span><br><span class="line">                    deal404();</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">500</span> === ajax.status) &#123;</span><br><span class="line">                <span class="keyword">if</span> (deal500)</span><br><span class="line">                    deal500();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"get"</span> === method) &#123;</span><br><span class="line">        <span class="comment">// 发送请求</span></span><br><span class="line">        ajax.open(<span class="string">"get"</span>, url + (data === <span class="literal">null</span> ? <span class="string">""</span> : <span class="string">"?"</span> + data), <span class="keyword">async</span>); <span class="comment">// false同步，true异步</span></span><br><span class="line">        ajax.send(<span class="literal">null</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"post"</span> === method) &#123;</span><br><span class="line">        ajax.open(<span class="string">"post"</span>, url, <span class="keyword">async</span>);</span><br><span class="line">        ajax.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">        ajax.send(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*ajax的封装*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAjax</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ajax;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;  <span class="comment">// firefox</span></span><br><span class="line">        ajax = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123; <span class="comment">// ie</span></span><br><span class="line">        ajax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Msxml2.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ajax;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -517,7 +515,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -530,7 +528,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -571,6 +569,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -669,7 +676,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -683,6 +690,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

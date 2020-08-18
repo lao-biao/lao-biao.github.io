@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -198,7 +198,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -315,9 +314,6 @@
 </li>
 </ul>
 <a id="more"></a>
-
-
-
 <h4 id="数据结构类型"><a href="#数据结构类型" class="headerlink" title="数据结构类型"></a>数据结构类型</h4><ul>
 <li><font color="red">线性表</font></li>
 <li>栈</li>
@@ -423,51 +419,54 @@
 <li>用大O记号表示算法的时间性能：将基本语句执行次数的数量级放入大O记号中</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>;				<span class="comment">// T(n)=O(1)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">...						    <span class="comment">// T(n)=O(1)</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>,n=<span class="number">8</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n;i++)</span><br><span class="line">    count++;				<span class="comment">// T(n)=O(n)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>,n=<span class="number">8</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n;i*=<span class="number">2</span>)</span><br><span class="line">    count++;				<span class="comment">// T(n)=O(log2 n)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>, n = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">        count++;            <span class="comment">// T(n)=O(n^2)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>, n = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i *= <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">        count++;            <span class="comment">// T(n)=O(nlog2 n)</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="常用时间复杂度级别"><a href="#常用时间复杂度级别" class="headerlink" title="常用时间复杂度级别"></a>常用时间复杂度级别</h6><table>
+<h6 id="常用时间复杂度级别"><a href="#常用时间复杂度级别" class="headerlink" title="常用时间复杂度级别"></a>常用时间复杂度级别</h6><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">算法阶数</th>
-<th align="center">算法时间复杂度</th>
+<th style="text-align:center">算法阶数</th>
+<th style="text-align:center">算法时间复杂度</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">常数阶</td>
-<td align="center">O(1)</td>
+<tbody>
+<tr>
+<td style="text-align:center">常数阶</td>
+<td style="text-align:center">O(1)</td>
 </tr>
 <tr>
-<td align="center">对数阶</td>
-<td align="center">O(log <sub>2</sub> n )</td>
+<td style="text-align:center">对数阶</td>
+<td style="text-align:center">O(log <sub>2</sub> n )</td>
 </tr>
 <tr>
-<td align="center">线性阶</td>
-<td align="center">O(n)</td>
+<td style="text-align:center">线性阶</td>
+<td style="text-align:center">O(n)</td>
 </tr>
 <tr>
-<td align="center">线性对数阶</td>
-<td align="center">O(n log <sub>2</sub> n)</td>
+<td style="text-align:center">线性对数阶</td>
+<td style="text-align:center">O(n log <sub>2</sub> n)</td>
 </tr>
 <tr>
-<td align="center">平方阶</td>
-<td align="center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">平方阶</td>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
 </tr>
 <tr>
-<td align="center">立方阶</td>
-<td align="center">O(n<sup>3</sup>)</td>
+<td style="text-align:center">立方阶</td>
+<td style="text-align:center">O(n<sup>3</sup>)</td>
 </tr>
 <tr>
-<td align="center">k次方阶</td>
-<td align="center">O(n<sup>k</sup>)</td>
+<td style="text-align:center">k次方阶</td>
+<td style="text-align:center">O(n<sup>k</sup>)</td>
 </tr>
 <tr>
-<td align="center">指数阶</td>
-<td align="center">O(2<sup>n</sup>)</td>
+<td style="text-align:center">指数阶</td>
+<td style="text-align:center">O(2<sup>n</sup>)</td>
 </tr>
 <tr>
-<td align="center">阶乘阶</td>
-<td align="center">O(n!)</td>
+<td style="text-align:center">阶乘阶</td>
+<td style="text-align:center">O(n!)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>时间复杂度越高，执行效率越低</strong></p>
 <h4 id="算法空间复杂度"><a href="#算法空间复杂度" class="headerlink" title="算法空间复杂度"></a>算法空间复杂度</h4><p>空间复杂度是执行这个算法所需要的内存空间</p>
 <h6 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h6><p>算法的存储容量包括：</p>
@@ -479,10 +478,8 @@
 <p>输入数据所占空间只取决于问题本身，和算法无关，只需要分析除输入和程序之外的<em>辅助变量</em>所占额外空间。</p>
 <p>空间复杂度是对一个算法在运行过程中临时占用的存储空间大小的度量，一般也作为问题规模n的函数，以数量级形式给出，S(n)=O(g(n))</p>
 <h6 id="空间复杂度分析一"><a href="#空间复杂度分析一" class="headerlink" title="空间复杂度分析一"></a>空间复杂度分析一</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j, k, s;</span><br><span class="line">    s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt;= j; k++)</span><br><span class="line">                s++;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>算法中临时变量的个数与问题规模n无关，因此空间复杂度均为<em>S(n)=O(1)</em></p>
 <h6 id="空间复杂度分析二"><a href="#空间复杂度分析二" class="headerlink" title="空间复杂度分析二"></a>空间复杂度分析二</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//n为数组a的元素个数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span> (k == n - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            System.out.print(a[i]);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = k; i &lt; n; i++)</span><br><span class="line">            a[i] = a[i] + i * i;</span><br><span class="line">        fun(a, n, k + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>递归算法，每次调用本身都要分配空间，fun(a,n,0)的空间复杂度为O(n)</p>
 <h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><ol>
 <li>空间复杂度相比时间复杂度分析要少</li>
@@ -606,7 +603,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -619,7 +616,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -660,6 +657,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -758,7 +764,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -772,6 +778,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

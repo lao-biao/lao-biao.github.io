@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{&lt;u,v&gt; | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之">
+  <meta name="description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{ | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java数据结构与算法--图">
 <meta property="og:url" content="https://lao-biao.github.io/articles/c88bf7ec.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{&lt;u,v&gt; | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之">
+<meta property="og:description" content="图图的定义图的基本概念：多对多关系图(graph)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成 形式化定义：  Graph &#x3D; (V,E)    V&#x3D;{x | x∈某个数据对象}    E&#x3D;{ | P(u,v)^(u,v∈V)} V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex) E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/11/IVHT4lDUem3WJnC.png">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -150,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -204,7 +204,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -294,17 +293,15 @@
 </li>
 <li><p>V={x | x∈某个数据对象}  </p>
 </li>
-<li><p>E={&lt;u,v&gt; | P(u,v)^(u,v∈V)}</p>
+<li><p>E={<u,v> | P(u,v)^(u,v∈V)}</p>
 <p>V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex)</p>
 <p>E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性</p>
 </li>
-<li><p>若&lt;u,v&gt;∈E，则&lt;u,v&gt;表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
+<li><p>若<u,v>∈E，则<u,v>表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
 </li>
-<li><p>若&lt;u,v&gt;∈E，则必有&lt;v,u&gt;∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</p>
-</li>
+<li>若<u,v>∈E，则必有<v,u>∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</li>
 </ul>
 <a id="more"></a>
-
 <p>在无向图和有向图中V的元素都称为顶点，而顶点之间的关系却又不同的称谓，即<strong>弧</strong>或<strong>边</strong>，在不影响理解的前提下，统称为<strong>边</strong>(<code>edge</code>)</p>
 <p>顶点集与边集都是有限的，并记顶点与边的数量为|V|和|E|</p>
 <p><img data-src="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png" alt="有向图与无向图.png"></p>
@@ -472,7 +469,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -485,7 +482,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -526,6 +523,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -624,7 +630,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -638,6 +644,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

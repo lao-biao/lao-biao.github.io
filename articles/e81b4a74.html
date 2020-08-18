@@ -135,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -145,7 +145,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -199,7 +199,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -289,7 +288,6 @@
 <li>对象：<code>Boolean</code> <code>Byte</code> <code>Character</code> <code>Integer</code> <code>Short</code> <code>Long</code> <code>Float</code> <code>Double</code></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = <span class="number">1</span>;    <span class="comment">//自动装箱</span></span><br><span class="line">Integer integer2 = Integer.valueOf(<span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> int1 = integer1;    <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> int2 = integer2.intValue();</span><br></pre></td></tr></table></figure>
-
 <h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
 <li>自动装箱和拆箱是编译器的工作，在class中已经添加转化，虚拟机没有自动装箱和拆箱的语句</li>
 <li>==判断：基本类型是内容相同，对象是指针是否相同(内存同一个区域)</li>
@@ -298,13 +296,10 @@
 <li>谨慎使用多个非同类的数值类对象进行运算</li>
 </ul>
 <a id="more"></a>
-
 <h5 id="多异常并列"><a href="#多异常并列" class="headerlink" title="多异常并列"></a>多异常并列</h5><h6 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h6><p>多异常并列在一个catch中，从JDK7.0开始引入，简化写法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException se) &#123;</span><br><span class="line">    se.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>简化写法   | 管道符号</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException | SQLException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>多个异常之间不能有直接/间接继承关系，否则会报错</p>
 <p>处理方法不同，不能合并</p>
 <h5 id="数值赋值优化"><a href="#数值赋值优化" class="headerlink" title="数值赋值优化"></a>数值赋值优化</h5><h6 id="整数类型用二进制数赋值"><a href="#整数类型用二进制数赋值" class="headerlink" title="整数类型用二进制数赋值"></a>整数类型用二进制数赋值</h6><p>整数类型用二进制数赋值</p>
@@ -448,7 +443,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -461,7 +456,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -502,6 +497,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -600,7 +604,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -614,6 +618,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

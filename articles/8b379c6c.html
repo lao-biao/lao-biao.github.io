@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -296,9 +295,7 @@
 <p><code>public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
         implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    rangeCheck(index);	<span class="comment">//检查是否越界</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> elementData(index);	<span class="comment">//返回对应的元素值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <h6 id="自定义泛型设计"><a href="#自定义泛型设计" class="headerlink" title="自定义泛型设计"></a>自定义泛型设计</h6><p>泛型类</p>
 <ul>
 <li>具有泛型变量的类</li>
@@ -310,12 +307,10 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Interval</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T lower;</span><br><span class="line">    <span class="keyword">private</span> T upper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Interval</span><span class="params">(T lower, T upper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lower = lower;</span><br><span class="line">        <span class="keyword">this</span>.upper = upper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getLower</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.lower;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>泛型类调用</p>
 <ul>
 <li><p>传入具体的类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interval&lt;Integer\&gt; v1 = <span class="keyword">new</span> Interval&lt;Integer\&gt;(<span class="number">1</span>,<span class="number">2</span>); </span><br><span class="line">Interval&lt;Integer\&gt; v1 = <span class="keyword">new</span> Interval&lt;\&gt;(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>泛型方法</p>
@@ -325,7 +320,6 @@
 <li><code>&lt;T&gt;</code>在修饰符后，返回类型前</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T... a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a == <span class="keyword">null</span> ? <span class="keyword">null</span> : a[a.length / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>泛型接口</p>
 <ul>
 <li>和泛型类相似，在类名后加<code>&lt;T&gt;</code></li>
@@ -334,7 +328,6 @@
 <li>T也可以再是一个泛型类，可嵌套</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">add</span><span class="params">(T t1, T t2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>总结</p>
 <ul>
 <li>泛型类：整个类都被泛化，包括变量和方法</li>
@@ -365,7 +358,8 @@
 <blockquote>
 <p>Apple extends Fruit<br>Orange extends Fruit</p>
 </blockquote>
-<p><font color="red">只能get/不能set，编译器只能保证出来的类型，但不保证放入的 对象是什么类型</font></p>
+<font color="red">只能get/不能set，编译器只能保证出来的类型，但不保证放入的 对象是什么类型</font>
+
 <p><code>? extends Fruit getFirst();</code>    //肯定可以转型到Fruit</p>
 <p><code>void setFirst(? extend Fruit)</code> //未知具体的类型[错误]</p>
 <hr>
@@ -373,7 +367,8 @@
 <p>Pair&lt;？super S&gt;</p>
 <p>Pair能接收的类型参数，是S的自身或超类</p>
 <p>eg <code>Pair&lt;? super Apple&gt;</code> 代表 <code>Pair&lt;Object&gt;</code>,<code>Pair&lt;Fruit&gt;</code>,<code>Pair&lt;Apple&gt;</code>等</p>
-<p><font color="red">只能set/不能get，编译器保证放入的是S本身或超类，但不保证 出来是什么具体类型</font></p>
+<font color="red">只能set/不能get，编译器保证放入的是S本身或超类，但不保证 出来是什么具体类型</font>
+
 <p>void setFirst(? super Apple)    //可以放入Apple及子类对象</p>
 <p>? super Apple getFirst()            //无法得知出来的对象类型，只能是Object</p>
 <hr>
@@ -452,7 +447,6 @@
 <p>复合情况：数组协变，泛型不变</p>
 <p>假设 B是A的子类，C是B的子类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testArrayAndList</span><span class="params">()</span></span>&#123;</span><br><span class="line">	B[] r1=test(<span class="keyword">new</span> ArrayList&lt;B&gt;();	<span class="comment">// 编译错误</span></span><br><span class="line">	A[] r2=test(<span class="keyword">new</span> ArrayList&lt;B&gt;();	<span class="comment">// 编译错误</span></span><br><span class="line">	Object[] r3=test(<span class="keyword">new</span> ArrayList&lt;Object&gt;());	<span class="comment">// 编译错误</span></span><br><span class="line">	</span><br><span class="line">	A[] r4=test(<span class="keyword">new</span> ArrayList&lt;A&gt;());</span><br><span class="line">	Object[] r5=test(<span class="keyword">new</span> ArrayList&lt;A&gt;());	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> A[] test(ArratList&lt;A&gt; list)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> A[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>方法情况</p>
 <ul>
@@ -460,7 +454,6 @@
 <li>JDK 1.5 +重写的方法，参数要求一样的，返回值是协变的</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> B <span class="title">f1</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Father.f1()"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> B();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> B <span class="title">f1</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">	<span class="comment">//public C f1(B obj)&#123;&#125;	返回值是C，也是对的</span></span><br><span class="line">		System.out.println(<span class="string">"Son.f1()"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> C();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">Father foo=<span class="keyword">new</span> Son();</span><br><span class="line">foo.f1(<span class="keyword">new</span> B());</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>总结Java类型变化(type variance)</p>
 <ul>
@@ -591,7 +584,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -604,7 +597,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -645,6 +638,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -743,7 +745,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -757,6 +759,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

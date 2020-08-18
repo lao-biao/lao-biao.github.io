@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -298,7 +297,6 @@
 <li>多个线程更容易管理</li>
 </ul>
 <a id="more"></a>
-
 <h4 id="Java多线程实现"><a href="#Java多线程实现" class="headerlink" title="Java多线程实现"></a>Java多线程实现</h4><h6 id="多线程创建"><a href="#多线程创建" class="headerlink" title="多线程创建"></a>多线程创建</h6><ul>
 <li><p><code>java.lang.Thread</code> </p>
 <p>线程继承Thread类，实现run方法</p>
@@ -403,7 +401,7 @@
 <li>join，等待另外一个线程结束</li>
 <li>interrupt，向另外一个线程发送中断信号，该线程收到信号，会触发InterruptedException(可解除阻塞)，并进行下一步处理</li>
 </ul>
-<h6 id="线程暂停和中止–主动与被动"><a href="#线程暂停和中止–主动与被动" class="headerlink" title="线程暂停和中止–主动与被动"></a>线程暂停和中止–主动与被动</h6><p>线程被动地暂停和终止</p>
+<h6 id="线程暂停和中止—主动与被动"><a href="#线程暂停和中止—主动与被动" class="headerlink" title="线程暂停和中止—主动与被动"></a>线程暂停和中止—主动与被动</h6><p>线程被动地暂停和终止</p>
 <ul>
 <li>依靠别的线程来拯救自己<ul>
 <li>wait</li>
@@ -425,12 +423,11 @@
 <li>预防死锁，对资源进行等级排序</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试死锁</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockThread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer one = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer two = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread12 thread12 = <span class="keyword">new</span> Thread12();</span><br><span class="line">        Thread21 thread21 = <span class="keyword">new</span> Thread21();</span><br><span class="line">        thread12.start();</span><br><span class="line">        thread21.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread12</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先拿1再拿2</span></span><br><span class="line">        <span class="keyword">synchronized</span> (DeadLockThread.one) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (DeadLockThread.two) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Thread 12 is running"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread21</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先拿2再拿1</span></span><br><span class="line">        <span class="keyword">synchronized</span> (DeadLockThread.two) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">synchronized</span> (DeadLockThread.one) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Thread 21 is running"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>线程报错信息：</p>
 <p>“Monitor Ctrl-Break” #6 daemon prio=5 os_prio=0 tid=0x0000000018bce000 nid=0x1280 runnable [0x000000001908e000]<br>java.lang.Thread.State: RUNNABLE<br>    at java.net.SocketInputStream.socketRead0(Native Method)<br>    at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)<br>    at java.net.SocketInputStream.read(SocketInputStream.java:170)<br>    at java.net.SocketInputStream.read(SocketInputStream.java:141)<br>    at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)<br>    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)<br>    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</p>
-<p>locked &lt;0x00000000d5fb3550&gt; (a java.io.InputStreamReader)<br>at java.io.InputStreamReader.read(InputStreamReader.java:184)<br>at java.io.BufferedReader.fill(BufferedReader.java:161)<br>at java.io.BufferedReader.readLine(BufferedReader.java:324)</p>
-<p>locked &lt;0x00000000d5fb3550&gt; (a java.io.InputStreamReader)</p>
+<p>locked <0x00000000d5fb3550> (a java.io.InputStreamReader)<br>at java.io.InputStreamReader.read(InputStreamReader.java:184)<br>at java.io.BufferedReader.fill(BufferedReader.java:161)<br>at java.io.BufferedReader.readLine(BufferedReader.java:324)</p>
+<p>locked <0x00000000d5fb3550> (a java.io.InputStreamReader)</p>
 </blockquote>
 <h6 id="守护-后台-线程"><a href="#守护-后台-线程" class="headerlink" title="守护(后台)线程"></a>守护(后台)线程</h6><p><code>Thread.setDaemon()</code>设置线程为守护线程</p>
 <ul>
@@ -439,7 +436,6 @@
 <li>守护线程永远不要访问资源，如文件或数据库等</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiThreading</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Main thread is running."</span>);</span><br><span class="line">        ThreadOne threadOne = <span class="keyword">new</span> ThreadOne();</span><br><span class="line">        <span class="comment">//守护线程</span></span><br><span class="line">        threadOne.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">        threadOne.start();</span><br><span class="line">        <span class="comment">//主线程休眠2秒</span></span><br><span class="line">        Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        System.out.println(<span class="string">"Main thread is finished."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadOne</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Thread one is running."</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//休眠1秒</span></span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>输出：</p>
 <p>Main thread is running.<br>Thread one is running.<br>Thread one is running.<br>Thread one is running.<br>Main thread is finished.</p>
@@ -556,7 +552,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程与多线程"><span class="nav-text">多进程与多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程"><span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程"><span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程-vs-多线程"><span class="nav-text">多进程 vs 多线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程实现"><span class="nav-text">Java多线程实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程创建"><span class="nav-text">多线程创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程启动"><span class="nav-text">多线程启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程实现对比"><span class="nav-text">多线程实现对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程信息共享"><span class="nav-text">Java多线程信息共享</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#信息共享"><span class="nav-text">信息共享</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程管理"><span class="nav-text">Java多线程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#线程状态"><span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Thread-API"><span class="nav-text">Thread API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程暂停和中止–主动与被动"><span class="nav-text">线程暂停和中止–主动与被动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程死锁"><span class="nav-text">多线程死锁</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#守护-后台-线程"><span class="nav-text">守护(后台)线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程查看工具-Jvisualvm"><span class="nav-text">线程查看工具 Jvisualvm</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程与多线程"><span class="nav-text">多进程与多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程"><span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程"><span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程-vs-多线程"><span class="nav-text">多进程 vs 多线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程实现"><span class="nav-text">Java多线程实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程创建"><span class="nav-text">多线程创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程启动"><span class="nav-text">多线程启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程实现对比"><span class="nav-text">多线程实现对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程信息共享"><span class="nav-text">Java多线程信息共享</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#信息共享"><span class="nav-text">信息共享</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java多线程管理"><span class="nav-text">Java多线程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#线程状态"><span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Thread-API"><span class="nav-text">Thread API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程暂停和中止—主动与被动"><span class="nav-text">线程暂停和中止—主动与被动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程死锁"><span class="nav-text">多线程死锁</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#守护-后台-线程"><span class="nav-text">守护(后台)线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线程查看工具-Jvisualvm"><span class="nav-text">线程查看工具 Jvisualvm</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -570,7 +566,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -583,7 +579,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -624,6 +620,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -722,7 +727,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -736,6 +741,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

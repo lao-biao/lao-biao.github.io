@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -285,16 +284,14 @@
 </li>
 <li><p>在head标签中使用link标签引入外部声明好的css文件<br>作用：此声明相当于调用,解决了不同网页间样式重复使用的问题</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"css/my.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <p>一次声明，随处使用</p>
 <p>问题：不同的声明给同一个标签操作了同一个样式，会使用谁的？<br>如果CSS的声明全部在head标签中，则遵循<font color="red">就近原则</font>，谁离标签近，谁就会被显示</p>
 <a id="more"></a>
-
 <h5 id="css的选择器"><a href="#css的选择器" class="headerlink" title="css的选择器"></a>css的选择器</h5><ul>
 <li>标签选择器：<br>标签名{样式名1： 样式值1；……}<br>作用：会将当前网页内的所有该标签增加相同的样式</li>
-<li>id选择器：<br>#标签名的id属性值{样式名1：样式值1；……}<br>作用：给某个指定的标签添加指定的样式</li>
+<li>id选择器：<h1 id="标签名的id属性值-样式名1：样式值1；……"><a href="#标签名的id属性值-样式名1：样式值1；……" class="headerlink" title="标签名的id属性值{样式名1：样式值1；……}"></a>标签名的id属性值{样式名1：样式值1；……}</h1>作用：给某个指定的标签添加指定的样式</li>
 <li>类选择器：<br>.类选择器名{样式名1：样式值1……}<br>作用：给不同的标签添加相同的样式</li>
 <li>全部选择选择器：<br>*{样式名1：样式值1……}<br>作用：选择所有的HTML标签，并添加相同的样式                </li>
 <li>组合选择器：<br>选择器1，选择器2，……{样式名1：样式值1……}<br>作用：解决不同的选择器之间重复样式的问题</li>
@@ -333,13 +330,12 @@
 </li>
 </ol>
 <h5 id="样式使用"><a href="#样式使用" class="headerlink" title="样式使用"></a>样式使用</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="comment">/*添加网页背景图*/</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(img/<span class="number">1</span>.jpg);<span class="comment">/*添加背景图片*/</span></span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;<span class="comment">/*设置图片不同重复*/</span></span><br><span class="line">    <span class="attribute">background-size</span>:cover;    <span class="comment">/*设置图片平铺*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*使用标签选择器*/</span></span><br><span class="line"><span class="selector-tag">table</span>&#123;</span><br><span class="line">    <span class="comment">/*background-image: url(img/0.jpg);</span></span><br><span class="line"><span class="comment">    backgroud-size: cover;*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*设置table的行高 */</span></span><br><span class="line"><span class="selector-tag">tr</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*设置td*/</span></span><br><span class="line"><span class="selector-tag">td</span>&#123;</span><br><span class="line">    width：100px;</span><br><span class="line">    <span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 1<span class="selector-tag">px</span> <span class="selector-tag">red</span>;</span><br><span class="line">    <span class="selector-tag">border-radius</span>: 10<span class="selector-tag">px</span>; <span class="comment">/*圆环*/</span></span><br><span class="line">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:orange</span>;</span><br><span class="line">    <span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">blueviolet</span>;</span><br><span class="line">    <span class="selector-tag">font-weight</span>: <span class="selector-tag">bold</span>;</span><br><span class="line">    <span class="selector-tag">letter-spacing</span>: 10<span class="selector-tag">px</span>; <span class="comment">/*字间距*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*------------------------------------------------------*/</span></span><br><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: gray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">list-style-type</span>: none; <span class="comment">/*去除li的标识符*/</span></span><br><span class="line">    <span class="comment">/*display: inline;*/</span></span><br><span class="line">    <span class="attribute">float</span>: left; <span class="comment">/*设置菜单左悬浮*/</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;     </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: black;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none; <span class="comment">/*设置超链接去除下划线*/</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-weight</span>: blod;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>css的样式使用<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>爱好<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>唱歌<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>打球<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>html<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>java<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>客服<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="css盒子模型"><a href="#css盒子模型" class="headerlink" title="css盒子模型"></a>css盒子模型</h5><h6 id="div标签"><a href="#div标签" class="headerlink" title="div标签"></a>div标签</h6><p>块级标签：主要用来进行网页布局的， 会将其中的子元素内容作为一个独立的整体存在。</p>
 <p>特点：默认宽度是页面的宽度，但可以设置</p>
 <p>高度默认是没有的，但是可以设置（可以顶开）</p>
-<p><font color='red'>如果子元素设置了百分比的高或者宽，占据的是div的百分比，不是页面的。</font></p>
+<font color='red'>如果子元素设置了百分比的高或者宽，占据的是div的百分比，不是页面的。</font>
+
 <h6 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h6><p>外边距：margin<br>作用：用来设置元素与元素之间的间隔</p>
 <p>居中设置：<code>margin：0px auto;</code>上下间隔是0px，水平居中<br>可以根据需求单独的设置上下左右的外边距</p>
 <p>边框：border    作用：用来设置元素的边框大小，可以设置上下左右<br>内边距：padding    作用：设置内容和边框之间的间隔<br>注意：内边距不会改变内容区域的大小，可以单独设置上下左右的内边距</p>
@@ -460,7 +456,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#css声明"><span class="nav-text">css声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css的选择器"><span class="nav-text">css的选择器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css的使用过程"><span class="nav-text">css的使用过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#样式使用"><span class="nav-text">样式使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css盒子模型"><span class="nav-text">css盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#div标签"><span class="nav-text">div标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#盒子模型"><span class="nav-text">盒子模型</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css的定位"><span class="nav-text">css的定位</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#css声明"><span class="nav-text">css声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css的选择器"><span class="nav-text">css的选择器</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标签名的id属性值-样式名1：样式值1；……"><span class="nav-text">标签名的id属性值{样式名1：样式值1；……}</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#css的使用过程"><span class="nav-text">css的使用过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#样式使用"><span class="nav-text">样式使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css盒子模型"><span class="nav-text">css盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#div标签"><span class="nav-text">div标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#盒子模型"><span class="nav-text">盒子模型</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#css的定位"><span class="nav-text">css的定位</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -474,7 +470,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -487,7 +483,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -528,6 +524,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -626,7 +631,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -640,6 +645,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

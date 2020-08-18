@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="错误的存储方式对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。   在写入文件时，文件路径不能直接为android的根目录 例如： 1private String userFileName&#x3D;&quot;&#x2F;user.txt&quot;;        &#x2F;&#x2F;文件名   运用IO流写出数据 12345678910111213private void saveUserInfo(String name,">
+  <meta name="description" content="错误的存储方式对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。   在写入文件时，文件路径不能直接为android的根目录 例如： 1private String userFileName&#x3D;&quot;&#x2F;user.txt&quot;;        &#x2F;&#x2F;文件名  运用IO流写出数据 12345678910111213private void saveUserInfo(String name, S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android数据的存储">
 <meta property="og:url" content="https://lao-biao.github.io/articles/56c6f16a.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="错误的存储方式对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。   在写入文件时，文件路径不能直接为android的根目录 例如： 1private String userFileName&#x3D;&quot;&#x2F;user.txt&quot;;        &#x2F;&#x2F;文件名   运用IO流写出数据 12345678910111213private void saveUserInfo(String name,">
+<meta property="og:description" content="错误的存储方式对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。   在写入文件时，文件路径不能直接为android的根目录 例如： 1private String userFileName&#x3D;&quot;&#x2F;user.txt&quot;;        &#x2F;&#x2F;文件名  运用IO流写出数据 12345678910111213private void saveUserInfo(String name, S">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-03T04:00:00.000Z">
 <meta property="article:modified_time" content="2020-07-06T03:10:02.255Z">
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -276,35 +275,26 @@
 <p>  在写入文件时，文件路径不能直接为android的根目录</p>
 <p>例如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String userFileName=<span class="string">"/user.txt"</span>;        <span class="comment">//文件名</span></span><br></pre></td></tr></table></figure>
-
 <p> 运用IO流写出数据</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveUserInfo</span><span class="params">(String name, String pwd, String phone)</span> </span>&#123;</span><br><span class="line">        File user=<span class="keyword">new</span> File(userFileName);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(!user.exists())&#123;</span><br><span class="line">                user.createNewFile();</span><br><span class="line">            &#125;</span><br><span class="line">            FileOutputStream userFile=<span class="keyword">new</span> FileOutputStream(user);</span><br><span class="line">            userFile.write((name+<span class="string">" "</span>+pwd+<span class="string">" "</span>+phone).getBytes());    <span class="comment">//以空格符为间隔存储</span></span><br><span class="line">            userFile.close();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>报错信息（异常）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.io.IOException: Read-only file system</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>  在Android系统中，每一个应用都是独立的，其权限是有限的，不可操作其他应用的内容。</p>
 <p>  “/“为根目录，这点不同于windows系统。</p>
 <p>  使用其他的文件名，则会报找不到文件的异常</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String userFileName=<span class="string">"/com.exercise.myapplication/user.txt"</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">java.io.IOException: No such file or directory   <span class="comment">//异常</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="存储到包名路径下"><a href="#存储到包名路径下" class="headerlink" title="存储到包名路径下"></a>存储到包名路径下</h6><p>当前用户—文件名应该为 : /data/data/应用包名路径/文件名</p>
+<h6 id="存储到包名路径下"><a href="#存储到包名路径下" class="headerlink" title="存储到包名路径下"></a>存储到包名路径下</h6><p>当前用户—-文件名应该为 : /data/data/应用包名路径/文件名</p>
 <p>  在android6.0后支持多用户  应用文件路径为： /data/user/0/应用包名路径   （0 为用户号）</p>
 <p>  在应用包路径下有 files 和  cache 两个文件夹</p>
 <p>  在MainActivity.java中可以使用 getFilesDir() 方法得到files的路径,用 getCacheDir() 方法可以得到cache的路径，再使用拼接的方式设置文件的全路径</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String userFileName=<span class="string">"user.txt"</span>;        <span class="comment">//文件名</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">File files=<span class="keyword">this</span>.getFilesDir();       <span class="comment">//得到files路径</span></span><br><span class="line">File cache=<span class="keyword">this</span>.getCacheDir();       <span class="comment">//得打cache路径</span></span><br><span class="line">File user=<span class="keyword">new</span> File(files,userFileName);</span><br><span class="line">FileOutputStream userFile=<span class="keyword">new</span> FileOutputStream(user);</span><br></pre></td></tr></table></figure>
-
 <p>  读取文件并在应用可视时显示在对应的TextView中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        FileInputStream user=<span class="keyword">this</span>.openFileInput(userFileName);</span><br><span class="line">        BufferedReader bufferedReader=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(user));</span><br><span class="line">        String info=bufferedReader.readLine();</span><br><span class="line">        String[] splits=info.split(<span class="string">" "</span>);    <span class="comment">//以空格符为界切割</span></span><br><span class="line">        String name=splits[<span class="number">0</span>];</span><br><span class="line">        String pwd=splits[<span class="number">1</span>];</span><br><span class="line">        String phone=splits[<span class="number">2</span>];</span><br><span class="line">        etName.setText(name);    <span class="comment">//用户名</span></span><br><span class="line">        etPwd.setText(pwd);      <span class="comment">//密码</span></span><br><span class="line">        etPhone.setText(phone);  <span class="comment">//手机号</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="数据存在sdcard中"><a href="#数据存在sdcard中" class="headerlink" title="数据存在sdcard中"></a>数据存在sdcard中</h6><p>  将数据存在sdcard中：</p>
 <p>  在 manifest 的 AndroidManifest.xml 打开storage的读写权限</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"&gt;&lt;/uses-permission&gt;</span><br><span class="line">&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
-
 <p>在Android6.0后，读写storage需要动态的申请权限(或者直接在设置里更改应用的存储权限)</p>
 <p>storage的相对路径: /storage/emulated/0 (内部存储)   （1表示外置内存卡）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveInSdcard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    requestPermissions();</span><br><span class="line">    File storagePath=<span class="keyword">new</span> File(Environment.getExternalStorageDirectory().getAbsolutePath());<span class="comment">//获取storage的相对路径</span></span><br><span class="line">    File file=<span class="keyword">new</span> File(storagePath,<span class="string">"text.txt"</span>);     <span class="comment">//文件路径</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        fos.write((<span class="string">"text words"</span>).getBytes());</span><br><span class="line">        fos.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//检查是否获取读取权限</span></span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要读写权限"</span>, Toast.LENGTH_LONG).show(); <span class="comment">//提示未获取读取权限</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE&#125;, <span class="number">1</span>);     <span class="comment">//请求读写权限</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -429,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -442,7 +432,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -483,6 +473,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -581,7 +580,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -595,6 +594,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

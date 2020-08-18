@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -306,7 +305,6 @@
 <li>找到后调用并执行Servlet</li>
 </ol>
 <a id="more"></a>
-
 <h5 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h5><ul>
 <li>从第一次调用到服务器关闭</li>
 <li>如果Servlet在web.xml中配置了load-on-startup，生命周期为从服务器启动到服务器关闭</li>
@@ -329,8 +327,7 @@
 </ul>
 <h5 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h5><p>request对象中封存了当前的所有请求信息</p>
 <h6 id="获取请求头数据"><a href="#获取请求头数据" class="headerlink" title="获取请求头数据"></a>获取请求头数据</h6><ul>
-<li><p>req.getMethod()              获取请求方式</p>
-</li>
+<li>req.getMethod()              获取请求方式</li>
 <li><p>req.getRequestURL()          获取请求URL信息</p>
 <ul>
 <li>req.getRequestURI()          获取请求URI信息</li>
@@ -353,9 +350,7 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// 获取请求头数据</span></span><br><span class="line">    String method = req.getMethod();    <span class="comment">// 获取请求方式</span></span><br><span class="line">    StringBuffer requestURL = req.getRequestURL();<span class="comment">// 获取请求URL</span></span><br><span class="line">    String requestURI = req.getRequestURI();</span><br><span class="line">    String scheme = req.getScheme();    <span class="comment">// 获取请求协议</span></span><br><span class="line">    System.out.println(<span class="string">"method==&gt;"</span> + method + <span class="string">"  URL==&gt;"</span> + requestURL + <span class="string">"  URI==&gt;"</span> + requestURI + <span class="string">"  scheme==&gt;"</span> + scheme);</span><br><span class="line">    <span class="comment">// 获取行数据</span></span><br><span class="line">    String header = req.getHeader(<span class="string">"User-Agent"</span>);    <span class="comment">// 获取指定的请求行信息</span></span><br><span class="line">    System.out.println(header);</span><br><span class="line">    Enumeration&lt;String&gt; headerNames = req.getHeaderNames(); <span class="comment">// 获取所有请求行的枚举</span></span><br><span class="line">    <span class="keyword">while</span> (headerNames.hasMoreElements()) &#123;</span><br><span class="line">        String name = headerNames.nextElement();</span><br><span class="line">        String value = req.getHeader(name);</span><br><span class="line">        System.out.println(name + <span class="string">"==&gt;"</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取用户数据</span></span><br><span class="line">    String uname = req.getParameter(<span class="string">"uname"</span>);</span><br><span class="line">    String pwd = req.getParameter(<span class="string">"pwd"</span>);</span><br><span class="line">    System.out.println(<span class="string">"uname==&gt;"</span> + uname + <span class="string">"  pwd==&gt;"</span> + pwd);</span><br><span class="line">    String[] favs = req.getParameterValues(<span class="string">"fav"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String fav : favs) &#123;</span><br><span class="line">        System.out.println(fav);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">       	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">        &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;form action=<span class="string">"request"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">            用户名:&lt;input type=<span class="string">"text"</span> name=<span class="string">"uname"</span> value=<span class="string">""</span>/&gt;&lt;br/&gt;</span><br><span class="line">            密码:&lt;input type=<span class="string">"text"</span> name=<span class="string">"pwd"</span> value=<span class="string">""</span>/&gt; &lt;br/&gt;</span><br><span class="line">            爱好:&lt;br/&gt;</span><br><span class="line">            <span class="number">1</span>&lt;input type=<span class="string">"checkbox"</span> name=<span class="string">"fav"</span> value=<span class="string">"1"</span>&gt;&lt;br/&gt;</span><br><span class="line">            <span class="number">2</span>&lt;input type=<span class="string">"checkbox"</span> name=<span class="string">"fav"</span> value=<span class="string">"2"</span>&gt;&lt;br/&gt;</span><br><span class="line">            <span class="number">3</span>&lt;input type=<span class="string">"checkbox"</span> name=<span class="string">"fav"</span> value=<span class="string">"3"</span>&gt;&lt;br/&gt;</span><br><span class="line">            &lt;input type=<span class="string">"submit"</span> value=<span class="string">"登录"</span>/&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
 <h5 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h5><p> 作用：用来响应数据到浏览器的一个对象</p>
 <p>使用：</p>
 <ul>
@@ -441,7 +436,6 @@
 </li>
 <li><p>遍历数组获取Cookie信息<br>使用for循环遍历</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(cookies!=<span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">        String name = c.getName();</span><br><span class="line">        String value = c.getValue();</span><br><span class="line">        System.out.println(name + <span class="string">":"</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>注意：一个Cookie对象存储一条数据，多条数据，可以创建多个Cookie对象进行存储。</p>
@@ -504,7 +498,6 @@
 <p>生命周期：服务器启动到服务器关闭</p>
 <p>在web.xml中配置</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置全局数据--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>name<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>zhangsan<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>context<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.ServletContextServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>context<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/context<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>使用</p>
 <ul>
 <li><p>获取ServletContext对象</p>
@@ -521,7 +514,6 @@
 </li>
 <li><p>获取项目中web.xml文件的全局配置数据<br><code>sc.getInitParameter(&quot;name&quot;);</code>    返回<strong>String</strong>类型，如果数据不存在返回<strong>null</strong><br><code>sc.getParameterNames();</code> 返回键名的<strong>枚举</strong><br>配置方式一组<code>&lt;context-param&gt;</code>标签只能存储一组键值对数据，多组可以声明多个<code>&lt;context-param&gt;</code>进行存储。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span><span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span><span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>作用：将静态数据和代码进行解耦</p>
 </li>
 <li><p>获取项目web下的资源的绝对路径<br><code>String path = sc.getRealPath(String path);</code><br>获取的路径为项目根目录，参数为项目根目录中的路径</p>
@@ -532,7 +524,6 @@
 <h5 id="ServletConfig对象"><a href="#ServletConfig对象" class="headerlink" title="ServletConfig对象"></a>ServletConfig对象</h5><p>解决在web.xml中给每个Servlet单独配置的数据</p>
 <p>在web.xml中配置</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>sg<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.web.servlet.ServletConfigServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>config<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>sg<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/sg<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>使用：</p>
 <ul>
 <li>获取ServletConfig对象     <code>ServletConfig sc = this.getServletConfig();</code></li>
@@ -560,7 +551,6 @@
 <p>加载时机：服务器启动时</p>
 <h5 id="Server-xml文件核心组件"><a href="#Server-xml文件核心组件" class="headerlink" title="Server.xml文件核心组件"></a>Server.xml文件核心组件</h5><p>Tomcat的<code>server.xml</code>结构</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Server</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Service</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Engine</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Host</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Context</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>热部署：<code>&lt;Context path=&quot;/项目虚拟名&quot; reloadable=&quot;true&quot; docBase=&quot;项目路径&quot;/&gt;</code></p>
 <p>开发时使用冷部署，需要重启服务器。</p>
 <h5 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h5><p>问题引入：Servlet的作用是针对浏览器发起的请求，进行请求的处理。通过Servlet技术可以灵活的进行请求的处理，但是我们不但要对请求进行处理，还需要对服务器的资源进行统一的管理，比如请求编码格式的统一设置，资源的统一分配等等，如何解决？</p>
@@ -583,7 +573,6 @@
 </li>
 <li><p>Filter过滤器的配置：在web.xml中配置过滤器</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>mf<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.web.filter.MyFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>mf<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>注解的形式：<code>@WebFilter(filterName = &quot;MyFilter&quot;, urlPatterns = {&quot;/*&quot;})</code></p>
 </li>
 <li><p>注意</p>
@@ -616,14 +605,14 @@
 <h6 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h6><p>1、创建一个实现了指定接口的java类</p>
 <p>监听request</p>
 <ul>
-<li><p>监听request–&gt;ServletRequestListener  监听request对象的创建和销毁</p>
+<li><p>监听request—&gt;ServletRequestListener  监听request对象的创建和销毁</p>
 <ul>
 <li>requestInitialized(ServletRequestEvent sre) 创建</li>
 <li>requestDestroyed(ServletRequestEvent sre)   销毁</li>
 </ul>
 <p>注意：形参获取监听的request对象  sre.getServletRequest()</p>
 </li>
-<li><p>监听request–&gt;ServletRequestAttributeListener 监听request作用域数据的增加、修改、删除</p>
+<li><p>监听request—&gt;ServletRequestAttributeListener 监听request作用域数据的增加、修改、删除</p>
 <ul>
 <li>attributeAdded(ServletRequestAttributeEvent srae)</li>
 <li>attributeReplaced(ServletRequestAttributeEvent srae)</li>
@@ -638,14 +627,14 @@
 </ul>
 <p>监听session</p>
 <ul>
-<li><p>监听session–&gt;HttpSessionListener 监听session的创建和销毁</p>
+<li><p>监听session—&gt;HttpSessionListener 监听session的创建和销毁</p>
 <ul>
 <li>sessionCreated(HttpSessionEvent se)</li>
 <li>sessionDestroyed(HttpSessionEvent se)</li>
 </ul>
 <p>注意:形参可以获取被监听的session对象 se.getSession();</p>
 </li>
-<li><p>监听session–&gt;HttpSessionAttributeListener 监听session数据的创建和销毁</p>
+<li><p>监听session—&gt;HttpSessionAttributeListener 监听session数据的创建和销毁</p>
 <ul>
 <li>attributeAdded(HttpSessionBindingEvent se)</li>
 <li>attributeReplaced(HttpSessionBindingEvent se)</li>
@@ -660,14 +649,14 @@
 </ul>
 <p>监听application</p>
 <ul>
-<li><p>监听application–&gt;ServletContextListener  监听application对象的初始化和销毁</p>
+<li><p>监听application—&gt;ServletContextListener  监听application对象的初始化和销毁</p>
 <ul>
 <li>contextInitialized(ServletContextEvent sce) 初始化 服务器启动</li>
 <li>contextDestroyed(ServletContextEvent sce)   销毁  服务器关闭</li>
 </ul>
 <p>注意:形参可以获取当前application对象<br>sce.getApplication()</p>
 </li>
-<li><p>监听application–&gt;ServletContextAttributeListener</p>
+<li><p>监听application—&gt;ServletContextAttributeListener</p>
 <ul>
 <li>attributeAdded(ServletContextAttributeEvent scae)</li>
 <li>attributeReplaced(ServletContextAttributeEvent scae)</li>
@@ -682,7 +671,6 @@
 </ul>
 <p>2、在web.xml中配置监听类(可配置多个监听器)</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>com.web.listener.MyListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>注解形式：<code>@WebListener(value = &quot;/ml&quot;)</code></p>
 <h6 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h6><p>统计网站在线人数</p>
 
@@ -807,7 +795,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -820,7 +808,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -861,6 +849,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -959,7 +956,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -973,6 +970,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

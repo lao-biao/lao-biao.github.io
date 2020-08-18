@@ -21,20 +21,25 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言在频繁调用Toast会造成较长的延时，不能及时显示最新的toast信息，使用ToastUtils解决延时bug 介绍BaseApplication.getAppContext()见文章—Android子线程更新ui 使用：ToastUtils.showToast(message); 代码12345678910111213public class ToastUtils &amp;#123;    pri">
+  <meta name="description" content="SolrSolr下载地址 https:&#x2F;&#x2F;lucene.apache.org&#x2F;solr&#x2F;downloads.html [可选项]配置环境变量：将Solr添加到系统环境变量中，在系统环境变量的path下添加 安装目录\Solr\bin Solr目录结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android自定义工具类--toast utils">
-<meta property="og:url" content="https://lao-biao.github.io/articles/34a9fe48.html">
+<meta property="og:title" content="Solr基本配置-Windows版">
+<meta property="og:url" content="https://lao-biao.github.io/articles/e0b21c40.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="前言在频繁调用Toast会造成较长的延时，不能及时显示最新的toast信息，使用ToastUtils解决延时bug 介绍BaseApplication.getAppContext()见文章—Android子线程更新ui 使用：ToastUtils.showToast(message); 代码12345678910111213public class ToastUtils &amp;#123;    pri">
+<meta property="og:description" content="SolrSolr下载地址 https:&#x2F;&#x2F;lucene.apache.org&#x2F;solr&#x2F;downloads.html [可选项]配置环境变量：将Solr添加到系统环境变量中，在系统环境变量的path下添加 安装目录\Solr\bin Solr目录结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-19T13:34:50.000Z">
-<meta property="article:modified_time" content="2020-07-06T03:10:21.292Z">
+<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Solr/solr%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Solr/solr%E4%BE%A7%E6%A0%8F%E5%B7%A5%E5%85%B7.png">
+<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Solr/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6.png">
+<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Solr/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8%E7%A4%BA%E4%BE%8B.png">
+<meta property="article:published_time" content="2020-08-18T02:32:26.000Z">
+<meta property="article:modified_time" content="2020-08-18T05:23:42.715Z">
 <meta property="article:author" content="周超">
-<meta property="article:tag" content="toast">
+<meta property="article:tag" content="solr">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zyy92/Pictures/raw/master/Solr/solr%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
 
-<link rel="canonical" href="https://lao-biao.github.io/articles/34a9fe48.html">
+<link rel="canonical" href="https://lao-biao.github.io/articles/e0b21c40.html">
 
 
 <script id="page-configurations">
@@ -47,7 +52,7 @@
   };
 </script>
 
-  <title>Android自定义工具类--toast utils | 周超的博客</title>
+  <title>Solr基本配置-Windows版 | 周超的博客</title>
   
 
 
@@ -211,7 +216,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/34a9fe48.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/e0b21c40.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -224,7 +229,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Android自定义工具类--toast utils
+          Solr基本配置-Windows版
         </h1>
 
         <div class="post-meta">
@@ -233,23 +238,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-19 21:34:50" itemprop="dateCreated datePublished" datetime="2020-04-19T21:34:50+08:00">2020-04-19</time>
+              <time title="创建时间：2020-08-18 10:32:26 / 修改时间：13:23:42" itemprop="dateCreated datePublished" datetime="2020-08-18T10:32:26+08:00">2020-08-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:10:21" itemprop="dateModified" datetime="2020-07-06T11:10:21+08:00">2020-07-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
                 </span>
             </span>
 
@@ -271,10 +274,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>在频繁调用Toast会造成较长的延时，不能及时显示最新的toast信息，使用ToastUtils解决延时bug</p>
-<h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p><code>BaseApplication.getAppContext()</code>见文章—<a href="/2020/04/03/Android非ui线程更新ui">Android子线程更新ui</a></p>
-<p>使用：<code>ToastUtils.showToast(message);</code></p>
-<h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Toast sToast;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"ShowToast"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sToast == <span class="keyword">null</span>) &#123;	<span class="comment">//如果不存在就创建</span></span><br><span class="line">            sToast = Toast.makeText(BaseApplication.getAppContext(), <span class="string">""</span>, Toast.LENGTH_SHORT);</span><br><span class="line">        &#125;</span><br><span class="line">        sToast.setText(message);	<span class="comment">//设置内容</span></span><br><span class="line">        sToast.show();		<span class="comment">//显示toast内容</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="Solr"><a href="#Solr" class="headerlink" title="Solr"></a>Solr</h4><p>Solr下载地址 <a href="https://lucene.apache.org/solr/downloads.html" target="_blank" rel="noopener">https://lucene.apache.org/solr/downloads.html</a></p>
+<p>[可选项]配置环境变量：将Solr添加到系统环境变量中，在系统环境变量的path下添加 <code>安装目录\Solr\bin</code></p>
+<h5 id="Solr目录结构"><a href="#Solr目录结构" class="headerlink" title="Solr目录结构"></a>Solr目录结构</h5><p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Solr/solr目录结构.png" alt="Solr目录结构"></p>
+<a id="more"></a>
+<h5 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h5><p>在 Solr 的 bin 目录下打开cmd窗口，若配置了solr的环境变量，可在任意位置打开cmd窗口。</p>
+<h6 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h6><p><code>solr start</code> 默认启动的端口号为 8983</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> bin  <span class="comment"># 已配置环境变量可省略</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> solr start</span></span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: JVM cannot use large page memory because it does not have enough privilege to lock pages in memory.</span><br><span class="line">Waiting up to 30 to see Solr running on port 8983</span><br><span class="line">Started Solr server on port 8983. Happy searching!</span><br></pre></td></tr></table></figure>
+<h6 id="指定启动端口号"><a href="#指定启动端口号" class="headerlink" title="指定启动端口号"></a>指定启动端口号</h6><p><code>solr start-p 端口号</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> solr start -p 9000</span></span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM warning: JVM cannot use large page memory because it does not have enough privilege to lock pages in memory.</span><br><span class="line">Waiting up to 30 to see Solr running on port 9000</span><br><span class="line">Started Solr server on port 9000. Happy searching!</span><br></pre></td></tr></table></figure>
+<h6 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h6><p><code>solr stop -p 启动的端口号</code>   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> solr stop -p 8983</span></span><br><span class="line">Stopping Solr process 1520 running on port 8983</span><br><span class="line"></span><br><span class="line">等待 5 秒，按一个键继续 ...</span><br></pre></td></tr></table></figure>
+<h6 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h6><p><code>solr restart -p 启动的端口号</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> solr restart -p 8983</span></span><br><span class="line">Stopping Solr process 5736 running on port 8983</span><br><span class="line"></span><br><span class="line">等待 5 秒，按一个键继续 ...</span><br></pre></td></tr></table></figure>
+<h6 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h6><p>访问地址：<a href="http://localhost:启动的端口号/solr/#">http://localhost:启动的端口号/solr/#</a></p>
+<p>默认：<a href="http://localhost:8983/solr/#" target="_blank" rel="noopener">http://localhost:8983/solr/#</a></p>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>solr的关系映射</p>
+<ul>
+<li>solr为库</li>
+<li>core为表</li>
+<li>filed为字段</li>
+</ul>
+<h6 id="创建核心"><a href="#创建核心" class="headerlink" title="创建核心"></a>创建核心</h6><p> <code>solr create -c example_core</code>，会自动添加默认配置文件config、data和core.properties</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> solr create -c example_core</span></span><br><span class="line">WARNING: Using _default configset with data driven schema functionality. NOT RECOMMENDED for production use.</span><br><span class="line">         To turn off: bin\solr config -c example_core -p 8983 -action set-user-property -property update.autoCreateFields -value false</span><br><span class="line"></span><br><span class="line">Created new core 'example_core'</span><br></pre></td></tr></table></figure>
+<p>在<code>Solr\server\</code>目录下会新增文件夹<code>example_core</code>。</p>
+<h6 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h6><p>访问地址：<a href="http://localhost:8983/solr/#/example_core/core-overview" target="_blank" rel="noopener">http://localhost:8983/solr/#/example_core/core-overview</a></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Solr/solr%E4%BE%A7%E6%A0%8F%E5%B7%A5%E5%85%B7.png" alt="solr侧栏工具"></p>
+<h6 id="添加中文分词器"><a href="#添加中文分词器" class="headerlink" title="添加中文分词器"></a>添加中文分词器</h6><blockquote>
+<p>中文分词器github地址 <a href="https://github.com/magese/ik-analyzer-solr/" target="_blank" rel="noopener">https://github.com/magese/ik-analyzer-solr/</a></p>
+</blockquote>
+<ol>
+<li><p>添加配置文件：<br>下载 <a href="https://github.com/magese/ik-analyzer-solr/releases/tag/v8.3.0" target="_blank" rel="noopener">https://github.com/magese/ik-analyzer-solr/releases/tag/v8.3.0</a></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Solr/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6.png" alt="中文分词器资源文件">将<code>ik-analyzer-solr-8.3.0\src\main\resources</code>路径下的5个配置文件拷贝到<code>Solr\server\solr-webapp\webapp\WEB-INF\classes</code>目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">① IKAnalyzer.cfg.xml</span><br><span class="line">② ext.dic</span><br><span class="line">③ stopword.dic</span><br><span class="line">④ ik.conf</span><br><span class="line">⑤ dynamicdic.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jar包支持：</p>
+<p>下载 <a href="https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar" target="_blank" rel="noopener">https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar</a></p>
+<p>将jar包拷贝到 <code>Solr\server\solr-webapp\webapp\WEB-INF\lib</code>目录下</p>
+</li>
+<li><p>配置Solr的<code>managed-schema</code>，添加<code>ik分词器</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ik分词器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">name</span>=<span class="string">"text_cn"</span> <span class="attr">class</span>=<span class="string">"solr.TextField"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"index"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"org.wltea.analyzer.lucene.IKTokenizerFactory"</span> <span class="attr">useSmart</span>=<span class="string">"false"</span> <span class="attr">conf</span>=<span class="string">"ik.conf"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"query"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"org.wltea.analyzer.lucene.IKTokenizerFactory"</span> <span class="attr">useSmart</span>=<span class="string">"true"</span> <span class="attr">conf</span>=<span class="string">"ik.conf"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldType</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="使用中文分词器分析"><a href="#使用中文分词器分析" class="headerlink" title="使用中文分词器分析"></a>使用中文分词器分析</h5><p>在添加中文分词器后，重启Solr，访问 example_core 下的 analysis</p>
+<blockquote>
+<p>访问地址：<a href="http://localhost:8983/solr/#/example_core/analysis" target="_blank" rel="noopener">http://localhost:8983/solr/#/example_core/analysis</a></p>
+</blockquote>
+<p>Analyse Fieldname / FieldType：<code>text_cn</code>    （配置的中文分词器）</p>
+<p>Field Value ：Solr的中文分词器</p>
+<p>分析结果</p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Solr/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8%E7%A4%BA%E4%BE%8B.png" alt="中文分词器示例"></p>
 
     </div>
 
@@ -290,7 +339,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://lao-biao.github.io/articles/34a9fe48.html" title="Android自定义工具类--toast utils">https://lao-biao.github.io/articles/34a9fe48.html</a>
+    <a href="https://lao-biao.github.io/articles/e0b21c40.html" title="Solr基本配置-Windows版">https://lao-biao.github.io/articles/e0b21c40.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -302,7 +351,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/toast/" rel="tag"><i class="fa fa-tag"></i> toast</a>
+              <a href="/tags/solr/" rel="tag"><i class="fa fa-tag"></i> solr</a>
           </div>
 
         
@@ -310,13 +359,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/articles/6d197383.html" rel="prev" title="Java语法糖for-each和枚举">
-      <i class="fa fa-chevron-left"></i> Java语法糖for-each和枚举
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/articles/c3843c50.html" rel="next" title="Android自定义工具类--logutils">
-      Android自定义工具类--logutils <i class="fa fa-chevron-right"></i>
+    <a href="/articles/18701caa.html" rel="next" title="JVM虚拟机">
+      JVM虚拟机 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -383,7 +429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solr"><span class="nav-text">Solr</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Solr目录结构"><span class="nav-text">Solr目录结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本命令"><span class="nav-text">基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#启动"><span class="nav-text">启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定启动端口号"><span class="nav-text">指定启动端口号</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#停止"><span class="nav-text">停止</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#重启"><span class="nav-text">重启</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#访问"><span class="nav-text">访问</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置"><span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建核心"><span class="nav-text">创建核心</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#访问-1"><span class="nav-text">访问</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#添加中文分词器"><span class="nav-text">添加中文分词器</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用中文分词器分析"><span class="nav-text">使用中文分词器分析</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

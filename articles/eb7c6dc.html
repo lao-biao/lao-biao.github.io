@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -283,37 +282,27 @@
 </ol>
 <p>参数解释</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQLiteOpenHelper  </span><br><span class="line">context 上下文  </span><br><span class="line">name  数据库名称  </span><br><span class="line">factory 游标工厂  </span><br><span class="line">version 版本号</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>重写SQLiteHelper类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.sqlitestudy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteDatabase;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteOpenHelper;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG =<span class="string">"database"</span> ;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseHelper</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, Constants.DATABASE_NAME, <span class="keyword">null</span>, Constants.VERSION_CODE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//第一次创建数据库时的回调</span></span><br><span class="line">        Log.d(TAG, <span class="string">"创建数据库"</span>);       <span class="comment">//log打印  D/database: 创建数据库</span></span><br><span class="line">        String sql=<span class="string">"create table "</span>+Constants.TABLE_NAME+<span class="string">"(_id integer,age integer,name varchar,salary integer);"</span>;</span><br><span class="line">        db.execSQL(sql);    <span class="comment">//执行sql语句</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//升级数据库时的回调</span></span><br><span class="line">        <span class="comment">//更新版本号必须满足 newVersion&gt;oldVersion  不能降级，否则会报异常，程序崩溃</span></span><br><span class="line">        Log.d(TAG, <span class="string">"更新数据库"</span>);   <span class="comment">//log打印  D/database: 更新数据库</span></span><br><span class="line">        String sql=<span class="string">"alter table "</span>+Constants.TABLE_NAME+<span class="string">" add phone integer;"</span>;</span><br><span class="line">        db.execSQL(sql);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>数据库相关常量</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.sqlitestudy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERSION_CODE =<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DATABASE_NAME =<span class="string">"demo"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TABLE_NAME = <span class="string">"demotable"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>MainActivity创建数据库  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DatabaseHelper helper=<span class="keyword">new</span> DatabaseHelper(<span class="keyword">this</span>);</span><br><span class="line">helper.getWritableDatabase();</span><br></pre></td></tr></table></figure>
-
 <h3 id="编写Dao操作类"><a href="#编写Dao操作类" class="headerlink" title="编写Dao操作类"></a>编写Dao操作类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.sqlitestudy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.database.Cursor;</span><br><span class="line"><span class="keyword">import</span> android.database.sqlite.SQLiteDatabase;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG =<span class="string">"Dao"</span> ;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DatabaseHelper helper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dao</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        helper = <span class="keyword">new</span> DatabaseHelper(context);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">        String sql=<span class="string">"insert into "</span>+Constants.TABLE_NAME+ <span class="string">"(_id,age,name,salary) values(?,?,?,?)"</span>;</span><br><span class="line">        db.execSQL(sql,<span class="keyword">new</span> Object[]&#123;<span class="number">101</span>,<span class="number">20</span>,<span class="string">"Wang"</span>,<span class="number">1000</span>&#125;);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">        String sql=<span class="string">"delete from "</span>+Constants.TABLE_NAME+ <span class="string">" where age = 20"</span>;</span><br><span class="line">        db.execSQL(sql);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">        String sql=<span class="string">"update "</span>+Constants.TABLE_NAME+ <span class="string">" set salary = 2000 where age = 20"</span>;</span><br><span class="line">        db.execSQL(sql);</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">()</span></span>&#123;</span><br><span class="line">        SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">        String sql=<span class="string">"select * from "</span>+Constants.TABLE_NAME+ <span class="string">" where age = 20"</span>;</span><br><span class="line">        Cursor cursor = db.rawQuery(sql,<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">            <span class="keyword">int</span> index = cursor.getColumnIndex(<span class="string">"name"</span>);</span><br><span class="line">            String name = cursor.getString(index);</span><br><span class="line">            Log.d(TAG, <span class="string">"name :"</span>+name);</span><br><span class="line">        &#125;</span><br><span class="line">        cursor.close();</span><br><span class="line">        db.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="编写测试类"><a href="#编写测试类" class="headerlink" title="编写测试类"></a>编写测试类</h3><ul>
 <li>数据库升级</li>
 <li>数据库的增删改查</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.study.sqlitestudy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.test.InstrumentationRegistry;</span><br><span class="line"><span class="keyword">import</span> android.support.test.runner.AndroidJUnit4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(AndroidJUnit4<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">TestDatabase</span></span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Dao dao=<span class="keyword">new</span> Dao(InstrumentationRegistry.getTargetContext());</span><br><span class="line">        dao.insert();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Dao dao=<span class="keyword">new</span> Dao(InstrumentationRegistry.getTargetContext());</span><br><span class="line">        dao.delete();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Dao dao=<span class="keyword">new</span> Dao(InstrumentationRegistry.getTargetContext());</span><br><span class="line">        dao.update();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Dao dao=<span class="keyword">new</span> Dao(InstrumentationRegistry.getTargetContext());</span><br><span class="line">        dao.query();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="使用Android的API操作增删改查"><a href="#使用Android的API操作增删改查" class="headerlink" title="使用Android的API操作增删改查"></a>使用Android的API操作增删改查</h3><h4 id="增-insert"><a href="#增-insert" class="headerlink" title="增 insert"></a>增 insert</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.ContentValues;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">    ContentValues values=<span class="keyword">new</span> ContentValues();</span><br><span class="line">    values.put(<span class="string">"_id"</span>,<span class="number">1001</span>);</span><br><span class="line">    values.put(<span class="string">"age"</span>,<span class="number">20</span>);</span><br><span class="line">    values.put(<span class="string">"name"</span>,<span class="string">"Zhang"</span>);</span><br><span class="line">    values.put(<span class="string">"salary"</span>,<span class="number">1000</span>);</span><br><span class="line">    db.insert(Constants.TABLE_NAME,<span class="keyword">null</span>,values);</span><br><span class="line">    db.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="删-delete"><a href="#删-delete" class="headerlink" title="删 delete"></a>删 delete</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> ContentValues();</span><br><span class="line">String []whereArgs=&#123;String.valueOf(<span class="number">20</span>)&#125;;</span><br><span class="line">String whereClasuse=<span class="string">"age=?"</span>;</span><br><span class="line"><span class="keyword">int</span> delete = db.delete(Constants.TABLE_NAME, whereClasuse, whereArgs);</span><br><span class="line">Log.d(TAG, <span class="string">"delete: "</span>+delete);</span><br><span class="line">db.close();</span><br></pre></td></tr></table></figure>
-
 <h4 id="改-update"><a href="#改-update" class="headerlink" title="改 update"></a>改 update</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> ContentValues();</span><br><span class="line">values.put(<span class="string">"salary"</span>,<span class="number">5000</span>);</span><br><span class="line">String whereClasuse=<span class="string">"age=?"</span>;    <span class="comment">//字段名称</span></span><br><span class="line">String[] whereArgs=&#123;String.valueOf(<span class="number">25</span>)&#125;;   <span class="comment">//值</span></span><br><span class="line">db.update(Constants.TABLE_NAME,values,whereClasuse,whereArgs);</span><br></pre></td></tr></table></figure>
-
 <h4 id="查-query"><a href="#查-query" class="headerlink" title="查 query"></a>查 query</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">Cursor cursor=db.query(Constants.TABLE_NAME,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//参数：数据表名称,columns,selection,selectionArgs,groupBy分组,having,orderBy排序</span></span><br><span class="line"><span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">    <span class="keyword">int</span> id = cursor.getInt(<span class="number">0</span>);</span><br><span class="line">    String name = cursor.getString(<span class="number">1</span>);</span><br><span class="line">    Log.d(TAG, <span class="string">"query: "</span>+id);</span><br><span class="line">    Log.d(TAG, <span class="string">"query: "</span>+name);</span><br><span class="line">    <span class="comment">//  D/Dao: query: 100</span></span><br><span class="line">    <span class="comment">//  D/Dao: query: 20</span></span><br><span class="line">    <span class="comment">//  D/Dao: query: 100</span></span><br><span class="line">    <span class="comment">//  D/Dao: query: 25</span></span><br><span class="line">&#125;</span><br><span class="line">cursor.close();     <span class="comment">//关闭游标资源</span></span><br><span class="line">db.close();</span><br></pre></td></tr></table></figure>
-
 <h3 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h3><ol>
 <li>安全性</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -322,7 +311,8 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1001</td>
 <td>20</td>
 <td>Zhang</td>
@@ -332,11 +322,13 @@
 <td>25</td>
 <td>Li</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>操作：Zhang salary - 500 且 Li salary + 500<br>在操作过程中出现异常，则会只执行一部分，使用SQLite的事务可以解决这个不同步的问题，防止数据出错 </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db=helper.getWritableDatabase();</span><br><span class="line">db.beginTransaction(); <span class="comment">//开启事务</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    db.execSQL(<span class="string">"update demotable set salary = 1000-500 where name = 'Zhang'"</span>);</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">10</span>/<span class="number">0</span>;     <span class="comment">//扔出异常</span></span><br><span class="line">    db.execSQL(<span class="string">"update demotable set salary = 5000+500 where name = 'Li'"</span>);</span><br><span class="line">    db.setTransactionSuccessful();</span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">    db.endTransaction();</span><br><span class="line">    db.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>执行结果后，数据没有发生变化<br>屏蔽掉扔出异常的语句后</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -345,7 +337,8 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1001</td>
 <td>20</td>
 <td>Zhang</td>
@@ -355,8 +348,10 @@
 <td>25</td>
 <td>Li</td>
 </tr>
-</tbody></table>
-<ol start="2">
+</tbody>
+</table>
+</div>
+<ol>
 <li>高效性</li>
 </ol>
 <p>在使用事务的情况下，执行速度比普通条件下更快。  </p>
@@ -396,12 +391,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/articles/73e911cd.html" rel="prev" title="hexo+yilia+github搭建个人博客">
-      <i class="fa fa-chevron-left"></i> hexo+yilia+github搭建个人博客
+    <a href="/articles/f71edc35.html" rel="prev" title="android studio低版本使用recyclerview">
+      <i class="fa fa-chevron-left"></i> android studio低版本使用recyclerview
     </a></div>
       <div class="post-nav-item">
-    <a href="/articles/f71edc35.html" rel="next" title="android studio低版本使用recyclerview">
-      android studio低版本使用recyclerview <i class="fa fa-chevron-right"></i>
+    <a href="/articles/821fe050.html" rel="next" title="android动态权限申请">
+      android动态权限申请 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -482,7 +477,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -495,7 +490,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -536,6 +531,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -634,7 +638,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -648,6 +652,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

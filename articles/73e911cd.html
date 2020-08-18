@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -197,7 +197,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -285,10 +284,8 @@
 </ul>
 <p>如果返回对应的版本号信息，说明安装成功</p>
 <a id="more"></a>
-
 <h6 id="博客框架基础部分"><a href="#博客框架基础部分" class="headerlink" title="博客框架基础部分"></a>博客框架基础部分</h6><p>在电脑的合适位置创建文件夹（blog）用于存放和管理博客，在此文件路径下执行命令行窗口（Mac用户需要获取管理员权限），执行下列命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//安装淘宝的cnpm管理器,其他国内镜像源也可</span><br><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org </span><br><span class="line"></span><br><span class="line">//安装hexo基础框架</span><br><span class="line">cnpm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">//初始化生成框架文件</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
 <p>生成hexo框架文件后，默认会生成一篇hello word的博客，博客框架基本搭建好了，可以通过本地的端口预览，执行命令<code>hexo s</code> 即可通过本地的4000端口访问博客</p>
 <p>地址<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
 <h6 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h6><ul>
@@ -297,23 +294,18 @@
 </li>
 <li><p>修改hexo本地设置：通过记事本更改文件夹<em>_config.yml</em>的以下内容</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:xxxx/xxxx.github.io.git</span> <span class="comment">#仓库的ssh地址或http地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span> <span class="comment">#默认是master分支</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>在blog文件夹下执行窗口命令安装git自动部署插件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 安装git自动部署插件</span><br><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
 <p>推送到github仓库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//清理</span><br><span class="line">hexo clean</span><br><span class="line">//生成 hexo generate</span><br><span class="line">hexo g</span><br><span class="line">//推送到仓库 hexo deploy</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
 <p>推送成功后即可通过<a href="https://xxxx.github.io/" target="_blank" rel="noopener">https://xxxx.github.io</a>    访问博客</p>
 <h6 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h6><p>从github上clone导入yilia主题文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-
 <p>数据以json的形式保存<code>cnpm i hexo-generator-json-content --save</code></p>
 <p>修改hexo根目录下的<em>_config.yml</em> :</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jsonContent:</span></span><br><span class="line">  <span class="attr">meta:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">pages:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">posts:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">date:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">path:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">text:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">raw:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">content:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">slug:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">updated:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">link:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">excerpt:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
 <p>配置yilia文件下的<em>_config.yml</em> : <em>目录：/themes/yilia/config.yml）</em>,根据个人喜好进行设置</p>
 <p>修改好配置信息后，通过 <code>hexo clean</code> <code>hexo g</code> <code>hexo s</code>在本地预览</p>
 <p>执行 <code>hexo clean</code> <code>hexo g</code> <code>hexo d</code>上传同步到github仓库</p>
@@ -357,8 +349,8 @@
       <i class="fa fa-chevron-left"></i> hexo上传至gitee以及添加gitee评论功能
     </a></div>
       <div class="post-nav-item">
-    <a href="/articles/eb7c6dc.html" rel="next" title="android sqlite学习">
-      android sqlite学习 <i class="fa fa-chevron-right"></i>
+    <a href="/articles/f71edc35.html" rel="next" title="android studio低版本使用recyclerview">
+      android studio低版本使用recyclerview <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -439,7 +431,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -452,7 +444,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -493,6 +485,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -591,7 +592,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -605,6 +606,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

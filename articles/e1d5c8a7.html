@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Btree/B-%E6%A0%91.jpg">
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Btree/B+%E6%A0%91.jpg">
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Btree/B%E2%80%BB%E6%A0%91.jpg">
-<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E9%A1%BA%E5%BA%8F%E8%A1%A8&%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E9%A1%BA%E5%BA%8F%E8%A1%A8&amp;%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.jpg">
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E5%88%9D%E5%A7%8B%E6%93%8D%E4%BD%9C%E7%8A%B6%E6%80%81.jpg">
 <meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E6%9C%80%E7%BB%88%E7%8A%B6%E6%80%81.jpg">
 <meta property="article:published_time" content="2020-04-12T08:59:53.000Z">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -150,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -204,7 +204,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -291,18 +290,14 @@
 <p>逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null</p>
 <p>在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)=O(n)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 顺序查找</span></span><br><span class="line"><span class="comment">* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 所求的值存在，返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">* 所求的值不存在，返回-1</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 时间复杂度：T(n)=O(n)</span></span><br><span class="line"><span class="comment">* 空间复杂度：S(n)=O(1)</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> array 查找表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> value 所求的值</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">orderSearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (array[i] == value) &#123;</span><br><span class="line">            index = i;</span><br><span class="line">            <span class="keyword">break</span>;  <span class="comment">//去除break则返回最后一个匹配到的值的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <h5 id="折半查找-二分查找"><a href="#折半查找-二分查找" class="headerlink" title="折半查找(二分查找)"></a>折半查找(二分查找)</h5><p>待查的查找表满足条件：</p>
 <ul>
 <li>顺序存储结构</li>
 <li>查找表按关键字大小有序排列</li>
 </ul>
 <h6 id="递归实现折半查找"><a href="#递归实现折半查找" class="headerlink" title="递归实现折半查找"></a>递归实现折半查找</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 二分查找--递归</span></span><br><span class="line"><span class="comment">*时间复杂度：T(n)=O(log2 n)</span></span><br><span class="line"><span class="comment">*空间复杂度：S(n)=O(log2 n)</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> array</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearchByRecursion</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//指定low和high</span></span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = array.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> binarySearchByRecursion(array, value, low, high);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearchByRecursion</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &gt; high) <span class="comment">//递归结束条件--没找到</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> middle = (low + high) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (value == array[middle]) <span class="comment">//递归结束条件--找到</span></span><br><span class="line">        <span class="keyword">return</span> middle;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (value &lt; array[middle])</span><br><span class="line">        <span class="keyword">return</span> binarySearchByRecursion(array, value, low, middle);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> binarySearchByRecursion(array, value, middle, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="非递归实现折半查找"><a href="#非递归实现折半查找" class="headerlink" title="非递归实现折半查找"></a>非递归实现折半查找</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 二分查找</span></span><br><span class="line"><span class="comment">* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">* &lt;p&gt;</span></span><br><span class="line"><span class="comment">* 所求的值存在，返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">* 所求的值不存在，返回-1</span></span><br><span class="line"><span class="comment">* &lt;p&gt;</span></span><br><span class="line"><span class="comment">* 时间复杂度：T(n)=O(log2 n)</span></span><br><span class="line"><span class="comment">* 空间复杂度：S(n)=O(n)</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> array 有序表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> value 所求值</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//指定low和high</span></span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = array.length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//二分查找</span></span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="comment">//求得middle</span></span><br><span class="line">        <span class="keyword">int</span> middle = (low + high) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (array[middle] == value) <span class="comment">//判断是否等于</span></span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (array[middle] &gt; value) <span class="comment">//在小的部分</span></span><br><span class="line">            high = middle - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span>    <span class="comment">//在大的部分</span></span><br><span class="line">            low = middle + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="查找树"><a href="#查找树" class="headerlink" title="查找树"></a>查找树</h4><h5 id="二叉查找-搜索-排序树-BST-binary-search-sort-tree"><a href="#二叉查找-搜索-排序树-BST-binary-search-sort-tree" class="headerlink" title="二叉查找/搜索/排序树 BST (binary search/sort tree)"></a>二叉查找/搜索/排序树 BST (binary search/sort tree)</h5><ul>
 <li>一颗空树</li>
 <li>具有以下性质的二叉树：<ul>
@@ -330,12 +325,12 @@
 <h6 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h6><p>AVL、红黑树<a href="https://baike.baidu.com/item/%E7%BA%A2%E9%BB%91%E6%A0%91" target="_blank" rel="noopener">RBT</a>、<a href="https://baike.baidu.com/item/替罪羊树" target="_blank" rel="noopener">替罪羊树</a>、<a href="https://baike.baidu.com/item/Treap" target="_blank" rel="noopener">Treap</a>、伸展树<a href="https://baike.baidu.com/item/%E4%BC%B8%E5%B1%95%E6%A0%91" target="_blank" rel="noopener">Splay</a>、<a href="https://baike.baidu.com/item/SBT" target="_blank" rel="noopener">SBT</a></p>
 <h6 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h6><p><a href="https://baike.baidu.com/item/平衡树" target="_blank" rel="noopener">平衡树</a></p>
 <p>B-树：在它内部结点中存储键值，但不需在叶子结点上存储这些键值的记录</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B-%E6%A0%91.jpg" alt="B-树.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B-树.jpg" alt="B-树.jpg"></p>
 <p>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引，B+树总是到叶子结点才命中</p>
 <p>数据库的索引的默认数据结构就是采用B+树</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B+%E6%A0%91.jpg" alt="B+树.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B+树.jpg" alt="B+树.jpg"></p>
 <p>B*树：B+树的变体，在B+树的非根和非子叶结点再增加指向兄弟的指针</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B%E2%80%BB%E6%A0%91.jpg" alt="B*树.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Btree/B※树.jpg" alt="B*树.jpg"></p>
 <h4 id="哈希表查找"><a href="#哈希表查找" class="headerlink" title="哈希表查找"></a>哈希表查找</h4><h6 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h6><p>不需要通过关键字值与定值比较，来确定位置，根据定值能直接定位记录的存储位置</p>
 <h6 id="哈希表的结构和特点"><a href="#哈希表的结构和特点" class="headerlink" title="哈希表的结构和特点"></a>哈希表的结构和特点</h6><p>hashtable：散列表</p>
 <p>特点：</p>
@@ -347,9 +342,9 @@
 <p>结构（多种）：</p>
 <ul>
 <li><p>顺序表+链表：主结构是顺序表，每个顺序表的结点在单独引出一个链表</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E9%A1%BA%E5%BA%8F%E8%A1%A8&%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84.jpg" alt="hashtable顺序表&amp;链表结构.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable顺序表&amp;链表结构.jpg" alt="hashtable顺序表&amp;链表结构.jpg"></p>
 <p>哈希表初始操作状态</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E5%88%9D%E5%A7%8B%E6%93%8D%E4%BD%9C%E7%8A%B6%E6%80%81.jpg" alt="hashtable初始操作状态.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable初始操作状态.jpg" alt="hashtable初始操作状态.jpg"></p>
 </li>
 </ul>
 <h6 id="哈希表添加数据"><a href="#哈希表添加数据" class="headerlink" title="哈希表添加数据"></a>哈希表添加数据</h6><ul>
@@ -363,38 +358,42 @@
 </li>
 </ul>
 <p>哈希表最终状态</p>
-<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable%E6%9C%80%E7%BB%88%E7%8A%B6%E6%80%81.jpg" alt="hashtable最终状态.jpg"></p>
+<p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/Hashtable/hashtable最终状态.jpg" alt="hashtable最终状态.jpg"></p>
 <h6 id="哈希表查找、删除、更新"><a href="#哈希表查找、删除、更新" class="headerlink" title="哈希表查找、删除、更新"></a>哈希表查找、删除、更新</h6><p>查找：与添加相似，通过函数计算对应位置</p>
 <p>删除：改变直接前驱结点指向直接后继结点</p>
 <p>更新：先查找到位置，更新数据</p>
 <h6 id="hashCode与equals"><a href="#hashCode与equals" class="headerlink" title="hashCode与equals"></a>hashCode与equals</h6><p><code>hashCode()</code>：计算哈希码，根据哈希码可以计算出数据在哈希表中的存储位置</p>
 <p><code>equals()</code>：添加时出现冲突和查询时，通过<code>equals()</code>进行比较，判断是否相同</p>
-<h6 id="各种类型数据的哈希码的获取"><a href="#各种类型数据的哈希码的获取" class="headerlink" title="各种类型数据的哈希码的获取"></a>各种类型数据的哈希码的获取</h6><table>
+<h6 id="各种类型数据的哈希码的获取"><a href="#各种类型数据的哈希码的获取" class="headerlink" title="各种类型数据的哈希码的获取"></a>各种类型数据的哈希码的获取</h6><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>数据类型</th>
-<th align="left">方法</th>
+<th style="text-align:left">方法</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>int</td>
-<td align="left">取自身</td>
+<td style="text-align:left">取自身</td>
 </tr>
 <tr>
 <td>double</td>
-<td align="left"><code>long bits=doubleToLongBits(value);</code><br /><code>(int)(bits ^ (bits &gt;&gt;&gt; 32));</code></td>
+<td style="text-align:left"><code>long bits=doubleToLongBits(value);</code><br /><code>(int)(bits ^ (bits &gt;&gt;&gt; 32));</code></td>
 </tr>
 <tr>
 <td>String</td>
-<td align="left"><code>int h=hash;</code><br /><code>if(h==0 &amp;&amp; value.length &gt; 0){</code><br />    <code>char var[] = value;</code><br />    <code>for(int i=0; i&lt;value.length; i++){</code><br />         <code>h = 31 * h + val[i];</code><br />      }<br />      <code>hash=h;</code><br /><code>}</code><br /><code>return hash;</code></td>
+<td style="text-align:left"><code>int h=hash;</code><br /><code>if(h==0 &amp;&amp; value.length &gt; 0){</code><br />    <code>char var[] = value;</code><br />    <code>for(int i=0; i&lt;value.length; i++){</code><br />         <code>h = 31 * h + val[i];</code><br />      }<br />      <code>hash=h;</code><br /><code>}</code><br /><code>return hash;</code></td>
 </tr>
 <tr>
 <td>对象</td>
-<td align="left">各个属性的哈希码进行某些相加相乘的运算</td>
+<td style="text-align:left">各个属性的哈希码进行某些相加相乘的运算</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h6 id="减少冲突"><a href="#减少冲突" class="headerlink" title="减少冲突"></a>减少冲突</h6><ul>
-<li><p>哈希表的长度和表中的记录数的比例–装填因子：</p>
+<li><p>哈希表的长度和表中的记录数的比例—装填因子：</p>
 <p>根据最终记录存储个数和关键字的分布特点来确定哈希表大小</p>
 <p>动态变化<strong>装填因子 = 表中的记录的数 / 哈希表的长度</strong></p>
 <ul>
@@ -418,7 +417,6 @@
 <p>在<code>JDK1.8</code>中，当链表的存储数据个数大于等于<code>8</code>时，不再采用链表存储，而采用红黑树存储结构（在查询时间复杂度上：链表为<strong>O(n)</strong>,红黑树为<strong>O(lon<sub>2</sub>n)</strong>）</p>
 <p><code>HashSet</code>底层结构是<code>HashMap</code>，<code>HashSet的元素</code>作为<code>HashMap的key</code>，统一使用<code>Object</code>对象作为<code>value</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* HashSet部分源码</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="相关代码下载"><a href="#相关代码下载" class="headerlink" title="相关代码下载"></a>相关代码下载</h4><p><a href="/download/search.rar">相关代码</a></p>
 
     </div>
@@ -542,7 +540,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -555,7 +553,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -596,6 +594,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -694,7 +701,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -708,6 +715,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

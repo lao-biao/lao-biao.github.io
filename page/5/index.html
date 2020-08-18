@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -192,7 +192,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -202,6 +201,106 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/765a6dde.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/765a6dde.html" class="post-title-link" itemprop="url">java数据结构与算法--排序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-13 10:08:34" itemprop="dateCreated datePublished" datetime="2020-04-13T10:08:34+08:00">2020-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:34:17" itemprop="dateModified" datetime="2020-07-06T11:34:17+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><h6 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h6><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列</p>
+<h6 id="内部排序和外部排序"><a href="#内部排序和外部排序" class="headerlink" title="内部排序和外部排序"></a>内部排序和外部排序</h6><p>内部排序：整个排序过程在内存储器中进行</p>
+<p>外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成</p>
+<h6 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a>稳定排序和不稳定排序</h6><p>如果在待排序的序列中存在多个具有相同关键字的元素</p>
+<p>假设K<sub>i</sub>=K<sub>j</sub> { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的R<sub>i</sub>在R<sub>j</sub>之前，经过排序后得到的序列R<sub>i</sub>仍在R<sub>j</sub>之前，则称所用排序方法是<strong>稳定的</strong>，反之则是<strong>不稳定的</strong></p>
+<h6 id="比较排序和非比较排序"><a href="#比较排序和非比较排序" class="headerlink" title="比较排序和非比较排序"></a>比较排序和非比较排序</h6><p>大部分排序需要通过比较来判断大小，作为排序的依据，而计数排序、基数排序不需要进行比较</p>
+<h6 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h6><ul>
+<li>插入排序：将无序子序列中的一个或几个记录“插入”到有序序列中，从而增加记录的有序子序列的长度</li>
+<li>交换排序：通过“交换”无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
+<li>选择排序：从记录的无序子序列中“选择”关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
+<li>归并排序：通过“归并”两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/765a6dde.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -367,14 +466,13 @@
 </li>
 <li><p>V={x | x∈某个数据对象}  </p>
 </li>
-<li><p>E={&lt;u,v&gt; | P(u,v)^(u,v∈V)}</p>
+<li><p>E={<u,v> | P(u,v)^(u,v∈V)}</p>
 <p>V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex)</p>
 <p>E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性</p>
 </li>
-<li><p>若&lt;u,v&gt;∈E，则&lt;u,v&gt;表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
+<li><p>若<u,v>∈E，则<u,v>表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
 </li>
-<li><p>若&lt;u,v&gt;∈E，则必有&lt;v,u&gt;∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</p>
-</li>
+<li>若<u,v>∈E，则必有<v,u>∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -458,14 +556,11 @@
       
           <h4 id="hexo置顶文章"><a href="#hexo置顶文章" class="headerlink" title="hexo置顶文章"></a>hexo置顶文章</h4><h6 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h6><p>在博客根目录下运行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save	#卸载index渲染器</span><br><span class="line">npm install hexo-generator-index-pin-top --save  #安装置顶插件</span><br><span class="line"><span class="meta">#</span><span class="bash">安装淘宝的镜像可以使用 cnpm 代替 npm</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="配置置顶标准"><a href="#配置置顶标准" class="headerlink" title="配置置顶标准"></a>配置置顶标准</h6><p>在<code>/themes/所使用的主题名/layout/post.ejs</code>文件最前面添加下列代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (page.top) &#123; %&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;fa fa-thumb-tack&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;font color&#x3D;7D26CD&gt;置顶&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
 <h6 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h6><p>在需要置顶的文章的<strong>Front Matter</strong>部分添加 <code>top: number</code></p>
 <p>number的数值越大优先级越高</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> </span><br><span class="line"><span class="attr">date:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:mm:ss</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="优先级配置"><a href="#优先级配置" class="headerlink" title="优先级配置"></a>优先级配置</h6><p>修改根目录配置文件<code>/_config.yml</code>,<code>top</code>值<code>-1</code>根据<code>top</code>值倒序</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">6</span>	<span class="comment">#每页显示的文章数</span></span><br><span class="line">  <span class="attr">order_by:</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">-1</span>		<span class="comment">#按top倒序排列，number越大的优先显示</span></span><br><span class="line">    <span class="attr">date:</span> <span class="number">-1</span>	<span class="comment">#按时间倒序排列，最新的优先显示</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -671,7 +766,7 @@
 <h6 id="串相等"><a href="#串相等" class="headerlink" title="串相等"></a>串相等</h6><p>当且仅当两个串的长度相等并且各个对应位置上的字符都相同时，这两个串才是相等的</p>
 <p>注：所有空串都是相等的</p>
 <h5 id="串的类型定义"><a href="#串的类型定义" class="headerlink" title="串的类型定义"></a>串的类型定义</h5><p>数据对象：D={a<sub>i</sub> | a<sub>i</sub>∈ CharacterSet, i = 1,2,…n}</p>
-<p>数据关系：R<sub>1</sub>={&lt;a<sub>i-1</sub>,a<sub>i</sub>&gt;|a<sub>i-1</sub>,a<sub>i</sub> ∈ D , i = 1,2,…,n}</p>
+<p>数据关系：R<sub>1</sub>={<a<sub>i-1&lt;/sub&gt;,a<sub>i</sub>&gt;|a<sub>i-1</sub>,a<sub>i</sub> ∈ D , i = 1,2,…,n}</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/7e56a691.html#more" rel="contents">
@@ -857,7 +952,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><h4 id="线性表及其结构"><a href="#线性表及其结构" class="headerlink" title="线性表及其结构"></a>线性表及其结构</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>线性表是n个类型<em>相同数据<em>元素的</em>有限序列</em></p>
+          <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><h4 id="线性表及其结构"><a href="#线性表及其结构" class="headerlink" title="线性表及其结构"></a>线性表及其结构</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>线性表是n个类型<em>相同数据</em>元素的<em>有限序列</em></p>
 <ul>
 <li>相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位</li>
 <li>序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系<ul>
@@ -1085,10 +1180,8 @@
 </ul>
 <h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><p>修改博客根目录下的<code>_config.ym</code>文件</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://用户名.gitee.io/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@gitee.com:用户名/用户名.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="部署到gitee仓库"><a href="#部署到gitee仓库" class="headerlink" title="部署到gitee仓库"></a>部署到gitee仓库</h6><p>在博客根目录下运行<code>git bash</code>或命令行窗口</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//清除数据</span><br><span class="line">hexo clean</span><br><span class="line">//重新渲染</span><br><span class="line">hexo g</span><br><span class="line">//本地local host预览</span><br><span class="line">hexo s</span><br><span class="line">//部署到gitee仓库</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
 <h6 id="gitee使用gitee-pages"><a href="#gitee使用gitee-pages" class="headerlink" title="gitee使用gitee pages"></a>gitee使用gitee pages</h6><p>在gitee的仓库下依次点击服务——&gt;Gitee Pages——&gt;启动</p>
 <p>提示：已开启 Gitee Pages 服务，网站地址：<code>https://用户名.gitee.io</code></p>
 <p>即可访问</p>
@@ -1096,98 +1189,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/6dfbadcb.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/73e911cd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/73e911cd.html" class="post-title-link" itemprop="url">hexo+yilia+github搭建个人博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-05 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-05T12:00:00+08:00">2020-04-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-27 22:35:36" itemprop="dateModified" datetime="2020-07-27T22:35:36+08:00">2020-07-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>学习使用hexo框架搭建个人博客，开启博客之旅。</p>
-<h6 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h6><ul>
-<li>nodejs <a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs网址</a> 根据操作系统下载对应的版本</li>
-<li>git <a href="https://git-scm.com/" target="_blank" rel="noopener">git网址</a></li>
-</ul>
-<h6 id="检查工具"><a href="#检查工具" class="headerlink" title="检查工具"></a>检查工具</h6><p>windows操作系统下打开命令行窗口，执行命令</p>
-<ul>
-<li><code>node -v</code></li>
-<li><code>npm -v</code></li>
-<li><code>git --version</code></li>
-</ul>
-<p>如果返回对应的版本号信息，说明安装成功</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/73e911cd.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1276,7 +1277,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1289,7 +1290,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1330,6 +1331,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -1428,7 +1438,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -1442,6 +1452,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>

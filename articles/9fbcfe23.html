@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数组中的逆序对 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。    示例 1:  输入: [7,5,6,4] 输出: 5  限制：  0 &lt;&#x3D; 数组长度 &lt;&#x3D; 50000   来源：力扣（LeetCode） 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;shu-zu-zhong-d">
+  <meta name="description" content="数组中的逆序对 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。  示例 1:  输入: [7,5,6,4] 输出: 5  限制：  0 &lt;&#x3D; 数组长度 &lt;&#x3D; 50000 来源：力扣（LeetCode） 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;shu-zu-zhong-de-ni">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode--面试题#51数组中的逆序对">
 <meta property="og:url" content="https://lao-biao.github.io/articles/9fbcfe23.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="数组中的逆序对 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。    示例 1:  输入: [7,5,6,4] 输出: 5  限制：  0 &lt;&#x3D; 数组长度 &lt;&#x3D; 50000   来源：力扣（LeetCode） 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;shu-zu-zhong-d">
+<meta property="og:description" content="数组中的逆序对 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。  示例 1:  输入: [7,5,6,4] 输出: 5  限制：  0 &lt;&#x3D; 数组长度 &lt;&#x3D; 50000 来源：力扣（LeetCode） 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;shu-zu-zhong-de-ni">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-25T02:43:20.000Z">
 <meta property="article:modified_time" content="2020-07-06T03:21:53.989Z">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -142,7 +142,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -196,7 +196,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -273,29 +272,21 @@
       
         <h6 id="数组中的逆序对"><a href="#数组中的逆序对" class="headerlink" title="数组中的逆序对"></a>数组中的逆序对</h6><blockquote>
 <p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。</p>
-</blockquote>
-<blockquote>
 <p> 示例 1:</p>
 <p> 输入: [7,5,6,4]<br> 输出: 5</p>
 <p> 限制：</p>
 <p> 0 &lt;= 数组长度 &lt;= 50000</p>
-</blockquote>
-<blockquote>
 <p>来源：力扣（LeetCode）</p>
 <p>链接：<a href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/</a></p>
 </blockquote>
 <a id="more"></a>
-
 <h6 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h6><p>数组从前往后，逐个比较</p>
 <p>时间复杂度：O(n<sup>2</sup>)</p>
 <p>空间复杂度：O(1)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 暴力算法：超时</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairsBF</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j])</span><br><span class="line">                res++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="归并排序-分治法"><a href="#归并排序-分治法" class="headerlink" title="归并排序-分治法"></a>归并排序-分治法</h6><p>归并排序</p>
 <blockquote>
 <p>如　设有数列{6，202，100，301，38，8，1}<br>初始状态：6,202,100,301,38,8,1<br>第一次归并后：{6,202},{100,301},{8,38},{1}，比较次数：3；<br>第二次归并后：{6,100,202,301}，{1,8,38}，比较次数：4；<br>第三次归并后：{1,6,8,38,100,202,301},比较次数：4；<br>总的比较次数为：3+4+4=11；<br>逆序数为14；</p>
-</blockquote>
-<blockquote>
 <ul>
 <li>申请空间，使其大小为两个已经<a href="https://baike.baidu.com/item/排序" target="_blank" rel="noopener">排序</a>序列之和，该空间用来存放合并后的序列</li>
 <li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
@@ -303,12 +294,9 @@
 <li>重复步骤3直到某一指针超出序列尾</li>
 <li>将另一序列剩下的所有元素直接复制到合并序列尾</li>
 </ul>
-</blockquote>
-<blockquote>
 <p><a href="https://baike.baidu.com/item/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">百度百科：归并排序</a></p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] mergeSort(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high) &#123;</span><br><span class="line">    <span class="keyword">if</span> (low == high)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;nums[low]&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span>[] leftArr = mergeSort(nums, low, mid); <span class="comment">//左有序数组</span></span><br><span class="line">    <span class="keyword">int</span>[] rightArr = mergeSort(nums, mid + <span class="number">1</span>, high); <span class="comment">//右有序数组</span></span><br><span class="line">    <span class="keyword">int</span>[] newNum = <span class="keyword">new</span> <span class="keyword">int</span>[leftArr.length + rightArr.length]; <span class="comment">//新有序数组</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; leftArr.length &amp;&amp; j &lt; rightArr.length) &#123;</span><br><span class="line">        newNum[m++] = leftArr[i] &lt; rightArr[j] ? leftArr[i++] : rightArr[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; leftArr.length)</span><br><span class="line">        newNum[m++] = leftArr[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt; rightArr.length)</span><br><span class="line">        newNum[m++] = rightArr[j++];</span><br><span class="line">    <span class="keyword">return</span> newNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>归并排序解题</p>
 <ul>
 <li>在归并的过程中计算每个小区间的逆序对数，进而计算出大区间的逆序对数</li>
@@ -316,7 +304,6 @@
 <li>空间复杂度：O(n)</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 借助归并排序：分治法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 逆序对数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];   <span class="comment">//临时数组，用于存放有序数组</span></span><br><span class="line">    <span class="keyword">return</span> merge(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>,temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high,<span class="keyword">int</span>[] temp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &gt;= high)    <span class="comment">//递归结束条件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> res = merge(nums, low, mid,temp) + merge(nums, mid + <span class="number">1</span>, high,temp);	<span class="comment">//区间划分</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = low, j = mid + <span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        res += nums[i] &lt;= nums[j] ? j - (mid + <span class="number">1</span>) : <span class="number">0</span>;</span><br><span class="line">        temp[k++] = nums[i] &lt;= nums[j] ? nums[i++] : nums[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">        res += j - (mid + <span class="number">1</span>);	</span><br><span class="line">        temp[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high)</span><br><span class="line">        temp[k++] = nums[j++];</span><br><span class="line">    System.arraycopy(temp, <span class="number">0</span>, nums, low, high - low + <span class="number">1</span>);   <span class="comment">//复制到原数组中</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -435,7 +422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -448,7 +435,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -489,6 +476,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -587,7 +583,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -601,6 +597,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

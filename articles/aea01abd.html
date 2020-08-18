@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="步骤 用chrome的开发者工具获取动态网址的json数据的url   在chrome中右键检查，选择network选项 重新加载页面，找到需要爬取的数据 查看request url即为真实请求的url url即为json数据   使用json库下的loads函数将数据的类型转换成字典类型  实例代码举例：抓取百度搜索关键字–电影 的网站 12345678910111213141516171819">
+  <meta name="description" content="步骤 用chrome的开发者工具获取动态网址的json数据的url   在chrome中右键检查，选择network选项 重新加载页面，找到需要爬取的数据 查看request url即为真实请求的url url即为json数据   使用json库下的loads函数将数据的类型转换成字典类型  实例代码举例：抓取百度搜索关键字—电影 的网站123456789101112131415161718192">
 <meta property="og:type" content="article">
 <meta property="og:title" content="chrome抓包抓取动态网站json数据">
 <meta property="og:url" content="https://lao-biao.github.io/articles/aea01abd.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="步骤 用chrome的开发者工具获取动态网址的json数据的url   在chrome中右键检查，选择network选项 重新加载页面，找到需要爬取的数据 查看request url即为真实请求的url url即为json数据   使用json库下的loads函数将数据的类型转换成字典类型  实例代码举例：抓取百度搜索关键字–电影 的网站 12345678910111213141516171819">
+<meta property="og:description" content="步骤 用chrome的开发者工具获取动态网址的json数据的url   在chrome中右键检查，选择network选项 重新加载页面，找到需要爬取的数据 查看request url即为真实请求的url url即为json数据   使用json库下的loads函数将数据的类型转换成字典类型  实例代码举例：抓取百度搜索关键字—电影 的网站123456789101112131415161718192">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-03T04:00:00.000Z">
 <meta property="article:modified_time" content="2020-07-06T03:10:50.434Z">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -198,7 +198,6 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -283,9 +282,7 @@
 </li>
 <li>使用json库下的loads函数将数据的类型转换成字典类型</li>
 </ul>
-<h4 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h4><p>举例：抓取百度搜索关键字–电影 的网站</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">catch</span><span class="params">(page)</span>:</span></span><br><span class="line">	<span class="comment"># 每一个网页的url中的 pn 是递增的--8</span></span><br><span class="line">    pn = page * <span class="number">8</span></span><br><span class="line">    url = <span class="string">"https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?resource_id=28286&amp;from_mid=1&amp;&amp;format=json&amp;ie=utf-8&amp;oe=utf-8&amp;query=%E7%94%B5%E5%BD%B1&amp;sort_key=16&amp;sort_type=1&amp;stat0=&amp;stat1=&amp;stat2=&amp;stat3=&amp;pn="</span> + str(</span><br><span class="line">        pn) + <span class="string">"&amp;rn=8&amp;cb=jQuery110204230762934017789_1575516372377&amp;_=1575516372379"</span></span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    json_str_re = re.compile(<span class="string">"&#123;.*&#125;"</span>)</span><br><span class="line">    json_str = json_str_re.search(res.text).group()</span><br><span class="line">    movie_dict = json.loads(json_str)</span><br><span class="line">    <span class="comment"># 根据json—handle工具，自动排列查看所获取信息</span></span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movie_dict[<span class="string">"data"</span>][<span class="number">0</span>][<span class="string">"result"</span>]:</span><br><span class="line">        print(movie[<span class="string">"ename"</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    catch(<span class="number">1</span>)	<span class="comment"># 查询第一页内容</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h4><p>举例：抓取百度搜索关键字—电影 的网站<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">catch</span><span class="params">(page)</span>:</span></span><br><span class="line">	<span class="comment"># 每一个网页的url中的 pn 是递增的--8</span></span><br><span class="line">    pn = page * <span class="number">8</span></span><br><span class="line">    url = <span class="string">"https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?resource_id=28286&amp;from_mid=1&amp;&amp;format=json&amp;ie=utf-8&amp;oe=utf-8&amp;query=%E7%94%B5%E5%BD%B1&amp;sort_key=16&amp;sort_type=1&amp;stat0=&amp;stat1=&amp;stat2=&amp;stat3=&amp;pn="</span> + str(</span><br><span class="line">        pn) + <span class="string">"&amp;rn=8&amp;cb=jQuery110204230762934017789_1575516372377&amp;_=1575516372379"</span></span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    json_str_re = re.compile(<span class="string">"&#123;.*&#125;"</span>)</span><br><span class="line">    json_str = json_str_re.search(res.text).group()</span><br><span class="line">    movie_dict = json.loads(json_str)</span><br><span class="line">    <span class="comment"># 根据json—handle工具，自动排列查看所获取信息</span></span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movie_dict[<span class="string">"data"</span>][<span class="number">0</span>][<span class="string">"result"</span>]:</span><br><span class="line">        print(movie[<span class="string">"ename"</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    catch(<span class="number">1</span>)	<span class="comment"># 查询第一页内容</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="http://jsonhandle.sinaapp.com/" target="_blank" rel="noopener">json-handle插件</a></p>
 
     </div>
@@ -410,7 +407,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -423,7 +420,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -464,6 +461,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">周超</span>
 </div>
+
+
+  <script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 
         
 <div class="busuanzi-count">
@@ -562,7 +568,7 @@
 
 <script>
 if (document.querySelectorAll('pre.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js', () => {
     mermaid.initialize({
       theme    : 'forest',
       logLevel : 3,
@@ -576,6 +582,63 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
