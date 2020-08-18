@@ -205,91 +205,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/aea01abd.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/aea01abd.html" class="post-title-link" itemprop="url">chrome抓包抓取动态网站json数据</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:10:50" itemprop="dateModified" datetime="2020-07-06T11:10:50+08:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
-<li>用chrome的开发者工具获取动态网址的json数据的url  <ul>
-<li>在chrome中右键检查，选择network选项</li>
-<li>重新加载页面，找到需要爬取的数据</li>
-<li>查看request url即为真实请求的url</li>
-<li>url即为json数据</li>
-</ul>
-</li>
-<li>使用json库下的loads函数将数据的类型转换成字典类型</li>
-</ul>
-<h4 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h4><p>举例：抓取百度搜索关键字—电影 的网站<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">catch</span><span class="params">(page)</span>:</span></span><br><span class="line">	<span class="comment"># 每一个网页的url中的 pn 是递增的--8</span></span><br><span class="line">    pn = page * <span class="number">8</span></span><br><span class="line">    url = <span class="string">"https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?resource_id=28286&amp;from_mid=1&amp;&amp;format=json&amp;ie=utf-8&amp;oe=utf-8&amp;query=%E7%94%B5%E5%BD%B1&amp;sort_key=16&amp;sort_type=1&amp;stat0=&amp;stat1=&amp;stat2=&amp;stat3=&amp;pn="</span> + str(</span><br><span class="line">        pn) + <span class="string">"&amp;rn=8&amp;cb=jQuery110204230762934017789_1575516372377&amp;_=1575516372379"</span></span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    json_str_re = re.compile(<span class="string">"&#123;.*&#125;"</span>)</span><br><span class="line">    json_str = json_str_re.search(res.text).group()</span><br><span class="line">    movie_dict = json.loads(json_str)</span><br><span class="line">    <span class="comment"># 根据json—handle工具，自动排列查看所获取信息</span></span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movie_dict[<span class="string">"data"</span>][<span class="number">0</span>][<span class="string">"result"</span>]:</span><br><span class="line">        print(movie[<span class="string">"ename"</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    catch(<span class="number">1</span>)	<span class="comment"># 查询第一页内容</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="http://jsonhandle.sinaapp.com/" target="_blank" rel="noopener">json-handle插件</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/eda1a9a9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -369,6 +284,91 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/aea01abd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/aea01abd.html" class="post-title-link" itemprop="url">chrome抓包抓取动态网站json数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:10:50" itemprop="dateModified" datetime="2020-07-06T11:10:50+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
+<li>用chrome的开发者工具获取动态网址的json数据的url  <ul>
+<li>在chrome中右键检查，选择network选项</li>
+<li>重新加载页面，找到需要爬取的数据</li>
+<li>查看request url即为真实请求的url</li>
+<li>url即为json数据</li>
+</ul>
+</li>
+<li>使用json库下的loads函数将数据的类型转换成字典类型</li>
+</ul>
+<h4 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h4><p>举例：抓取百度搜索关键字—电影 的网站<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">catch</span><span class="params">(page)</span>:</span></span><br><span class="line">	<span class="comment"># 每一个网页的url中的 pn 是递增的--8</span></span><br><span class="line">    pn = page * <span class="number">8</span></span><br><span class="line">    url = <span class="string">"https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?resource_id=28286&amp;from_mid=1&amp;&amp;format=json&amp;ie=utf-8&amp;oe=utf-8&amp;query=%E7%94%B5%E5%BD%B1&amp;sort_key=16&amp;sort_type=1&amp;stat0=&amp;stat1=&amp;stat2=&amp;stat3=&amp;pn="</span> + str(</span><br><span class="line">        pn) + <span class="string">"&amp;rn=8&amp;cb=jQuery110204230762934017789_1575516372377&amp;_=1575516372379"</span></span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    json_str_re = re.compile(<span class="string">"&#123;.*&#125;"</span>)</span><br><span class="line">    json_str = json_str_re.search(res.text).group()</span><br><span class="line">    movie_dict = json.loads(json_str)</span><br><span class="line">    <span class="comment"># 根据json—handle工具，自动排列查看所获取信息</span></span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movie_dict[<span class="string">"data"</span>][<span class="number">0</span>][<span class="string">"result"</span>]:</span><br><span class="line">        print(movie[<span class="string">"ename"</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    catch(<span class="number">1</span>)	<span class="comment"># 查询第一页内容</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="http://jsonhandle.sinaapp.com/" target="_blank" rel="noopener">json-handle插件</a></p>
+
       
     </div>
 
@@ -744,6 +744,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/9d9c9508.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/9d9c9508.html" class="post-title-link" itemprop="url">短暂解决ConnectionRefusedError:WinError 10061问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:24:51" itemprop="dateModified" datetime="2020-07-06T11:24:51+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="使用requests提示ConnectionRefusedError"><a href="#使用requests提示ConnectionRefusedError" class="headerlink" title="使用requests提示ConnectionRefusedError"></a>使用requests提示ConnectionRefusedError</h4><h6 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h6><p>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接</p>
+<h6 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h6><ul>
+<li>首先检查是否使用代理<ul>
+<li>打开win10的网络和Internet设置</li>
+<li>勾选自动检测设置，关闭使用设置脚本，关闭手动设置代理的使用代理服务器</li>
+</ul>
+</li>
+<li>打开注册表  </li>
+<li>删除路径：计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings下的<ul>
+<li>ProxyEnable</li>
+<li>ProxyOverride </li>
+<li>ProxyServer<br><img data-src="https://img-blog.csdnimg.cn/20191112200954515.png" alt=""></li>
+</ul>
+</li>
+<li>重新运行python程序<br>这种方式只能短暂解决问题，这三个文件会自动生成，需要重复删除</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/81b2f4bf.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -849,95 +938,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/9d9c9508.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/9d9c9508.html" class="post-title-link" itemprop="url">短暂解决ConnectionRefusedError:WinError 10061问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:24:51" itemprop="dateModified" datetime="2020-07-06T11:24:51+08:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="使用requests提示ConnectionRefusedError"><a href="#使用requests提示ConnectionRefusedError" class="headerlink" title="使用requests提示ConnectionRefusedError"></a>使用requests提示ConnectionRefusedError</h4><h6 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h6><p>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接</p>
-<h6 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h6><ul>
-<li>首先检查是否使用代理<ul>
-<li>打开win10的网络和Internet设置</li>
-<li>勾选自动检测设置，关闭使用设置脚本，关闭手动设置代理的使用代理服务器</li>
-</ul>
-</li>
-<li>打开注册表  </li>
-<li>删除路径：计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings下的<ul>
-<li>ProxyEnable</li>
-<li>ProxyOverride </li>
-<li>ProxyServer<br><img data-src="https://img-blog.csdnimg.cn/20191112200954515.png" alt=""></li>
-</ul>
-</li>
-<li>重新运行python程序<br>这种方式只能短暂解决问题，这三个文件会自动生成，需要重复删除</li>
-</ul>
-
       
     </div>
 
