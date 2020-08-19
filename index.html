@@ -128,17 +128,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">65</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">69</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">70</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -205,7 +205,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/43437f2c.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/cc1858db.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -219,7 +219,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/articles/43437f2c.html" class="post-title-link" itemprop="url">docker安装jdk8镜像</a>
+            <a href="/articles/cc1858db.html" class="post-title-link" itemprop="url">docker配置jdk8镜像</a>
         </h2>
 
         <div class="post-meta">
@@ -228,8 +228,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-08-19 09:26:37" itemprop="dateCreated datePublished" datetime="2020-08-19T09:26:37+08:00">2020-08-19</time>
+              <time title="创建时间：2020-08-19 13:17:38 / 修改时间：13:18:39" itemprop="dateCreated datePublished" datetime="2020-08-19T13:17:38+08:00">2020-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes-%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">notes,后端</span></a>
+                </span>
             </span>
 
           
@@ -243,7 +253,253 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h5 id="docker配置jdk8镜像"><a href="#docker配置jdk8镜像" class="headerlink" title="docker配置jdk8镜像"></a>docker配置jdk8镜像</h5><p>配置方式分为通过 docker 仓库直接拉取 openjdk ，另一种方式是下载 jdk 8 linux版，通过 Dockerfile 进行配置。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/cc1858db.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/cf9a8130.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
+            <a href="/articles/cf9a8130.html" class="post-title-link" itemprop="url">docker配置redis镜像</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-19 12:58:20" itemprop="dateCreated datePublished" datetime="2020-08-19T12:58:20+08:00">2020-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes-%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">notes,后端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="安装redis镜像"><a href="#安装redis镜像" class="headerlink" title="安装redis镜像"></a>安装redis镜像</h6><p>从 docker 的仓库中拉取 redis 镜像，不写版本号时，默认使用 <code>latest</code> 最新版</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull redis[:版本号]</span></span><br></pre></td></tr></table></figure>
+<h6 id="创建redis容器与启动"><a href="#创建redis容器与启动" class="headerlink" title="创建redis容器与启动"></a>创建redis容器与启动</h6><ol>
+<li><p>创建配置文件挂载文件夹和 redis 挂载的配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir -p /mydata/redis/conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> touch /mydata/redis/conf/redis.conf</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 redis 容器，并将配置文件挂载到虚拟机本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \</span></span><br><span class="line">-v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查 redis 的相关配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# pwd</span><br><span class="line">/mydata/redis/conf</span><br><span class="line">[root@localhost conf]# ls</span><br><span class="line">redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="配置redis自启动"><a href="#配置redis自启动" class="headerlink" title="配置redis自启动"></a>配置redis自启动</h6><p>配置 redis 容器在docker启动时同时启动。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vagrant]# docker update redis --restart=always</span><br></pre></td></tr></table></figure>
+<h6 id="进入redis的客户端"><a href="#进入redis的客户端" class="headerlink" title="进入redis的客户端"></a>进入redis的客户端</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# docker exec -it redis redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="将redis数据持久化到硬盘"><a href="#将redis数据持久化到硬盘" class="headerlink" title="将redis数据持久化到硬盘"></a>将redis数据持久化到硬盘</h6><p>修改 <code>/mydata/redis/conf/redis.conf</code> 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# vi redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加以下内容</span></span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<h6 id=""><a href="#" class="headerlink" title=" "></a> </h6>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/1a3905c2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/1a3905c2.html" class="post-title-link" itemprop="url">docker安装mysql镜像</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-19 12:58:06" itemprop="dateCreated datePublished" datetime="2020-08-19T12:58:06+08:00">2020-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes-%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">notes,后端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="安装mysql的镜像"><a href="#安装mysql的镜像" class="headerlink" title="安装mysql的镜像"></a>安装mysql的镜像</h6><p>docker仓库中mysql版本 <a href="https://hub.docker.com/_/mysql" target="_blank" rel="noopener">https://hub.docker.com/_/mysql</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo docker pull mysql:5.7</span></span><br></pre></td></tr></table></figure>
+<p>验证是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mysql               5.7                 d05c76dbbfcf        2 minutes ago         448MB</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/1a3905c2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/55112ca0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/55112ca0.html" class="post-title-link" itemprop="url">centos7配置docker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-19 12:28:28" itemprop="dateCreated datePublished" datetime="2020-08-19T12:28:28+08:00">2020-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes-%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">notes,后端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="docker的安装"><a href="#docker的安装" class="headerlink" title="docker的安装"></a>docker的安装</h6><p>建议根据官方文档的步骤进行安装，不然容易出错。</p>
+<blockquote>
+<p>官方文档：<a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">https://docs.docker.com/engine/install/centos/</a></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/55112ca0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -821,326 +1077,10 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/bc07bc32.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/bc07bc32.html" class="post-title-link" itemprop="url">Servlet笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-11 22:25:05" itemprop="dateCreated datePublished" datetime="2020-07-11T22:25:05+08:00">2020-07-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-23 15:06:43" itemprop="dateModified" datetime="2020-07-23T15:06:43+08:00">2020-07-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
-<li><p>狭义的Servlet是指Java语言实现的一个接口</p>
-</li>
-<li><p>广义的Servlet是指任何实现了这个Servlet接口的类</p>
-</li>
-</ul>
-<p>Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，绝大数情况下Servlet只用来扩展基于HTTP协议的Web服务器。</p>
-<h6 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h6><ul>
-<li><p>运行在Java的应用服务器上</p>
-</li>
-<li><p>Servlet的实现遵循了服务器能够识别的规则，服务器会自动地根据请求调用对应地Servlet进行请求处理</p>
-</li>
-<li><p>简单方便，可移植性强</p>
-</li>
-</ul>
-<h6 id="URL与URI"><a href="#URL与URI" class="headerlink" title="URL与URI"></a>URL与URI</h6><p>url：<a href="http://localhost:8080/servlet/my" target="_blank" rel="noopener">http://localhost:8080/servlet/my</a></p>
-<ul>
-<li><p>服务器地址:端口号/webapps下的文件夹的名称[虚拟项目名]/类名全路径[别名]</p>
-</li>
-<li><p>服务器地址:端口号/虚拟项目名/servlet的别名</p>
-</li>
-</ul>
-<p>URI：虚拟项目名/servlet的别名</p>
-<h6 id="访问流程"><a href="#访问流程" class="headerlink" title="访问流程"></a>访问流程</h6><ol>
-<li>浏览器发送请求到服务器</li>
-<li>服务器根据请求URL地址中的URI信息在webapps目录下找到对应的项目文件夹</li>
-<li>然后在web.xml中检索响应的Servlet</li>
-<li>找到后调用并执行Servlet</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/bc07bc32.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/74f18f35.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/74f18f35.html" class="post-title-link" itemprop="url">AQS笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-11 20:29:29" itemprop="dateCreated datePublished" datetime="2020-07-11T20:29:29+08:00">2020-07-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 09:21:29" itemprop="dateModified" datetime="2020-08-18T09:21:29+08:00">2020-08-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h4><p>Abstract Queued Synchronizer 抽象队列同步器<br>所在包：<code>java.util.concurrent.locks.AbstractQueuedSynchronizer;</code></p>
-<p>AQS是基于先进先出队列（FIFO），CLH（一种基于<strong>单向链表</strong>的高性能、<strong>公平</strong>的<strong>自旋锁</strong>）</p>
-<p>基于AQS实现的锁</p>
-<ul>
-<li>ReentrantLock 可重入锁[悲观锁]</li>
-<li>Semaphore 信号量</li>
-<li>CountDownLatch 倒数</li>
-<li>ReentrantReadWriteLock 可重入读写锁</li>
-</ul>
-<h5 id="偏向锁、轻量级锁、重量级锁"><a href="#偏向锁、轻量级锁、重量级锁" class="headerlink" title="偏向锁、轻量级锁、重量级锁"></a>偏向锁、轻量级锁、重量级锁</h5><p><strong>偏向锁</strong>：偏向第一个线程(JDK 1.6) JVM内部</p>
-<p><strong>轻量级锁</strong>：由偏向锁升级而来，偏向锁运行在一个线程进入同步块的情况下，当第二个线程加入锁争用的时候，偏向锁就会升级为轻量级锁。</p>
-<p><strong>自旋锁</strong>：一个执行单元要想访问被自旋锁保护的共享资源，必须先得到锁，在访问完共享资源后，必须释放锁。</p>
-<p>自旋锁—(自旋10次)—&gt;重量级锁（悲观锁）</p>
-<h5 id="乐观锁与悲观锁"><a href="#乐观锁与悲观锁" class="headerlink" title="乐观锁与悲观锁"></a>乐观锁与悲观锁</h5><ul>
-<li><strong>悲观锁</strong>：总是假设最坏的情况，每次拿数据都认为别的线程会修改数据，所以要加锁，别的线程只能等待，直到当前线程释放锁才能拿到锁</li>
-<li><strong>乐观锁</strong>：总是假设最好的情况，每次拿数据都认为别的线程不会修改数据，所以不会加锁，但是更新的时候，会判断在此期间有没有线程修改过</li>
-</ul>
-<h5 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h5><p>Compare and Swap比较和交换</p>
-<ul>
-<li><p>CAS 必须是原子操作 </p>
-</li>
-<li><p>现代CPU都支持CAS </p>
-</li>
-<li>CAS属于乐观锁</li>
-</ul>
-<h5 id="AbstractQueuedSynchronizer官方实现Lock模板"><a href="#AbstractQueuedSynchronizer官方实现Lock模板" class="headerlink" title="AbstractQueuedSynchronizer官方实现Lock模板"></a>AbstractQueuedSynchronizer官方实现Lock模板</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mutex</span> <span class="keyword">implements</span> <span class="title">Lock</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Our internal helper class</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sync</span> <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Acquires the lock if state is zero</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> acquires)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">assert</span> acquires == <span class="number">1</span>; <span class="comment">// Otherwise unused</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">                setExclusiveOwnerThread(Thread.currentThread());</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Releases the lock by setting state to zero</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> releases)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">assert</span> releases == <span class="number">1</span>; <span class="comment">// Otherwise unused</span></span><br><span class="line">            <span class="keyword">if</span> (!isHeldExclusively())</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalMonitorStateException();</span><br><span class="line">            setExclusiveOwnerThread(<span class="keyword">null</span>);</span><br><span class="line">            setState(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Reports whether in locked state</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getState() != <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHeldExclusively</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">// a data race, but safe due to out-of-thin-air guarantees</span></span><br><span class="line">            <span class="keyword">return</span> getExclusiveOwnerThread() == Thread.currentThread();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Provides a Condition</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ConditionObject();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Deserializes properly</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">            s.defaultReadObject();</span><br><span class="line">            setState(<span class="number">0</span>); <span class="comment">// reset to unlocked state</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The sync object does all the hard work. We just forward to it.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Sync sync = <span class="keyword">new</span> Sync();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.acquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.release(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.newCondition();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLocked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.isLocked();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHeldByCurrentThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.isHeldExclusively();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasQueuedThreads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.hasQueuedThreads();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lockInterruptibly</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        sync.acquireInterruptibly(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquireNanos(<span class="number">1</span>, unit.toNanos(timeout));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/74f18f35.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/71c32ee5.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/71c32ee5.html" class="post-title-link" itemprop="url">Web技术复习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-07-08 08:54:33 / 修改时间：10:34:56" itemprop="dateCreated datePublished" datetime="2020-07-08T08:54:33+08:00">2020-07-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="C-S架构与B-S架构"><a href="#C-S架构与B-S架构" class="headerlink" title="C/S架构与B/S架构"></a>C/S架构与B/S架构</h5><p>C/S架构：client/server</p>
-<ul>
-<li>socket、serversocket、awt/swing做一个客户端软件</li>
-<li>建好socket连接后，通过io流来交换，数据格式开发者自定义绑定</li>
-</ul>
-<p>B/S架构：browser/server</p>
-<ul>
-<li>浏览器也是一种客户端软件</li>
-<li>HTTP协议定义了浏览器和服务器通讯的基本规则之一</li>
-</ul>
-<p>浏览器和服务器之间的交互</p>
-<ul>
-<li>交互模式：请求-响应</li>
-<li>客户端先发出请求，服务器根据请求内容发送响应的内容，客户端根据响应内容进行显示</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/71c32ee5.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1206,20 +1146,20 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
