@@ -236,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-19 07:27:19" itemprop="dateModified" datetime="2020-08-19T07:27:19+08:00">2020-08-19</time>
+                <time title="修改时间：2020-08-19 09:24:35" itemprop="dateModified" datetime="2020-08-19T09:24:35+08:00">2020-08-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,32 +264,20 @@
 
       
           <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>docker下安装solr，以及使用中文分词器。</p>
-<h6 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker-compose --version</span></span><br></pre></td></tr></table></figure>
-<h6 id="安装Solr镜像"><a href="#安装Solr镜像" class="headerlink" title="安装Solr镜像"></a>安装Solr镜像</h6><p>从 docker 的仓库中拉取 solr 镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull solr[:版本]  <span class="comment"># 不填写版本号时，默认为最新版本</span></span></span><br><span class="line">Using default tag: latest</span><br></pre></td></tr></table></figure>
-<p>检查镜像是否安装成功</p>
-<p><code>$ docker images</code>显示已安装的的所有镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">solr                latest              8e621ac5ebe9        17 hours ago        514MB</span><br></pre></td></tr></table></figure>
-<h6 id="启动Solr容器"><a href="#启动Solr容器" class="headerlink" title="启动Solr容器"></a>启动Solr容器</h6><p><code>docker run --name solr --restart=always -d -p 8983:8983 -t solr[:版本号]</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run --name solr --restart=always -d -p 8983:8983 -t solr</span></span><br><span class="line">7be597b3079b626a0732c8005535bc8b96504fcc18761699ef263c80c68be325</span><br></pre></td></tr></table></figure>
-<h6 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h6><p><a href="http://虚拟机IP地址:8983/solr/#/" target="_blank" rel="noopener">http://虚拟机IP地址:8983/solr/#/</a></p>
-<blockquote>
-<p><a href="http://192.168.56.10:8983/solr/#/" target="_blank" rel="noopener">http://192.168.56.10:8983/solr/#/</a></p>
-</blockquote>
-<h6 id="新建solr-core"><a href="#新建solr-core" class="headerlink" title="新建solr core"></a>新建solr core</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker <span class="built_in">exec</span> -it --user=solr solr bin/solr create_core -c  my-core</span></span><br></pre></td></tr></table></figure>
-<h6 id="配置中文解析器"><a href="#配置中文解析器" class="headerlink" title="配置中文解析器"></a>配置中文解析器</h6><ol>
-<li><p>将中文解析器相关 jar 包拷贝到容器内</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker cp ik-analyzer-8.3.0.jar solr:/opt/solr-8.6.1/server/solr-webapp/webapp/WEB-INF/lib</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将中文解析器相关文件拷贝到容器内</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入 solr 容器内部检查文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker <span class="built_in">exec</span> -it --user=root solr /bin/bash</span></span><br></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
-
+<p>通过 xftp 工具将文件从宿主机拷贝到虚拟机上。</p>
+<p>中文分词器相关资料</p>
+<ul>
+<li>中文分词器github地址 <a href="https://github.com/magese/ik-analyzer-solr/" target="_blank" rel="noopener">https://github.com/magese/ik-analyzer-solr/</a></li>
+<li>jar 包 <a href="https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar" target="_blank" rel="noopener">https://search.maven.org/remotecontent?filepath=com/github/magese/ik-analyzer/8.3.0/ik-analyzer-8.3.0.jar</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/8e2b9641.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
