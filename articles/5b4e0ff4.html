@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="线性表线性表及其结构定义线性表是n个类型相同数据元素的有限序列  相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位 序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系 ai-1是ai的直接前驱，则ai+1是ai的直接后续 唯一没有直接前驱的元素a0一端称为表头 唯一没有直接后续的元素an-1一端称为表尾 除表头和表尾元素外，任何一个元素都有且仅有">
+  <meta name="description" content="线性表及其结构定义线性表是n个类型相同数据元素的有限序列  相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位 序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系 ai-1是ai的直接前驱，则ai+1是ai的直接后续 唯一没有直接前驱的元素a0一端称为表头 唯一没有直接后续的元素an-1一端称为表尾 除表头和表尾元素外，任何一个元素都有且仅有一个直">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java数据结构与算法--线性表">
 <meta property="og:url" content="https://lao-biao.github.io/articles/5b4e0ff4.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="线性表线性表及其结构定义线性表是n个类型相同数据元素的有限序列  相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位 序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系 ai-1是ai的直接前驱，则ai+1是ai的直接后续 唯一没有直接前驱的元素a0一端称为表头 唯一没有直接后续的元素an-1一端称为表尾 除表头和表尾元素外，任何一个元素都有且仅有">
+<meta property="og:description" content="线性表及其结构定义线性表是n个类型相同数据元素的有限序列  相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位 序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系 ai-1是ai的直接前驱，则ai+1是ai的直接后续 唯一没有直接前驱的元素a0一端称为表头 唯一没有直接后续的元素an-1一端称为表尾 除表头和表尾元素外，任何一个元素都有且仅有一个直">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-10T05:10:08.000Z">
-<meta property="article:modified_time" content="2020-07-06T03:34:41.605Z">
+<meta property="article:modified_time" content="2020-08-24T01:24:26.768Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="线性表">
 <meta name="twitter:card" content="summary">
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -216,7 +216,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:34:41" itemprop="dateModified" datetime="2020-07-06T11:34:41+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:24:26" itemprop="dateModified" datetime="2020-08-24T09:24:26+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,7 +279,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><h4 id="线性表及其结构"><a href="#线性表及其结构" class="headerlink" title="线性表及其结构"></a>线性表及其结构</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>线性表是n个类型<em>相同数据</em>元素的<em>有限序列</em></p>
+        <h4 id="线性表及其结构"><a href="#线性表及其结构" class="headerlink" title="线性表及其结构"></a>线性表及其结构</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>线性表是n个类型<em>相同数据</em>元素的<em>有限序列</em></p>
 <ul>
 <li>相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位</li>
 <li>序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系<ul>
@@ -475,21 +475,21 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表"><span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表及其结构"><span class="nav-text">线性表及其结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性表的存储结构"><span class="nav-text">线性表的存储结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表操作"><span class="nav-text">线性表操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序表实现—模拟ArrayList"><span class="nav-text">顺序表实现—模拟ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单链表实现—模拟LinkedList"><span class="nav-text">单链表实现—模拟LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他链表"><span class="nav-text">其他链表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#双向链表"><span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环链表"><span class="nav-text">循环链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中线性表"><span class="nav-text">Java中线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Vector-顺序表"><span class="nav-text">Vector 顺序表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ArrayList顺序表"><span class="nav-text">ArrayList顺序表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LinkedList双向链表"><span class="nav-text">LinkedList双向链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关代码下载"><span class="nav-text">相关代码下载</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表及其结构"><span class="nav-text">线性表及其结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性表的存储结构"><span class="nav-text">线性表的存储结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表操作"><span class="nav-text">线性表操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序表实现—模拟ArrayList"><span class="nav-text">顺序表实现—模拟ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单链表实现—模拟LinkedList"><span class="nav-text">单链表实现—模拟LinkedList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他链表"><span class="nav-text">其他链表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#双向链表"><span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环链表"><span class="nav-text">循环链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中线性表"><span class="nav-text">Java中线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Vector-顺序表"><span class="nav-text">Vector 顺序表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ArrayList顺序表"><span class="nav-text">ArrayList顺序表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LinkedList双向链表"><span class="nav-text">LinkedList双向链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关代码下载"><span class="nav-text">相关代码下载</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">周超</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">这个网站用于记录编程学习的历程，以及笔记和心得。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -556,15 +556,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>

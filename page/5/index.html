@@ -21,12 +21,27 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="周超的博客">
 <meta property="og:url" content="https://lao-biao.github.io/page/5/index.html">
 <meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="周超">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="gitee">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://lao-biao.github.io/page/5/">
@@ -138,7 +153,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -205,12 +220,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/868afa36.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/868afa36.html" class="post-title-link" itemprop="url">Java语法糖--try-with-resource和ResourceBundle文件加载</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-20 12:35:57" itemprop="dateCreated datePublished" datetime="2020-04-20T12:35:57+08:00">2020-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:37:55" itemprop="dateModified" datetime="2020-07-06T11:37:55+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E8%AF%AD%E6%B3%95%E7%B3%96/" itemprop="url" rel="index"><span itemprop="name">语法糖</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="try-with-resource"><a href="#try-with-resource" class="headerlink" title="try-with-resource"></a>try-with-resource</h5><h6 id="try-with-resource与try-catch-finally"><a href="#try-with-resource与try-catch-finally" class="headerlink" title="try-with-resource与try-catch-finally"></a>try-with-resource与try-catch-finally</h6><p>程序打开外部资源，在使用后需要正确关闭</p>
+<p>考虑到异常因素，Java提供<code>try-catch-finally</code>进行保证</p>
+<p>JDK7提供<code>try-with-resource</code>，比<code>try-catch-finally</code>更简便</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//try-catch-finally结构</span></span><br><span class="line">FileInputStream fis = ...;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">    <span class="comment">//处理异常</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fis!=<span class="keyword">null</span>)</span><br><span class="line">        fis.close();	<span class="comment">//关流</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//try-with-resource结构</span></span><br><span class="line"><span class="keyword">try</span>(FileInputStream fis = ...)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">    <span class="comment">//处理异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JDK7提供<code>try-with-resource</code>要求<code>resource</code>定义在try中，若外部已经定义需要一个本地变量</p>
+<p>JDK9不再要求定义临时变量，可以直接使用外部资源变量</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/868afa36.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/4ee571a7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -236,7 +345,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:38:12" itemprop="dateModified" datetime="2020-07-06T11:38:12+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:18:20" itemprop="dateModified" datetime="2020-08-24T09:18:20+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,47 +377,15 @@
 
       
           <h6 id="接口的默认方法"><a href="#接口的默认方法" class="headerlink" title="接口的默认方法"></a>接口的默认方法</h6><p>Java最初的设计中，接口的方法都是没有实现的、公开的</p>
-<p>Java 8推出接口的默认方法/静态方法(都带有实现的)，为Lambda表达式提供支持</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Java 8新特性</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">NewAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am moving."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>以<code>default</code>关键字标注，其他的定义和普通函数一样</li>
-<li>规则：<ul>
-<li>默认方法<font color=red>不能重写</font>Object中的方法(<code>equals()</code> <code>toString()</code> <code>hashcode()</code>)</li>
-<li>实现类可以<font color=red>继承/重写</font>父接口的默认方法</li>
-<li>接口可以<font color=red>继承/重写</font>父接口的默认方法</li>
-<li>当父类和父接口都有（同名同参数）默认方法，<font color=red>子类继承父类的默认方法</font>，兼容JDK及其以前的代码</li>
-<li>子类实现了2个接口（均有同名同参数的默认方法），<font color=red>编译失败</font>，必须在子类中重写这个<code>default</code>方法</li>
-</ul>
-</li>
-</ul>
-<h6 id="接口的静态方法"><a href="#接口的静态方法" class="headerlink" title="接口的静态方法"></a>接口的静态方法</h6><p>Java 8接口的静态方法（带实现的）</p>
-<ul>
-<li>该静态方法属于本接口的，不属于子类/子接口</li>
-<li>子类（子接口）没有继承该静态方法，只能通过所在的接口名来调用</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StaticAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"static animal move()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StaticLandAnimal</span> <span class="keyword">extends</span> <span class="title">StaticAnimal</span> </span>&#123;</span><br><span class="line">    <span class="comment">//不能继承StaticAnimal的move()方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStatic</span> <span class="keyword">implements</span> <span class="title">StaticLandAnimal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        StaticAnimal.move();        </span><br><span class="line">        StaticLandAnimal.move();    <span class="comment">//编译器报错</span></span><br><span class="line">        <span class="keyword">new</span> TestStatic().move();    <span class="comment">//编译器报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="接口的私有方法"><a href="#接口的私有方法" class="headerlink" title="接口的私有方法"></a>接口的私有方法</h6><p>Java 9接口的私有方法（带实现的）</p>
-<ul>
-<li>解决多个默认方法/静态方法内容重复问题</li>
-<li>私有方法属于本接口，只在本接口内使用，不属于子类/子接口</li>
-<li>子类（子接口）没有继承该私有方法，也无法调用</li>
-<li>静态私有方法可以被静态/默认方法调用，非静态私有方法被默认方法调用</li>
-</ul>
-<h6 id="接口与抽象类比较"><a href="#接口与抽象类比较" class="headerlink" title="接口与抽象类比较"></a>接口与抽象类比较</h6><p>相同点（—Java 12）</p>
-<ul>
-<li>都是抽象的，都不能被实例化</li>
-<li>都可以有实现方法</li>
-<li>都可以不需要继承者实现所有的方法</li>
-</ul>
-<p>不同点</p>
-<ul>
-<li>抽象类最多只能继承一个，接口可以实现多个</li>
-<li>接口的变量默认是 <code>public static final</code>且必须有初值，子类不能修改，而抽象类的变量默认是<code>default</code>，子类可以继承修改</li>
-<li>接口没有构造函数，抽象类有构造函数</li>
-<li>接口没有main函数，抽象类可以有main函数</li>
-<li>接口有<code>public</code> <code>default</code> <code>private</code>的方法，抽象类有 <code>public</code> <code>default</code> <code>protected</code> <code>private</code>的方法</li>
-</ul>
-
+<p>Java 8推出接口的默认方法/静态方法(都带有实现的)，为Lambda表达式提供支持<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/4ee571a7.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -332,7 +409,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -434,7 +511,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -460,7 +537,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:38:06" itemprop="dateModified" datetime="2020-07-06T11:38:06+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:19:03" itemprop="dateModified" datetime="2020-08-24T09:19:03+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -497,25 +574,14 @@
 <li>数据类型后加… 如 int… /double… /String…</li>
 <li>可变参数本质是一个数组，可以是0个也可以是n个同类型参数</li>
 </ul>
-<h6 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h6><ul>
-<li>一个方法只能有一个不定项参数，且必须位于参数列表的最后</li>
-<li>重载的优先级规则1：<strong>固定参数的方法，比可变参数优先级更高</strong></li>
-<li>重载的优先级规则2：<strong>调用语句，同时与两个带可变参数的方法匹配，会报错</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 固定参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (message == <span class="keyword">null</span> || message.length == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"无参"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str, String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">print();    <span class="comment">//无参，调用print(String... message)</span></span><br><span class="line">print(<span class="string">"Hello world!"</span>); <span class="comment">//一个参数，调用固定参数方法print(String message)</span></span><br><span class="line">print(<span class="string">"Hello"</span>, <span class="string">"world"</span>);    <span class="comment">//编译器报错：Ambiguous method call. Both print(String... message) and (String str, String... message) in IndefiniteParameter match</span></span><br></pre></td></tr></table></figure>
-<h5 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h5><h6 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h6><ul>
-<li><code>import</code>导入程序所需的类</li>
-<li><code>import static</code>导入一个类的静态方法和静态变量（JDK5开始引入）</li>
-</ul>
-<p><code>import static java.lang.Math.pow;</code></p>
-<p><code>import static java.lang.System.out;</code></p>
-<h6 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h6><p><code>import static</code>导入一个类的静态方法和静态变量：</p>
-<ul>
-<li>少使用 * 通配符，最好具体到静态变量或方法</li>
-<li>静态方法名具有明确特征，如有重名，需要补充类名</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/689cf977.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -539,7 +605,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -565,7 +631,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:37:48" itemprop="dateModified" datetime="2020-07-06T11:37:48+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:21:04" itemprop="dateModified" datetime="2020-08-24T09:21:04+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -609,77 +675,14 @@
 <li><code>for-each</code>不能同时遍历2个或以上的集合</li>
 <li><code>for</code>和<code>for-each</code>性能接近</li>
 </ul>
-<h6 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h6><ul>
-<li>枚举变量：变量的取值只在一个有限的集合内</li>
-<li>Java5推出<code>enum</code>类型<ul>
-<li><code>enum</code>关键字声明枚举类，且都是<code>Enum</code>的子类（不需要加<code>extends</code>）</li>
-<li><code>enum</code>内部有多个值，就有多少个实例对象</li>
-<li>不能直接<code>new</code>枚举类对象</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> State &#123;</span><br><span class="line">    SUCCESS, LOADING, NETWORK_ERROR, EMPTY, NONE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Java的enum类型<ul>
-<li>除了枚举的内容，还可以添加属性/构造函数/方法</li>
-<li>处构造函数只能是package-private(default)或者private，内部调用</li>
-</ul>
-</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">关键字</th>
-<th style="text-align:center">同一个类</th>
-<th style="text-align:center">同一个包</th>
-<th style="text-align:center">不同包的子类</th>
-<th style="text-align:center">不同包的非子类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">private</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">default</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">protected</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td style="text-align:center">public</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-<td style="text-align:center">√</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Fruit &#123;</span><br><span class="line">    APPLE(<span class="number">10</span>), ORANGE(<span class="number">8</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;	<span class="comment">//属性</span></span><br><span class="line"></span><br><span class="line">    Fruit(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        <span class="keyword">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Java的<code>enum</code>类型：所有的<code>enum</code>类型属于<code>Enum</code>的子类，也继承了相应的方法</p>
-<ul>
-<li><code>ordinal()</code> 返回枚举值所在的索引位置，从0开始</li>
-<li><code>compareTo()</code> 比较两个枚举值的索引位置大小</li>
-<li><code>toString()</code> 返回枚举值的字符串表示</li>
-<li><code>Enum.valueOf()</code> 将字符串初始化为枚举对象</li>
-<li><code>values()</code> 返回所有的枚举值</li>
-</ul>
-<p>枚举类型限定取值集合，减少实例对象</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/6d197383.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -703,7 +706,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -780,7 +783,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -862,7 +865,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -939,7 +942,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1023,7 +1026,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1049,7 +1052,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:34:17" itemprop="dateModified" datetime="2020-07-06T11:34:17+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:23:38" itemprop="dateModified" datetime="2020-08-24T09:23:38+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1080,7 +1083,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><h6 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h6><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列</p>
+          <h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><h6 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h6><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列</p>
 <h6 id="内部排序和外部排序"><a href="#内部排序和外部排序" class="headerlink" title="内部排序和外部排序"></a>内部排序和外部排序</h6><p>内部排序：整个排序过程在内存储器中进行</p>
 <p>外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成</p>
 <h6 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a>稳定排序和不稳定排序</h6><p>如果在待排序的序列中存在多个具有相同关键字的元素</p>
@@ -1095,98 +1098,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/765a6dde.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/e1d5c8a7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/e1d5c8a7.html" class="post-title-link" itemprop="url">java数据结构与算法--查找</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-12 16:59:53" itemprop="dateCreated datePublished" datetime="2020-04-12T16:59:53+08:00">2020-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-19 07:13:23" itemprop="dateModified" datetime="2020-08-19T07:13:23+08:00">2020-08-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h4 id="线性表查找"><a href="#线性表查找" class="headerlink" title="线性表查找"></a>线性表查找</h4><h5 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h5><p>存储结构：顺序表或链表</p>
-<p>逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null</p>
-<p>在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)=O(n)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 顺序查找</span></span><br><span class="line"><span class="comment">* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 所求的值存在，返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">* 所求的值不存在，返回-1</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 时间复杂度：T(n)=O(n)</span></span><br><span class="line"><span class="comment">* 空间复杂度：S(n)=O(1)</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> array 查找表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> value 所求的值</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">orderSearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (array[i] == value) &#123;</span><br><span class="line">            index = i;</span><br><span class="line">            <span class="keyword">break</span>;  <span class="comment">//去除break则返回最后一个匹配到的值的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/e1d5c8a7.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1268,14 +1179,14 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">周超</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">这个网站用于记录编程学习的历程，以及笔记和心得。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1342,15 +1253,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>

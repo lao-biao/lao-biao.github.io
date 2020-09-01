@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="查找线性表查找顺序查找存储结构：顺序表或链表 逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null 在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)&#x3D;O(n) 1234567891011121314151617181920212223&#x2F;*** 顺序查找* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值** 所求的值存在，返回第一个匹配到的索">
+  <meta name="description" content="线性表查找顺序查找存储结构：顺序表或链表 逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null 在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)&#x3D;O(n) 1234567891011121314151617181920212223&#x2F;*** 顺序查找* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值** 所求的值存在，返回第一个匹配到的索引值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java数据结构与算法--查找">
 <meta property="og:url" content="https://lao-biao.github.io/articles/e1d5c8a7.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="查找线性表查找顺序查找存储结构：顺序表或链表 逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null 在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)&#x3D;O(n) 1234567891011121314151617181920212223&#x2F;*** 顺序查找* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值** 所求的值存在，返回第一个匹配到的索">
+<meta property="og:description" content="线性表查找顺序查找存储结构：顺序表或链表 逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null 在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)&#x3D;O(n) 1234567891011121314151617181920212223&#x2F;*** 顺序查找* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值** 所求的值存在，返回第一个匹配到的索引值">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/Btree/B-%E6%A0%91.jpg">
 <meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/Btree/B+%E6%A0%91.jpg">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/Hashtable/hashtable%E5%88%9D%E5%A7%8B%E6%93%8D%E4%BD%9C%E7%8A%B6%E6%80%81.jpg">
 <meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/Hashtable/hashtable%E6%9C%80%E7%BB%88%E7%8A%B6%E6%80%81.jpg">
 <meta property="article:published_time" content="2020-04-12T08:59:53.000Z">
-<meta property="article:modified_time" content="2020-08-18T23:13:23.270Z">
+<meta property="article:modified_time" content="2020-08-24T01:22:54.367Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="查找">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -223,7 +223,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,7 +248,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-19 07:13:23" itemprop="dateModified" datetime="2020-08-19T07:13:23+08:00">2020-08-19</time>
+                <time title="修改时间：2020-08-24 09:22:54" itemprop="dateModified" datetime="2020-08-24T09:22:54+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,7 +286,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h4 id="线性表查找"><a href="#线性表查找" class="headerlink" title="线性表查找"></a>线性表查找</h4><h5 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h5><p>存储结构：顺序表或链表</p>
+        <h4 id="线性表查找"><a href="#线性表查找" class="headerlink" title="线性表查找"></a>线性表查找</h4><h5 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h5><p>存储结构：顺序表或链表</p>
 <p>逐个比较查询，如果找到，返回数据或索引，如果最后没找到就返回null</p>
 <p>在各个结点查找概率相同情况下，平均查询长度为表的一半长度，所以时间复杂度T(n)=O(n)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 顺序查找</span></span><br><span class="line"><span class="comment">* 功能：在数组中查找指定的值，返回返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 所求的值存在，返回第一个匹配到的索引值</span></span><br><span class="line"><span class="comment">* 所求的值不存在，返回-1</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 时间复杂度：T(n)=O(n)</span></span><br><span class="line"><span class="comment">* 空间复杂度：S(n)=O(1)</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> array 查找表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> value 所求的值</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">orderSearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (array[i] == value) &#123;</span><br><span class="line">            index = i;</span><br><span class="line">            <span class="keyword">break</span>;  <span class="comment">//去除break则返回最后一个匹配到的值的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -526,21 +526,21 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表查找"><span class="nav-text">线性表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序查找"><span class="nav-text">顺序查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#折半查找-二分查找"><span class="nav-text">折半查找(二分查找)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#递归实现折半查找"><span class="nav-text">递归实现折半查找</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#非递归实现折半查找"><span class="nav-text">非递归实现折半查找</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找树"><span class="nav-text">查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉查找-搜索-排序树-BST-binary-search-sort-tree"><span class="nav-text">二叉查找&#x2F;搜索&#x2F;排序树 BST (binary search&#x2F;sort tree)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#平衡二叉树-Self-balancing-binary-search-tree"><span class="nav-text">平衡二叉树(Self-balancing binary search tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡因子-平衡度"><span class="nav-text">平衡因子(平衡度)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡二叉树"><span class="nav-text">平衡二叉树</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现方法"><span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡树"><span class="nav-text">平衡树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希表查找"><span class="nav-text">哈希表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表"><span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表的结构和特点"><span class="nav-text">哈希表的结构和特点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表添加数据"><span class="nav-text">哈希表添加数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表查找、删除、更新"><span class="nav-text">哈希表查找、删除、更新</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hashCode与equals"><span class="nav-text">hashCode与equals</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#各种类型数据的哈希码的获取"><span class="nav-text">各种类型数据的哈希码的获取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#减少冲突"><span class="nav-text">减少冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中的查找树和哈希表"><span class="nav-text">Java中的查找树和哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#TreeSet和TreeMap"><span class="nav-text">TreeSet和TreeMap</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#HashSet-HashMap-HashTable-过时"><span class="nav-text">HashSet HashMap HashTable(过时)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关代码下载"><span class="nav-text">相关代码下载</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表查找"><span class="nav-text">线性表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序查找"><span class="nav-text">顺序查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#折半查找-二分查找"><span class="nav-text">折半查找(二分查找)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#递归实现折半查找"><span class="nav-text">递归实现折半查找</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#非递归实现折半查找"><span class="nav-text">非递归实现折半查找</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找树"><span class="nav-text">查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二叉查找-搜索-排序树-BST-binary-search-sort-tree"><span class="nav-text">二叉查找&#x2F;搜索&#x2F;排序树 BST (binary search&#x2F;sort tree)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#平衡二叉树-Self-balancing-binary-search-tree"><span class="nav-text">平衡二叉树(Self-balancing binary search tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡因子-平衡度"><span class="nav-text">平衡因子(平衡度)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡二叉树"><span class="nav-text">平衡二叉树</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现方法"><span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡树"><span class="nav-text">平衡树</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希表查找"><span class="nav-text">哈希表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表"><span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表的结构和特点"><span class="nav-text">哈希表的结构和特点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表添加数据"><span class="nav-text">哈希表添加数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希表查找、删除、更新"><span class="nav-text">哈希表查找、删除、更新</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hashCode与equals"><span class="nav-text">hashCode与equals</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#各种类型数据的哈希码的获取"><span class="nav-text">各种类型数据的哈希码的获取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#减少冲突"><span class="nav-text">减少冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中的查找树和哈希表"><span class="nav-text">Java中的查找树和哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#TreeSet和TreeMap"><span class="nav-text">TreeSet和TreeMap</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#HashSet-HashMap-HashTable-过时"><span class="nav-text">HashSet HashMap HashTable(过时)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关代码下载"><span class="nav-text">相关代码下载</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">周超</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">这个网站用于记录编程学习的历程，以及笔记和心得。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -607,15 +607,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>

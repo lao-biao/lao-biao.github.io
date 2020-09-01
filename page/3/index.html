@@ -21,12 +21,27 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="周超的博客">
 <meta property="og:url" content="https://lao-biao.github.io/page/3/index.html">
 <meta property="og:site_name" content="周超的博客">
+<meta property="og:description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="周超">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="gitee">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://lao-biao.github.io/page/3/">
@@ -138,7 +153,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -205,12 +220,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/e545fed0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/e545fed0.html" class="post-title-link" itemprop="url">SpringMVC笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-28 21:29:57" itemprop="dateCreated datePublished" datetime="2020-06-28T21:29:57+08:00">2020-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-06 11:24:35" itemprop="dateModified" datetime="2020-07-06T11:24:35+08:00">2020-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h4><h5 id="SpringMVC概述"><a href="#SpringMVC概述" class="headerlink" title="SpringMVC概述"></a>SpringMVC概述</h5><p><strong>SpringMVC</strong>是基于Java实现<strong>MVC</strong>设计模型的请求驱动类型的轻量级Web框架，属于<strong>SpringFrameWork</strong>的后续产品，已经融合在<strong>SpringWebFlow</strong>中。</p>
+<p>SpringMVC通过一套注解，让一个简单的Java类成为处理请求的控制器，而无须实现任何接口，同时支持<strong>RESTful</strong>编程风格的请求。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/e545fed0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/70b6ad8d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -236,7 +337,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:24:16" itemprop="dateModified" datetime="2020-07-06T11:24:16+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:12:27" itemprop="dateModified" datetime="2020-08-24T09:12:27+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,7 +379,7 @@
 <li>降低API开发难度</li>
 </ol>
 <p>5、Spring5</p>
-<p><img src="https://gitee.com/zyy92/Pictures/raw/master/Spring/SpringFrame.png" alt="SpringFramework"></p>
+<p><img src="https://gitee.com/lao-biao/Pictures/raw/master/Spring/SpringFrame.png" alt="SpringFramework"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/70b6ad8d.html#more" rel="contents">
@@ -310,7 +411,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -412,7 +513,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -516,7 +617,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -620,7 +721,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -646,7 +747,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:37:38" itemprop="dateModified" datetime="2020-07-06T11:37:38+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-24 09:14:37" itemprop="dateModified" datetime="2020-08-24T09:14:37+08:00">2020-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -673,14 +774,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Java混合编程"><a href="#Java混合编程" class="headerlink" title="Java混合编程"></a>Java混合编程</h4><h6 id="Java调用Java程序"><a href="#Java调用Java程序" class="headerlink" title="Java调用Java程序"></a>Java调用Java程序</h6><p>RMI</p>
+          <h6 id="Java调用Java程序"><a href="#Java调用Java程序" class="headerlink" title="Java调用Java程序"></a>Java调用Java程序</h6><p>RMI</p>
 <h6 id="Java调用C程序"><a href="#Java调用C程序" class="headerlink" title="Java调用C程序"></a>Java调用C程序</h6><p>JNI Java Native Interface</p>
-<h6 id="Java调用JavaScript程序"><a href="#Java调用JavaScript程序" class="headerlink" title="Java调用JavaScript程序"></a>Java调用JavaScript程序</h6><p>脚本引擎 Script Engine</p>
-<p>JDK8：Nashorn</p>
-<p>JDK6/7：Rhino</p>
+<h6 id="Java调用JavaScript程序"><a href="#Java调用JavaScript程序" class="headerlink" title="Java调用JavaScript程序"></a>Java调用JavaScript程序</h6><p>脚本引擎 Script Engine<br>JDK8：Nashorn<br>JDK6/7：Rhino</p>
 <h6 id="Java调用Python程序"><a href="#Java调用Python程序" class="headerlink" title="Java调用Python程序"></a>Java调用Python程序</h6><p>Jython（JPython）</p>
-<p>关键类</p>
-<p>PythonInterpreter</p>
+<p>关键类 PythonInterpreter</p>
 <ul>
 <li>exec 执行语句</li>
 <li>set 设置变量值</li>
@@ -689,8 +787,7 @@
 </ul>
 <p>PyObject<br>PyFunction</p>
 <h6 id="Java调用Web-Service"><a href="#Java调用Web-Service" class="headerlink" title="Java调用Web Service"></a>Java调用Web Service</h6><p>wsimport</p>
-<h6 id="Java调用命令行"><a href="#Java调用命令行" class="headerlink" title="Java调用命令行"></a>Java调用命令行</h6><p>Runtime类</p>
-<p>Process类</p>
+<h6 id="Java调用命令行"><a href="#Java调用命令行" class="headerlink" title="Java调用命令行"></a>Java调用命令行</h6><p>Runtime类<br>Process类</p>
 
       
     </div>
@@ -715,7 +812,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -821,7 +918,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -887,7 +984,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -992,7 +1089,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="这个网站用于记录编程学习的历程，以及笔记和心得。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1052,103 +1149,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/6cd30686.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/8d630654.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/8d630654.html" class="post-title-link" itemprop="url">LeetCode--#1095山脉数组中查找目标值</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-29 20:17:43" itemprop="dateCreated datePublished" datetime="2020-04-29T20:17:43+08:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-30 14:16:34" itemprop="dateModified" datetime="2020-07-30T14:16:34+08:00">2020-07-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="山脉数组中查找目标值"><a href="#山脉数组中查找目标值" class="headerlink" title="山脉数组中查找目标值"></a>山脉数组中查找目标值</h6><blockquote>
-<p>给你一个 山脉数组 <code>mountainArr</code>，请你返回能够使得 <code>mountainArr.get(index)</code> 等于 target 最小 的下标 index 值。</p>
-<p>如果不存在这样的下标 index，就请返回 -1。</p>
-<p>何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：</p>
-<p>首先，A.length &gt;= 3</p>
-<p>其次，在 0 &lt; i &lt; A.length - 1 条件下，存在 i 使得：</p>
-<p>A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i]<br>A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]</p>
-<p>你将 不能直接访问该山脉数组，必须通过 <code>MountainArray</code> 接口来获取数据：</p>
-<p><code>MountainArray.get(k)</code> - 会返回数组中索引为k 的元素（下标从 0 开始）<br><code>MountainArray.length()</code> - 会返回该数组的长度</p>
-<p>注意：<br>对 <code>MountainArray.get</code> 发起超过 100 次调用的提交将被视为错误答案。</p>
-<p>示例 1：</p>
-<p>输入：array = [1,2,3,4,5,3,1], target = 3<br>输出：2<br>解释：3 在数组中出现了两次，下标分别为 2 和 5，我们返回最小的下标 2。</p>
-<p>示例 2：</p>
-<p>输入：array = [0,1,2,4,2,1], target = 3<br>输出：-1<br>解释：3 在数组中没有出现，返回 -1。</p>
-<p>提示：<br>3 &lt;= <code>mountain_arr.length()</code> &lt;= 10000<br>0 &lt;= target &lt;= $10^9$<br>0 &lt;= <code>mountain_arr.get(index)</code> &lt;= $10^9$</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-in-mountain-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-in-mountain-array</a></p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/8d630654.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1230,14 +1230,14 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">周超</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">这个网站用于记录编程学习的历程，以及笔记和心得。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1304,15 +1304,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
