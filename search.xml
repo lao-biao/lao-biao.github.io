@@ -8690,4 +8690,130 @@ next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较
         <tag>es6</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringCloud笔记</title>
+    <url>/articles/67c8035e.html</url>
+    <content><![CDATA[<h5 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h5><p>Spring Cloud为开发人员提供了工具来快速构建分布式系统中的一些常见模式(例如配置管理、服务发现、断路器、智能路由、微代理、控制总线、一次性令牌、全局锁、领导选举、分布式会话、集群状态)。分布式系统的协调产生了模板模式，使用Spring Cloud开发人员可以快速建立实现这些模式的服务和应用程序。它们在任何分布式环境中都能很好地工作，包括开发者自己的笔记本电脑、裸机数据中心以及云计算等托管平台。</p>
+<p><a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">Spring Cloud 官网</a><br><a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank" rel="noopener">Spring Cloud Alibaba</a></p>
+<a id="more"></a>
+<h6 id="Spring-Cloud的几大痛点"><a href="#Spring-Cloud的几大痛点" class="headerlink" title="Spring Cloud的几大痛点"></a>Spring Cloud的几大痛点</h6><ul>
+<li>Spring Cloud 部分组件停止维护和更新，给开发带来不便</li>
+<li>Spring Cloud 部分环境搭建复杂，没有完善的可视化界面，需要大量的二次开发和定制</li>
+<li>Spring Cloud 配置复杂，难以上手，部分配置差别难以区分和合理应用</li>
+</ul>
+<h6 id="Spring-Cloud-Alibaba的优势"><a href="#Spring-Cloud-Alibaba的优势" class="headerlink" title="Spring Cloud Alibaba的优势"></a>Spring Cloud Alibaba的优势</h6><p>成套的产品搭配完善的可视化界面给开发运维带来极大的便利<br>搭建简单，学习曲线低。</p>
+<h6 id="结合Spring-Cloud-Alibaba最终的技术搭配方案"><a href="#结合Spring-Cloud-Alibaba最终的技术搭配方案" class="headerlink" title="结合Spring Cloud Alibaba最终的技术搭配方案"></a>结合Spring Cloud Alibaba最终的技术搭配方案</h6><p>Spring Cloud Alibaba </p>
+<ul>
+<li>Nacos<ul>
+<li>注册中心（服务发现/注册）</li>
+<li>配置中心（动态配置管理）</li>
+</ul>
+</li>
+<li>Sentinel：服务容错（限流、降级、熔断）</li>
+<li>Seata：原Fescar，即分布式事务解决方案</li>
+</ul>
+<p>Spring Cloud</p>
+<ul>
+<li>Ribbon：负载均衡</li>
+<li>Feign：声明式HTTP客户端（调用远程服务）</li>
+<li>Gateway：API网关（webflux编程模式）</li>
+<li>Sleuth：调用链监控</li>
+</ul>
+<h5 id="注册中心"><a href="#注册中心" class="headerlink" title="注册中心"></a>注册中心</h5><h6 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h6><ol>
+<li><p>导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--nacos服务的注册发现--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置nacos注册中心的地址</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.cloud.nacos.discovery.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>@EnableDiscoveryClient</code>注解开启服务注册与发现功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProviderApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ProviderApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RestController</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">EchoController</span> </span>&#123;</span><br><span class="line">        <span class="meta">@GetMapping</span>(value = <span class="string">"/echo/&#123;string&#125;"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">echo</span><span class="params">(@PathVariable String string)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> string;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h6><p>远程调用别的服务</p>
+<ol>
+<li>引入open-feign</li>
+<li>编写一个接口，告诉spring cloud这个接口需要调用远程服务<ol>
+<li>声明接口的每一个方法都是调用哪个远程服务的哪个方法</li>
+</ol>
+</li>
+<li>开启远程调用功能</li>
+</ol>
+<h5 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h5><h6 id="使用nacos作为配置中心统一管理配置"><a href="#使用nacos作为配置中心统一管理配置" class="headerlink" title="使用nacos作为配置中心统一管理配置"></a>使用nacos作为配置中心统一管理配置</h6><ol>
+<li><p>导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务的配置中心--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个bootstarp.properties文件</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-coupon</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要给配置中心默认添加一个数据集（Data Id）gulimall-coupon.properties，默认规则：应用名.properties</p>
+</li>
+<li><p>给 应用名.properties 添加任何配置</p>
+</li>
+<li><p>动态获取配置：</p>
+<ul>
+<li><p>@RefreshScope                        动态获取并刷新</p>
+</li>
+<li><p>@Value(${“配置项的key”});      获取到配置</p>
+<p>如果配置中心和当前应用的配置文件都配置了相同的项，优先使用配置中心的配置</p>
+</li>
+</ul>
+</li>
+</ol>
+<h6 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h6><ul>
+<li><p>命名空间：配置隔离<br>默认：public（保留空间），默认新增的的所有配置都在public空间</p>
+<ol>
+<li>开发dev、测试test、生产prod，利用命名空间进行环境隔离<font color='red'>注意：在bootstarp.properties上配置需要使用哪个命名空间的配置</font></li>
+<li>每一个微服务之间互相隔离配置，每一个微服务都创建自己的命名空间，只加载自己命名空间下的所有配置</li>
+</ol>
+</li>
+<li><p>配置集：所有配置的集合</p>
+</li>
+<li>配置集ID：类似文件名；DataId</li>
+<li>配置分组：<br>默认所有的配置集都属于：DEFAULT_GROUP</li>
+</ul>
+<p>每个微服务创建自己的命名空间，使用分组区分环境，dev，test，prod</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置应用名称</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-coupon</span></span><br><span class="line"><span class="comment"># 配置nacos的服务地址</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"><span class="comment"># 配置nacos命名空间</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.namespace</span>=<span class="string">a177d187-5110-464e-9844-fe4b09cc0ebb</span></span><br><span class="line"><span class="comment"># 设置配置分组</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.group</span>=<span class="string">dev</span></span><br></pre></td></tr></table></figure>
+<p>同时加载多个配置集</p>
+<ul>
+<li>微服务任何配置信息，任何配置文件都可以放在配置中心中</li>
+<li>只需要在<code>bootstrap.properties</code>说明加载配置中心中哪些配置文件即可</li>
+<li>@Value，@ConfiguartionProperties<br>SpringBoot从配置文件中获取值的任何方式，都能使用<br>配置中心有的优先使用，没有的配置使用微服务的配置</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置应用名称</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-coupon</span></span><br><span class="line"><span class="comment"># 配置nacos的服务地址</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"><span class="comment"># 配置nacos命名空间</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.namespace</span>=<span class="string">a177d187-5110-464e-9844-fe4b09cc0ebb</span></span><br><span class="line"><span class="comment"># 设置配置分组</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.group</span>=<span class="string">dev</span></span><br><span class="line"><span class="comment"># database source数据源</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].data-id</span>=<span class="string">datasource.yaml</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].group</span>=<span class="string">dev</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].refresh</span>=<span class="string">true</span></span><br><span class="line"><span class="comment"># mybatis</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[1].data-id</span>=<span class="string">mybatis.yaml</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[1].group</span>=<span class="string">dev</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[1].refresh</span>=<span class="string">true</span></span><br><span class="line"><span class="comment"># 其他</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[2].data-id</span>=<span class="string">other.yaml</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[2].group</span>=<span class="string">dev</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[2].refresh</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<h5 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h5><p>网关作为流量的入口，常用功能包括路由转发、权限校验、限流控制等，而Spring Cloud Gateway作为Spring Cloud官方推出的第二代网关框架，替代Zuul网关。</p>
+<p>官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.3.RELEASE/reference/html/#" target="_blank" rel="noopener">spring-cloud-gateway-2.2.3.RELEASE</a></p>
+<ul>
+<li>路由（Route）</li>
+<li>断言（Predicate）</li>
+<li>过滤器（Filter）</li>
+</ul>
+<h6 id="Gateway简单配置"><a href="#Gateway简单配置" class="headerlink" title="Gateway简单配置"></a>Gateway简单配置</h6><ol>
+<li>开启服务注册发现（配置nacos的注册中心地址）</li>
+<li>配置路由、断言和过滤器</li>
+</ol>
+<blockquote>
+<p>application.properties</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.cloud.nacos.discovery.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-gateway</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">88</span></span><br></pre></td></tr></table></figure>
+<p>bootstrap.properties</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimall-gateway</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.namespace</span>=<span class="string">7c44370b-0de0-400c-8650-9ef824a54818</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.group</span>=<span class="string">dev</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].data-id</span>=<span class="string">gulimall-gateway.yaml</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].group</span>=<span class="string">dev</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.extension-configs[0].refresh</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+<p>application.yaml</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="comment"># 测试gateway的导入</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">baidu_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Query=url,baidu</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">qq_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://www.qq.com</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Query=url,qq</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>当请求url中包含url=baidu时跳转到baidu.com，url=qq时跳转到qq.com</p>
+<h6 id="商城项目配置"><a href="#商城项目配置" class="headerlink" title="商城项目配置"></a>商城项目配置</h6><p>通过<code>GateWay</code>网关将以<code>api</code>请求分别转发到指定的服务。</p>
+<blockquote>
+<p>application.yaml</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">product_route</span></span><br><span class="line">          <span class="comment"># load balance 负载均衡</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://gulimall-product</span></span><br><span class="line">          <span class="comment"># 断言</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/api/product/**</span></span><br><span class="line">          <span class="attr">filters:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">RewritePath=/api/(?&lt;segment&gt;.*),/$\&#123;segment&#125;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">admin_route</span></span><br><span class="line">          <span class="comment"># load balance 负载均衡</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://renren-fast</span></span><br><span class="line">          <span class="comment"># 断言</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/api/**</span></span><br><span class="line">          <span class="attr">filters:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">RewritePath=/api/(?&lt;segment&gt;.*),/renren-fast/$\&#123;segment&#125;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<font color=red>注意：断言的 </font>`Path`<font color=red>作用域越大的放在后面，避免出现指定的断言的</font>`Path`<font color=red>不生效。</font>]]></content>
+      <categories>
+        <category>notes</category>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>spring cloud</tag>
+        <tag>spring cloud alibaba</tag>
+      </tags>
+  </entry>
 </search>
