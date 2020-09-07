@@ -28,12 +28,14 @@
 <meta property="og:site_name" content="周超的博客">
 <meta property="og:description" content="前后端技术栈类比     前端 后端     语法规范 JavaScript es6,7,8… Java jdk8,9,10,11…   框架 Angular，Vue，React Spring，SpringMVC…   工具 webstorm，vscode idea，eclipse   项目构建 webpack，gulp maven，gradle   依赖管理 npm maven">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/%E5%89%8D%E7%AB%AF/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0.png">
 <meta property="article:published_time" content="2020-09-01T08:12:31.000Z">
-<meta property="article:modified_time" content="2020-09-01T08:23:52.300Z">
+<meta property="article:modified_time" content="2020-09-06T15:47:48.384Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="vue">
 <meta property="article:tag" content="es6">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/lao-biao/Pictures/raw/master/%E5%89%8D%E7%AB%AF/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0.png">
 
 <link rel="canonical" href="https://lao-biao.github.io/articles/a87f55ab.html">
 
@@ -134,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">61</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">62</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -144,7 +146,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">77</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -234,10 +236,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-01 16:12:31 / 修改时间：16:23:52" itemprop="dateCreated datePublished" datetime="2020-09-01T16:12:31+08:00">2020-09-01</time>
+              <time title="创建时间：2020-09-01 16:12:31" itemprop="dateCreated datePublished" datetime="2020-09-01T16:12:31+08:00">2020-09-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-06 23:47:48" itemprop="dateModified" datetime="2020-09-06T23:47:48+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -332,33 +340,28 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a=<span class="number">1</span>;</span><br><span class="line">a=<span class="number">3</span>; <span class="comment">// Uncaught TypeError: Assignment to constant variable.</span></span><br><span class="line"><span class="keyword">const</span> b; <span class="comment">// Uncaught SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure>
 <h6 id="解构表达式"><a href="#解构表达式" class="headerlink" title="解构表达式"></a>解构表达式</h6><ol>
-<li>数组解构</li>
-</ol>
+<li><p>数组解构</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">原始方式</span></span><br><span class="line"><span class="comment">let a=arr[0];</span></span><br><span class="line"><span class="comment">let b=arr[1];</span></span><br><span class="line"><span class="comment">let c=arr[2];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> [a,b,c]=arr;</span><br><span class="line"><span class="built_in">console</span>.log(a,b,c);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>对象解构</li>
-</ol>
+</li>
+<li><p>对象解构</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person=&#123;</span><br><span class="line">    name:<span class="string">'jack'</span>,</span><br><span class="line">    age:<span class="number">21</span>,</span><br><span class="line">    laguanges:[<span class="string">'java'</span>,<span class="string">'js'</span>,<span class="string">'css'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// const name=person.name;</span></span><br><span class="line"><span class="comment">// const age=person.age;</span></span><br><span class="line"><span class="comment">// const laguanges=person.laguanges;</span></span><br><span class="line"><span class="comment">// const&#123;name,age,laguanges&#125;=person;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>取别名</li>
-</ol>
+</li>
+<li><p>取别名</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>&#123;<span class="attr">name</span>:abc,age,laguanges&#125;=person;</span><br><span class="line"><span class="built_in">console</span>.log(abc,age,laguanges);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>字符串扩展</li>
-</ol>
+</li>
+<li><p>字符串扩展</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">"hello vue"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.startsWith(<span class="string">"hello"</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.endsWith(<span class="string">"vue"</span>));     <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.includes(<span class="string">"e"</span>));       <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.includes(<span class="string">"hello"</span>));   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>字符串模板</li>
-</ol>
+</li>
+<li><p>字符串模板</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ss=<span class="string">`</span></span><br><span class="line"><span class="string">&lt;div&gt;</span></span><br><span class="line"><span class="string">&lt;span&gt;Hello World!&lt;/span&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(ss);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>字符串插入变量和表达式<br>变量名写在<code>${}</code>中，<code>${}</code>中可以放入JavaScript表达式</li>
-</ol>
+</li>
+<li><p>字符串插入变量和表达式<br>变量名写在<code>${}</code>中，<code>${}</code>中可以放入JavaScript表达式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name=<span class="string">'zhangsan'</span>;</span><br><span class="line"><span class="keyword">let</span> age=<span class="number">21</span>;</span><br><span class="line"><span class="keyword">let</span> info=<span class="string">`我是<span class="subst">$&#123;name&#125;</span>,今年<span class="subst">$&#123;age+<span class="number">10</span>&#125;</span>了`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(info);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>字符串插入方法</li>
-</ol>
+</li>
+<li><p>字符串插入方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'这是一个函数'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> info=<span class="string">`<span class="subst">$&#123;fun()&#125;</span>`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(info);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h6 id="函数优化"><a href="#函数优化" class="headerlink" title="函数优化"></a>函数优化</h6><ol>
 <li><p>默认参数<br>在es6以前，我们无法给一个函数参数设置默认值，只能采用变通写法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断b是否为空，为空就给默认值1</span></span><br><span class="line">    b = b || <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 传一个参数</span></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
@@ -492,14 +495,7 @@
 <p>第三方组件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> component-x <span class="keyword">from</span> <span class="string">'component-x'</span> 		<span class="comment">// 导入第三方组件</span></span><br><span class="line">Vue.component(<span class="string">'component-x'</span>,component-x);	<span class="comment">// 注册</span></span><br></pre></td></tr></table></figure>
 <h5 id="生命周期与钩子函数"><a href="#生命周期与钩子函数" class="headerlink" title="生命周期与钩子函数"></a>生命周期与钩子函数</h5><p>vue生命周期与钩子函数</p>
-<pre class="mermaid">graph LR;
-A["<i>beforeCreate()</i><br>数据模型未加载<br>方法未加载<br>html模板未加载"]
--->B["<i>created()</i><br>数据模型已加载<br>方法已加载<br>html模板已加载<br>html模板未渲染"]
--->C["<i>beforeMount()</i><br>html模板未渲染"]
--->D["<i>mounted()</i><br>html模板已渲染"]
--->E["<i>beforeUpdate()</i><br>数据模型已更新<br>html模板未更新"]
--->F["<i>updated()</i><br>数据模型已更新<br>html模板已更新"]</pre>
-
+<p><img data-src="https://gitee.com/lao-biao/Pictures/raw/master/%E5%89%8D%E7%AB%AF/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0.png" alt="vue生命周期与钩子函数"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;span id&#x3D;&quot;num&quot;&gt;&#123;&#123;num&#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;num++&quot;&gt;赞&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123;name&#125;&#125;，有&#123;&#123;num&#125;&#125;个人点赞&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el: &quot;#app&quot;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            name: &quot;张三&quot;,</span><br><span class="line">            num: 10</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            show() &#123;</span><br><span class="line">                return this.name;</span><br><span class="line">            &#125;,</span><br><span class="line">            add() &#123;</span><br><span class="line">                return this.num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        beforeCreate() &#123;</span><br><span class="line">            console.log(&#39;----------------before create-----------------&#39;);</span><br><span class="line">            console.log(&#39;数据模型未加载--&#39; + this.name, this.num);</span><br><span class="line">            &#x2F;&#x2F; vue.js:634 [Vue warn]: Error in beforeCreate hook: &quot;TypeError: this.show is not a function&quot;</span><br><span class="line">            &#x2F;&#x2F; vue.js:1897 TypeError: this.show is not a function</span><br><span class="line">            console.log(&#39;方法未加载--&#39; + this.show());</span><br><span class="line">            console.log(&#39;html模板未加载--&#39; + document.getElementById(&#39;num&#39;));</span><br><span class="line">        &#125;,</span><br><span class="line">        created: function () &#123;</span><br><span class="line">            console.log(&#39;----------------created-----------------&#39;);</span><br><span class="line">            console.log(&#39;数据模型已加载--&#39; + this.name, this.num);</span><br><span class="line">            console.log(&#39;方法已加载--&#39; + this.show());</span><br><span class="line">            console.log(&#39;html模板已加载--&#39; + document.getElementById(&#39;num&#39;));</span><br><span class="line">            console.log(&#39;html模板未渲染--&#39; + document.getElementById(&#39;num&#39;).innerText);</span><br><span class="line">        &#125;,</span><br><span class="line">        beforeMount() &#123;</span><br><span class="line">            console.log(&#39;----------------before mount-----------------&#39;);</span><br><span class="line">            console.log(&#39;html模板未渲染--&#39; + document.getElementById(&#39;num&#39;).innerText);</span><br><span class="line">        &#125;,</span><br><span class="line">        mounted() &#123;</span><br><span class="line">            console.log(&#39;----------------mounted-----------------&#39;);</span><br><span class="line">            console.log(&#39;html模板已渲染--&#39; + document.getElementById(&#39;num&#39;).innerText);</span><br><span class="line">        &#125;,</span><br><span class="line">        beforeUpdate() &#123;</span><br><span class="line">            console.log(&#39;----------------before update-----------------&#39;);</span><br><span class="line">            console.log(&#39;数据模型已更新--&#39; + this.num);</span><br><span class="line">            console.log(&#39;html模板未更新--&#39; + document.getElementById(&#39;num&#39;).innerText);</span><br><span class="line">        &#125;,</span><br><span class="line">        updated() &#123;</span><br><span class="line">            console.log(&#39;----------------updated-----------------&#39;);</span><br><span class="line">            console.log(&#39;数据模型已更新--&#39; + this.num);</span><br><span class="line">            console.log(&#39;html模板已更新--&#39; + document.getElementById(&#39;num&#39;).innerText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h4><p>Babel是一个JavaScript编译器，使用es的最新语法编程，通过Babel自动转化为浏览器兼容的代码。</p>
 <h4 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h4><p>自动化项目构建工具，gulp也是同类产品。</p>
@@ -539,7 +535,10 @@ A["<i>beforeCreate()</i><br>数据模型未加载<br>方法未加载<br>html模�
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/articles/5f94010c.html" rel="prev" title="异步请求跨域问题与解决方案">
+      <i class="fa fa-chevron-left"></i> 异步请求跨域问题与解决方案
+    </a></div>
       <div class="post-nav-item">
     <a href="/articles/2d5c549e.html" rel="next" title="docker部署vue项目">
       docker部署vue项目 <i class="fa fa-chevron-right"></i>
@@ -623,7 +622,7 @@ A["<i>beforeCreate()</i><br>数据模型未加载<br>方法未加载<br>html模�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -636,7 +635,7 @@ A["<i>beforeCreate()</i><br>数据模型未加载<br>方法未加载<br>html模�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
