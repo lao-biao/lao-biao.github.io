@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数据库的常用操作登录服务器mysql -h服务器地址 -u用户名 -p密码（不安全）   1mysql -hlocalhost(本地) -u... -p... 退出服务器1mysql&gt; exit 相对安全的登录形式mysql -h服务器地址 -u用户名 -p(回车后输入密码) 12mysql -hlocalhost -uroot -pEnter password:...">
+  <meta name="description" content="数据库的常用操作登录服务器mysql -h服务器地址 -u用户名 -p密码（不安全）   1mysql -hlocalhost(本地) -u... -p... 相对安全的登录形式mysql -h服务器地址 -u用户名 -p(回车后输入密码) 12mysql -hlocalhost -uroot -pEnter password:... 退出服务器1mysql&gt; exit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL基础">
 <meta property="og:url" content="https://lao-biao.github.io/articles/8e40d0ad.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="数据库的常用操作登录服务器mysql -h服务器地址 -u用户名 -p密码（不安全）   1mysql -hlocalhost(本地) -u... -p... 退出服务器1mysql&gt; exit 相对安全的登录形式mysql -h服务器地址 -u用户名 -p(回车后输入密码) 12mysql -hlocalhost -uroot -pEnter password:...">
+<meta property="og:description" content="数据库的常用操作登录服务器mysql -h服务器地址 -u用户名 -p密码（不安全）   1mysql -hlocalhost(本地) -u... -p... 相对安全的登录形式mysql -h服务器地址 -u用户名 -p(回车后输入密码) 12mysql -hlocalhost -uroot -pEnter password:... 退出服务器1mysql&gt; exit">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-03T04:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-24T01:31:00.681Z">
+<meta property="article:modified_time" content="2020-09-08T15:11:50.321Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -138,12 +138,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">78</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">79</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-24 09:31:00" itemprop="dateModified" datetime="2020-08-24T09:31:00+08:00">2020-08-24</time>
+                <time title="修改时间：2020-09-08 23:11:50" itemprop="dateModified" datetime="2020-09-08T23:11:50+08:00">2020-09-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,10 +265,10 @@
 
       
         <h3 id="数据库的常用操作"><a href="#数据库的常用操作" class="headerlink" title="数据库的常用操作"></a>数据库的常用操作</h3><h4 id="登录服务器"><a href="#登录服务器" class="headerlink" title="登录服务器"></a>登录服务器</h4><p><code>mysql -h服务器地址 -u用户名 -p密码</code>（不安全）  </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -hlocalhost(本地) -u... -p...</span><br></pre></td></tr></table></figure>
-<h4 id="退出服务器"><a href="#退出服务器" class="headerlink" title="退出服务器"></a>退出服务器</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; exit</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="literal">-hlocalhost</span>(本地) <span class="literal">-u</span>... <span class="literal">-p</span>...</span><br></pre></td></tr></table></figure>
 <p>相对安全的登录形式<br>mysql -h服务器地址 -u用户名 -p(回车后输入密码)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -hlocalhost -uroot -p</span><br><span class="line">Enter password:...</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="literal">-hlocalhost</span> <span class="literal">-uroot</span> <span class="literal">-p</span></span><br><span class="line">Enter password:...</span><br></pre></td></tr></table></figure>
+<h4 id="退出服务器"><a href="#退出服务器" class="headerlink" title="退出服务器"></a>退出服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h4 id="查询所有数据库"><a href="#查询所有数据库" class="headerlink" title="查询所有数据库"></a>查询所有数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;</span><br><span class="line"></span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">| Database           |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| test               |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br></pre></td></tr></table></figure>
 <h4 id="查看当前数据库编码"><a href="#查看当前数据库编码" class="headerlink" title="查看当前数据库编码"></a>查看当前数据库编码</h4><p><code>mysql&gt; show create database 数据库名称;</code>  </p>
@@ -347,33 +347,32 @@
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; insert into demotable(username,age) value("老王",20);</span><br><span class="line"></span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br></pre></td></tr></table></figure>
 <p><a href="#data">查看数据</a></p>
-<h4 id="查询表中的数据"><a href="#查询表中的数据" class="headerlink" title="查询表中的数据"></a>查询表中的数据</h4><p><code>select * from 数据表名;</code><br><span id="data"></p>
+<h4 id="查询表中的数据"><a href="#查询表中的数据" class="headerlink" title="查询表中的数据"></a>查询表中的数据</h4><p><code>select * from 数据表名;</code><br><span id="data"></span></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select  * from demotable;</span><br><span class="line"></span><br><span class="line">//id 为auto_increment 自动增长</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| username | age  | salary | sex  | id   |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  |  123 |</span><br><span class="line">| lisi     |   20 |      0 | man  | 1234 |</span><br><span class="line">| wangwu   |   20 |   NULL | man  | 1235 |</span><br><span class="line">| 老王     |   20 |   NULL | NULL | 1236 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-<p>&lt;/span&gt;</p>
 <h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><p>对数据进行更新<br><code>update 数据表名称 set 字段名称 = 值 条件 (where);</code> </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update demotable set salary = 1  where username = "wangwu";</span><br><span class="line"></span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from demotable;</span><br><span class="line"></span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| username | age  | salary | sex  | id   |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  |  123 |</span><br><span class="line">| lisi     |   20 |      0 | man  | 1234 |</span><br><span class="line">| wangwu   |   20 |      1 | man  | 1235 |</span><br><span class="line">| 老王     |   20 |   NULL | NULL | 1236 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <h4 id="删除数据表中的数据"><a href="#删除数据表中的数据" class="headerlink" title="删除数据表中的数据"></a>删除数据表中的数据</h4><p><code>delete from 数据表名称 条件(where);</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delete from demotable where username = "wangwu";</span><br><span class="line"></span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from demotable;</span><br><span class="line"></span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| username | age  | salary | sex  | id   |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  |  123 |</span><br><span class="line">| lisi     |   20 |      0 | man  | 1234 |</span><br><span class="line">| 老王     |   20 |   NULL | NULL | 1236 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <h3 id="数据表中的数据的查询详细"><a href="#数据表中的数据的查询详细" class="headerlink" title="数据表中的数据的查询详细"></a>数据表中的数据的查询详细</h3><h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><ul>
-<li>= </li>
-<li>&lt;&gt;</li>
-<li>>=</li>
-<li>\&lt;=</li>
-<li>></li>
-<li>\&lt;</li>
-<li>is null</li>
-<li>is not null</li>
-<li>and <ul>
+<li><code>=</code>  等于</li>
+<li><code>&lt;&gt;</code>  不等于</li>
+<li><code>&gt;=</code>  大于等于</li>
+<li><code>&lt;=</code> 小于等于</li>
+<li><code>&gt;</code>  大于</li>
+<li><code>&lt;</code>  小于</li>
+<li><code>is null</code>  空</li>
+<li><code>is not null</code>  非空</li>
+<li><code>and</code>  且<ul>
 <li>between … and … 在…与…之间，前面的要小于后面的</li>
 </ul>
 </li>
-<li>or<ul>
+<li><code>or</code>  或<ul>
 <li>列名 in(值1,值2,…)</li>
 <li>列名 = 值1 or 列名 = 值2 or …</li>
 </ul>
 </li>
-<li>not </li>
-<li>like</li>
+<li><code>not</code>  非</li>
+<li><code>like</code> </li>
 </ul>
 <h4 id="select-from-数据表名称-where-条件"><a href="#select-from-数据表名称-where-条件" class="headerlink" title="select * from 数据表名称 [where 条件];"></a>select * from 数据表名称 [where 条件];</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from demotable where salary = 0;</span><br><span class="line"></span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| username | age  | salary | sex  | id   |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  |  123 |</span><br><span class="line">| lisi     |   20 |      0 | man  | 1234 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+------+</span></span><br><span class="line">2 rows in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br></pre></td></tr></table></figure>
 <h4 id="select-列名-列名-…-from-数据表名称-where-条件"><a href="#select-列名-列名-…-from-数据表名称-where-条件" class="headerlink" title="select 列名,列名,… from 数据表名称 [where 条件];"></a>select 列名,列名,… from 数据表名称 [where 条件];</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select username,age from demotable;</span><br><span class="line"></span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">| username | age  |</span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">| zhangsan |   20 |</span><br><span class="line">| lisi     |   20 |</span><br><span class="line">| 老王     |   20 |</span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
@@ -381,8 +380,8 @@
 <h4 id="select-列名-as-别名-列名-as-别名-…-from-数据表名称-where-条件"><a href="#select-列名-as-别名-列名-as-别名-…-from-数据表名称-where-条件" class="headerlink" title="select 列名 as 别名,列名 as 别名,… from 数据表名称 where 条件;"></a>select 列名 as 别名,列名 as 别名,… from 数据表名称 where 条件;</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select username as "名字",age as "年龄" from demotable;</span><br><span class="line"></span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">| 名字     | 年龄 |</span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">| zhangsan |   20 |</span><br><span class="line">| lisi     |   20 |</span><br><span class="line">| 老王     |   20 |</span><br><span class="line">+<span class="comment">----------+------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 <h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p><code>select * from 数据表名称 where 字段名称 like 关键字%</code>  </p>
 <ul>
-<li>%表示通配符  </li>
-<li>_表示占位符  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from demotable where username like "zhang%";</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">| username | age  | salary | sex  | id  |</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  | 123 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.02</span> sec)</span><br></pre></td></tr></table></figure>
+<li>%表示通配符</li>
+<li>_表示占位符<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from demotable where username like "zhang%";</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">| username | age  | salary | sex  | id  |</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">| zhangsan |   20 |      0 | man  | 123 |</span><br><span class="line">+<span class="comment">----------+------+--------+------+-----+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.02</span> sec)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="count：-统计个数"><a href="#count：-统计个数" class="headerlink" title="count： 统计个数"></a>count： 统计个数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select count(age),age from demotable where age = 20;</span><br><span class="line">+<span class="comment">------------+------+</span></span><br><span class="line">| count(age) | age  |</span><br><span class="line">+<span class="comment">------------+------+</span></span><br><span class="line">|          3 |   20 |</span><br><span class="line">+<span class="comment">------------+------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br></pre></td></tr></table></figure>
@@ -429,8 +428,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/articles/95725add.html" rel="prev" title="javascrpit基础语法">
-      <i class="fa fa-chevron-left"></i> javascrpit基础语法
+    <a href="/articles/1a147173.html" rel="prev" title="html基础">
+      <i class="fa fa-chevron-left"></i> html基础
     </a></div>
       <div class="post-nav-item">
     <a href="/articles/86288129.html" rel="next" title="python3使用webdriver模拟浏览器实现网页访问">
@@ -515,14 +514,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
