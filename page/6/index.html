@@ -153,7 +153,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">80</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -216,6 +216,88 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/c3843c50.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/c3843c50.html" class="post-title-link" itemprop="url">Android自定义工具类--logutils</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-19 21:22:28" itemprop="dateCreated datePublished" datetime="2020-04-19T21:22:28+08:00">2020-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-07 16:21:11" itemprop="dateModified" datetime="2020-09-07T16:21:11+08:00">2020-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>Android项目中通常会使用log来进行调试，在发布版本后并不需要输出log，使用logutils类来控制log的输出管理</p>
+<h6 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h6><p>在应用调试阶段设置当前log等级大于或等于debug等级，即可输出debug，info，warming和error四个等级的log</p>
+<p>在应用发布时只需要将当前log等级调整为0或小于0即可关闭log的输出</p>
+<p>参数</p>
+<ul>
+<li>object： 类对象(<code>this</code>或<code>ClassName.this</code>)</li>
+<li>message： log信息</li>
+</ul>
+<h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CURRENT_LEV = <span class="number">4</span>;	<span class="comment">//当前log等级</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEBUG_LEV = <span class="number">4</span>;		<span class="comment">//debug</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INFO_LEV = <span class="number">3</span>;		<span class="comment">//info</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WARMING_LEV = <span class="number">2</span>;	<span class="comment">//warming</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ERROR_LEV = <span class="number">1</span>;		<span class="comment">//error</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= DEBUG_LEV) &#123;</span><br><span class="line">            Log.d(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">i</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= INFO_LEV) &#123;</span><br><span class="line">            Log.i(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">w</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= WARMING_LEV) &#123;</span><br><span class="line">            Log.w(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">e</span><span class="params">(Object object, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (CURRENT_LEV &gt;= ERROR_LEV) &#123;</span><br><span class="line">            Log.e(object.getClass().getSimpleName(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1062,111 +1144,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/5b4e0ff4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/5b4e0ff4.html" class="post-title-link" itemprop="url">java数据结构与算法--线性表</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-10 13:10:08" itemprop="dateCreated datePublished" datetime="2020-04-10T13:10:08+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-24 09:24:26" itemprop="dateModified" datetime="2020-08-24T09:24:26+08:00">2020-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="线性表及其结构"><a href="#线性表及其结构" class="headerlink" title="线性表及其结构"></a>线性表及其结构</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>线性表是n个类型<em>相同数据</em>元素的<em>有限序列</em></p>
-<ul>
-<li>相同数据类型：相同数据类型意味着在内存中存储时，每个元素占用相同的内存空间，便于后续的查询定位</li>
-<li>序列(顺序性)：在线性表的相邻数据元素之间存在着序偶关系<ul>
-<li>a<sub>i-1</sub>是a<sub>i</sub>的直接前驱，则a<sub>i+1</sub>是a<sub>i</sub>的直接后续</li>
-<li>唯一没有直接前驱的元素a<sub>0</sub>一端称为表头</li>
-<li>唯一没有直接后续的元素a<sub>n-1</sub>一端称为表尾</li>
-<li>除表头和表尾元素外，任何一个元素都有且仅有一个直接前驱和直接后继</li>
-</ul>
-</li>
-<li>有限：线性表中数据元素的个数n定义为线性表的长度，n是一个有限值<ul>
-<li>n=0时线性表为空表</li>
-<li>在非空的线性表中每个数据元素中都有唯一确定的序号</li>
-<li>在一个具有n&gt;0个数据元素的线性表中，数据元素序号的范围是[0,n-1]</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/5b4e0ff4.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1236,7 +1213,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
