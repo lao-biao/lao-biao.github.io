@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -153,7 +153,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">84</span></a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -216,6 +216,303 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/e81b4a74.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/e81b4a74.html" class="post-title-link" itemprop="url">Java语法糖--自动装箱与拆箱、多异常并列和数值类型赋值优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-20 10:59:10" itemprop="dateCreated datePublished" datetime="2020-04-20T10:59:10+08:00">2020-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-19 13:50:48" itemprop="dateModified" datetime="2020-08-19T13:50:48+08:00">2020-08-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E8%AF%AD%E6%B3%95%E7%B3%96/" itemprop="url" rel="index"><span itemprop="name">语法糖</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="自动装箱与拆箱"><a href="#自动装箱与拆箱" class="headerlink" title="自动装箱与拆箱"></a>自动装箱与拆箱</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>auto-boxing / auto-unboxing</p>
+<ul>
+<li>从JDK5.0开始引入，简化基本类型和对象的写法</li>
+<li>基本类型：<code>boolean</code> <code>byte</code> <code>char</code> <code>int</code> <code>short</code> <code>long</code> <code>float</code> <code>double</code></li>
+<li>对象：<code>Boolean</code> <code>Byte</code> <code>Character</code> <code>Integer</code> <code>Short</code> <code>Long</code> <code>Float</code> <code>Double</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = <span class="number">1</span>;    <span class="comment">//自动装箱</span></span><br><span class="line">Integer integer2 = Integer.valueOf(<span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> int1 = integer1;    <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> int2 = integer2.intValue();</span><br></pre></td></tr></table></figure>
+<h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
+<li>自动装箱和拆箱是编译器的工作，在class中已经添加转化，虚拟机没有自动装箱和拆箱的语句</li>
+<li>==判断：基本类型是内容相同，对象是指针是否相同(内存同一个区域)</li>
+<li>基本类型没有空值，对象有null，可能触发NullPointerException（空指针异常）</li>
+<li>当一个基础数据类型与封装类进行 == + - * / 运算时，会将封装类进行拆箱，对基础数据类型进行运算</li>
+<li>谨慎使用多个非同类的数值类对象进行运算</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/e81b4a74.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/689cf977.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/689cf977.html" class="post-title-link" itemprop="url">Java语法糖--不定项参数和静态导入</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-20 10:07:53" itemprop="dateCreated datePublished" datetime="2020-04-20T10:07:53+08:00">2020-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-07 16:16:21" itemprop="dateModified" datetime="2020-09-07T16:16:21+08:00">2020-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E8%AF%AD%E6%B3%95%E7%B3%96/" itemprop="url" rel="index"><span itemprop="name">语法糖</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="不定项参数"><a href="#不定项参数" class="headerlink" title="不定项参数"></a>不定项参数</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>普通函数的形参列表是固定个数/类型/顺序</p>
+<p>JDK5提供了不定项参数(可变参数)功能</p>
+<ul>
+<li>数据类型后加… 如 int… /double… /String…</li>
+<li>可变参数本质是一个数组，可以是0个也可以是n个同类型参数</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/689cf977.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/6d197383.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/6d197383.html" class="post-title-link" itemprop="url">Java语法糖for-each和枚举</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-19 22:56:58" itemprop="dateCreated datePublished" datetime="2020-04-19T22:56:58+08:00">2020-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-07 16:22:26" itemprop="dateModified" datetime="2020-09-07T16:22:26+08:00">2020-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/java/%E8%AF%AD%E6%B3%95%E7%B3%96/" itemprop="url" rel="index"><span itemprop="name">语法糖</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="for-each"><a href="#for-each" class="headerlink" title="for-each"></a>for-each</h6><ul>
+<li><code>for-each</code>从JDK5.0开始引入</li>
+<li>避免越界错误</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Object object:Set)&#123;</span><br><span class="line">	object	<span class="comment">//元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>for</code>与 <code>for-each</code>对比</p>
+<ul>
+<li>for可以删除元素，<code>for-each</code>不可以删除/替换元素</li>
+<li><code>for-each</code>遍历的时候，是不知道当前元素的具体位置索引</li>
+<li><code>for-each</code>只能正向遍历，不能反向遍历</li>
+<li><code>for-each</code>不能同时遍历2个或以上的集合</li>
+<li><code>for</code>和<code>for-each</code>性能接近</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/6d197383.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -831,299 +1128,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/28f80600.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/28f80600.html" class="post-title-link" itemprop="url">hexo实现置顶文章</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-11 11:18:24" itemprop="dateCreated datePublished" datetime="2020-04-11T11:18:24+08:00">2020-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:12:52" itemprop="dateModified" datetime="2020-07-06T11:12:52+08:00">2020-07-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="hexo置顶文章"><a href="#hexo置顶文章" class="headerlink" title="hexo置顶文章"></a>hexo置顶文章</h4><h6 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h6><p>在博客根目录下运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save	#卸载index渲染器</span><br><span class="line">npm install hexo-generator-index-pin-top --save  #安装置顶插件</span><br><span class="line"><span class="meta">#</span><span class="bash">安装淘宝的镜像可以使用 cnpm 代替 npm</span></span><br></pre></td></tr></table></figure>
-<h6 id="配置置顶标准"><a href="#配置置顶标准" class="headerlink" title="配置置顶标准"></a>配置置顶标准</h6><p>在<code>/themes/所使用的主题名/layout/post.ejs</code>文件最前面添加下列代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (page.top) &#123; %&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;fa fa-thumb-tack&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;font color&#x3D;7D26CD&gt;置顶&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h6 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h6><p>在需要置顶的文章的<strong>Front Matter</strong>部分添加 <code>top: number</code></p>
-<p>number的数值越大优先级越高</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> </span><br><span class="line"><span class="attr">date:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:mm:ss</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<h6 id="优先级配置"><a href="#优先级配置" class="headerlink" title="优先级配置"></a>优先级配置</h6><p>修改根目录配置文件<code>/_config.yml</code>,<code>top</code>值<code>-1</code>根据<code>top</code>值倒序</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">6</span>	<span class="comment">#每页显示的文章数</span></span><br><span class="line">  <span class="attr">order_by:</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">-1</span>		<span class="comment">#按top倒序排列，number越大的优先显示</span></span><br><span class="line">    <span class="attr">date:</span> <span class="number">-1</span>	<span class="comment">#按时间倒序排列，最新的优先显示</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/28f80600.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/49f58aa9.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/49f58aa9.html" class="post-title-link" itemprop="url">java数据结构与算法--树和二叉树</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-10 21:30:09" itemprop="dateCreated datePublished" datetime="2020-04-10T21:30:09+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-24 09:23:48" itemprop="dateModified" datetime="2020-08-24T09:23:48+08:00">2020-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h4><h6 id="树"><a href="#树" class="headerlink" title="树"></a>树</h6><p>树是由一个集合以及在该集合上定义的一种关系构成的，集合中的元素称为树的结点，所定义的关系称为父子关系</p>
-<ul>
-<li>父子关系在书的结点之间建立了一个层次结构</li>
-<li>树的结点包含一个数据元素及若干指向其子树的若干分支</li>
-<li>特殊位置的结点，树的根结点，简称为树根</li>
-</ul>
-<p>树是n（n≥0）个结点的有限集</p>
-<ul>
-<li>n=0    空树，不包含任何结点</li>
-<li>n&gt;0    非空树，有且仅有一个特定的称为<em>根</em>（root）的结点</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/49f58aa9.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/7e56a691.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/7e56a691.html" class="post-title-link" itemprop="url">java数据结构与算法--串</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-10 14:00:00" itemprop="dateCreated datePublished" datetime="2020-04-10T14:00:00+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-07 16:14:44" itemprop="dateModified" datetime="2020-09-07T16:14:44+08:00">2020-09-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>内容受限的线性表</p>
-<h4 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a>串的定义</h4><p>串(String)：零个或多个任意字符组成的有限序列</p>
-<ul>
-<li>串名</li>
-<li>串值</li>
-<li>串长</li>
-</ul>
-<h5 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h5><h6 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h6><p>一个串中任意个连续字符组成的<strong>子序列</strong>（含空串）称为该串的子串</p>
-<p>真子串：不包含自身的所有子串</p>
-<h6 id="主串"><a href="#主串" class="headerlink" title="主串"></a>主串</h6><p>包含子串的串称为主串</p>
-<h6 id="字符位置"><a href="#字符位置" class="headerlink" title="字符位置"></a>字符位置</h6><p>字符在序列中的序号为该字符在串中的位置</p>
-<h6 id="子串位置"><a href="#子串位置" class="headerlink" title="子串位置"></a>子串位置</h6><p>子串第一个字符在主串中的位置</p>
-<h6 id="空格串"><a href="#空格串" class="headerlink" title="空格串"></a>空格串</h6><p>由一个或多个空格组成的串（与空串不同）</p>
-<h6 id="串相等"><a href="#串相等" class="headerlink" title="串相等"></a>串相等</h6><p>当且仅当两个串的长度相等并且各个对应位置上的字符都相同时，这两个串才是相等的</p>
-<p>注：所有空串都是相等的</p>
-<h5 id="串的类型定义"><a href="#串的类型定义" class="headerlink" title="串的类型定义"></a>串的类型定义</h5><p>数据对象：D={a<sub>i</sub> | a<sub>i</sub>∈ CharacterSet, i = 1,2,…n}</p>
-<p>数据关系：R<sub>1</sub>={<a<sub>i-1&lt;/sub&gt;,a<sub>i</sub>&gt;|a<sub>i-1</sub>,a<sub>i</sub> ∈ D , i = 1,2,…,n}</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/7e56a691.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1193,7 +1197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1206,7 +1210,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
