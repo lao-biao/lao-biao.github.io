@@ -220,7 +220,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/f71edc35.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/56c6f16a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -234,7 +234,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/articles/f71edc35.html" class="post-title-link" itemprop="url">android studio低版本使用recyclerview</a>
+            <a href="/articles/56c6f16a.html" class="post-title-link" itemprop="url">Android数据的存储</a>
         </h2>
 
         <div class="post-meta">
@@ -251,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:08:45" itemprop="dateModified" datetime="2020-07-06T11:08:45+08:00">2020-07-06</time>
+                <time title="修改时间：2020-08-19 13:49:37" itemprop="dateModified" datetime="2020-08-19T13:49:37+08:00">2020-08-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,13 +274,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>﻿1. 添加依赖包<br>&nbsp;&nbsp;&nbsp;&nbsp; open Module Settings→Dependencies→add Library Dependency<br><img data-src="https://img-blog.csdnimg.cn/20190714093004116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTk5MzY2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img data-src="https://img-blog.csdnimg.cn/20190714093101907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTk5MzY2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ol>
-<li>AndroidMainfest.xml文件<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:appComponentFactory</span>=<span class="string">""</span></span></span><br><span class="line"><span class="tag">       <span class="attr">tools:replace</span>=<span class="string">"android:appComponentFactory"</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>在gradle.properties文件中添加以下代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android.enableJetifier=<span class="literal">true</span></span><br><span class="line">android.useAndroidX=<span class="literal">true</span></span><br><span class="line">org.gradle.jvmargs=-Xmx1536m</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在原有工程中使用androidX.RecyclerView会出现报错<br>解决方法：在AndroidManifest文件下右键Refactor→Migrate to AndroidX </p>
+          <h6 id="错误的存储方式"><a href="#错误的存储方式" class="headerlink" title="错误的存储方式"></a>错误的存储方式</h6><p>对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。</p>
+<p>  在写入文件时，文件路径不能直接为android的根目录</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String userFileName=<span class="string">"/user.txt"</span>;        <span class="comment">//文件名</span></span><br></pre></td></tr></table></figure>
+<p> 运用IO流写出数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveUserInfo</span><span class="params">(String name, String pwd, String phone)</span> </span>&#123;</span><br><span class="line">        File user=<span class="keyword">new</span> File(userFileName);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(!user.exists())&#123;</span><br><span class="line">                user.createNewFile();</span><br><span class="line">            &#125;</span><br><span class="line">            FileOutputStream userFile=<span class="keyword">new</span> FileOutputStream(user);</span><br><span class="line">            userFile.write((name+<span class="string">" "</span>+pwd+<span class="string">" "</span>+phone).getBytes());    <span class="comment">//以空格符为间隔存储</span></span><br><span class="line">            userFile.close();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错信息（异常）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.io.IOException: Read-only file system</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/56c6f16a.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/821fe050.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/821fe050.html" class="post-title-link" itemprop="url">android动态权限申请</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-07 16:15:42" itemprop="dateModified" datetime="2020-09-07T16:15:42+08:00">2020-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Android-6-0以上动态申请权限"><a href="#Android-6-0以上动态申请权限" class="headerlink" title="Android 6.0以上动态申请权限"></a>Android 6.0以上动态申请权限</h4><h6 id="添加相关权限"><a href="#添加相关权限" class="headerlink" title="添加相关权限"></a>添加相关权限</h6><p>在清单文件中添加相关权限</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.××××"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="检查权限-动态申请权限-申请结果"><a href="#检查权限-动态申请权限-申请结果" class="headerlink" title="检查权限-动态申请权限-申请结果"></a>检查权限-动态申请权限-申请结果</h6><ul>
+<li>检查权限</li>
+<li>动态申请权限</li>
+<li>处理权限申请结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String strPermission =Manifest.permission.××××;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ××××_REQUEST_CODE=<span class="number">1</span>;	<span class="comment">//请求码，不同的权限设置成不同的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String strPermission)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, strPermission) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, strPermission)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要××××权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                    strPermission&#125;,×××× _REQUEST_CODE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == ××××_REQUEST_CODE) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">requestPermissions(String strPermission);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//要执行的操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -359,94 +449,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/c231612.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/56c6f16a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/56c6f16a.html" class="post-title-link" itemprop="url">Android数据的存储</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-19 13:49:37" itemprop="dateModified" datetime="2020-08-19T13:49:37+08:00">2020-08-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="错误的存储方式"><a href="#错误的存储方式" class="headerlink" title="错误的存储方式"></a>错误的存储方式</h6><p>对一个简单的登录页面进行用户数据的保存，将数据存储到应用的数据目录下。</p>
-<p>  在写入文件时，文件路径不能直接为android的根目录</p>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String userFileName=<span class="string">"/user.txt"</span>;        <span class="comment">//文件名</span></span><br></pre></td></tr></table></figure>
-<p> 运用IO流写出数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveUserInfo</span><span class="params">(String name, String pwd, String phone)</span> </span>&#123;</span><br><span class="line">        File user=<span class="keyword">new</span> File(userFileName);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(!user.exists())&#123;</span><br><span class="line">                user.createNewFile();</span><br><span class="line">            &#125;</span><br><span class="line">            FileOutputStream userFile=<span class="keyword">new</span> FileOutputStream(user);</span><br><span class="line">            userFile.write((name+<span class="string">" "</span>+pwd+<span class="string">" "</span>+phone).getBytes());    <span class="comment">//以空格符为间隔存储</span></span><br><span class="line">            userFile.close();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报错信息（异常）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.io.IOException: Read-only file system</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/56c6f16a.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
