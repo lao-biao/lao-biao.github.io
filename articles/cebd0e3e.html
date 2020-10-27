@@ -21,32 +21,21 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。 示例: 给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9 因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9所以返回 [0, 1] 来源：力扣（LeetCo">
+  <meta name="description" content="部署方式：nginx &#x2F; node在虚拟机上部署 nuxt.js 项目：  可以采取先构建生成静态资源文件，然后放在 nginx 容器中，完成 nginx 的配置即可。&#x3D;&#x3D;缺点：这种以静态文件的形式直接放在 nginx 的 html 目录下，失去了 nuxt 的服务端渲染的功能。&#x3D;&#x3D; 以 node 为基础镜像，构建 nuxt 项目的镜像，运行 nuxt 项目的容器。这样可以保留 nuxt 服务端渲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode--#1两数之和">
-<meta property="og:url" content="https://lao-biao.github.io/articles/eb1f9a79.html">
+<meta property="og:title" content="docker部署nuxt项目">
+<meta property="og:url" content="https://lao-biao.github.io/articles/cebd0e3e.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。 示例: 给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9 因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9所以返回 [0, 1] 来源：力扣（LeetCo">
+<meta property="og:description" content="部署方式：nginx &#x2F; node在虚拟机上部署 nuxt.js 项目：  可以采取先构建生成静态资源文件，然后放在 nginx 容器中，完成 nginx 的配置即可。&#x3D;&#x3D;缺点：这种以静态文件的形式直接放在 nginx 的 html 目录下，失去了 nuxt 的服务端渲染的功能。&#x3D;&#x3D; 以 node 为基础镜像，构建 nuxt 项目的镜像，运行 nuxt 项目的容器。这样可以保留 nuxt 服务端渲">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-28T12:59:53.000Z">
-<meta property="article:modified_time" content="2020-08-18T02:28:18.397Z">
+<meta property="article:published_time" content="2020-10-26T01:51:00.000Z">
+<meta property="article:modified_time" content="2020-10-26T03:04:50.252Z">
 <meta property="article:author" content="周超">
-<meta property="article:tag" content="笔记">
-<meta property="article:tag" content="后端">
-<meta property="article:tag" content="前端">
-<meta property="article:tag" content="android">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="leetcode">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="数据结构">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="github">
-<meta property="article:tag" content="gitee">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="nuxt">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lao-biao.github.io/articles/eb1f9a79.html">
+<link rel="canonical" href="https://lao-biao.github.io/articles/cebd0e3e.html">
 
 
 <script id="page-configurations">
@@ -59,7 +48,7 @@
   };
 </script>
 
-  <title>LeetCode--#1两数之和 | 周超的博客</title>
+  <title>docker部署nuxt项目 | 周超的博客</title>
   
 
 
@@ -223,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/eb1f9a79.html">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/cebd0e3e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -236,7 +225,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode--#1两数之和
+          docker部署nuxt项目
         </h1>
 
         <div class="post-meta">
@@ -245,23 +234,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-28 20:59:53" itemprop="dateCreated datePublished" datetime="2020-04-28T20:59:53+08:00">2020-04-28</time>
+              <time title="创建时间：2020-10-26 09:51:00 / 修改时间：11:04:50" itemprop="dateCreated datePublished" datetime="2020-10-26T09:51:00+08:00">2020-10-26</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 10:28:18" itemprop="dateModified" datetime="2020-08-18T10:28:18+08:00">2020-08-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
                 </span>
             </span>
 
@@ -276,24 +259,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h6 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h6><blockquote>
-<p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
-<p>示例:</p>
-<p>给定 nums = [2, 7, 11, 15], target = 9</p>
-<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p>
-</blockquote>
+        <h6 id="部署方式：nginx-node"><a href="#部署方式：nginx-node" class="headerlink" title="部署方式：nginx / node"></a>部署方式：nginx / node</h6><p>在虚拟机上部署 nuxt.js 项目：</p>
+<ol>
+<li>可以采取先构建生成静态资源文件，然后放在 nginx 容器中，完成 nginx 的配置即可。<br>==缺点：这种以静态文件的形式直接放在 nginx 的 html 目录下，失去了 nuxt 的服务端渲染的功能。==</li>
+<li>以 node 为基础镜像，构建 nuxt 项目的镜像，运行 nuxt 项目的容器。这样可以保留 nuxt 服务端渲染的功能。</li>
+</ol>
 <a id="more"></a>
-<h6 id="暴力解法-超时"><a href="#暴力解法-超时" class="headerlink" title="暴力解法(超时)"></a>暴力解法(超时)</h6><p>枚举比较，从第一个数到最后一个数逐个求和比较，直至匹配成功</p>
-<p>时间复杂度：$O(n^2)$<br>空间复杂度：$O(1)$</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 暴力解法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByBF(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (target == nums[i] + nums[j]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="两遍hash表"><a href="#两遍hash表" class="headerlink" title="两遍hash表"></a>两遍hash表</h6><p>第一遍：将数组转换成<code>hash</code>表，以数组的数值作为键，以索引作为值存储在<code>hash</code>表中<br>第二遍：在<code>hash</code>表中查找，查找能与当前数组的元素的和为<code>target</code>的键</p>
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 两遍hash表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMap(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">        table.put(nums[i], i);	<span class="comment">//以数值为键，索引为值</span></span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, table.get(searched)&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="一遍hash表"><a href="#一遍hash表" class="headerlink" title="一遍hash表"></a>一遍hash表</h6><p>一边插入hash表，一边查找</p>
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 一遍hash表，边插入边查找</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMapOnce(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="comment">//先查找</span></span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i)	<span class="comment">//保证不是同一个元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;table.get(searched), i&#125;;</span><br><span class="line">		<span class="comment">//后插入表中</span></span><br><span class="line">        table.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="node-方式"><a href="#node-方式" class="headerlink" title="node 方式"></a>node 方式</h6><p>基本原理：以 node 为基础镜像，<code>npm install</code> 拉取项目使用的依赖文件，<code>npm start</code> 启动服务。启动容器后以服务端的形式运行在后台，提供服务端渲染的功能。</p>
+<ol>
+<li><p>修改<code>package.json</code>的配置，指定 host 和 端口，如果不指定会以虚拟机私有地址启动，而本机无法访问到。</p>
+<blockquote>
+<p><code>package.json</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"config": &#123;</span><br><span class="line">  "nuxt": &#123;</span><br><span class="line">    "host": "0.0.0.0",</span><br><span class="line">    "port": "9002"</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>将项目文件上传到虚拟机上。</p>
+</li>
+<li><p>创建 Dockerfile 。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">12.18</span>.<span class="number">3</span></span><br><span class="line"><span class="comment"># 作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> lao-biao</span><br><span class="line"><span class="comment"># node的环境为生产环境</span></span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=production</span><br><span class="line"><span class="comment"># 容器内创建目录</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> mkdir -p /app/src</span></span><br><span class="line"><span class="comment"># 复制当前的内容到容器内容部目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . /app/src</span></span><br><span class="line"><span class="comment"># 切换工作目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app/src</span></span><br><span class="line"><span class="comment"># 配置npm的远程仓库</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install</span></span><br><span class="line"><span class="comment"># 构建，生成dist文件</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run build</span></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"npm"</span>,<span class="string">"start"</span>]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像，创建容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dockers build -t blog-portal . <span class="comment"># 构建镜像</span></span><br><span class="line">docker run -d --name blog-portal -p 9002:9002 blog-portal <span class="comment"># 创建容器</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在需要使用 nginx 作为反向代理时，可以进行相关配置。</p>
 
     </div>
 
@@ -309,7 +298,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://lao-biao.github.io/articles/eb1f9a79.html" title="LeetCode--#1两数之和">https://lao-biao.github.io/articles/eb1f9a79.html</a>
+    <a href="https://lao-biao.github.io/articles/cebd0e3e.html" title="docker部署nuxt项目">https://lao-biao.github.io/articles/cebd0e3e.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -319,19 +308,21 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
+              <a href="/tags/nuxt/" rel="tag"><i class="fa fa-tag"></i> nuxt</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/articles/69254e2b.html" rel="prev" title="LeetCode--#33搜索旋转排序数组">
-      <i class="fa fa-chevron-left"></i> LeetCode--#33搜索旋转排序数组
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/articles/e4abd3a9.html" rel="next" title="LeetCode--面试题#56数组中数字出现的次数">
-      LeetCode--面试题#56数组中数字出现的次数 <i class="fa fa-chevron-right"></i>
+    <a href="/articles/150bedf.html" rel="next" title="缓存与分布式锁">
+      缓存与分布式锁 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -398,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#两数之和"><span class="nav-text">两数之和</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#暴力解法-超时"><span class="nav-text">暴力解法(超时)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#两遍hash表"><span class="nav-text">两遍hash表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一遍hash表"><span class="nav-text">一遍hash表</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#部署方式：nginx-node"><span class="nav-text">部署方式：nginx &#x2F; node</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#node-方式"><span class="nav-text">node 方式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
