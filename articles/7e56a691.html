@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="内容受限的线性表。 串的定义串(String)：零个或多个任意字符组成的有限序列  串名 串值 串长  相关概念子串一个串中任意个连续字符组成的子序列（含空串）称为该串的子串 真子串：不包含自身的所有子串 主串包含子串的串称为主串 字符位置字符在序列中的序号为该字符在串中的位置 子串位置子串第一个字符在主串中的位置 空格串由一个或多个空格组成的串（与空串不同） 串相等当且仅当两个串的长度相等并且各">
+  <meta name="description" content="内容受限的线性表。 串的定义串(String)：零个或多个任意字符组成的有限序列  串名 串值 串长  相关概念 子串：一个串中任意个连续字符组成的子序列（含空串）称为该串的子串。 真子串：不包含自身的所有子串。 主串：包含子串的串称为主串。 字符位置：字符在序列中的序号为该字符在串中的位置。 子串位置：子串第一个字符在主串中的位置。 空格串：由一个或多个空格组成的串（与空串不同）。 串相等：当且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java数据结构与算法--串">
 <meta property="og:url" content="https://lao-biao.github.io/articles/7e56a691.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="内容受限的线性表。 串的定义串(String)：零个或多个任意字符组成的有限序列  串名 串值 串长  相关概念子串一个串中任意个连续字符组成的子序列（含空串）称为该串的子串 真子串：不包含自身的所有子串 主串包含子串的串称为主串 字符位置字符在序列中的序号为该字符在串中的位置 子串位置子串第一个字符在主串中的位置 空格串由一个或多个空格组成的串（与空串不同） 串相等当且仅当两个串的长度相等并且各">
+<meta property="og:description" content="内容受限的线性表。 串的定义串(String)：零个或多个任意字符组成的有限序列  串名 串值 串长  相关概念 子串：一个串中任意个连续字符组成的子序列（含空串）称为该串的子串。 真子串：不包含自身的所有子串。 主串：包含子串的串称为主串。 字符位置：字符在序列中的序号为该字符在串中的位置。 子串位置：子串第一个字符在主串中的位置。 空格串：由一个或多个空格组成的串（与空串不同）。 串相等：当且">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-10T06:00:00.000Z">
-<meta property="article:modified_time" content="2020-10-29T05:17:20.532Z">
+<meta property="article:modified_time" content="2020-10-29T09:07:08.168Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="串">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 13:17:20" itemprop="dateModified" datetime="2020-10-29T13:17:20+08:00">2020-10-29</time>
+                <time title="修改时间：2020-10-29 17:07:08" itemprop="dateModified" datetime="2020-10-29T17:07:08+08:00">2020-10-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,22 +271,27 @@
 <li>串值</li>
 <li>串长</li>
 </ul>
-<h5 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h5><h6 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h6><p>一个串中任意个连续字符组成的<strong>子序列</strong>（含空串）称为该串的子串</p>
-<p>真子串：不包含自身的所有子串</p>
-<h6 id="主串"><a href="#主串" class="headerlink" title="主串"></a>主串</h6><p>包含子串的串称为主串</p>
-<h6 id="字符位置"><a href="#字符位置" class="headerlink" title="字符位置"></a>字符位置</h6><p>字符在序列中的序号为该字符在串中的位置</p>
-<h6 id="子串位置"><a href="#子串位置" class="headerlink" title="子串位置"></a>子串位置</h6><p>子串第一个字符在主串中的位置</p>
-<h6 id="空格串"><a href="#空格串" class="headerlink" title="空格串"></a>空格串</h6><p>由一个或多个空格组成的串（与空串不同）</p>
-<h6 id="串相等"><a href="#串相等" class="headerlink" title="串相等"></a>串相等</h6><p>当且仅当两个串的长度相等并且各个对应位置上的字符都相同时，这两个串才是相等的</p>
-<p>注：所有空串都是相等的</p>
+<h5 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h5><ul>
+<li>子串：一个串中任意个连续字符组成的<strong>子序列</strong>（含空串）称为该串的子串。</li>
+<li>真子串：不包含自身的所有子串。</li>
+<li>主串：包含子串的串称为主串。</li>
+<li>字符位置：字符在序列中的序号为该字符在串中的位置。</li>
+<li>子串位置：子串第一个字符在主串中的位置。</li>
+<li>空格串：由一个或多个空格组成的串（与空串不同）。</li>
+<li>串相等：当且仅当两个串的长度相等并且各个对应位置上的字符都相同时，这两个串才是相等的。<br>注：所有空串都是相等的。</li>
+</ul>
 <h5 id="串的类型定义"><a href="#串的类型定义" class="headerlink" title="串的类型定义"></a>串的类型定义</h5><p>数据对象：D={a<sub>i</sub> | a<sub>i</sub>∈ CharacterSet, i = 1,2,…n}</p>
 <p>数据关系：R<sub>1</sub>={<a<sub>i-1&lt;/sub&gt;,a<sub>i</sub>&gt;|a<sub>i-1</sub>,a<sub>i</sub> ∈ D , i = 1,2,…,n}</p>
 <a id="more"></a>
-<h4 id="串的存储结构"><a href="#串的存储结构" class="headerlink" title="串的存储结构"></a>串的存储结构</h4><h6 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h6><p>顺序串</p>
+<h4 id="串的存储结构"><a href="#串的存储结构" class="headerlink" title="串的存储结构"></a>串的存储结构</h4><ul>
+<li>顺序存储结构</li>
+<li>链式存储结构</li>
+</ul>
+<h5 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h5><p>顺序串</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[n] strings;	<span class="comment">//数据</span></span><br><span class="line">    <span class="keyword">int</span> length;	<span class="comment">//串长度</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h6><p>链串</p>
+<h5 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h5><p>链串</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据域：每个结点存储n个字符</span></span><br><span class="line"><span class="comment">//指针域：存储下一个结点的地址</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[n] data;	<span class="comment">//数据--n个字符</span></span><br><span class="line">    Node next;	<span class="comment">//直接后继</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span>&#123;</span><br><span class="line">    Node head;	<span class="comment">//头结点</span></span><br><span class="line">    Node tail;	<span class="comment">//尾结点</span></span><br><span class="line">    <span class="keyword">int</span> length; <span class="comment">//串长度</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>存储密度 = (串值所占的内存) / 实际分配的内存</p>
+<p>存储密度 = (串值所占的内存) / 实际分配的内存。</p>
 <h4 id="串的基本操作"><a href="#串的基本操作" class="headerlink" title="串的基本操作"></a>串的基本操作</h4><p>详细代码见String源码 <a href="https://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="noopener">Java API文档</a></p>
 <ul>
 <li><p>串赋值 </p>
@@ -320,28 +325,30 @@
 <p><code>String seq = str.replace();</code></p>
 </li>
 </ul>
-<h4 id="串的匹配模式算法"><a href="#串的匹配模式算法" class="headerlink" title="串的匹配模式算法"></a>串的匹配模式算法</h4><p>确定主串中所含子串(模式串)第一次出现的位置</p>
-<h5 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h5><p>简单匹配算法 Brute-Force(暴力算法) 采用的是<strong>穷举法</strong></p>
-<h6 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h6><p>从主串的每一个字符开始依次与模式串的字符进行匹配</p>
-<p>如果当前字符匹配成功，则继续匹配</p>
-<p>如果匹配失败，回溯，从主串该次匹配成功的第一个字符的下一个字符开始直到模式串</p>
+<h4 id="串的匹配模式算法"><a href="#串的匹配模式算法" class="headerlink" title="串的匹配模式算法"></a>串的匹配模式算法</h4><p>确定主串中所含子串(模式串)第一次出现的位置。</p>
+<h5 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h5><p>简单匹配算法 Brute-Force(暴力算法) 采用的是<strong>穷举法</strong>。</p>
+<h6 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h6><ol>
+<li>从主串的每一个字符开始依次与模式串的字符进行匹配。</li>
+<li>如果当前字符匹配成功，则继续匹配。</li>
+<li>如果匹配失败，回溯，从主串该次匹配成功的第一个字符的下一个字符开始直到模式串。</li>
+</ol>
 <h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 字符串匹配--暴力算法</span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(n*m)	//m为主串长度，n为模式串长度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> text      主串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pattern   模式串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 匹配成功返回模式串第一次出现的位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexByBruteForce</span><span class="params">(String text, String pattern)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sLen = text.length();       <span class="comment">//主串字符长度</span></span><br><span class="line">    <span class="keyword">int</span> pLen = pattern.length();    <span class="comment">//模式串字符长度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span>[] s = text.toCharArray();      <span class="comment">//主串字符</span></span><br><span class="line">    <span class="keyword">char</span>[] p = pattern.toCharArray();   <span class="comment">//模式串字符</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sLen &lt; pLen)    <span class="comment">//主串长度比模式串长度小，直接返回不匹配</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  <span class="comment">//主串指针位置</span></span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;  <span class="comment">//模式串指针位置</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt; sLen &amp;&amp; j &lt; pLen) &#123;</span><br><span class="line">	<span class="comment">//while (i &lt; sLen &amp;&amp; j &lt; pLen &amp;&amp; sLen - i + j &gt;= pLen) &#123;  // 优化sLen - i + j &gt;= pLen保证主串有剩余字符能匹配成功</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j]) &#123;   <span class="comment">//如果当前字符匹配成功，则继续匹配</span></span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  <span class="comment">//如果失配，回溯</span></span><br><span class="line">            i = i - (j - <span class="number">1</span>);    <span class="comment">//从该次匹配成功的第一个字符的下一个字符开始</span></span><br><span class="line">            j = <span class="number">0</span>;              <span class="comment">//从第一个字符开始</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//匹配成功返回第一个字符的位置，匹配不成功，返回-1</span></span><br><span class="line">    <span class="keyword">return</span> j == pLen ? i - j : -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> index = indexByBruteForce(<span class="string">"this is for test"</span>, <span class="string">"test"</span>);</span><br><span class="line">System.out.println(index);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
 <h5 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h5><p>Knuth Morris Pratt</p>
-<h6 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h6><p>利用已经部分匹配的结果加快模式串的滑动速度，且主串s的指针i不必回溯</p>
-<p>在<strong>已经匹配的模式串的子串</strong>中，找出最长的相同的前缀和后缀，然后移动使它们重叠，定义next[j]数组，表明当模式中第j个字符与主串中相应字符，不匹配时，在模式中需要重新和主串中该字符进行比较的字符的位置</p>
+<h6 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h6><p>利用已经部分匹配的结果加快模式串的滑动速度，且主串s的指针i不必回溯。</p>
+<p>在<strong>已经匹配的模式串的子串</strong>中，找出最长的相同的前缀和后缀，然后移动使它们重叠，定义next[j]数组，表明当模式中第j个字符与主串中相应字符，不匹配时，在模式中需要重新和主串中该字符进行比较的字符的位置。</p>
 <script type="math/tex; mode=display">
 next[j]={\begin{cases}max\{k|1<k<j,且P_1...P_{k-1} = P_{j-k+1}...P_{j-1}\} & 集合为空\\
 0 & j=1    \\
 1 & 其他情况
 \end{cases}}</script><p>时间复杂度：O(m+n)</p>
 <p>可参考资料：<a href="http://www.ruanyifeng.com/blog/2013/05/Knuth–Morris–Pratt_algorithm.html" target="_blank" rel="noopener">字符串匹配的KMP算法—阮一峰</a></p>
-<h6 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h6><p>在next[j]数组的基础上引入nextval[j]数组</p>
+<h6 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h6><p>在next[j]数组的基础上引入nextval[j]数组。</p>
 <p>nextval[j]数组</p>
 <script type="math/tex; mode=display">
 nextval[j]=\begin{cases}next[j]的next值 & 当前元素的符号与第next[j]的元素符号相同(循环比较直至不相同)\\
-next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较后的值，不同为自己的next值</p>
+next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较后的值，不同为自己的next值。</p>
 <div class="table-container">
 <table>
 <thead>
@@ -504,7 +511,7 @@ next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#串的定义"><span class="nav-text">串的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#相关概念"><span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#子串"><span class="nav-text">子串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#主串"><span class="nav-text">主串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符位置"><span class="nav-text">字符位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#子串位置"><span class="nav-text">子串位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#空格串"><span class="nav-text">空格串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#串相等"><span class="nav-text">串相等</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#串的类型定义"><span class="nav-text">串的类型定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的存储结构"><span class="nav-text">串的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序存储结构"><span class="nav-text">顺序存储结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#链式存储结构"><span class="nav-text">链式存储结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的基本操作"><span class="nav-text">串的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的匹配模式算法"><span class="nav-text">串的匹配模式算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF算法"><span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法思路"><span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP算法"><span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法思路-1"><span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#算法改进"><span class="nav-text">算法改进</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-1"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#串的定义"><span class="nav-text">串的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#相关概念"><span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#串的类型定义"><span class="nav-text">串的类型定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的存储结构"><span class="nav-text">串的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序存储结构"><span class="nav-text">顺序存储结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#链式存储结构"><span class="nav-text">链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的基本操作"><span class="nav-text">串的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串的匹配模式算法"><span class="nav-text">串的匹配模式算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF算法"><span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法思路"><span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP算法"><span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法思路-1"><span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#算法改进"><span class="nav-text">算法改进</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-1"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -383,6 +383,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/c231612.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="周超">
+      <meta itemprop="description" content="记录编程学习的历程">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周超的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/articles/c231612.html" class="post-title-link" itemprop="url">Android四大组件--Broadcast</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-07 16:29:05" itemprop="dateModified" datetime="2020-09-07T16:29:05+08:00">2020-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="使用广播来接收系统内部发送的广播"><a href="#使用广播来接收系统内部发送的广播" class="headerlink" title="使用广播来接收系统内部发送的广播"></a>使用广播来接收系统内部发送的广播</h4><h5 id="动态注册广播监听电量变化"><a href="#动态注册广播监听电量变化" class="headerlink" title="动态注册广播监听电量变化"></a>动态注册广播监听电量变化</h5><p>在应用的活动页面创建时启动广播，通过继承广播接收者的类来接收系统内部发送的广播，在活动页面销毁时取消广播，以防止内存泄漏的问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> BatteryLevelReceiver mBatteryStateReceiver;     <span class="comment">//接收广播</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    <span class="comment">//意图过滤</span></span><br><span class="line">    IntentFilter intentFilter=<span class="keyword">new</span> IntentFilter();</span><br><span class="line">    <span class="comment">//设置频道--电量变化</span></span><br><span class="line">    intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);</span><br><span class="line">    <span class="comment">//添加广播接收者</span></span><br><span class="line">    mBatteryStateReceiver = <span class="keyword">new</span> BatteryLevelReceiver();</span><br><span class="line">    <span class="comment">//启动广播</span></span><br><span class="line">    <span class="keyword">this</span>.registerReceiver(mBatteryStateReceiver,intentFilter);<span class="comment">//参数：BroadcastReceiver,IntentFilter</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BatteryLevelReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        String action = intent.getAction();</span><br><span class="line">        Log.d(TAG, <span class="string">"action:"</span> + action);</span><br><span class="line">        Log.d(TAG, <span class="string">"batteryLevel:"</span>+intent.getIntExtra(BatteryManager.EXTRA_LEVEL,<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="keyword">if</span> (mBatteryStateReceiver!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        unregisterReceiver(mBatteryStateReceiver);      <span class="comment">//取消广播，防止内存泄漏</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/articles/c231612.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/56c6f16a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -446,88 +528,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/articles/56c6f16a.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lao-biao.github.io/articles/c231612.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="周超">
-      <meta itemprop="description" content="记录编程学习的历程">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周超的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/articles/c231612.html" class="post-title-link" itemprop="url">Android四大组件--Broadcast</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-03 12:00:00" itemprop="dateCreated datePublished" datetime="2020-04-03T12:00:00+08:00">2020-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-07 16:29:05" itemprop="dateModified" datetime="2020-09-07T16:29:05+08:00">2020-09-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index"><span itemprop="name">android</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="使用广播来接收系统内部发送的广播"><a href="#使用广播来接收系统内部发送的广播" class="headerlink" title="使用广播来接收系统内部发送的广播"></a>使用广播来接收系统内部发送的广播</h4><h5 id="动态注册广播监听电量变化"><a href="#动态注册广播监听电量变化" class="headerlink" title="动态注册广播监听电量变化"></a>动态注册广播监听电量变化</h5><p>在应用的活动页面创建时启动广播，通过继承广播接收者的类来接收系统内部发送的广播，在活动页面销毁时取消广播，以防止内存泄漏的问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> BatteryLevelReceiver mBatteryStateReceiver;     <span class="comment">//接收广播</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    <span class="comment">//意图过滤</span></span><br><span class="line">    IntentFilter intentFilter=<span class="keyword">new</span> IntentFilter();</span><br><span class="line">    <span class="comment">//设置频道--电量变化</span></span><br><span class="line">    intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);</span><br><span class="line">    <span class="comment">//添加广播接收者</span></span><br><span class="line">    mBatteryStateReceiver = <span class="keyword">new</span> BatteryLevelReceiver();</span><br><span class="line">    <span class="comment">//启动广播</span></span><br><span class="line">    <span class="keyword">this</span>.registerReceiver(mBatteryStateReceiver,intentFilter);<span class="comment">//参数：BroadcastReceiver,IntentFilter</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BatteryLevelReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        String action = intent.getAction();</span><br><span class="line">        Log.d(TAG, <span class="string">"action:"</span> + action);</span><br><span class="line">        Log.d(TAG, <span class="string">"batteryLevel:"</span>+intent.getIntExtra(BatteryManager.EXTRA_LEVEL,<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="keyword">if</span> (mBatteryStateReceiver!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        unregisterReceiver(mBatteryStateReceiver);      <span class="comment">//取消广播，防止内存泄漏</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/articles/c231612.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
