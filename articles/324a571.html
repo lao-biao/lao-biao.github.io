@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Jsp概念Java Server Pages，Java服务器页面 简化的Servlet设计 动态网页技术标准（数据的动态改变） 特点 本质上是Servlet 跨平台 组件跨平台 健壮性和安全性（业务逻辑，数据）  访问原理Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户 1234567891011121314151">
+  <meta name="description" content="Jsp概念 Java Server Pages，Java服务器页面 简化的Servlet设计 动态网页技术标准（数据的动态改变）  特点 本质上是Servlet 跨平台 组件跨平台 健壮性和安全性（业务逻辑，数据）  访问原理Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户。 1234567891011121314">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jsp-EL表达式-JSTL笔记">
 <meta property="og:url" content="https://lao-biao.github.io/articles/324a571.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="Jsp概念Java Server Pages，Java服务器页面 简化的Servlet设计 动态网页技术标准（数据的动态改变） 特点 本质上是Servlet 跨平台 组件跨平台 健壮性和安全性（业务逻辑，数据）  访问原理Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户 1234567891011121314151">
+<meta property="og:description" content="Jsp概念 Java Server Pages，Java服务器页面 简化的Servlet设计 动态网页技术标准（数据的动态改变）  特点 本质上是Servlet 跨平台 组件跨平台 健壮性和安全性（业务逻辑，数据）  访问原理Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户。 1234567891011121314">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-12T02:45:37.000Z">
-<meta property="article:modified_time" content="2020-10-29T05:16:03.036Z">
+<meta property="article:modified_time" content="2020-10-29T08:55:30.640Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="jsp">
 <meta property="article:tag" content="el">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 13:16:03" itemprop="dateModified" datetime="2020-10-29T13:16:03+08:00">2020-10-29</time>
+                <time title="修改时间：2020-10-29 16:55:30" itemprop="dateModified" datetime="2020-10-29T16:55:30+08:00">2020-10-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,11 +251,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
                 </span>
             </span>
 
@@ -270,18 +266,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Jsp"><a href="#Jsp" class="headerlink" title="Jsp"></a>Jsp</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>Java Server Pages，Java服务器页面</p>
-<p>简化的Servlet设计</p>
-<p>动态网页技术标准（数据的动态改变）</p>
+        <h3 id="Jsp"><a href="#Jsp" class="headerlink" title="Jsp"></a>Jsp</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>Java Server Pages，Java服务器页面</li>
+<li>简化的Servlet设计</li>
+<li>动态网页技术标准（数据的动态改变）</li>
+</ul>
 <h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
 <li>本质上是Servlet</li>
 <li>跨平台</li>
 <li>组件跨平台</li>
 <li>健壮性和安全性（业务逻辑，数据）</li>
 </ul>
-<h5 id="访问原理"><a href="#访问原理" class="headerlink" title="访问原理"></a>访问原理</h5><p>Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户</p>
+<h5 id="访问原理"><a href="#访问原理" class="headerlink" title="访问原理"></a>访问原理</h5><p>Tomcat只能识别Servlet，用户访问jsp文件，服务器用JspServlet将jsp文件转义成对应的Java文件，返回给用户。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>jsp<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.jasper.servlet.JspServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>fork<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>xpoweredBy<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>3<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>jsp<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.jsp<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.jspx<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><font color='blue'>JSP负责页面展现，Sevlet负责业务逻辑处理</font>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><font color='blue'>JSP负责页面展现，Sevlet负责业务逻辑处理。</font>
 
 <a id="more"></a>
 <h4 id="Jsp的语法和指令"><a href="#Jsp的语法和指令" class="headerlink" title="Jsp的语法和指令"></a>Jsp的语法和指令</h4><p>Jsp三大指令</p>
@@ -290,69 +288,76 @@
 <li>include指令：静态引入jsp文件</li>
 <li>taglib指令：引入jstl标签库</li>
 </ul>
-<h5 id="jsp的三种注释"><a href="#jsp的三种注释" class="headerlink" title="jsp的三种注释"></a>jsp的三种注释</h5><p>前端语言注释(html,css,js)：会被转译，也会被发送，但是不会被浏览器执行</p>
-<p>java语言注释(行注释，块注释，文档注释)：会被转译，但是不会被servlet执行</p>
-<p>jsp注释：不会被转译</p>
+<h5 id="jsp的三种注释"><a href="#jsp的三种注释" class="headerlink" title="jsp的三种注释"></a>jsp的三种注释</h5><p>前端语言注释(html,css,js)：会被转译，也会被发送，但是不会被浏览器执行。</p>
+<p>java语言注释(行注释，块注释，文档注释)：会被转译，但是不会被servlet执行。</p>
+<p>jsp注释：不会被转译。</p>
 <h5 id="jsp的page指令"><a href="#jsp的page指令" class="headerlink" title="jsp的page指令"></a>jsp的page指令</h5><p> <code>&lt;@ page attribute1=&quot;value&quot; attribute2=&quot;value&quot; ...%&gt;</code></p>
 <p>作用：配置jsp文件的转译相关的参数</p>
 <ul>
-<li>language:声明jsp要被转译的语言</li>
-<li>import:声明转译java的java文件要导入的包，不同的包使用逗号隔开</li>
-<li>pageEncoding:设置jsp文件的数据编码格式</li>
-<li>contentType:设置jsp数据响应给浏览器时，浏览器的解析和编码格式</li>
-<li>session:设置转译的Servlet是否开启session支持，默认开启，true开启，false关闭</li>
-<li>errorPage:设置jsp运行错误跳转的页面</li>
-<li>extends:设置jsp转译的java文件要继承的父类（包名+类名）</li>
+<li><code>language</code>：声明jsp要被转译的语言</li>
+<li><code>import</code>：声明转译java的java文件要导入的包，不同的包使用逗号隔开</li>
+<li><code>pageEncoding</code>：设置jsp文件的数据编码格式</li>
+<li><code>contentType</code>：设置jsp数据响应给浏览器时，浏览器的解析和编码格式</li>
+<li><code>session</code>：设置转译的Servlet是否开启session支持，默认开启，true开启，false关闭</li>
+<li><code>errorPage</code>：设置jsp运行错误跳转的页面</li>
+<li><code>extends</code>：设置jsp转译的java文件要继承的父类（包名+类名）</li>
 </ul>
 <h5 id="jsp的局部代码块"><a href="#jsp的局部代码块" class="headerlink" title="jsp的局部代码块"></a>jsp的局部代码块</h5><p>特点</p>
 <ul>
-<li>布局代码块中声明的java代码会被原样转译到jsp对应的Servlet文件的_JspService方法中</li>
-<li>代码块中声明的变量都是局部变量</li>
+<li>布局代码块中声明的java代码会被原样转译到jsp对应的Servlet文件的_JspService方法中。</li>
+<li>代码块中声明的变量都是局部变量。</li>
 </ul>
 <p>使用：<code>&lt;%java代码块%&gt;</code></p>
-<p>缺点：使用局部代码块在jsp中进行逻辑判断，书写麻烦，阅读困难</p>
-<p>开发：使用Sevlet进行请求逻辑处理，使用jsp进行页面展现</p>
+<p>缺点：使用局部代码块在jsp中进行逻辑判断，书写麻烦，阅读困难。</p>
+<p>开发：使用Sevlet进行请求逻辑处理，使用jsp进行页面展现。</p>
 <h5 id="jsp的全局代码块"><a href="#jsp的全局代码块" class="headerlink" title="jsp的全局代码块"></a>jsp的全局代码块</h5><p>特点：声明的java代码作为全局代码转译到对应的Servlet类中</p>
 <p>使用：<code>&lt;%!java全局代码块%&gt;</code></p>
 <font color='red'>注意：全局代码块声明的代码，需要使用局部代码块调用</font>
 
-<h5 id="jsp的脚本段语句"><a href="#jsp的脚本段语句" class="headerlink" title="jsp的脚本段语句"></a>jsp的脚本段语句</h5><p>特点：帮助开发人员快速地获取变量或者方法的返回值作为数据响应给浏览器    </p>
+<h5 id="jsp的脚本段语句"><a href="#jsp的脚本段语句" class="headerlink" title="jsp的脚本段语句"></a>jsp的脚本段语句</h5><p>特点：帮助开发人员快速地获取变量或者方法的返回值作为数据响应给浏览器。</p>
 <p>使用：<code>&lt;%=变量名或者方法%&gt;</code>    &lt;===&gt;   out.write(变量名或方法);</p>
 <font color='red'>注意：不要在变量名或者方法后使用分号</font>
 
-<p>位置：除jsp语法要求以外的任意位置</p>
+<p>位置：除jsp语法要求以外的任意位置。</p>
 <h5 id="jsp的静态引入和动态引入"><a href="#jsp的静态引入和动态引入" class="headerlink" title="jsp的静态引入和动态引入"></a>jsp的静态引入和动态引入</h5><h6 id="静态引入"><a href="#静态引入" class="headerlink" title="静态引入"></a>静态引入</h6><p> <code>&lt;%@include file=&quot;jsp文件相对地址&quot; %&gt;</code></p>
 <p>特点：</p>
 <ul>
-<li>会将引入的jsp文件和当前jsp文件转译成一个java（Servlet）文件使用</li>
-<li>在网页中也就显示了合并后的显示效果</li>
+<li>会将引入的jsp文件和当前jsp文件转译成一个java（Servlet）文件使用。</li>
+<li>在网页中也就显示了合并后的显示效果。</li>
 </ul>
 <p>注意：</p>
 <ul>
-<li>静态引入的jsp文件<font color='red'>不会</font>单独转译成java（Servlet）文件</li>
-<li>同名变量    编译报错 Duplicate local variable</li>
-<li>当前文件和静态引入的jsp文件中<font color='red'>不能</font>使用java代码块声明同名变量</li>
+<li>静态引入的jsp文件<font color='red'>不会</font>单独转译成java（Servlet）文件。</li>
+<li>同名变量，编译报错 Duplicate local variable。</li>
+<li>当前文件和静态引入的jsp文件中<font color='red'>不能</font>使用java代码块声明同名变量。</li>
 </ul>
 <h6 id="动态引入"><a href="#动态引入" class="headerlink" title="动态引入"></a>动态引入</h6><p><code>&lt;jsp:include page=&quot;jsp文件相对地址&quot;/&gt;</code></p>
 <p>特点：</p>
 <ul>
-<li>会将引入的jsp文件单独转译，在当前文件转译好的java文件中调用引入的jsp文件的转译文件</li>
-<li>在网页中显示合并后的显示效果</li>
+<li>会将引入的jsp文件单独转译，在当前文件转译好的java文件中调用引入的jsp文件的转译文件。</li>
+<li>在网页中显示合并后的显示效果。</li>
 </ul>
-<p>注意：动态引入<font color='red'>允许</font>文件中声明同名变量</p>
-<p>优点：降低jsp代码的冗余，便于维护升级</p>
-<h5 id="jsp的转发标签"><a href="#jsp的转发标签" class="headerlink" title="jsp的转发标签"></a>jsp的转发标签</h5><p>使用：<code>&lt;jsp:forward page=&quot;jsp文件相对地址&quot;&gt;&lt;/jsp:forward&gt;</code>    jsp文件<font color='red'>相对地址</font></p>
+<p>注意：动态引入<font color='red'>允许</font>文件中声明同名变量。</p>
+<p>优点：降低jsp代码的冗余，便于维护升级。</p>
+<h5 id="jsp的转发标签"><a href="#jsp的转发标签" class="headerlink" title="jsp的转发标签"></a>jsp的转发标签</h5><p>使用：<code>&lt;jsp:forward page=&quot;jsp文件相对地址&quot;&gt;&lt;/jsp:forward&gt;</code>    jsp文件<font color='red'>相对地址</font>。</p>
 <p>特点</p>
 <ul>
 <li>一次请求</li>
 <li>地址栏信息不变</li>
 </ul>
-<p>注意：<font color='red'>在转发标签的两个标签中间除了写</font><code>&lt;jsp:param name=&quot;&quot; value=&quot;&quot;/&gt;</code><font color='red'>子标签不会报错，其他任意字符都会报错</font><br><code>&lt;%=request.getParameter(&quot;键名&quot;)%&gt;</code><br>name属性为附带的数据的键名<br>value属性为附带的数据的内容<br>会将数据以?的形式在转发路径的后面</p>
+<p>注意：<font color='red'>在转发标签的两个标签中间除了写</font><code>&lt;jsp:param name=&quot;&quot; value=&quot;&quot;/&gt;</code><font color='red'>子标签不会报错，其他任意字符都会报错</font>。<br><code>&lt;%=request.getParameter(&quot;键名&quot;)%&gt;</code></p>
+<ul>
+<li><p>name属性为附带的数据的键名</p>
+</li>
+<li><p>value属性为附带的数据的内容</p>
+<p>会将数据以?的形式在转发路径的后面。</p>
+</li>
+</ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">"要转发的jsp文件的相对路径"</span>&gt;</span><br><span class="line">    &lt;jsp:param name=<span class="string">"str"</span> value=<span class="string">"a"</span>/&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="jsp内置对象"><a href="#jsp内置对象" class="headerlink" title="jsp内置对象"></a>jsp内置对象</h4><h5 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h5><p>jsp文件在转译其对应的Servlet文件的时候自动生成的并声明的对象，可以在jsp页面中直接使用。</p>
 <h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>内置对象在jsp页面中使用，使用局部代码块或者脚本段语句来使用，不能够在全局代码块中使用。</p>
-<h5 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h5><h6 id="PageContext对象"><a href="#PageContext对象" class="headerlink" title="PageContext对象"></a>PageContext对象</h6><p>页面上下文对象，封存了其他内置对象。封存了当前jsp的运行信息</p>
-<p>注意：每个jsp文件单独拥有一个PageContext对象</p>
+<h5 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h5><h6 id="PageContext对象"><a href="#PageContext对象" class="headerlink" title="PageContext对象"></a>PageContext对象</h6><p>页面上下文对象，封存了其他内置对象。封存了当前jsp的运行信息。</p>
+<p>注意：每个jsp文件单独拥有一个PageContext对象。</p>
 <p>作用域：当前页面</p>
 <h6 id="Request对象"><a href="#Request对象" class="headerlink" title="Request对象"></a>Request对象</h6><p>封存当前请求数据的对象，由Tomcat服务器创建，作用域为一次请求。</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line"><span class="comment">// 获取请求数据</span></span><br><span class="line">String s = request.getParameter(<span class="string">"str"</span>);</span><br><span class="line">request.getAttribute(<span class="string">"str"</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
@@ -360,32 +365,34 @@
 <h6 id="Application对象"><a href="#Application对象" class="headerlink" title="Application对象"></a>Application对象</h6><p>ServletContext对象，一个项目只有一个，存储用户共享数据的对象，以及完成其他操作，项目内</p>
 <h6 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h6><p>响应对象，用来响应请求处理结果给浏览器的对象，设置响应头，重定向。</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    response.sendRedirect(<span class="string">"forward.jsp"</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="Out对象"><a href="#Out对象" class="headerlink" title="Out对象"></a>Out对象</h6><p>响应对象，jsp内部使用，带有缓冲区的响应对象，效率高于response对象</p>
-<h6 id="Page对象"><a href="#Page对象" class="headerlink" title="Page对象"></a>Page对象</h6><p>代表当前jsp对象，相当于java的this</p>
-<h6 id="Exception对象"><a href="#Exception对象" class="headerlink" title="Exception对象"></a>Exception对象</h6><p>异常对象，存储了当前运行的异常信息</p>
+<h6 id="Out对象"><a href="#Out对象" class="headerlink" title="Out对象"></a>Out对象</h6><p>响应对象，jsp内部使用，带有缓冲区的响应对象，效率高于response对象。</p>
+<h6 id="Page对象"><a href="#Page对象" class="headerlink" title="Page对象"></a>Page对象</h6><p>代表当前jsp对象，相当于java的<code>this</code>。</p>
+<h6 id="Exception对象"><a href="#Exception对象" class="headerlink" title="Exception对象"></a>Exception对象</h6><p>异常对象，存储了当前运行的异常信息。</p>
 <p>注意：使用此对象需要在page指定使用属性isErrorPage=”true”开启</p>
-<h6 id="Congfig对象"><a href="#Congfig对象" class="headerlink" title="Congfig对象"></a>Congfig对象</h6><p>ServletConfig对象，主要用来获取web.xml中的配置数据，完成一些初始化数据据的读取</p>
-<h6 id="四个作用域对象"><a href="#四个作用域对象" class="headerlink" title="四个作用域对象"></a>四个作用域对象</h6><p>pageContext：当前对象，解决了在当前页面的数据共享问题。获取其他内置对象</p>
-<p>request:一次请求，一次请求的servlet的数据共享。通过请求转发将数据流转给下一个Servlet</p>
-<p>session:一次会话，一个用户的不同请求的数据共享。将数据从一次请求流转给其他请求</p>
-<p>application:项目内，不同用户的数据共享问题。将数据从一个用户流转给其他用户</p>
-<p>作用：数据流转</p>
+<h6 id="Congfig对象"><a href="#Congfig对象" class="headerlink" title="Congfig对象"></a>Congfig对象</h6><p>ServletConfig对象，主要用来获取web.xml中的配置数据，完成一些初始化数据据的读取。</p>
+<h6 id="四个作用域对象"><a href="#四个作用域对象" class="headerlink" title="四个作用域对象"></a>四个作用域对象</h6><p>pageContext：当前对象，解决了在当前页面的数据共享问题。获取其他内置对象。</p>
+<p>request：一次请求，一次请求的servlet的数据共享。通过请求转发将数据流转给下一个Servlet。</p>
+<p>session：一次会话，一个用户的不同请求的数据共享。将数据从一次请求流转给其他请求。</p>
+<p>application：项目内，不同用户的数据共享问题。将数据从一个用户流转给其他用户。</p>
+<p>作用：数据流转。</p>
 <h4 id="jsp资源路径"><a href="#jsp资源路径" class="headerlink" title="jsp资源路径"></a>jsp资源路径</h4><p>在jsp中资源路径可以使用相对路径完成跳转，存在的问题</p>
-<p>问题一：资源的位置不可随意更改</p>
-<p>问题二：需要使用<code>../</code>进行文件夹的跳出，使用比较麻烦</p>
+<ol>
+<li>资源的位置不可随意更改。</li>
+<li>需要使用<code>../</code>进行文件夹的跳出，使用比较麻烦。</li>
+</ol>
 <h5 id="使用绝对路径"><a href="#使用绝对路径" class="headerlink" title="使用绝对路径"></a>使用绝对路径</h5><p> <code>/</code>表示服务器根目录即localhost:8080/</p>
 <p>/虚拟项目名/项目资源路径</p>
 <p>举例：项目虚拟名为jsp    </p>
 <p>资源文件路径webapp/jsp/a/a.jsp    <code>&lt;a href=&quot;/jsp/a/a.jsp&quot;&gt;a.jsp&lt;/a&gt;</code></p>
 <p>webapp/jsp/jsppro.jsp    <code>&lt;a href=&quot;/jsp/jsppro.jsp&quot;&gt;jsppro.jsp&lt;/a&gt;</code></p>
 <h5 id="使用jsp中自带的全局路径声明"><a href="#使用jsp中自带的全局路径声明" class="headerlink" title="使用jsp中自带的全局路径声明"></a>使用jsp中自带的全局路径声明</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme() + <span class="string">"://"</span> + request.getServerName() + <span class="string">":"</span> + request.getServerPort() + path + <span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line">    &lt;/head&gt;   </span><br><span class="line">    &lt;body&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>作用：给资源前面添加项目路径<a href="http://127.0.0.1:8080/虚拟项目名/" target="_blank" rel="noopener">http://127.0.0.1:8080/虚拟项目名/</a></p>
+<p>作用：给资源前面添加项目路径<a href="http://127.0.0.1:8080/虚拟项目名/。" target="_blank" rel="noopener">http://127.0.0.1:8080/虚拟项目名/。</a></p>
 <h3 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h3><p>问题引入</p>
 <ul>
 <li>Servlet进行请求处理后，使用作用域对象作为数据流转的载体，将数据流转给对应的jsp文件</li>
 <li>在jsp中获取作用域中的数据</li>
 </ul>
-<p>传统方式：在jsp页面中使用java脚本段语句</p>
+<p>传统方式：在jsp页面中使用java脚本段语句。</p>
 <p>传统方式获取作用域数据</p>
 <ul>
 <li>缺点一：要通过<code>&lt;%@ page import=&quot;&quot;%&gt;</code>导入包</li>
@@ -399,8 +406,8 @@
 <p>jsp文件</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;&lt;%=request.getParameter("uname")%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=request.getAttribute("str")%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((User) request.getAttribute("user")).getAddr().getTown()%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((ArrayList) request.getAttribute("list")).get(1)%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((User) ((ArrayList) request.getAttribute("lu")).get(0)).getAddr().getPre()%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((ArrayList&lt;User&gt;) request.getAttribute("lu")).get(1).getAddr().getPre()%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((HashMap) request.getAttribute("map")).get("b")%&gt;&lt;/b&gt;&lt;br&gt;</span><br><span class="line">&lt;b&gt;&lt;%=((HashMap&lt;String, User&gt;) request.getAttribute("mu")).get("a").getAddr().getTown()%&gt;&lt;/b&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>全称：Expression Language，一种写法非常简洁的表达式，语法简单易懂，便于使用，表达式语言的灵感来自于ESMAScript和XPath表达式语言。</p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>让jsp书写起来更加的方便，简化在jsp中获取作用域或者请求数据的写法，也会搭配JSTL来进行使用</p>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>语法结构：$(expression)提供<code>.</code>和<code>[]</code>两种运算符来存取数据    </p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>让jsp书写起来更加的方便，简化在jsp中获取作用域或者请求数据的写法，也会搭配JSTL来进行使用。</p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>语法结构：$(expression)提供<code>.</code>和<code>[]</code>两种运算符来存取数据。</p>
 <h5 id="使用EL表达式获取请求数据"><a href="#使用EL表达式获取请求数据" class="headerlink" title="使用EL表达式获取请求数据"></a>使用EL表达式获取请求数据</h5><p>获取用户请求数据 ${requset.attribute}</p>
 <p>获取请求头数据</p>
 <ul>
@@ -440,7 +447,7 @@
 </li>
 </ul>
 <h6 id="作用域查找顺序"><a href="#作用域查找顺序" class="headerlink" title="作用域查找顺序"></a>作用域查找顺序</h6><p>默认查找顺序：pageContext—&gt;reqeust—&gt;session—&gt;application</p>
-<font color='red'>注意：每次查找都从小到大进行查找，找到了则获取，不再继续找了</font>
+<font color='red'>注意：每次查找都从小到大进行查找，找到了则获取，不再继续找了。</font>
 
 <h6 id="获取指定作用域的数据"><a href="#获取指定作用域的数据" class="headerlink" title="获取指定作用域的数据"></a>获取指定作用域的数据</h6><ul>
 <li>${requestScope.键名}</li>
@@ -452,11 +459,11 @@
 <p>关系运算${关系表达式}</p>
 <p>逻辑运算${逻辑表达式}</p>
 <p>三目运算${三目表达式}</p>
-<font color='red'>注意：</font>`+`<font color='red'>表示加法运算，不表示字符连接，使用EL表达式进行字符连接会报错</font>
+<font color='red'>注意：</font>`+`<font color='red'>表示加法运算，不表示字符连接，使用EL表达式进行字符连接会报错。</font>
 
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">3</span>=&gt;$&#123;<span class="number">1</span>+<span class="number">3</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">1</span>*<span class="number">2</span>=&gt;$&#123;<span class="number">1</span>*<span class="number">2</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">1</span>/<span class="number">2</span>=&gt;$&#123;<span class="number">1</span>/<span class="number">2</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">4</span>-<span class="number">2</span>=&gt;$&#123;<span class="number">4</span>-<span class="number">2</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">4</span>%<span class="number">2</span>=&gt;$&#123;<span class="number">4</span>%<span class="number">2</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">4</span>==<span class="number">3</span>=&gt;$&#123;<span class="number">4</span>==<span class="number">3</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">4</span>&gt;<span class="number">2</span>=&gt;$&#123;<span class="number">4</span>&gt;<span class="number">2</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">1</span>==<span class="number">1</span>?<span class="string">'男'</span>:<span class="string">'女'</span>=&gt;$&#123;<span class="number">1</span>==<span class="number">1</span>?<span class="string">'男'</span>:<span class="string">'女'</span>&#125;&lt;br&gt;</span><br><span class="line"><span class="number">1</span>+<span class="string">"2"</span>=&gt;$&#123;<span class="number">1</span>+<span class="string">"2"</span>&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="使用EL表达式控制判断empty"><a href="#使用EL表达式控制判断empty" class="headerlink" title="使用EL表达式控制判断empty"></a>使用EL表达式控制判断empty</h5><p>${empty 键名}</p>
-<p>作用：判断键名对象的值是否存有数据</p>
+<p>作用：判断键名对象的值是否存有数据。</p>
 <h3 id="JSTL标签库"><a href="#JSTL标签库" class="headerlink" title="JSTL标签库"></a>JSTL标签库</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>JSTL是apache对EL表达式的扩展（JSTL依赖于EL），JSTL是标签语言。JSTL标签使用起来非常方便，它与JSP动作标签一样，只不过是它不是JSP内置的标签，需要导包，以及指定标签库。</p>
 <p>使用MyEclipse开发JavaWeb，在项目发布到Tomcat时，MyEclipse会在lib目录下存放jstl的jar包。如果没有使用MyEclipse开发需要手动导入jar包。Maven项目需要导入JSTL的相关依赖。</p>
 <h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>用来提升在JSP页面的逻辑代码的编码效率，使用标签来替换逻辑代码的直接书写，高效、美观、整洁、易读。</p>
@@ -490,7 +497,7 @@
 <ul>
 <li>var:表示要删除的键的名字</li>
 <li>scrope:表示要删除的作用域(可选)</li>
-<li><font color='red'>注意：如果在不指定作用域的情况使用该标签删除数据，会将四个作用域对象中的符合要求的数据全部删除</font>
+<li><font color='red'>注意：如果在不指定作用域的情况使用该标签删除数据，会将四个作用域对象中的符合要求的数据全部删除。</font>
 
 </li>
 </ul>
@@ -515,11 +522,10 @@
 </li>
 <li><p>items：声明要遍历的对象，结合EL表达式获取对象</p>
 </li>
-<li><p>var：声明变量记录每次循环的结果，存储在作用域中，通过EL表达式获取对象</p>
+<li><p>var：声明变量记录每次循环的结果，存储在作用域中，通过EL表达式获取对象。</p>
 </li>
 </ul>
-<p>数据</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="string">"a"</span>);</span><br><span class="line">list.add(<span class="string">"b"</span>);</span><br><span class="line">list.add(<span class="string">"c"</span>);</span><br><span class="line">request.setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line"></span><br><span class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">map.put(<span class="string">"hello"</span>, <span class="string">"Hello"</span>);</span><br><span class="line">map.put(<span class="string">"world"</span>, <span class="string">"world"</span>);</span><br><span class="line">request.setAttribute(<span class="string">"map"</span>, map);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--数据--%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="string">"a"</span>);</span><br><span class="line">list.add(<span class="string">"b"</span>);</span><br><span class="line">list.add(<span class="string">"c"</span>);</span><br><span class="line">request.setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line"></span><br><span class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">map.put(<span class="string">"hello"</span>, <span class="string">"Hello"</span>);</span><br><span class="line">map.put(<span class="string">"world"</span>, <span class="string">"world"</span>);</span><br><span class="line">request.setAttribute(<span class="string">"map"</span>, map);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--常量循环--%&gt;</span><br><span class="line">&lt;c:forEach begin=<span class="string">"1"</span> end=<span class="string">"4"</span> step=<span class="string">"1"</span> varStatus=<span class="string">"vs"</span>&gt;</span><br><span class="line">    $&#123;vs.index&#125;--$&#123;vs.count&#125;--$&#123;vs.first&#125;--$&#123;vs.last&#125;&lt;br&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;%--动态循环--%&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">"$&#123;list&#125;"</span> <span class="keyword">var</span>=<span class="string">"varlist"</span>&gt;</span><br><span class="line">    $&#123;varlist&#125;&lt;br&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">&lt;%--JSTL方式创建表格--%&gt;</span><br><span class="line">&lt;table border=<span class="string">"1px"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;字段名&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">"$&#123;list&#125;"</span> <span class="keyword">var</span>=<span class="string">"s"</span>&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;$&#123;s&#125;&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;%--遍历map集合--%&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">"$&#123;map&#125;"</span> <span class="keyword">var</span>=<span class="string">"m"</span>&gt;</span><br><span class="line">    $&#123;m.key&#125;:$&#123;m.value&#125; &lt;br&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
     </div>
 
@@ -651,7 +657,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
