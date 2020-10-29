@@ -21,20 +21,20 @@
     var CONFIG = {"hostname":"lao-biao.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="排序基本概念排序排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列 内部排序和外部排序内部排序：整个排序过程在内存储器中进行 外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成 稳定排序和不稳定排序如果在待排序的序列中存在多个具有相同关键字的元素 假设Ki&#x3D;Kj { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的Ri在Rj之前，经过排序后得到的">
+  <meta name="description" content="排序基本概念 内部排序和外部排序 稳定排序和不稳定排序 比较排序和非比较排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java数据结构与算法--排序">
 <meta property="og:url" content="https://lao-biao.github.io/articles/765a6dde.html">
 <meta property="og:site_name" content="周超的博客">
-<meta property="og:description" content="排序基本概念排序排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列 内部排序和外部排序内部排序：整个排序过程在内存储器中进行 外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成 稳定排序和不稳定排序如果在待排序的序列中存在多个具有相同关键字的元素 假设Ki&#x3D;Kj { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的Ri在Rj之前，经过排序后得到的">
+<meta property="og:description" content="排序基本概念 内部排序和外部排序 稳定排序和不稳定排序 比较排序和非比较排序">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zyy92/Pictures/raw/master/SortAlgorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="https://gitee.com/lao-biao/Pictures/raw/master/SortAlgorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
 <meta property="article:published_time" content="2020-04-13T02:08:34.000Z">
-<meta property="article:modified_time" content="2020-08-24T01:23:38.849Z">
+<meta property="article:modified_time" content="2020-10-29T04:32:26.763Z">
 <meta property="article:author" content="周超">
 <meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zyy92/Pictures/raw/master/SortAlgorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
+<meta name="twitter:image" content="https://gitee.com/lao-biao/Pictures/raw/master/SortAlgorithm/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
 
 <link rel="canonical" href="https://lao-biao.github.io/articles/765a6dde.html">
 
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-24 09:23:38" itemprop="dateModified" datetime="2020-08-24T09:23:38+08:00">2020-08-24</time>
+                <time title="修改时间：2020-10-29 12:32:26" itemprop="dateModified" datetime="2020-10-29T12:32:26+08:00">2020-10-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,20 +274,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><h6 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h6><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列</p>
-<h6 id="内部排序和外部排序"><a href="#内部排序和外部排序" class="headerlink" title="内部排序和外部排序"></a>内部排序和外部排序</h6><p>内部排序：整个排序过程在内存储器中进行</p>
-<p>外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成</p>
-<h6 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a>稳定排序和不稳定排序</h6><p>如果在待排序的序列中存在多个具有相同关键字的元素</p>
-<p>假设K<sub>i</sub>=K<sub>j</sub> { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的R<sub>i</sub>在R<sub>j</sub>之前，经过排序后得到的序列R<sub>i</sub>仍在R<sub>j</sub>之前，则称所用排序方法是<strong>稳定的</strong>，反之则是<strong>不稳定的</strong></p>
-<h6 id="比较排序和非比较排序"><a href="#比较排序和非比较排序" class="headerlink" title="比较排序和非比较排序"></a>比较排序和非比较排序</h6><p>大部分排序需要通过比较来判断大小，作为排序的依据，而计数排序、基数排序不需要进行比较</p>
-<h6 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h6><ul>
-<li>插入排序：将无序子序列中的一个或几个记录“插入”到有序序列中，从而增加记录的有序子序列的长度</li>
-<li>交换排序：通过“交换”无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
-<li>选择排序：从记录的无序子序列中“选择”关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度</li>
-<li>归并排序：通过“归并”两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度</li>
+        <h4 id="排序基本概念"><a href="#排序基本概念" class="headerlink" title="排序基本概念"></a>排序基本概念</h4><ul>
+<li>内部排序和外部排序</li>
+<li>稳定排序和不稳定排序</li>
+<li>比较排序和非比较排序</li>
 </ul>
 <a id="more"></a>
-<h4 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h4><h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><h6 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h6><ul>
+<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><p>排序是将一个数据元素的任意序列，重新排列成一个按关键字有序的序列。</p>
+<h5 id="内部排序和外部排序"><a href="#内部排序和外部排序" class="headerlink" title="内部排序和外部排序"></a>内部排序和外部排序</h5><p>内部排序：整个排序过程在内存储器中进行。</p>
+<p>外部排序：待排序元素量太大，内存储器无法容纳全部数据，排序需要借助外部存储设备才能完成。</p>
+<h5 id="稳定排序和不稳定排序"><a href="#稳定排序和不稳定排序" class="headerlink" title="稳定排序和不稳定排序"></a>稳定排序和不稳定排序</h5><p>如果在待排序的序列中存在多个具有相同关键字的元素。</p>
+<p>假设K<sub>i</sub>=K<sub>j</sub> { 1≤i≤n，1≤j≤n，i≠j }，排序前序列中的R<sub>i</sub>在R<sub>j</sub>之前，经过排序后得到的序列R<sub>i</sub>仍在R<sub>j</sub>之前，则称所用排序方法是<strong>稳定的</strong>，反之则是<strong>不稳定的</strong>。</p>
+<h5 id="比较排序和非比较排序"><a href="#比较排序和非比较排序" class="headerlink" title="比较排序和非比较排序"></a>比较排序和非比较排序</h5><p>大部分排序需要通过比较来判断大小，作为排序的依据，而计数排序、基数排序不需要进行比较。</p>
+<h5 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h5><ul>
+<li>插入排序：将无序子序列中的一个或几个记录“插入”到有序序列中，从而增加记录的有序子序列的长度。</li>
+<li>交换排序：通过“交换”无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度。</li>
+<li>选择排序：从记录的无序子序列中“选择”关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度。</li>
+<li>归并排序：通过“归并”两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度。</li>
+</ul>
+<h4 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h4><ul>
+<li>冒泡排序</li>
+<li>快速排序</li>
+</ul>
+<h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><p>Bubble Sort 是一种计算机科学领域的较简单的排序算法。</p>
+<h6 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h6><ul>
 <li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li>
 <li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</li>
 <li>针对所有的元素重复以上的步骤，除了最后一个。</li>
@@ -325,15 +335,22 @@
 <li>后移</li>
 <li>插入</li>
 </ul>
-<p>[2, 3, 10, 9, 4, 8, 1, 7, 6, 5]</p>
-<p>[2, <font color="red">3</font>, 10, 9, 4, 8, 1, 7, 6, 5]<br>[2, 3, <font color="red">10</font>, 9, 4, 8, 1, 7, 6, 5]<br>[2, 3,<font color="red"> 9</font>, 10, 4, 8, 1, 7, 6, 5]<br>[2, 3, <font color="red">4</font>, 9, 10, 8, 1, 7, 6, 5]<br>[2, 3, 4, <font color="red">8</font>, 9, 10, 1, 7, 6, 5]<br>[<font color="red">1</font>, 2, 3, 4, 8, 9, 10, 7, 6, 5]<br>[1, 2, 3, 4, <font color="red">7</font>, 8, 9, 10, 6, 5]<br>[1, 2, 3, 4, <font color="red">6</font>, 7, 8, 9, 10, 5]<br>[1, 2, 3, 4, <font color="red">5</font>, 6, 7, 8, 9, 10]</p>
-<p>时间复杂度：O(n<sup>2</sup>)</p>
-<p>空间复杂度：O(1)</p>
+<blockquote>
+<p>[2, 3, 10, 9, 4, 8, 1, 7, 6, 5]<br>[2, 3, 10, 9, 4, 8, 1, 7, 6, 5]<br>[2, 3, <font color="red">10</font>, 9, 4, 8, 1, 7, 6, 5]<br>[2, 3,<font color="red"> 9</font>, 10, 4, 8, 1, 7, 6, 5]<br>[2, 3, <font color="red">4</font>, 9, 10, 8, 1, 7, 6, 5]<br>[2, 3, 4, <font color="red">8</font>, 9, 10, 1, 7, 6, 5]<br>[<font color="red">1</font>, 2, 3, 4, 8, 9, 10, 7, 6, 5]<br>[1, 2, 3, 4, <font color="red">7</font>, 8, 9, 10, 6, 5]<br>[1, 2, 3, 4, <font color="red">6</font>, 7, 8, 9, 10, 5]<br>[1, 2, 3, 4, <font color="red">5</font>, 6, 7, 8, 9, 10]</p>
+</blockquote>
+<ul>
+<li>时间复杂度：O(n<sup>2</sup>)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
 <h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">binaryInsertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];  <span class="comment">//要操作的数</span></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (temp &gt; arr[mid])</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从后往前移动数组，直到temp要插入的位置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= low; j--)</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">        <span class="comment">//插入</span></span><br><span class="line">        arr[low] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</span><br><span class="line">binaryInsertSort(arr);</span><br><span class="line">System.out.println(Arrays.toString(arr));</span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="各种排序比较"><a href="#各种排序比较" class="headerlink" title="各种排序比较"></a>各种排序比较</h4><h6 id="排序类型"><a href="#排序类型" class="headerlink" title="排序类型"></a>排序类型</h6><p><img data-src="https://gitee.com/zyy92/Pictures/raw/master/SortAlgorithm/排序算法.png" alt="排序算法类型"></p>
-<h6 id="排序效率"><a href="#排序效率" class="headerlink" title="排序效率"></a>排序效率</h6><table border="1" >
+<h4 id="各种排序比较"><a href="#各种排序比较" class="headerlink" title="各种排序比较"></a>各种排序比较</h4><ul>
+<li>排序类型</li>
+<li>排序效率</li>
+</ul>
+<h5 id="排序类型"><a href="#排序类型" class="headerlink" title="排序类型"></a>排序类型</h5><p><img data-src="https://gitee.com/lao-biao/Pictures/raw/master/SortAlgorithm/排序算法.png" alt="排序算法类型"></p>
+<h5 id="排序效率"><a href="#排序效率" class="headerlink" title="排序效率"></a>排序效率</h5><p><table border="1" >
   <tr align="center">
     <th colspan="7" >各种常用排序算法</th>
   </tr>
@@ -420,11 +437,8 @@
   <tr align="center">
     <td colspan="7">注：基数排序的算法复杂度中，r代表关键字的基数，d代表长度，n代表关键字的个数</td>
   </tr>
-</table>
-
-
-<h4 id="菜鸟教程"><a href="#菜鸟教程" class="headerlink" title="菜鸟教程"></a>菜鸟教程</h4><p><a href="https://www.runoob.com/w3cnote/ten-sorting-algorithm.html" target="_blank" rel="noopener">十大经典排序算法</a></p>
-<h4 id="相关代码下载"><a href="#相关代码下载" class="headerlink" title="相关代码下载"></a>相关代码下载</h4><p><a href="/download/sort.rar">代码</a></p>
+</table></p>
+<h4 id="菜鸟教程资料"><a href="#菜鸟教程资料" class="headerlink" title="菜鸟教程资料"></a>菜鸟教程资料</h4><p><a href="https://www.runoob.com/w3cnote/ten-sorting-algorithm.html" target="_blank" rel="noopener">十大经典排序算法</a></p>
 
     </div>
 
@@ -533,7 +547,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序基本概念"><span class="nav-text">排序基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#排序"><span class="nav-text">排序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内部排序和外部排序"><span class="nav-text">内部排序和外部排序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#稳定排序和不稳定排序"><span class="nav-text">稳定排序和不稳定排序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#比较排序和非比较排序"><span class="nav-text">比较排序和非比较排序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他排序"><span class="nav-text">其他排序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交换排序"><span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冒泡排序"><span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速排序"><span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤："><span class="nav-text">算法步骤：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-1"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择排序"><span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本选择排序"><span class="nav-text">基本选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤-1"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-2"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序"><span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接插入排序"><span class="nav-text">直接插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤-2"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-3"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二分法插入排序"><span class="nav-text">二分法插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法"><span class="nav-text">算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种排序比较"><span class="nav-text">各种排序比较</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#排序类型"><span class="nav-text">排序类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#排序效率"><span class="nav-text">排序效率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#菜鸟教程"><span class="nav-text">菜鸟教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关代码下载"><span class="nav-text">相关代码下载</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序基本概念"><span class="nav-text">排序基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-text">排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内部排序和外部排序"><span class="nav-text">内部排序和外部排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#稳定排序和不稳定排序"><span class="nav-text">稳定排序和不稳定排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较排序和非比较排序"><span class="nav-text">比较排序和非比较排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他排序"><span class="nav-text">其他排序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交换排序"><span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冒泡排序"><span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速排序"><span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤："><span class="nav-text">算法步骤：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-1"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择排序"><span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本选择排序"><span class="nav-text">基本选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤-1"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-2"><span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序"><span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接插入排序"><span class="nav-text">直接插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法步骤-2"><span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码实现-3"><span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二分法插入排序"><span class="nav-text">二分法插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#算法"><span class="nav-text">算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种排序比较"><span class="nav-text">各种排序比较</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#排序类型"><span class="nav-text">排序类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序效率"><span class="nav-text">排序效率</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#菜鸟教程资料"><span class="nav-text">菜鸟教程资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
