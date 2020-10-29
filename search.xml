@@ -3,7 +3,7 @@
   <entry>
     <title>AQS笔记</title>
     <url>/articles/74f18f35.html</url>
-    <content><![CDATA[<h4 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h4><p>Abstract Queued Synchronizer 抽象队列同步器<br>所在包：<code>java.util.concurrent.locks.AbstractQueuedSynchronizer;</code></p>
+    <content><![CDATA[<h5 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h5><p>Abstract Queued Synchronizer 抽象队列同步器<br>所在包：<code>java.util.concurrent.locks.AbstractQueuedSynchronizer;</code></p>
 <p>AQS是基于先进先出队列（FIFO），CLH（一种基于<strong>单向链表</strong>的高性能、<strong>公平</strong>的<strong>自旋锁</strong>）</p>
 <p>基于AQS实现的锁</p>
 <ul>
@@ -314,24 +314,6 @@
       </tags>
   </entry>
   <entry>
-    <title>android动态权限申请</title>
-    <url>/articles/821fe050.html</url>
-    <content><![CDATA[<p>Android 6.0以上动态申请权限。</p>
-<h6 id="添加相关权限"><a href="#添加相关权限" class="headerlink" title="添加相关权限"></a>添加相关权限</h6><p>在清单文件中添加相关权限</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.××××"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h6><ul>
-<li>检查权限</li>
-<li>动态申请权限</li>
-<li>处理权限申请结果</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> String strPermission =Manifest.permission.××××;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ××××_REQUEST_CODE=<span class="number">1</span>;	<span class="comment">//请求码，不同的权限设置成不同的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String strPermission)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, strPermission) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, strPermission)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要××××权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                    strPermission&#125;,×××× _REQUEST_CODE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == ××××_REQUEST_CODE) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">requestPermissions(String strPermission);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//要执行的操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
-  </entry>
-  <entry>
     <title>android studio低版本使用recyclerview</title>
     <url>/articles/f71edc35.html</url>
     <content><![CDATA[<p>﻿1. 添加依赖包<br>&nbsp;&nbsp;&nbsp;&nbsp; open Module Settings→Dependencies→add Library Dependency<br><img data-src="https://img-blog.csdnimg.cn/20190714093004116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTk5MzY2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img data-src="https://img-blog.csdnimg.cn/20190714093101907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTk5MzY2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
@@ -348,6 +330,24 @@
       <tags>
         <tag>recyclerview</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>android动态权限申请</title>
+    <url>/articles/821fe050.html</url>
+    <content><![CDATA[<p>Android 6.0以上动态申请权限。</p>
+<h6 id="添加相关权限"><a href="#添加相关权限" class="headerlink" title="添加相关权限"></a>添加相关权限</h6><p>在清单文件中添加相关权限</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;uses-permission android:name="android.permission.××××"&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h6><ul>
+<li>检查权限</li>
+<li>动态申请权限</li>
+<li>处理权限申请结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> String strPermission =Manifest.permission.××××;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ××××_REQUEST_CODE=<span class="number">1</span>;	<span class="comment">//请求码，不同的权限设置成不同的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">(String strPermission)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, strPermission) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, strPermission)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要××××权限"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                    strPermission&#125;,×××× _REQUEST_CODE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == ××××_REQUEST_CODE) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="执行操作"><a href="#执行操作" class="headerlink" title="执行操作"></a>执行操作</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">requestPermissions(String strPermission);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="comment">//要执行的操作</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
   </entry>
   <entry>
     <title>Android四大组件--Broadcast</title>
@@ -374,6 +374,25 @@
       <tags>
         <tag>broadcast</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>android界面跳转</title>
+    <url>/articles/de41b12e.html</url>
+    <content><![CDATA[<h2 id="非响应式跳转"><a href="#非响应式跳转" class="headerlink" title="非响应式跳转"></a>非响应式跳转</h2><h3 id="跳转后的界面"><a href="#跳转后的界面" class="headerlink" title="跳转后的界面"></a>跳转后的界面</h3><p>创建跳转后的界面代码和布局<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><code>activity_second.xml</code>布局文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_text"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在<code>AndroidManifest.xml</code>中注册<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="显式意图跳转"><a href="#显式意图跳转" class="headerlink" title="显式意图跳转"></a>显式意图跳转</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,SecondActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//键值对的方式传输</span></span><br><span class="line"><span class="comment">//internt.putExtra("","");</span></span><br><span class="line">intent.putExtra(<span class="string">"name"</span>,etName.getText().toString());	<span class="comment">//传递用户名</span></span><br><span class="line">intent.putExtra(<span class="string">"pwd"</span>,etPwd.getText().toString()); 		<span class="comment">//传递密码</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure>
+<h3 id="隐式意图跳转"><a href="#隐式意图跳转" class="headerlink" title="隐式意图跳转"></a>隐式意图跳转</h3><p>在<code>AndroidManifest.xml</code>添加过滤器<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--action:包名.信息(自定义)--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--category(类别)--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--data(数据)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.study.USER_INFO"</span>&gt;</span><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>&gt;</span><span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent();         <span class="comment">//隐式意图</span></span><br><span class="line">intent.setAction(<span class="string">"com.study.USER_INFO"</span>);</span><br><span class="line">intent.addCategory(intent.CATEGORY_DEFAULT);    <span class="comment">//相当于intent.addCategory(android.intent.category.DEFAULT）;</span></span><br><span class="line">intent.putExtra(<span class="string">"name"</span>,etName.getText().toString());	<span class="comment">//传递用户名</span></span><br><span class="line">intent.putExtra(<span class="string">"pwd"</span>,etPwd.getText().toString());		<span class="comment">//传递密码</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = getIntent();    <span class="comment">//获取上级界面所传递的数据</span></span><br><span class="line">String name = intent.getStringExtra(<span class="string">"name"</span>);</span><br><span class="line">String pwd = intent.getStringExtra(<span class="string">"pwd"</span>);</span><br><span class="line">TextView tvText = findViewById(R.id.tv_text);</span><br><span class="line">tvText.setText(<span class="string">"账号："</span>+name+<span class="string">"  密码："</span>+pwd);   <span class="comment">//显示信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="响应式跳转"><a href="#响应式跳转" class="headerlink" title="响应式跳转"></a>响应式跳转</h2><p>使用startActivity()方法只能将上层界面的信息传递到下层界面，不能实现界面信息的回传，响应式界面跳转通过startActivityForResult()方法在启动下层界面时发出请求码，下层界面通过result()方法发送结果码，并将信息传递到上层界面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//上层界面跳转下层界面</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> REQUEST_CODE = <span class="number">1</span>;  <span class="comment">//请求码</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RESULT_CODE=<span class="number">2</span>;     <span class="comment">//结果码</span></span><br><span class="line">Intent intent=<span class="keyword">new</span> Intent();					<span class="comment">//显式或隐式跳转</span></span><br><span class="line">intent.putExtra();							<span class="comment">//传递到下层界面的信息</span></span><br><span class="line">startActivityForResult(intent,REQUEST_CODE );		<span class="comment">//启动</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上层界面接收结果</span></span><br><span class="line"><span class="comment">//重写onActivityResult()方法</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode,Intent data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span> (requestCode==REQUEST_CODE ) &#123;</span><br><span class="line">        <span class="keyword">if</span> (resultCode==RESULT_CODE) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//下层界面</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RESULT_CODE=<span class="number">2</span>;   <span class="comment">//结果码</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.putExtra();						<span class="comment">//传递给上层界面的信息</span></span><br><span class="line">setResult(RESULT_CODE, intent);</span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
+<p>setResult()方法只有在finish()方法执行前才能响应，把setResult()写在onDestroy()中无法实现请求的响应,如果需要在activity结束时回传信息，可以采取监听返回键的方式实现回传。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">    intent.putExtra();</span><br><span class="line">    setResult(RESULT_CODE, intent);</span><br><span class="line">    <span class="keyword">super</span>.onBackPressed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
   </entry>
   <entry>
     <title>Android数据的存储</title>
@@ -403,25 +422,6 @@
 <p>在Android6.0后，读写storage需要动态的申请权限(或者直接在设置里更改应用的存储权限)。</p>
 <p>storage的相对路径: /storage/emulated/0 (内部存储)   （1表示外置内存卡）。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveInSdcard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    requestPermissions();</span><br><span class="line">    File storagePath=<span class="keyword">new</span> File(Environment.getExternalStorageDirectory().getAbsolutePath());<span class="comment">//获取storage的相对路径</span></span><br><span class="line">    File file=<span class="keyword">new</span> File(storagePath,<span class="string">"text.txt"</span>);     <span class="comment">//文件路径</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        fos.write((<span class="string">"text words"</span>).getBytes());</span><br><span class="line">        fos.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPermissions</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//检查是否获取读取权限</span></span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission( <span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale( <span class="keyword">this</span>, Manifest.permission.READ_EXTERNAL_STORAGE)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"需要读写权限"</span>, Toast.LENGTH_LONG).show(); <span class="comment">//提示未获取读取权限</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ActivityCompat.requestPermissions( <span class="keyword">this</span>, <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE&#125;, <span class="number">1</span>);     <span class="comment">//请求读写权限</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重写onRequestPermissionsResult()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode, String[] permissions, <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    String requestPermissionsResult = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (requestCode == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; permissions.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grantResults[i] == PERMISSION_GRANTED) &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请成功\n"</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                requestPermissionsResult += permissions[i] + <span class="string">" 申请失败\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, requestPermissionsResult, Toast.LENGTH_SHORT).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>android界面跳转</title>
-    <url>/articles/de41b12e.html</url>
-    <content><![CDATA[<h2 id="非响应式跳转"><a href="#非响应式跳转" class="headerlink" title="非响应式跳转"></a>非响应式跳转</h2><h3 id="跳转后的界面"><a href="#跳转后的界面" class="headerlink" title="跳转后的界面"></a>跳转后的界面</h3><p>创建跳转后的界面代码和布局<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><code>activity_second.xml</code>布局文件</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_text"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在<code>AndroidManifest.xml</code>中注册<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".SecondActivity"</span>&gt;</span><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<h3 id="显式意图跳转"><a href="#显式意图跳转" class="headerlink" title="显式意图跳转"></a>显式意图跳转</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,SecondActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//键值对的方式传输</span></span><br><span class="line"><span class="comment">//internt.putExtra("","");</span></span><br><span class="line">intent.putExtra(<span class="string">"name"</span>,etName.getText().toString());	<span class="comment">//传递用户名</span></span><br><span class="line">intent.putExtra(<span class="string">"pwd"</span>,etPwd.getText().toString()); 		<span class="comment">//传递密码</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure>
-<h3 id="隐式意图跳转"><a href="#隐式意图跳转" class="headerlink" title="隐式意图跳转"></a>隐式意图跳转</h3><p>在<code>AndroidManifest.xml</code>添加过滤器<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--action:包名.信息(自定义)--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--category(类别)--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--data(数据)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.study.USER_INFO"</span>&gt;</span><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>&gt;</span><span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent();         <span class="comment">//隐式意图</span></span><br><span class="line">intent.setAction(<span class="string">"com.study.USER_INFO"</span>);</span><br><span class="line">intent.addCategory(intent.CATEGORY_DEFAULT);    <span class="comment">//相当于intent.addCategory(android.intent.category.DEFAULT）;</span></span><br><span class="line">intent.putExtra(<span class="string">"name"</span>,etName.getText().toString());	<span class="comment">//传递用户名</span></span><br><span class="line">intent.putExtra(<span class="string">"pwd"</span>,etPwd.getText().toString());		<span class="comment">//传递密码</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = getIntent();    <span class="comment">//获取上级界面所传递的数据</span></span><br><span class="line">String name = intent.getStringExtra(<span class="string">"name"</span>);</span><br><span class="line">String pwd = intent.getStringExtra(<span class="string">"pwd"</span>);</span><br><span class="line">TextView tvText = findViewById(R.id.tv_text);</span><br><span class="line">tvText.setText(<span class="string">"账号："</span>+name+<span class="string">"  密码："</span>+pwd);   <span class="comment">//显示信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="响应式跳转"><a href="#响应式跳转" class="headerlink" title="响应式跳转"></a>响应式跳转</h2><p>使用startActivity()方法只能将上层界面的信息传递到下层界面，不能实现界面信息的回传，响应式界面跳转通过startActivityForResult()方法在启动下层界面时发出请求码，下层界面通过result()方法发送结果码，并将信息传递到上层界面</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//上层界面跳转下层界面</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> REQUEST_CODE = <span class="number">1</span>;  <span class="comment">//请求码</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RESULT_CODE=<span class="number">2</span>;     <span class="comment">//结果码</span></span><br><span class="line">Intent intent=<span class="keyword">new</span> Intent();					<span class="comment">//显式或隐式跳转</span></span><br><span class="line">intent.putExtra();							<span class="comment">//传递到下层界面的信息</span></span><br><span class="line">startActivityForResult(intent,REQUEST_CODE );		<span class="comment">//启动</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上层界面接收结果</span></span><br><span class="line"><span class="comment">//重写onActivityResult()方法</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode,Intent data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    <span class="keyword">if</span> (requestCode==REQUEST_CODE ) &#123;</span><br><span class="line">        <span class="keyword">if</span> (resultCode==RESULT_CODE) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//下层界面</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RESULT_CODE=<span class="number">2</span>;   <span class="comment">//结果码</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.putExtra();						<span class="comment">//传递给上层界面的信息</span></span><br><span class="line">setResult(RESULT_CODE, intent);</span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
-<p>setResult()方法只有在finish()方法执行前才能响应，把setResult()写在onDestroy()中无法实现请求的响应,如果需要在activity结束时回传信息，可以采取监听返回键的方式实现回传。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">    intent.putExtra();</span><br><span class="line">    setResult(RESULT_CODE, intent);</span><br><span class="line">    <span class="keyword">super</span>.onBackPressed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
       <categories>
         <category>android</category>
       </categories>
@@ -1325,23 +1325,6 @@
       </categories>
   </entry>
   <entry>
-    <title>GitHub删除文件夹</title>
-    <url>/articles/bab8a3bc.html</url>
-    <content><![CDATA[<h6 id="删除步骤"><a href="#删除步骤" class="headerlink" title="删除步骤"></a>删除步骤</h6><ol>
-<li>进入项目文件下，使用<strong>Git Bash Here</strong>（或cmd窗口）打开命令行窗口。</li>
-<li><code>git pull</code>或(<code>git pull origin master</code>)从远程仓库里面的项目拉下来，<code>dir</code>（Windows系统）查看文件目录结构。</li>
-<li>例如需要删除target文件夹，<code>git rm -f --cached target</code></li>
-<li><code>git commit -m &quot;Delete target.&quot;</code>提交，添加操作说明。</li>
-<li><code>git push</code>或(<code>git push -u origin master</code>)将本次更改推送到远程仓库。</li>
-</ol>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git pull origin master</span><br><span class="line">From https:&#x2F;&#x2F;github.com&#x2F;xxxx&#x2F;BlogSystem</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Already up to date.</span><br><span class="line"></span><br><span class="line">$ git rm -r --cached target</span><br><span class="line">rm &#39;target&#x2F;classes&#x2F;application.yml&#39;</span><br><span class="line">rm &#39;target&#x2F;classes&#x2F;com&#x2F;study&#x2F;BlogApplication.class&#39;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;Delete target.&quot;</span><br><span class="line">[master f5ef2bf] Delete target.</span><br><span class="line"> 44 files changed, 67 deletions(-)</span><br><span class="line"> delete mode 100644 target&#x2F;classes&#x2F;application.yml</span><br><span class="line"> delete mode 100644 target&#x2F;classes&#x2F;com&#x2F;study&#x2F;BlogApplication.class</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">$ git push</span><br><span class="line">Enumerating objects: 3, done.</span><br><span class="line">Counting objects: 100% (3&#x2F;3), done.</span><br><span class="line">Delta compression using up to 4 threads</span><br><span class="line">Compressing objects: 100% (2&#x2F;2), done.</span><br><span class="line">Writing objects: 100% (2&#x2F;2), 219 bytes | 219.00 KiB&#x2F;s, done.</span><br><span class="line">Total 2 (delta 1), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (1&#x2F;1), completed with 1 local object.</span><br><span class="line">To https:&#x2F;&#x2F;github.com&#x2F;xxxx&#x2F;BlogSystem.git</span><br><span class="line">   661f345..f5ef2bf  master -&gt; master</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JVM虚拟机</title>
     <url>/articles/18701caa.html</url>
     <content><![CDATA[<h4 id="JVM基础"><a href="#JVM基础" class="headerlink" title="JVM基础"></a>JVM基础</h4><p>JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。</p>
@@ -1642,6 +1625,23 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </tags>
   </entry>
   <entry>
+    <title>GitHub删除文件夹</title>
+    <url>/articles/bab8a3bc.html</url>
+    <content><![CDATA[<h6 id="删除步骤"><a href="#删除步骤" class="headerlink" title="删除步骤"></a>删除步骤</h6><ol>
+<li>进入项目文件下，使用<strong>Git Bash Here</strong>（或cmd窗口）打开命令行窗口。</li>
+<li><code>git pull</code>或(<code>git pull origin master</code>)从远程仓库里面的项目拉下来，<code>dir</code>（Windows系统）查看文件目录结构。</li>
+<li>例如需要删除target文件夹，<code>git rm -f --cached target</code></li>
+<li><code>git commit -m &quot;Delete target.&quot;</code>提交，添加操作说明。</li>
+<li><code>git push</code>或(<code>git push -u origin master</code>)将本次更改推送到远程仓库。</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git pull origin master</span><br><span class="line">From https:&#x2F;&#x2F;github.com&#x2F;xxxx&#x2F;BlogSystem</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Already up to date.</span><br><span class="line"></span><br><span class="line">$ git rm -r --cached target</span><br><span class="line">rm &#39;target&#x2F;classes&#x2F;application.yml&#39;</span><br><span class="line">rm &#39;target&#x2F;classes&#x2F;com&#x2F;study&#x2F;BlogApplication.class&#39;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;Delete target.&quot;</span><br><span class="line">[master f5ef2bf] Delete target.</span><br><span class="line"> 44 files changed, 67 deletions(-)</span><br><span class="line"> delete mode 100644 target&#x2F;classes&#x2F;application.yml</span><br><span class="line"> delete mode 100644 target&#x2F;classes&#x2F;com&#x2F;study&#x2F;BlogApplication.class</span><br><span class="line"> ...</span><br><span class="line"></span><br><span class="line">$ git push</span><br><span class="line">Enumerating objects: 3, done.</span><br><span class="line">Counting objects: 100% (3&#x2F;3), done.</span><br><span class="line">Delta compression using up to 4 threads</span><br><span class="line">Compressing objects: 100% (2&#x2F;2), done.</span><br><span class="line">Writing objects: 100% (2&#x2F;2), 219 bytes | 219.00 KiB&#x2F;s, done.</span><br><span class="line">Total 2 (delta 1), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (1&#x2F;1), completed with 1 local object.</span><br><span class="line">To https:&#x2F;&#x2F;github.com&#x2F;xxxx&#x2F;BlogSystem.git</span><br><span class="line">   661f345..f5ef2bf  master -&gt; master</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java--AOP编程</title>
     <url>/articles/d97d56d4.html</url>
     <content><![CDATA[<h5 id="AOP编程"><a href="#AOP编程" class="headerlink" title="AOP编程"></a>AOP编程</h5><p>AOP：Aspect Oriented Programming</p>
@@ -1766,6 +1766,157 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </categories>
       <tags>
         <tag>xml</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java--反射</title>
+    <url>/articles/87b8a7bb.html</url>
+    <content><![CDATA[<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><p>reflection</p>
+<ul>
+<li>程序可以访问、检测和修改它本身状态或行为的能力，即自描述和自控制。</li>
+<li>可以在运行时加载、探知和使用编译期间完全未知的类。</li>
+<li>给Java插上动态语言特性的翅膀，弥补强类型语言的不足。</li>
+<li><code>java.lang.reflect</code>包，在Java 2就有，在Java 5得到完善</li>
+</ul>
+<p>功能</p>
+<ul>
+<li>在运行中分析类的能力</li>
+<li>在运行中查看和操作对象<ul>
+<li>基于反射自由创建对象</li>
+<li>反射构建出无法直接访问的类</li>
+<li>set或者get到无法访问的成员变量</li>
+<li>调用不可访问的方法</li>
+</ul>
+</li>
+<li>实现通用的数组操作代码</li>
+<li>类似函数指针的功能</li>
+</ul>
+<a id="more"></a>
+<h5 id="五种创建对象的方式"><a href="#五种创建对象的方式" class="headerlink" title="五种创建对象的方式"></a>五种创建对象的方式</h5><h6 id="1-静态编码和编译"><a href="#1-静态编码和编译" class="headerlink" title="1.静态编码和编译"></a>1.静态编码和编译</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from A."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接new 调用构造函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A obj1 = <span class="keyword">new</span> A();</span><br><span class="line">obj1.hello();</span><br></pre></td></tr></table></figure>
+<p>2.克隆(clone)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from B."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用克隆的方法创建对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">B obj2 =<span class="keyword">new</span> B();</span><br><span class="line">obj2.hello();</span><br><span class="line"></span><br><span class="line">B obj3=(B) obj2.clone();</span><br><span class="line">obj3.hello();</span><br></pre></td></tr></table></figure>
+<h6 id="3-序列化-serialization-和反序列化-deserialization"><a href="#3-序列化-serialization-和反序列化-deserialization" class="headerlink" title="3.序列化(serialization)和反序列化(deserialization)"></a>3.序列化(serialization)和反序列化(deserialization)</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID=<span class="number">1L</span>;  <span class="comment">// 序列化id</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from C."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 transient 关键字可以使变量不被序列化</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">C obj4 = <span class="keyword">new</span> C();</span><br><span class="line">ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">out.writeObject(obj4);</span><br><span class="line">out.close();</span><br><span class="line"></span><br><span class="line">ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">C obj5 = (C) in.readObject();</span><br><span class="line">in.close();</span><br><span class="line">obj5.hello();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：序列化会引发安全漏洞，未来将被移除出JDK</p>
+</blockquote>
+<h6 id="4-5-反射"><a href="#4-5-反射" class="headerlink" title="4.5.反射"></a>4.5.反射</h6><blockquote>
+<p>第四种 通过Class.forName(String className).newInstance();动态获取实例</p>
+<p>注意：className 需要加上包名，否则会报 java.lang.ClassNotFoundException 的异常</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj6 = Class.forName(<span class="string">"com.reflection.A"</span>).newInstance();</span><br><span class="line"><span class="comment">// A obj7 = (A) Class.forName("A").newInstance();</span></span><br><span class="line">Method m = Class.forName(<span class="string">"com.reflection.A"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">m.invoke(obj6);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第五种    newInstance 调用构造函数</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Constructor&lt;A&gt; constructor = A<span class="class">.<span class="keyword">class</span>.<span class="title">getConstructor</span>()</span>;</span><br><span class="line">A obj8 = constructor.newInstance();</span><br><span class="line">obj8.hello();</span><br></pre></td></tr></table></figure>
+<h5 id="反射关键类"><a href="#反射关键类" class="headerlink" title="反射关键类"></a>反射关键类</h5><p>Class：类型标识</p>
+<ul>
+<li><p>JVM为每个对象都保留其类型标识信息(Runtime Type Identification)</p>
+<p>三种获取方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String s1=<span class="string">"abc"</span>;</span><br><span class="line">Class c1=s1.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br><span class="line"></span><br><span class="line">Class c2=Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">System.out.println(c2.getName());</span><br><span class="line"></span><br><span class="line">Class c3=String<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">System.out.println(c3.getName());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>成员变量、方法、构造函数、修饰符、包、父类、父接口…</p>
+<ul>
+<li><p>成员变量 Field<br>getFields() 获取本类及父类所有的public字段</p>
+<p>getDeclaredFields()  获取本类所有声明的字段</p>
+</li>
+<li><p>成员方法 Method<br>getMethods() 获取public方法，包括父类和父接口<br>getDeclaredMethod() 获取该类所有的方法</p>
+</li>
+<li><p>构造函数 Constructor</p>
+<p>[Class.]getConstructors() 获取本类的所有构造函数</p>
+<p>[Constructor.]newInstance(Object …args) 有参和无参构造函数</p>
+</li>
+<li><p>父类/父接口</p>
+<p>[Class.]getSuperClass() 获取父类<br>[Class.]getInterfaces() 获取父接口</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="反射的应用"><a href="#反射的应用" class="headerlink" title="反射的应用"></a>反射的应用</h5><ul>
+<li>数据库连接</li>
+<li>数组扩充器 </li>
+<li>动态执行方法</li>
+<li>Json和Java对象互转</li>
+<li>Tomcat的Servlet对象创建</li>
+<li>MyBatis的OR/M</li>
+<li>Spring的Bean容器</li>
+<li>org.reflections包介绍</li>
+</ul>
+<h6 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h6><p>JDBC：Connection，连接到不同数据库</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数据库之间的桥梁介质</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">    <span class="comment">// Class.forName(className,true,currentLoader);</span></span><br><span class="line">    <span class="comment">// 通知类加载器加载此类的class文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数库之间的桥梁：URL，用户名，密码</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url, <span class="string">"root"</span>, <span class="string">"123456"</span>);</span><br><span class="line"><span class="comment">// DriverManager将会挑选加载合适的驱动类，并采用getConnection()方法连接</span></span><br></pre></td></tr></table></figure>
+<h6 id="数组扩充"><a href="#数组扩充" class="headerlink" title="数组扩充"></a>数组扩充</h6><p>给定一个数组(任意类型)，扩充指定到长度</p>
+<ul>
+<li>Java的数组一旦创建，其长度是不再更改的</li>
+<li>新建一个大数组(相同类型)，然后将旧数组的内容拷贝过去</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">arrCopy</span><span class="params">(Object oldArray, <span class="keyword">int</span> newLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Array类型</span></span><br><span class="line">    Class clazz = oldArray.getClass();</span><br><span class="line">    <span class="comment">// 获取数组中的单个元素类型</span></span><br><span class="line">    Class componentType = clazz.getComponentType();</span><br><span class="line">    <span class="comment">// 旧数组长度</span></span><br><span class="line">    <span class="keyword">int</span> oldLength = Array.getLength(oldArray);</span><br><span class="line">    <span class="comment">// 创建新数组</span></span><br><span class="line">    Object newArray = Array.newInstance(componentType, newLength);</span><br><span class="line">    <span class="comment">// 拷贝旧数据</span></span><br><span class="line">    System.arraycopy(newArray, <span class="number">0</span>, oldArray, <span class="number">0</span>, oldLength);</span><br><span class="line">    <span class="keyword">return</span> newArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="动态执行方法"><a href="#动态执行方法" class="headerlink" title="动态执行方法"></a>动态执行方法</h6><p>给定类名，方法名，即可执行</p>
+<p>加上定时器，即可做定时任务执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Method m= Class.forName(packageName+<span class="string">"Work"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">            m.invoke(<span class="keyword">null</span>);	<span class="comment">// 静态方法可以不用new对象</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Timer timer=<span class="keyword">new</span> Timer();</span><br><span class="line">Calendar now=Calendar.getInstance();</span><br><span class="line">now.set(Calendar.SECOND,now.get(Calendar.SECOND)+<span class="number">1</span>);</span><br><span class="line">Date runDate=now.getTime();</span><br><span class="line">MyTask task=<span class="keyword">new</span> Task();</span><br><span class="line">timer.scheduleAtFixedRate(task,runDate,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h6 id="Json和Java对象互转"><a href="#Json和Java对象互转" class="headerlink" title="Json和Java对象互转"></a>Json和Java对象互转</h6><figure class="highlight"><table><tr><td class="code"><pre><span class="line">Gson gson=<span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">// json 字符串转bean对象</span></span><br><span class="line">String s; 	<span class="comment">// 待转换的json字符串</span></span><br><span class="line">[Bean] json=gson.fromJson(s,[Bean.class]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// json bean对象转字符串</span></span><br><span class="line">Bean bean;</span><br><span class="line">String t=gson.toJson(bean,[Bean.class]);</span><br></pre></td></tr></table></figure>
+<h6 id="Tomcat的Servlet创建"><a href="#Tomcat的Servlet创建" class="headerlink" title="Tomcat的Servlet创建"></a>Tomcat的Servlet创建</h6><p>详见源码</p>
+<h6 id="MyBatis的OR-M"><a href="#MyBatis的OR-M" class="headerlink" title="MyBatis的OR/M"></a>MyBatis的OR/M</h6><p>MyBatis: OR/M(Object-Relation Mapping)<br>数据库表和Java的POJO/DAO类对应关系</p>
+<h6 id="Spring-Framework的Bean容器"><a href="#Spring-Framework的Bean容器" class="headerlink" title="Spring Framework的Bean容器"></a>Spring Framework的Bean容器</h6><p>Spring Framework: Java EE的主要框架<br>IoC 的Bean容器(HashMap)</p>
+<h6 id="org-reflections"><a href="#org-reflections" class="headerlink" title="org.reflections"></a>org.reflections</h6><p>Reflection的增强工具包</p>
+<ul>
+<li><a href="https://github.com/ronmamo/reflections" target="_blank" rel="noopener">https://github.com/ronmamo/reflections</a> </li>
+<li>Java runtime metadata analysis Java运行时元数据分析<ul>
+<li>获取某类的所有子类型</li>
+<li>获取有特殊annotation的类型或者成员变量/方法</li>
+<li>根据正则表达式获取资源(类/成员变量/方法)</li>
+<li>根据组合条件查询相应的方法</li>
+</ul>
+</li>
+</ul>
+<h5 id="编译器API"><a href="#编译器API" class="headerlink" title="编译器API"></a>编译器API</h5><p>反射</p>
+<ul>
+<li>可以查看对象的类型标识</li>
+<li>可以动态创建对象、访问其属性，调用其方法</li>
+<li><font color="red">前提：类(class文件)必须先存在</font>
+
+</li>
+</ul>
+<p>编译器API</p>
+<ul>
+<li>对.java文件即时编译</li>
+<li>对字符串即时编译</li>
+<li>监听在编译过程中产生的警告和错误</li>
+<li>在代码中运行编译器(并非：Runtime命令行调用javac命令)</li>
+</ul>
+<h6 id="JavaCompiler"><a href="#JavaCompiler" class="headerlink" title="JavaCompiler"></a>JavaCompiler</h6><ul>
+<li>自Java 1.6 推出，位于<code>javax.tools</code>包中。</li>
+<li>可用在程序文件中的Java编译器接口(代替javac.exe)。</li>
+<li>在程序中编译java文件，产生class文件。</li>
+<li>run方法(继承自<code>java.tools.Tools</code>)：可以编译java源文件，生成class文件，但不能指定输出路径,监控错误信息, 调用后就在源码所在目录生成class文件。</li>
+<li>getTask方法：可以编译java源文件，包括在内存中的java文件(字符串)，生成class文件。</li>
+</ul>
+<h6 id="Java编译器API作用"><a href="#Java编译器API作用" class="headerlink" title="Java编译器API作用"></a>Java编译器API作用</h6><ul>
+<li>Java EE的JSP编译</li>
+<li>在线编程环境</li>
+<li>在线程序评判系统(Online Judge系统)</li>
+<li>自动化的构建和测试工具</li>
+</ul>
+<h6 id="基于JavaCompiler的集成工具"><a href="#基于JavaCompiler的集成工具" class="headerlink" title="基于JavaCompiler的集成工具"></a>基于JavaCompiler的集成工具</h6><ul>
+<li><font color="red">Janino</font>，<a href="http://janino-compiler.github.io/janino" target="_blank" rel="noopener">http://janino-compiler.github.io/janino</a></li>
+<li>InMemoryJavaCompile， <a href="https://github.com/trung/InMemoryJavaCompiler" target="_blank" rel="noopener">https://github.com/trung/InMemoryJavaCompiler</a></li>
+<li>Java-Runtime-Compiler, <a href="https://github.com/OpenHFT/JavaRuntime-Compiler" target="_blank" rel="noopener">https://github.com/OpenHFT/JavaRuntime-Compiler</a></li>
+<li>Apache Commons JCI(Java Compiler Interface), <a href="http://commons.apache.org/proper/commons-jci/index.html" target="_blank" rel="noopener">http://commons.apache.org/proper/commons-jci/index.html</a>，<font color="red">适用于JDK1.5及以前的版本</font></li>
+</ul>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>反射</tag>
       </tags>
   </entry>
   <entry>
@@ -1946,157 +2097,6 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </categories>
       <tags>
         <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java--反射</title>
-    <url>/articles/87b8a7bb.html</url>
-    <content><![CDATA[<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><p>reflection</p>
-<ul>
-<li>程序可以访问、检测和修改它本身状态或行为的能力，即自描述和自控制。</li>
-<li>可以在运行时加载、探知和使用编译期间完全未知的类。</li>
-<li>给Java插上动态语言特性的翅膀，弥补强类型语言的不足。</li>
-<li><code>java.lang.reflect</code>包，在Java 2就有，在Java 5得到完善</li>
-</ul>
-<p>功能</p>
-<ul>
-<li>在运行中分析类的能力</li>
-<li>在运行中查看和操作对象<ul>
-<li>基于反射自由创建对象</li>
-<li>反射构建出无法直接访问的类</li>
-<li>set或者get到无法访问的成员变量</li>
-<li>调用不可访问的方法</li>
-</ul>
-</li>
-<li>实现通用的数组操作代码</li>
-<li>类似函数指针的功能</li>
-</ul>
-<a id="more"></a>
-<h5 id="五种创建对象的方式"><a href="#五种创建对象的方式" class="headerlink" title="五种创建对象的方式"></a>五种创建对象的方式</h5><h6 id="1-静态编码和编译"><a href="#1-静态编码和编译" class="headerlink" title="1.静态编码和编译"></a>1.静态编码和编译</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from A."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>直接new 调用构造函数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">A obj1 = <span class="keyword">new</span> A();</span><br><span class="line">obj1.hello();</span><br></pre></td></tr></table></figure>
-<p>2.克隆(clone)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from B."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用克隆的方法创建对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">B obj2 =<span class="keyword">new</span> B();</span><br><span class="line">obj2.hello();</span><br><span class="line"></span><br><span class="line">B obj3=(B) obj2.clone();</span><br><span class="line">obj3.hello();</span><br></pre></td></tr></table></figure>
-<h6 id="3-序列化-serialization-和反序列化-deserialization"><a href="#3-序列化-serialization-和反序列化-deserialization" class="headerlink" title="3.序列化(serialization)和反序列化(deserialization)"></a>3.序列化(serialization)和反序列化(deserialization)</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID=<span class="number">1L</span>;  <span class="comment">// 序列化id</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from C."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>使用 transient 关键字可以使变量不被序列化</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">C obj4 = <span class="keyword">new</span> C();</span><br><span class="line">ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">out.writeObject(obj4);</span><br><span class="line">out.close();</span><br><span class="line"></span><br><span class="line">ObjectInputStream in = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"data.obj"</span>));</span><br><span class="line">C obj5 = (C) in.readObject();</span><br><span class="line">in.close();</span><br><span class="line">obj5.hello();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：序列化会引发安全漏洞，未来将被移除出JDK</p>
-</blockquote>
-<h6 id="4-5-反射"><a href="#4-5-反射" class="headerlink" title="4.5.反射"></a>4.5.反射</h6><blockquote>
-<p>第四种 通过Class.forName(String className).newInstance();动态获取实例</p>
-<p>注意：className 需要加上包名，否则会报 java.lang.ClassNotFoundException 的异常</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Object obj6 = Class.forName(<span class="string">"com.reflection.A"</span>).newInstance();</span><br><span class="line"><span class="comment">// A obj7 = (A) Class.forName("A").newInstance();</span></span><br><span class="line">Method m = Class.forName(<span class="string">"com.reflection.A"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">m.invoke(obj6);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>第五种    newInstance 调用构造函数</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Constructor&lt;A&gt; constructor = A<span class="class">.<span class="keyword">class</span>.<span class="title">getConstructor</span>()</span>;</span><br><span class="line">A obj8 = constructor.newInstance();</span><br><span class="line">obj8.hello();</span><br></pre></td></tr></table></figure>
-<h5 id="反射关键类"><a href="#反射关键类" class="headerlink" title="反射关键类"></a>反射关键类</h5><p>Class：类型标识</p>
-<ul>
-<li><p>JVM为每个对象都保留其类型标识信息(Runtime Type Identification)</p>
-<p>三种获取方式</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String s1=<span class="string">"abc"</span>;</span><br><span class="line">Class c1=s1.getClass();</span><br><span class="line">System.out.println(c1.getName());</span><br><span class="line"></span><br><span class="line">Class c2=Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">System.out.println(c2.getName());</span><br><span class="line"></span><br><span class="line">Class c3=String<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">System.out.println(c3.getName());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>成员变量、方法、构造函数、修饰符、包、父类、父接口…</p>
-<ul>
-<li><p>成员变量 Field<br>getFields() 获取本类及父类所有的public字段</p>
-<p>getDeclaredFields()  获取本类所有声明的字段</p>
-</li>
-<li><p>成员方法 Method<br>getMethods() 获取public方法，包括父类和父接口<br>getDeclaredMethod() 获取该类所有的方法</p>
-</li>
-<li><p>构造函数 Constructor</p>
-<p>[Class.]getConstructors() 获取本类的所有构造函数</p>
-<p>[Constructor.]newInstance(Object …args) 有参和无参构造函数</p>
-</li>
-<li><p>父类/父接口</p>
-<p>[Class.]getSuperClass() 获取父类<br>[Class.]getInterfaces() 获取父接口</p>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="反射的应用"><a href="#反射的应用" class="headerlink" title="反射的应用"></a>反射的应用</h5><ul>
-<li>数据库连接</li>
-<li>数组扩充器 </li>
-<li>动态执行方法</li>
-<li>Json和Java对象互转</li>
-<li>Tomcat的Servlet对象创建</li>
-<li>MyBatis的OR/M</li>
-<li>Spring的Bean容器</li>
-<li>org.reflections包介绍</li>
-</ul>
-<h6 id="数据库连接"><a href="#数据库连接" class="headerlink" title="数据库连接"></a>数据库连接</h6><p>JDBC：Connection，连接到不同数据库</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数据库之间的桥梁介质</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">    <span class="comment">// Class.forName(className,true,currentLoader);</span></span><br><span class="line">    <span class="comment">// 通知类加载器加载此类的class文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构建Java和数库之间的桥梁：URL，用户名，密码</span></span><br><span class="line">Connection conn = DriverManager.getConnection(url, <span class="string">"root"</span>, <span class="string">"123456"</span>);</span><br><span class="line"><span class="comment">// DriverManager将会挑选加载合适的驱动类，并采用getConnection()方法连接</span></span><br></pre></td></tr></table></figure>
-<h6 id="数组扩充"><a href="#数组扩充" class="headerlink" title="数组扩充"></a>数组扩充</h6><p>给定一个数组(任意类型)，扩充指定到长度</p>
-<ul>
-<li>Java的数组一旦创建，其长度是不再更改的</li>
-<li>新建一个大数组(相同类型)，然后将旧数组的内容拷贝过去</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">arrCopy</span><span class="params">(Object oldArray, <span class="keyword">int</span> newLength)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Array类型</span></span><br><span class="line">    Class clazz = oldArray.getClass();</span><br><span class="line">    <span class="comment">// 获取数组中的单个元素类型</span></span><br><span class="line">    Class componentType = clazz.getComponentType();</span><br><span class="line">    <span class="comment">// 旧数组长度</span></span><br><span class="line">    <span class="keyword">int</span> oldLength = Array.getLength(oldArray);</span><br><span class="line">    <span class="comment">// 创建新数组</span></span><br><span class="line">    Object newArray = Array.newInstance(componentType, newLength);</span><br><span class="line">    <span class="comment">// 拷贝旧数据</span></span><br><span class="line">    System.arraycopy(newArray, <span class="number">0</span>, oldArray, <span class="number">0</span>, oldLength);</span><br><span class="line">    <span class="keyword">return</span> newArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="动态执行方法"><a href="#动态执行方法" class="headerlink" title="动态执行方法"></a>动态执行方法</h6><p>给定类名，方法名，即可执行</p>
-<p>加上定时器，即可做定时任务执行</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Method m= Class.forName(packageName+<span class="string">"Work"</span>).getMethod(<span class="string">"hello"</span>);</span><br><span class="line">            m.invoke(<span class="keyword">null</span>);	<span class="comment">// 静态方法可以不用new对象</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Timer timer=<span class="keyword">new</span> Timer();</span><br><span class="line">Calendar now=Calendar.getInstance();</span><br><span class="line">now.set(Calendar.SECOND,now.get(Calendar.SECOND)+<span class="number">1</span>);</span><br><span class="line">Date runDate=now.getTime();</span><br><span class="line">MyTask task=<span class="keyword">new</span> Task();</span><br><span class="line">timer.scheduleAtFixedRate(task,runDate,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h6 id="Json和Java对象互转"><a href="#Json和Java对象互转" class="headerlink" title="Json和Java对象互转"></a>Json和Java对象互转</h6><figure class="highlight"><table><tr><td class="code"><pre><span class="line">Gson gson=<span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">// json 字符串转bean对象</span></span><br><span class="line">String s; 	<span class="comment">// 待转换的json字符串</span></span><br><span class="line">[Bean] json=gson.fromJson(s,[Bean.class]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// json bean对象转字符串</span></span><br><span class="line">Bean bean;</span><br><span class="line">String t=gson.toJson(bean,[Bean.class]);</span><br></pre></td></tr></table></figure>
-<h6 id="Tomcat的Servlet创建"><a href="#Tomcat的Servlet创建" class="headerlink" title="Tomcat的Servlet创建"></a>Tomcat的Servlet创建</h6><p>详见源码</p>
-<h6 id="MyBatis的OR-M"><a href="#MyBatis的OR-M" class="headerlink" title="MyBatis的OR/M"></a>MyBatis的OR/M</h6><p>MyBatis: OR/M(Object-Relation Mapping)<br>数据库表和Java的POJO/DAO类对应关系</p>
-<h6 id="Spring-Framework的Bean容器"><a href="#Spring-Framework的Bean容器" class="headerlink" title="Spring Framework的Bean容器"></a>Spring Framework的Bean容器</h6><p>Spring Framework: Java EE的主要框架<br>IoC 的Bean容器(HashMap)</p>
-<h6 id="org-reflections"><a href="#org-reflections" class="headerlink" title="org.reflections"></a>org.reflections</h6><p>Reflection的增强工具包</p>
-<ul>
-<li><a href="https://github.com/ronmamo/reflections" target="_blank" rel="noopener">https://github.com/ronmamo/reflections</a> </li>
-<li>Java runtime metadata analysis Java运行时元数据分析<ul>
-<li>获取某类的所有子类型</li>
-<li>获取有特殊annotation的类型或者成员变量/方法</li>
-<li>根据正则表达式获取资源(类/成员变量/方法)</li>
-<li>根据组合条件查询相应的方法</li>
-</ul>
-</li>
-</ul>
-<h5 id="编译器API"><a href="#编译器API" class="headerlink" title="编译器API"></a>编译器API</h5><p>反射</p>
-<ul>
-<li>可以查看对象的类型标识</li>
-<li>可以动态创建对象、访问其属性，调用其方法</li>
-<li><font color="red">前提：类(class文件)必须先存在</font>
-
-</li>
-</ul>
-<p>编译器API</p>
-<ul>
-<li>对.java文件即时编译</li>
-<li>对字符串即时编译</li>
-<li>监听在编译过程中产生的警告和错误</li>
-<li>在代码中运行编译器(并非：Runtime命令行调用javac命令)</li>
-</ul>
-<h6 id="JavaCompiler"><a href="#JavaCompiler" class="headerlink" title="JavaCompiler"></a>JavaCompiler</h6><ul>
-<li>自Java 1.6 推出，位于<code>javax.tools</code>包中。</li>
-<li>可用在程序文件中的Java编译器接口(代替javac.exe)。</li>
-<li>在程序中编译java文件，产生class文件。</li>
-<li>run方法(继承自<code>java.tools.Tools</code>)：可以编译java源文件，生成class文件，但不能指定输出路径,监控错误信息, 调用后就在源码所在目录生成class文件。</li>
-<li>getTask方法：可以编译java源文件，包括在内存中的java文件(字符串)，生成class文件。</li>
-</ul>
-<h6 id="Java编译器API作用"><a href="#Java编译器API作用" class="headerlink" title="Java编译器API作用"></a>Java编译器API作用</h6><ul>
-<li>Java EE的JSP编译</li>
-<li>在线编程环境</li>
-<li>在线程序评判系统(Online Judge系统)</li>
-<li>自动化的构建和测试工具</li>
-</ul>
-<h6 id="基于JavaCompiler的集成工具"><a href="#基于JavaCompiler的集成工具" class="headerlink" title="基于JavaCompiler的集成工具"></a>基于JavaCompiler的集成工具</h6><ul>
-<li><font color="red">Janino</font>，<a href="http://janino-compiler.github.io/janino" target="_blank" rel="noopener">http://janino-compiler.github.io/janino</a></li>
-<li>InMemoryJavaCompile， <a href="https://github.com/trung/InMemoryJavaCompiler" target="_blank" rel="noopener">https://github.com/trung/InMemoryJavaCompiler</a></li>
-<li>Java-Runtime-Compiler, <a href="https://github.com/OpenHFT/JavaRuntime-Compiler" target="_blank" rel="noopener">https://github.com/OpenHFT/JavaRuntime-Compiler</a></li>
-<li>Apache Commons JCI(Java Compiler Interface), <a href="http://commons.apache.org/proper/commons-jci/index.html" target="_blank" rel="noopener">http://commons.apache.org/proper/commons-jci/index.html</a>，<font color="red">适用于JDK1.5及以前的版本</font></li>
-</ul>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>反射</tag>
       </tags>
   </entry>
   <entry>
@@ -2331,6 +2331,28 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       <tags>
         <tag>并发编程</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java--混合编程</title>
+    <url>/articles/6d00d2a2.html</url>
+    <content><![CDATA[<h6 id="Java调用Java程序"><a href="#Java调用Java程序" class="headerlink" title="Java调用Java程序"></a>Java调用Java程序</h6><p>RMI</p>
+<h6 id="Java调用C程序"><a href="#Java调用C程序" class="headerlink" title="Java调用C程序"></a>Java调用C程序</h6><p>JNI Java Native Interface</p>
+<h6 id="Java调用JavaScript程序"><a href="#Java调用JavaScript程序" class="headerlink" title="Java调用JavaScript程序"></a>Java调用JavaScript程序</h6><p>脚本引擎 Script Engine<br>JDK8：Nashorn<br>JDK6/7：Rhino</p>
+<h6 id="Java调用Python程序"><a href="#Java调用Python程序" class="headerlink" title="Java调用Python程序"></a>Java调用Python程序</h6><p>Jython（JPython）</p>
+<p>关键类 PythonInterpreter</p>
+<ul>
+<li>exec 执行语句</li>
+<li>set 设置变量值</li>
+<li>get 获取变量值</li>
+<li>execfile 执行一个python文件</li>
+</ul>
+<p>PyObject<br>PyFunction</p>
+<h6 id="Java调用Web-Service"><a href="#Java调用Web-Service" class="headerlink" title="Java调用Web Service"></a>Java调用Web Service</h6><p>wsimport</p>
+<h6 id="Java调用命令行"><a href="#Java调用命令行" class="headerlink" title="Java调用命令行"></a>Java调用命令行</h6><p>Runtime类<br>Process类</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Java--泛型</title>
@@ -2626,26 +2648,39 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Java--混合编程</title>
-    <url>/articles/6d00d2a2.html</url>
-    <content><![CDATA[<h6 id="Java调用Java程序"><a href="#Java调用Java程序" class="headerlink" title="Java调用Java程序"></a>Java调用Java程序</h6><p>RMI</p>
-<h6 id="Java调用C程序"><a href="#Java调用C程序" class="headerlink" title="Java调用C程序"></a>Java调用C程序</h6><p>JNI Java Native Interface</p>
-<h6 id="Java调用JavaScript程序"><a href="#Java调用JavaScript程序" class="headerlink" title="Java调用JavaScript程序"></a>Java调用JavaScript程序</h6><p>脚本引擎 Script Engine<br>JDK8：Nashorn<br>JDK6/7：Rhino</p>
-<h6 id="Java调用Python程序"><a href="#Java调用Python程序" class="headerlink" title="Java调用Python程序"></a>Java调用Python程序</h6><p>Jython（JPython）</p>
-<p>关键类 PythonInterpreter</p>
+    <title>Java语法糖--var类型和switch</title>
+    <url>/articles/ab1a490c.html</url>
+    <content><![CDATA[<h5 id="var类型"><a href="#var类型" class="headerlink" title="var类型"></a>var类型</h5><p>Java 10 推出var：局部变量推断</p>
 <ul>
-<li>exec 执行语句</li>
-<li>set 设置变量值</li>
-<li>get 获取变量值</li>
-<li>execfile 执行一个python文件</li>
+<li>避免信息冗余</li>
+<li>对齐了变量名</li>
+<li>更容易阅读</li>
+<li>本质上还是强类型语言，编译器负责推断类型，并写入字节码文件，推断后不能更改</li>
 </ul>
-<p>PyObject<br>PyFunction</p>
-<h6 id="Java调用Web-Service"><a href="#Java调用Web-Service" class="headerlink" title="Java调用Web Service"></a>Java调用Web Service</h6><p>wsimport</p>
-<h6 id="Java调用命令行"><a href="#Java调用命令行" class="headerlink" title="Java调用命令行"></a>Java调用命令行</h6><p>Runtime类<br>Process类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">0.25</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> URL(<span class="string">"https://github.com);</span></span><br><span class="line"><span class="string">c = 5; //编译器报错</span></span><br></pre></td></tr></table></figure>
+<h6 id="var的限制"><a href="#var的限制" class="headerlink" title="var的限制"></a>var的限制</h6><ul>
+<li>可以用在局部变量上，非类成员变量</li>
+<li>可以用在for/for-each循环中</li>
+<li>声明时必须初始化</li>
+<li>不能用在方法（形式）参数和返回类型</li>
+<li>大面积滥用会使代码整体阅读性变差</li>
+<li>var只在编译时起作用，没有在字节码中引入新的内容，也没有专门的JVM指令处理var</li>
+</ul>
+<h5 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h5><p>多分支选择语句</p>
+<ul>
+<li>支持的类型：<code>byte/Byte</code> <code>short/Short</code> <code>int/Integer</code> <code>char/Character</code> <code>String</code>(JDK7.0) <code>Enum</code>(JDK5.0) 不支持<code>long</code> <code>float</code> <code>double</code></li>
+</ul>
+<h6 id="多分支合并"><a href="#多分支合并" class="headerlink" title="多分支合并"></a>多分支合并</h6><p>采用 -&gt; 直接连接判定条件和动作(JDK12)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> days;</span><br><span class="line"><span class="keyword">switch</span>(month)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Jan"</span>,<span class="string">"Nar"</span>,<span class="string">"May"</span>,<span class="string">"July"</span>,<span class="string">"Aug"</span>,<span class="string">"Oct"</span>,<span class="string">"Dec"</span> -&gt; days = <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Apr"</span>,<span class="string">"June"</span>,<span class="string">"Sep"</span>,<span class="string">"Nov"</span> -&gt; days = <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"Feb"</span> -&gt; days = <span class="number">28</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; days = -<span class="number">1</span>;	<span class="comment">//必须有default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="直接在表达式赋值"><a href="#直接在表达式赋值" class="headerlink" title="直接在表达式赋值"></a>直接在表达式赋值</h6><p>直接在表达式赋值(JDK12)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> days = <span class="keyword">switch</span> (num)&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span> -&gt;<span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">11</span> -&gt; <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; &#123;</span><br><span class="line">		<span class="keyword">int</span> result = <span class="number">28</span>;</span><br><span class="line">		<span class="keyword">break</span> result;	<span class="comment">//代码块中的break返回结果</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
+      <tags>
+        <tag>语法糖</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java语法糖--try-with-resource和ResourceBundle文件加载</title>
@@ -2678,32 +2713,33 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Java语法糖--var类型和switch</title>
-    <url>/articles/ab1a490c.html</url>
-    <content><![CDATA[<h5 id="var类型"><a href="#var类型" class="headerlink" title="var类型"></a>var类型</h5><p>Java 10 推出var：局部变量推断</p>
+    <title>Java语法糖--不定项参数和静态导入</title>
+    <url>/articles/689cf977.html</url>
+    <content><![CDATA[<h5 id="不定项参数"><a href="#不定项参数" class="headerlink" title="不定项参数"></a>不定项参数</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>普通函数的形参列表是固定个数/类型/顺序</p>
+<p>JDK5提供了不定项参数(可变参数)功能</p>
 <ul>
-<li>避免信息冗余</li>
-<li>对齐了变量名</li>
-<li>更容易阅读</li>
-<li>本质上还是强类型语言，编译器负责推断类型，并写入字节码文件，推断后不能更改</li>
+<li>数据类型后加… 如 int… /double… /String…</li>
+<li>可变参数本质是一个数组，可以是0个也可以是n个同类型参数</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">0.25</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> URL(<span class="string">"https://github.com);</span></span><br><span class="line"><span class="string">c = 5; //编译器报错</span></span><br></pre></td></tr></table></figure>
-<h6 id="var的限制"><a href="#var的限制" class="headerlink" title="var的限制"></a>var的限制</h6><ul>
-<li>可以用在局部变量上，非类成员变量</li>
-<li>可以用在for/for-each循环中</li>
-<li>声明时必须初始化</li>
-<li>不能用在方法（形式）参数和返回类型</li>
-<li>大面积滥用会使代码整体阅读性变差</li>
-<li>var只在编译时起作用，没有在字节码中引入新的内容，也没有专门的JVM指令处理var</li>
+<a id="more"></a>
+<h6 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h6><ul>
+<li>一个方法只能有一个不定项参数，且必须位于参数列表的最后</li>
+<li>重载的优先级规则1：<strong>固定参数的方法，比可变参数优先级更高</strong></li>
+<li>重载的优先级规则2：<strong>调用语句，同时与两个带可变参数的方法匹配，会报错</strong></li>
 </ul>
-<h5 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h5><p>多分支选择语句</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 固定参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (message == <span class="keyword">null</span> || message.length == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"无参"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str, String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">print();    <span class="comment">//无参，调用print(String... message)</span></span><br><span class="line">print(<span class="string">"Hello world!"</span>); <span class="comment">//一个参数，调用固定参数方法print(String message)</span></span><br><span class="line">print(<span class="string">"Hello"</span>, <span class="string">"world"</span>);    <span class="comment">//编译器报错：Ambiguous method call. Both print(String... message) and (String str, String... message) in IndefiniteParameter match</span></span><br></pre></td></tr></table></figure>
+<h5 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h5><h6 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h6><ul>
+<li><code>import</code>导入程序所需的类</li>
+<li><code>import static</code>导入一个类的静态方法和静态变量（JDK5开始引入）</li>
+</ul>
+<p><code>import static java.lang.Math.pow;</code></p>
+<p><code>import static java.lang.System.out;</code></p>
+<h6 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h6><p><code>import static</code>导入一个类的静态方法和静态变量：</p>
 <ul>
-<li>支持的类型：<code>byte/Byte</code> <code>short/Short</code> <code>int/Integer</code> <code>char/Character</code> <code>String</code>(JDK7.0) <code>Enum</code>(JDK5.0) 不支持<code>long</code> <code>float</code> <code>double</code></li>
+<li>少使用 * 通配符，最好具体到静态变量或方法</li>
+<li>静态方法名具有明确特征，如有重名，需要补充类名</li>
 </ul>
-<h6 id="多分支合并"><a href="#多分支合并" class="headerlink" title="多分支合并"></a>多分支合并</h6><p>采用 -&gt; 直接连接判定条件和动作(JDK12)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> days;</span><br><span class="line"><span class="keyword">switch</span>(month)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Jan"</span>,<span class="string">"Nar"</span>,<span class="string">"May"</span>,<span class="string">"July"</span>,<span class="string">"Aug"</span>,<span class="string">"Oct"</span>,<span class="string">"Dec"</span> -&gt; days = <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Apr"</span>,<span class="string">"June"</span>,<span class="string">"Sep"</span>,<span class="string">"Nov"</span> -&gt; days = <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"Feb"</span> -&gt; days = <span class="number">28</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; days = -<span class="number">1</span>;	<span class="comment">//必须有default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="直接在表达式赋值"><a href="#直接在表达式赋值" class="headerlink" title="直接在表达式赋值"></a>直接在表达式赋值</h6><p>直接在表达式赋值(JDK12)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> days = <span class="keyword">switch</span> (num)&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span> -&gt;<span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">11</span> -&gt; <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">default</span> -&gt; &#123;</span><br><span class="line">		<span class="keyword">int</span> result = <span class="number">28</span>;</span><br><span class="line">		<span class="keyword">break</span> result;	<span class="comment">//代码块中的break返回结果</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>java</category>
@@ -2756,91 +2792,6 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
 <li>接口没有main函数，抽象类可以有main函数</li>
 <li>接口有<code>public</code> <code>default</code> <code>private</code>的方法，抽象类有 <code>public</code> <code>default</code> <code>protected</code> <code>private</code>的方法</li>
 </ul>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>语法糖</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java语法糖--不定项参数和静态导入</title>
-    <url>/articles/689cf977.html</url>
-    <content><![CDATA[<h5 id="不定项参数"><a href="#不定项参数" class="headerlink" title="不定项参数"></a>不定项参数</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>普通函数的形参列表是固定个数/类型/顺序</p>
-<p>JDK5提供了不定项参数(可变参数)功能</p>
-<ul>
-<li>数据类型后加… 如 int… /double… /String…</li>
-<li>可变参数本质是一个数组，可以是0个也可以是n个同类型参数</li>
-</ul>
-<a id="more"></a>
-<h6 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h6><ul>
-<li>一个方法只能有一个不定项参数，且必须位于参数列表的最后</li>
-<li>重载的优先级规则1：<strong>固定参数的方法，比可变参数优先级更高</strong></li>
-<li>重载的优先级规则2：<strong>调用语句，同时与两个带可变参数的方法匹配，会报错</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 固定参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (message == <span class="keyword">null</span> || message.length == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"无参"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 不定项参数</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str, String... message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (String seq : message) &#123;</span><br><span class="line">        System.out.println(seq);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">print();    <span class="comment">//无参，调用print(String... message)</span></span><br><span class="line">print(<span class="string">"Hello world!"</span>); <span class="comment">//一个参数，调用固定参数方法print(String message)</span></span><br><span class="line">print(<span class="string">"Hello"</span>, <span class="string">"world"</span>);    <span class="comment">//编译器报错：Ambiguous method call. Both print(String... message) and (String str, String... message) in IndefiniteParameter match</span></span><br></pre></td></tr></table></figure>
-<h5 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h5><h6 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h6><ul>
-<li><code>import</code>导入程序所需的类</li>
-<li><code>import static</code>导入一个类的静态方法和静态变量（JDK5开始引入）</li>
-</ul>
-<p><code>import static java.lang.Math.pow;</code></p>
-<p><code>import static java.lang.System.out;</code></p>
-<h6 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h6><p><code>import static</code>导入一个类的静态方法和静态变量：</p>
-<ul>
-<li>少使用 * 通配符，最好具体到静态变量或方法</li>
-<li>静态方法名具有明确特征，如有重名，需要补充类名</li>
-</ul>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>语法糖</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java语法糖--自动装箱与拆箱、多异常并列和数值类型赋值优化</title>
-    <url>/articles/e81b4a74.html</url>
-    <content><![CDATA[<h5 id="自动装箱与拆箱"><a href="#自动装箱与拆箱" class="headerlink" title="自动装箱与拆箱"></a>自动装箱与拆箱</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>auto-boxing / auto-unboxing</p>
-<ul>
-<li>从JDK5.0开始引入，简化基本类型和对象的写法</li>
-<li>基本类型：<code>boolean</code> <code>byte</code> <code>char</code> <code>int</code> <code>short</code> <code>long</code> <code>float</code> <code>double</code></li>
-<li>对象：<code>Boolean</code> <code>Byte</code> <code>Character</code> <code>Integer</code> <code>Short</code> <code>Long</code> <code>Float</code> <code>Double</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer integer1 = <span class="number">1</span>;    <span class="comment">//自动装箱</span></span><br><span class="line">Integer integer2 = Integer.valueOf(<span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> int1 = integer1;    <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> int2 = integer2.intValue();</span><br></pre></td></tr></table></figure>
-<h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
-<li>自动装箱和拆箱是编译器的工作，在class中已经添加转化，虚拟机没有自动装箱和拆箱的语句</li>
-<li>==判断：基本类型是内容相同，对象是指针是否相同(内存同一个区域)</li>
-<li>基本类型没有空值，对象有null，可能触发NullPointerException（空指针异常）</li>
-<li>当一个基础数据类型与封装类进行 == + - * / 运算时，会将封装类进行拆箱，对基础数据类型进行运算</li>
-<li>谨慎使用多个非同类的数值类对象进行运算</li>
-</ul>
-<a id="more"></a>
-<h5 id="多异常并列"><a href="#多异常并列" class="headerlink" title="多异常并列"></a>多异常并列</h5><h6 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h6><p>多异常并列在一个catch中，从JDK7.0开始引入，简化写法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException se) &#123;</span><br><span class="line">    se.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>简化写法   | 管道符号</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException | SQLException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>多个异常之间不能有直接/间接继承关系，否则会报错</p>
-<p>处理方法不同，不能合并</p>
-<h5 id="数值赋值优化"><a href="#数值赋值优化" class="headerlink" title="数值赋值优化"></a>数值赋值优化</h5><h6 id="整数类型用二进制数赋值"><a href="#整数类型用二进制数赋值" class="headerlink" title="整数类型用二进制数赋值"></a>整数类型用二进制数赋值</h6><p>整数类型用二进制数赋值</p>
-<p>Java7的新语法：</p>
-<ul>
-<li>避免二进制计算</li>
-<li><code>byte</code> <code>short</code> <code>int</code> <code>long</code></li>
-</ul>
-<h6 id="数字中的下划线"><a href="#数字中的下划线" class="headerlink" title="数字中的下划线"></a>数字中的下划线</h6><p>Java7的新语法：</p>
-<ul>
-<li>增加数字的可读性和纠错功能</li>
-<li><code>short</code> <code>int</code> <code>long</code> <code>float</code> <code>double</code></li>
-<li>下划线只能出现数字中间，前后必须有数字</li>
-<li>允许在二/八/十/十六进制的数字中使用</li>
-</ul>
-<p><code>int a = 0b0011_1011_0001;</code>二进制</p>
-<p><code>int b =02_014;</code>八进制</p>
-<p><code>int c=123__456;</code>十进制，可使用多个下划线</p>
-<p><code>int d =0x7_B_1;</code>十六进制</p>
 ]]></content>
       <categories>
         <category>java</category>
@@ -3114,6 +3065,55 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </tags>
   </entry>
   <entry>
+    <title>Java语法糖--自动装箱与拆箱、多异常并列和数值类型赋值优化</title>
+    <url>/articles/e81b4a74.html</url>
+    <content><![CDATA[<h5 id="自动装箱与拆箱"><a href="#自动装箱与拆箱" class="headerlink" title="自动装箱与拆箱"></a>自动装箱与拆箱</h5><h6 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h6><p>auto-boxing / auto-unboxing</p>
+<ul>
+<li>从JDK5.0开始引入，简化基本类型和对象的写法</li>
+<li>基本类型：<code>boolean</code> <code>byte</code> <code>char</code> <code>int</code> <code>short</code> <code>long</code> <code>float</code> <code>double</code></li>
+<li>对象：<code>Boolean</code> <code>Byte</code> <code>Character</code> <code>Integer</code> <code>Short</code> <code>Long</code> <code>Float</code> <code>Double</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer integer1 = <span class="number">1</span>;    <span class="comment">//自动装箱</span></span><br><span class="line">Integer integer2 = Integer.valueOf(<span class="number">1</span>);  </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> int1 = integer1;    <span class="comment">//自动拆箱</span></span><br><span class="line"><span class="keyword">int</span> int2 = integer2.intValue();</span><br></pre></td></tr></table></figure>
+<h6 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h6><ul>
+<li>自动装箱和拆箱是编译器的工作，在class中已经添加转化，虚拟机没有自动装箱和拆箱的语句</li>
+<li>==判断：基本类型是内容相同，对象是指针是否相同(内存同一个区域)</li>
+<li>基本类型没有空值，对象有null，可能触发NullPointerException（空指针异常）</li>
+<li>当一个基础数据类型与封装类进行 == + - * / 运算时，会将封装类进行拆箱，对基础数据类型进行运算</li>
+<li>谨慎使用多个非同类的数值类对象进行运算</li>
+</ul>
+<a id="more"></a>
+<h5 id="多异常并列"><a href="#多异常并列" class="headerlink" title="多异常并列"></a>多异常并列</h5><h6 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h6><p>多异常并列在一个catch中，从JDK7.0开始引入，简化写法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException se) &#123;</span><br><span class="line">    se.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简化写法   | 管道符号</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test();     <span class="comment">//操作</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException | SQLException ie) &#123;</span><br><span class="line">    ie.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><p>多个异常之间不能有直接/间接继承关系，否则会报错</p>
+<p>处理方法不同，不能合并</p>
+<h5 id="数值赋值优化"><a href="#数值赋值优化" class="headerlink" title="数值赋值优化"></a>数值赋值优化</h5><h6 id="整数类型用二进制数赋值"><a href="#整数类型用二进制数赋值" class="headerlink" title="整数类型用二进制数赋值"></a>整数类型用二进制数赋值</h6><p>整数类型用二进制数赋值</p>
+<p>Java7的新语法：</p>
+<ul>
+<li>避免二进制计算</li>
+<li><code>byte</code> <code>short</code> <code>int</code> <code>long</code></li>
+</ul>
+<h6 id="数字中的下划线"><a href="#数字中的下划线" class="headerlink" title="数字中的下划线"></a>数字中的下划线</h6><p>Java7的新语法：</p>
+<ul>
+<li>增加数字的可读性和纠错功能</li>
+<li><code>short</code> <code>int</code> <code>long</code> <code>float</code> <code>double</code></li>
+<li>下划线只能出现数字中间，前后必须有数字</li>
+<li>允许在二/八/十/十六进制的数字中使用</li>
+</ul>
+<p><code>int a = 0b0011_1011_0001;</code>二进制</p>
+<p><code>int b =02_014;</code>八进制</p>
+<p><code>int c=123__456;</code>十进制，可使用多个下划线</p>
+<p><code>int d =0x7_B_1;</code>十六进制</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>语法糖</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode--#1095山脉数组中查找目标值</title>
     <url>/articles/8d630654.html</url>
     <content><![CDATA[<h6 id="山脉数组中查找目标值"><a href="#山脉数组中查找目标值" class="headerlink" title="山脉数组中查找目标值"></a>山脉数组中查找目标值</h6><blockquote>
@@ -3170,32 +3170,6 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </categories>
   </entry>
   <entry>
-    <title>LeetCode--#1两数之和</title>
-    <url>/articles/eb1f9a79.html</url>
-    <content><![CDATA[<h6 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h6><blockquote>
-<p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
-<p>示例:</p>
-<p>给定 nums = [2, 7, 11, 15], target = 9</p>
-<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p>
-</blockquote>
-<a id="more"></a>
-<h6 id="暴力解法-超时"><a href="#暴力解法-超时" class="headerlink" title="暴力解法(超时)"></a>暴力解法(超时)</h6><p>枚举比较，从第一个数到最后一个数逐个求和比较，直至匹配成功</p>
-<p>时间复杂度：$O(n^2)$<br>空间复杂度：$O(1)$</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 暴力解法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByBF(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (target == nums[i] + nums[j]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="两遍hash表"><a href="#两遍hash表" class="headerlink" title="两遍hash表"></a>两遍hash表</h6><p>第一遍：将数组转换成<code>hash</code>表，以数组的数值作为键，以索引作为值存储在<code>hash</code>表中<br>第二遍：在<code>hash</code>表中查找，查找能与当前数组的元素的和为<code>target</code>的键</p>
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 两遍hash表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMap(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">        table.put(nums[i], i);	<span class="comment">//以数值为键，索引为值</span></span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, table.get(searched)&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="一遍hash表"><a href="#一遍hash表" class="headerlink" title="一遍hash表"></a>一遍hash表</h6><p>一边插入hash表，一边查找</p>
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 一遍hash表，边插入边查找</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMapOnce(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="comment">//先查找</span></span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i)	<span class="comment">//保证不是同一个元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;table.get(searched), i&#125;;</span><br><span class="line">		<span class="comment">//后插入表中</span></span><br><span class="line">        table.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>LeetCode--#200岛屿数量</title>
     <url>/articles/c2dfdd41.html</url>
     <content><![CDATA[<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><h6 id="岛屿数量"><a href="#岛屿数量" class="headerlink" title="岛屿数量"></a>岛屿数量</h6><blockquote>
@@ -3237,6 +3211,32 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
 <p>算法时间复杂度：O(MN)</p>
 <p>算法空间复杂度：O(min(M,N))    M：二维网格的行数，N：二维网格的列数</p>
 <h6 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numIslandsByBFS</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (grid == <span class="keyword">null</span> || grid.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> islandsNum = <span class="number">0</span>;         <span class="comment">//岛屿数量</span></span><br><span class="line">    <span class="keyword">int</span> row = grid.length;      <span class="comment">//行数</span></span><br><span class="line">    <span class="keyword">int</span> col = grid[<span class="number">0</span>].length;   <span class="comment">//列数</span></span><br><span class="line">    <span class="comment">//遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; row; r++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; col; c++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grid[r][c] == <span class="string">'1'</span>) &#123;    <span class="comment">//陆地</span></span><br><span class="line">                grid[r][c] = <span class="string">'0'</span>;   <span class="comment">//重新标记</span></span><br><span class="line">                islandsNum++;</span><br><span class="line">                Deque&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">                queue.add(r * col + c);         <span class="comment">//入队</span></span><br><span class="line">                <span class="keyword">while</span> (!queue.isEmpty()) &#123;      <span class="comment">//队列不为空</span></span><br><span class="line">                    <span class="keyword">int</span> id = queue.remove();    <span class="comment">//出队</span></span><br><span class="line">                    <span class="comment">//当前元素的位置</span></span><br><span class="line">                    <span class="keyword">int</span> cr = id / col;    <span class="comment">//当前元素的行</span></span><br><span class="line">                    <span class="keyword">int</span> cc = id % col;    <span class="comment">//当前元素的列</span></span><br><span class="line">                    <span class="keyword">if</span> (cr - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[cr - <span class="number">1</span>][cc] == <span class="string">'1'</span>) &#123;   <span class="comment">//正上方</span></span><br><span class="line">                        queue.add((cr - <span class="number">1</span>) * col + cc);</span><br><span class="line">                        grid[cr - <span class="number">1</span>][cc] = <span class="string">'0'</span>; <span class="comment">//重新标记</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (cr + <span class="number">1</span> &lt; row &amp;&amp; grid[cr + <span class="number">1</span>][cc] == <span class="string">'1'</span>) &#123; <span class="comment">//正下方</span></span><br><span class="line">                        queue.add((cr + <span class="number">1</span>) * col + cc);</span><br><span class="line">                        grid[cr + <span class="number">1</span>][cc] = <span class="string">'0'</span>; <span class="comment">//重新标记</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (cc - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[cr][cc - <span class="number">1</span>] == <span class="string">'1'</span>) &#123;   <span class="comment">//正左方</span></span><br><span class="line">                        queue.add(cr * col + cc - <span class="number">1</span>);</span><br><span class="line">                        grid[cr][cc - <span class="number">1</span>] = <span class="string">'0'</span>; <span class="comment">//重新标记</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (cc + <span class="number">1</span> &lt; col &amp;&amp; grid[cr][cc + <span class="number">1</span>] == <span class="string">'1'</span>) &#123; <span class="comment">//正右方</span></span><br><span class="line">                        queue.add(cr * col + cc + <span class="number">1</span>);</span><br><span class="line">                        grid[cr][cc + <span class="number">1</span>] = <span class="string">'0'</span>; <span class="comment">//重新标记</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> islandsNum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LeetCode--#1两数之和</title>
+    <url>/articles/eb1f9a79.html</url>
+    <content><![CDATA[<h6 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h6><blockquote>
+<p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
+<p>示例:</p>
+<p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p>
+</blockquote>
+<a id="more"></a>
+<h6 id="暴力解法-超时"><a href="#暴力解法-超时" class="headerlink" title="暴力解法(超时)"></a>暴力解法(超时)</h6><p>枚举比较，从第一个数到最后一个数逐个求和比较，直至匹配成功</p>
+<p>时间复杂度：$O(n^2)$<br>空间复杂度：$O(1)$</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 暴力解法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByBF(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (target == nums[i] + nums[j]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="两遍hash表"><a href="#两遍hash表" class="headerlink" title="两遍hash表"></a>两遍hash表</h6><p>第一遍：将数组转换成<code>hash</code>表，以数组的数值作为键，以索引作为值存储在<code>hash</code>表中<br>第二遍：在<code>hash</code>表中查找，查找能与当前数组的元素的和为<code>target</code>的键</p>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 两遍hash表</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMap(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">        table.put(nums[i], i);	<span class="comment">//以数值为键，索引为值</span></span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, table.get(searched)&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="一遍hash表"><a href="#一遍hash表" class="headerlink" title="一遍hash表"></a>一遍hash表</h6><p>一边插入hash表，一边查找</p>
+<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 一遍hash表，边插入边查找</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSumByHashMapOnce(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">    Map&lt;Integer, Integer&gt; table = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//将数组转换成hash表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> searched = target - nums[i];</span><br><span class="line">        <span class="comment">//先查找</span></span><br><span class="line">        <span class="keyword">if</span> (table.containsKey(searched) &amp;&amp; table.get(searched) != i)	<span class="comment">//保证不是同一个元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;table.get(searched), i&#125;;</span><br><span class="line">		<span class="comment">//后插入表中</span></span><br><span class="line">        table.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3296,23 +3296,6 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
       </categories>
   </entry>
   <entry>
-    <title>LeetCode--#46全排列</title>
-    <url>/articles/6d9b5c12.html</url>
-    <content><![CDATA[<h6 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h6><blockquote>
-<p>给定一个 没有重复 数字的序列，返回其所有可能的全排列。</p>
-<p>示例:</p>
-<p>输入: [1,2,3]<br>输出:<br>[<br>[1,2,3],<br>[1,3,2],<br>[2,1,3],<br>[2,3,1],<br>[3,1,2],<br>[3,2,1]<br>]</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/permutations" target="_blank" rel="noopener">https://leetcode-cn.com/problems/permutations</a></p>
-</blockquote>
-<a id="more"></a>
-<h6 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h6><p>解析：<a href="https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/</a></p>
-<p>时间复杂度：$O(n<em>n!)$，其中 </em>n<em> 为序列的长度<br>空间复杂度：$O(n)$，其中 </em>n* 为序列的长度</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 回溯法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> len</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> output</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> res</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> len,</span></span></span><br><span class="line"><span class="function"><span class="params">                      List&lt;Integer&gt; output,</span></span></span><br><span class="line"><span class="function"><span class="params">                      List&lt;List&lt;Integer&gt;&gt; res,</span></span></span><br><span class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> first)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 递归结束条件：所有数都填完了</span></span><br><span class="line">    <span class="keyword">if</span> (first == len)</span><br><span class="line">        res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(output));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = first; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="comment">// 动态维护数组</span></span><br><span class="line">        Collections.swap(output, first, i);</span><br><span class="line">        <span class="comment">// 继续递归填下一个数</span></span><br><span class="line">        backtrack(n, output, res, first + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 撤销操作</span></span><br><span class="line">        Collections.swap(output, first, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    ArrayList&lt;Integer&gt; output = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums)</span><br><span class="line">        output.add(num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = nums.length;</span><br><span class="line">    backtrack(len, output, res, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>LeetCode--面试题#51数组中的逆序对</title>
     <url>/articles/9fbcfe23.html</url>
     <content><![CDATA[<h6 id="数组中的逆序对"><a href="#数组中的逆序对" class="headerlink" title="数组中的逆序对"></a>数组中的逆序对</h6><blockquote>
@@ -3350,6 +3333,23 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 借助归并排序：分治法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 逆序对数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];   <span class="comment">//临时数组，用于存放有序数组</span></span><br><span class="line">    <span class="keyword">return</span> merge(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>,temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high,<span class="keyword">int</span>[] temp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &gt;= high)    <span class="comment">//递归结束条件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> res = merge(nums, low, mid,temp) + merge(nums, mid + <span class="number">1</span>, high,temp);	<span class="comment">//区间划分</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = low, j = mid + <span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">        res += nums[i] &lt;= nums[j] ? j - (mid + <span class="number">1</span>) : <span class="number">0</span>;</span><br><span class="line">        temp[k++] = nums[i] &lt;= nums[j] ? nums[i++] : nums[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">        res += j - (mid + <span class="number">1</span>);	</span><br><span class="line">        temp[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= high)</span><br><span class="line">        temp[k++] = nums[j++];</span><br><span class="line">    System.arraycopy(temp, <span class="number">0</span>, nums, low, high - low + <span class="number">1</span>);   <span class="comment">//复制到原数组中</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LeetCode--#46全排列</title>
+    <url>/articles/6d9b5c12.html</url>
+    <content><![CDATA[<h6 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h6><blockquote>
+<p>给定一个 没有重复 数字的序列，返回其所有可能的全排列。</p>
+<p>示例:</p>
+<p>输入: [1,2,3]<br>输出:<br>[<br>[1,2,3],<br>[1,3,2],<br>[2,1,3],<br>[2,3,1],<br>[3,1,2],<br>[3,2,1]<br>]</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/permutations" target="_blank" rel="noopener">https://leetcode-cn.com/problems/permutations</a></p>
+</blockquote>
+<a id="more"></a>
+<h6 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h6><p>解析：<a href="https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/</a></p>
+<p>时间复杂度：$O(n<em>n!)$，其中 </em>n<em> 为序列的长度<br>空间复杂度：$O(n)$，其中 </em>n* 为序列的长度</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 回溯法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> len</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> output</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> res</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> first</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> len,</span></span></span><br><span class="line"><span class="function"><span class="params">                      List&lt;Integer&gt; output,</span></span></span><br><span class="line"><span class="function"><span class="params">                      List&lt;List&lt;Integer&gt;&gt; res,</span></span></span><br><span class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> first)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 递归结束条件：所有数都填完了</span></span><br><span class="line">    <span class="keyword">if</span> (first == len)</span><br><span class="line">        res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(output));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = first; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="comment">// 动态维护数组</span></span><br><span class="line">        Collections.swap(output, first, i);</span><br><span class="line">        <span class="comment">// 继续递归填下一个数</span></span><br><span class="line">        backtrack(n, output, res, first + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 撤销操作</span></span><br><span class="line">        Collections.swap(output, first, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    ArrayList&lt;Integer&gt; output = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums)</span><br><span class="line">        output.add(num);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = nums.length;</span><br><span class="line">    backtrack(len, output, res, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3925,7 +3925,6 @@ A[任何语言]-->B(class字节码)-->C[JVM虚拟机]</pre>
 <p>配置jedis连接池</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span> <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span> <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 配置jedis连接池 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 最大连接数 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"30"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 最大空闲连接数 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"10"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 每次释放连接的最大数目 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"numTestsPerEvictionRun"</span> <span class="attr">value</span>=<span class="string">"1024"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeBetweenEvictionRunsMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 连接最小空闲时间 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"1800000"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"softMinEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"10000"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"1500"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testWhileIdle"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 连接耗尽时是否阻塞, false报异常,true阻塞直到超时, 默认true --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>notes</category>
         <category>后端</category>
       </categories>
       <tags>
@@ -6525,7 +6524,7 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
 <p>在需要使用 nginx 作为反向代理时，可以进行相关配置。</p>
 ]]></content>
       <categories>
-        <category>notes</category>
+        <category>前端</category>
       </categories>
       <tags>
         <tag>docker</tag>
@@ -6687,37 +6686,6 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
       </tags>
   </entry>
   <entry>
-    <title>docker配置redis镜像</title>
-    <url>/articles/cf9a8130.html</url>
-    <content><![CDATA[<h6 id="安装redis镜像"><a href="#安装redis镜像" class="headerlink" title="安装redis镜像"></a>安装redis镜像</h6><p>从 docker 的仓库中拉取 redis 镜像，不写版本号时，默认使用 <code>latest</code> 最新版</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull redis[:版本号]</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h6 id="创建redis容器与启动"><a href="#创建redis容器与启动" class="headerlink" title="创建redis容器与启动"></a>创建redis容器与启动</h6><ol>
-<li><p>创建配置文件挂载文件夹和 redis 挂载的配置文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir -p /mydata/redis/conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> touch /mydata/redis/conf/redis.conf</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建 redis 容器，并将配置文件挂载到虚拟机本地</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \</span></span><br><span class="line">-v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>检查 redis 的相关配置文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# pwd</span><br><span class="line">/mydata/redis/conf</span><br><span class="line">[root@localhost conf]# ls</span><br><span class="line">redis.conf</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h6 id="配置redis自启动"><a href="#配置redis自启动" class="headerlink" title="配置redis自启动"></a>配置redis自启动</h6><p>配置 redis 容器在docker启动时同时启动。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost vagrant]# docker update redis --restart=always</span><br></pre></td></tr></table></figure>
-<h6 id="进入redis的客户端"><a href="#进入redis的客户端" class="headerlink" title="进入redis的客户端"></a>进入redis的客户端</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# docker exec -it redis redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="将redis数据持久化到硬盘"><a href="#将redis数据持久化到硬盘" class="headerlink" title="将redis数据持久化到硬盘"></a>将redis数据持久化到硬盘</h6><p>修改 <code>/mydata/redis/conf/redis.conf</code> 文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# vi redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加以下内容</span></span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
-<h6 id=""><a href="#" class="headerlink" title=" "></a> </h6>]]></content>
-      <categories>
-        <category>后端</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git常用指令</title>
     <url>/articles/c34887c6.html</url>
     <content><![CDATA[<h6 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h6><p><code>git config --global user.name &quot;Your Name&quot;</code>设置用户名</p>
@@ -6755,6 +6723,37 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
 ]]></content>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker配置redis镜像</title>
+    <url>/articles/cf9a8130.html</url>
+    <content><![CDATA[<h6 id="安装redis镜像"><a href="#安装redis镜像" class="headerlink" title="安装redis镜像"></a>安装redis镜像</h6><p>从 docker 的仓库中拉取 redis 镜像，不写版本号时，默认使用 <code>latest</code> 最新版</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull redis[:版本号]</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h6 id="创建redis容器与启动"><a href="#创建redis容器与启动" class="headerlink" title="创建redis容器与启动"></a>创建redis容器与启动</h6><ol>
+<li><p>创建配置文件挂载文件夹和 redis 挂载的配置文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir -p /mydata/redis/conf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> touch /mydata/redis/conf/redis.conf</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 redis 容器，并将配置文件挂载到虚拟机本地</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \</span></span><br><span class="line">-v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查 redis 的相关配置文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# pwd</span><br><span class="line">/mydata/redis/conf</span><br><span class="line">[root@localhost conf]# ls</span><br><span class="line">redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="配置redis自启动"><a href="#配置redis自启动" class="headerlink" title="配置redis自启动"></a>配置redis自启动</h6><p>配置 redis 容器在docker启动时同时启动。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost vagrant]# docker update redis --restart=always</span><br></pre></td></tr></table></figure>
+<h6 id="进入redis的客户端"><a href="#进入redis的客户端" class="headerlink" title="进入redis的客户端"></a>进入redis的客户端</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# docker exec -it redis redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="将redis数据持久化到硬盘"><a href="#将redis数据持久化到硬盘" class="headerlink" title="将redis数据持久化到硬盘"></a>将redis数据持久化到硬盘</h6><p>修改 <code>/mydata/redis/conf/redis.conf</code> 文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost conf]# vi redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加以下内容</span></span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<h6 id=""><a href="#" class="headerlink" title=" "></a> </h6>]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -6857,26 +6856,6 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
       </categories>
   </entry>
   <entry>
-    <title>hexo实现置顶文章</title>
-    <url>/articles/28f80600.html</url>
-    <content><![CDATA[<h4 id="hexo置顶文章"><a href="#hexo置顶文章" class="headerlink" title="hexo置顶文章"></a>hexo置顶文章</h4><h6 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h6><p>在博客根目录下运行：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save	#卸载index渲染器</span><br><span class="line">npm install hexo-generator-index-pin-top --save  #安装置顶插件</span><br><span class="line"><span class="meta">#</span><span class="bash">安装淘宝的镜像可以使用 cnpm 代替 npm</span></span><br></pre></td></tr></table></figure>
-<h6 id="配置置顶标准"><a href="#配置置顶标准" class="headerlink" title="配置置顶标准"></a>配置置顶标准</h6><p>在<code>/themes/所使用的主题名/layout/post.ejs</code>文件最前面添加下列代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;% if (page.top) &#123; %&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;fa fa-thumb-tack&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;font color&#x3D;7D26CD&gt;置顶&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h6 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h6><p>在需要置顶的文章的<strong>Front Matter</strong>部分添加 <code>top: number</code></p>
-<p>number的数值越大优先级越高</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> </span><br><span class="line"><span class="attr">date:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:mm:ss</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<h6 id="优先级配置"><a href="#优先级配置" class="headerlink" title="优先级配置"></a>优先级配置</h6><p>修改根目录配置文件<code>/_config.yml</code>,<code>top</code>值<code>-1</code>根据<code>top</code>值倒序</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">6</span>	<span class="comment">#每页显示的文章数</span></span><br><span class="line">  <span class="attr">order_by:</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">-1</span>		<span class="comment">#按top倒序排列，number越大的优先显示</span></span><br><span class="line">    <span class="attr">date:</span> <span class="number">-1</span>	<span class="comment">#按时间倒序排列，最新的优先显示</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img data-src="https://i.loli.net/2020/04/11/NjDQvAB6SOgKt4b.png" alt="hexo置顶效果图.png"  /></p>
-<h6 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h6><p><a href="https://yangyang188.coding.me/archives/4392eea4/" target="_blank" rel="noopener">Hexo yilia 配置—置顶文章部分</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>hexo添加RSS订阅功能</title>
     <url>/articles/b9d63583.html</url>
     <content><![CDATA[<h6 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h6><p>在博客根目录下运行 <code>npm install hexo--generator-feed</code></p>
@@ -6897,6 +6876,26 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
       <tags>
         <tag>rss</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>hexo实现置顶文章</title>
+    <url>/articles/28f80600.html</url>
+    <content><![CDATA[<h4 id="hexo置顶文章"><a href="#hexo置顶文章" class="headerlink" title="hexo置顶文章"></a>hexo置顶文章</h4><h6 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h6><p>在博客根目录下运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save	#卸载index渲染器</span><br><span class="line">npm install hexo-generator-index-pin-top --save  #安装置顶插件</span><br><span class="line"><span class="meta">#</span><span class="bash">安装淘宝的镜像可以使用 cnpm 代替 npm</span></span><br></pre></td></tr></table></figure>
+<h6 id="配置置顶标准"><a href="#配置置顶标准" class="headerlink" title="配置置顶标准"></a>配置置顶标准</h6><p>在<code>/themes/所使用的主题名/layout/post.ejs</code>文件最前面添加下列代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;% if (page.top) &#123; %&gt;</span><br><span class="line">  &lt;i class&#x3D;&quot;fa fa-thumb-tack&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;font color&#x3D;7D26CD&gt;置顶&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;span class&#x3D;&quot;post-meta-divider&quot;&gt;|&lt;&#x2F;span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h6 id="文章配置"><a href="#文章配置" class="headerlink" title="文章配置"></a>文章配置</h6><p>在需要置顶的文章的<strong>Front Matter</strong>部分添加 <code>top: number</code></p>
+<p>number的数值越大优先级越高</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> </span><br><span class="line"><span class="attr">date:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:mm:ss</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">2</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<h6 id="优先级配置"><a href="#优先级配置" class="headerlink" title="优先级配置"></a>优先级配置</h6><p>修改根目录配置文件<code>/_config.yml</code>,<code>top</code>值<code>-1</code>根据<code>top</code>值倒序</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">6</span>	<span class="comment">#每页显示的文章数</span></span><br><span class="line">  <span class="attr">order_by:</span></span><br><span class="line">    <span class="attr">top:</span> <span class="number">-1</span>		<span class="comment">#按top倒序排列，number越大的优先显示</span></span><br><span class="line">    <span class="attr">date:</span> <span class="number">-1</span>	<span class="comment">#按时间倒序排列，最新的优先显示</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h6 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h6><p><img data-src="https://i.loli.net/2020/04/11/NjDQvAB6SOgKt4b.png" alt="hexo置顶效果图.png"  /></p>
+<h6 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h6><p><a href="https://yangyang188.coding.me/archives/4392eea4/" target="_blank" rel="noopener">Hexo yilia 配置—置顶文章部分</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
   </entry>
   <entry>
     <title>html基础</title>
@@ -7563,6 +7562,78 @@ solr 容器创建的 core 数据保存在 `/var/solr/data` 目录下，所以需
       </tags>
   </entry>
   <entry>
+    <title>java数据结构与算法--图</title>
+    <url>/articles/c88bf7ec.html</url>
+    <content><![CDATA[<h4 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h4><h6 id="图的基本概念：多对多关系"><a href="#图的基本概念：多对多关系" class="headerlink" title="图的基本概念：多对多关系"></a>图的基本概念：多对多关系</h6><p>图(<code>graph</code>)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成</p>
+<p>形式化定义：</p>
+<ul>
+<li><p>Graph = (V,E)  </p>
+</li>
+<li><p>V={x | x∈某个数据对象}  </p>
+</li>
+<li><p>E={<u,v> | P(u,v)^(u,v∈V)}</p>
+<p>V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex)</p>
+<p>E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性</p>
+</li>
+<li><p>若<u,v>∈E，则<u,v>表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
+</li>
+<li>若<u,v>∈E，则必有<v,u>∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</li>
+</ul>
+<a id="more"></a>
+<p>在无向图和有向图中V的元素都称为顶点，而顶点之间的关系却又不同的称谓，即<strong>弧</strong>或<strong>边</strong>，在不影响理解的前提下，统称为<strong>边</strong>(<code>edge</code>)</p>
+<p>顶点集与边集都是有限的，并记顶点与边的数量为|V|和|E|</p>
+<p><img data-src="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png" alt="有向图与无向图.png"></p>
+<p>无向图实际上也是有向图，是双向图</p>
+<hr>
+<p>带权图：图的每条边都与它相关的实数，称之为权，这些权值可以并表示一个顶点到另一个顶点的距离或消耗等信息，这种边上具有权值的图称为<strong>带权图</strong>(<code>weighted graph</code>)</p>
+<p><img data-src="https://i.loli.net/2020/04/11/IVHT4lDUem3WJnC.png" alt="加权图.png"></p>
+<h4 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h4><h6 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h6><p>二维数组（顺序存储结构），无向图关于对角线对称</p>
+<p><img data-src="https://i.loli.net/2020/04/11/gfWwLFYU1rIuy9d.png" alt="图的存储-邻接矩阵.png"></p>
+<h6 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h6><p>链表（链式存储结构）</p>
+<p><img data-src="https://i.loli.net/2020/04/11/PGmLUVzS4YaNoTk.png" alt="图的存储-邻接表.png"></p>
+<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><p>图的遍历：从图中某个顶点出发，按某种方法对图中所有顶点访问且仅访问一次</p>
+<p>图的遍历算法是求解图的连通性问题、拓扑排序和求关键路径等算法的基础</p>
+<ul>
+<li><strong>深度优先排序</strong>(DFS depth-first search)：类似于树的先根排序，是树的先根遍历的推广（可采用递归和借助栈的非递归方式实现）</li>
+<li><strong>广度优先排序</strong>(BFS breadth-first search)：类似于树的层次遍历，是树的按层次遍历的推广（借助队列的非递归方式实现）</li>
+</ul>
+<p><img data-src="https://i.loli.net/2020/04/11/CAftQBO9Rzvrlaq.png" alt="图的遍历-图例.png"></p>
+<ul>
+<li>无向图的深度优先遍历：0-&gt;1-&gt;3-&gt;7-&gt;4-&gt;2-&gt;5-&gt;6</li>
+<li>无向图的广度优先遍历：0-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7</li>
+</ul>
+<p><img data-src="https://i.loli.net/2020/04/11/eU6MfF7P9EnOpAu.png" alt="图的遍历-图例2.png"></p>
+<ul>
+<li>无向图的深度优先遍历：A-&gt;B-&gt;E-&gt;F-&gt;C-&gt;D-&gt;G-&gt;H-&gt;I</li>
+<li>无向图的广度优先遍历：A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F-&gt;G-&gt;H-&gt;I</li>
+</ul>
+<h4 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h4><h6 id="最短路径概念"><a href="#最短路径概念" class="headerlink" title="最短路径概念"></a>最短路径概念</h6><p>带权图两点之间的最小消耗路径</p>
+<ul>
+<li><p><strong>段数最少的最短路径</strong>：类似于树的层次遍历，需要借助队列来实现（广度优先搜索）</p>
+<p>算法：对于已经检查过结点，标记为已检查，且不再检查它，可以使用另一个列表存放已经检查过的结点，找到即为可达，第一次找到，即为跳转最少，如果到最后队列为空，则表明没有路径可以到达</p>
+</li>
+<li><p><strong>权值最小的最短路径</strong>：权值之和最小，狄克斯特拉算法</p>
+<p>狄克斯特拉算法是从一个顶点到其余各顶点的最短路径算法，解决的是有权图中最短路径问题。迪杰斯特拉算法主要特点是从起始点开始，采用贪心算法的策略，每次遍历到始点距离最近且未访问过的顶点的邻接节点，直到扩展到终点为止。</p>
+</li>
+</ul>
+<h4 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h4><h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><p>该算法复杂度为$n^2$,我们可以发现，如果边数远小于$n^2$,对此可以考虑用堆这种数据结构进行优化，取出最短路径的复杂度降为O(1)；每次调整的复杂度降为$O（e log_2 n）$；e为该点的边数，所以复杂度降为$O((m+n)log_2 n)$。</p>
+<h6 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h6><ul>
+<li>将源点加入堆，并调整堆</li>
+<li>选出堆顶元素u（即代价最小的元素），从堆中删除，并对堆进行调整</li>
+<li>处理与u相邻的，未被访问过的，满足三角不等式的顶点</li>
+<li>若该点在堆里，更新距离，并调整该元素在堆中的位置</li>
+<li>若该点不在堆里，加入堆，更新堆</li>
+<li>若取到的u为终点，结束算法；否则重复步骤2、3</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//假设起点为src, 终点为dst, 图以二维矩阵的形式存储，若graph[i][j] == 0, 代表i,j不相连    </span></span><br><span class="line"><span class="comment">//visit[i] == 0,代表未访问,visit[0] == -1代表已访问    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span>[][] graph,<span class="keyword">int</span>[] visit)</span></span>&#123;</span><br><span class="line">    <span class="comment">//节点个数        </span></span><br><span class="line">    <span class="keyword">int</span> n = graph.length;        </span><br><span class="line">    PriorityQueue&lt;Node&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Node());        </span><br><span class="line">    <span class="comment">//将起点加入pq        </span></span><br><span class="line">    pq.add(<span class="keyword">new</span> Node(src, <span class="number">0</span>));        </span><br><span class="line">    <span class="keyword">while</span> (!pq.isEmpty())&#123;            </span><br><span class="line">        Node t = pq.poll();            </span><br><span class="line">        <span class="comment">//当前节点是终点，即可返回最短路径            </span></span><br><span class="line">        <span class="keyword">if</span>(t.node == dst)                </span><br><span class="line">            <span class="keyword">return</span> t.cost;            </span><br><span class="line">        <span class="comment">//t节点表示还未访问            </span></span><br><span class="line">        <span class="keyword">if</span> (visit[t.node]==<span class="number">0</span>)&#123;                </span><br><span class="line">            <span class="comment">//将节点设置为已访问                </span></span><br><span class="line">            visit[t.node] = -<span class="number">1</span>;                </span><br><span class="line">            <span class="comment">//将当前节点相连且未访问的节点遍历                </span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;                    </span><br><span class="line">                <span class="keyword">if</span> (graph[t.node][i]!=<span class="number">0</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;                        </span><br><span class="line">                    pq.add(<span class="keyword">new</span> Node(i, t.cost + graph[t.node][i]));                    </span><br><span class="line">                &#125;                </span><br><span class="line">            &#125;            </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">//定义一个存储节点和离起点相应距离的数据结构    </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Node</span>&gt; </span>&#123;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> node;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> cost;</span><br><span class="line">             </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> cost)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">this</span>.node = node;            </span><br><span class="line">        <span class="keyword">this</span>.cost = cost;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="meta">@Override</span>        </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Node node1, Node node2)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">return</span> node1.cost-node2.cost;       </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java数据结构与算法--串</title>
     <url>/articles/7e56a691.html</url>
     <content><![CDATA[<p>内容受限的线性表。</p>
@@ -7699,86 +7770,10 @@ next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较
 <p>测试代码</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> index = KMP(<span class="string">"this is for test"</span>, <span class="string">"test"</span>);</span><br><span class="line">System.out.println(index);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>notes</category>
-        <category>java</category>
         <category>数据结构与算法</category>
       </categories>
       <tags>
         <tag>串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java数据结构与算法--图</title>
-    <url>/articles/c88bf7ec.html</url>
-    <content><![CDATA[<h4 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h4><h6 id="图的基本概念：多对多关系"><a href="#图的基本概念：多对多关系" class="headerlink" title="图的基本概念：多对多关系"></a>图的基本概念：多对多关系</h6><p>图(<code>graph</code>)是一种网状数据结构，图是由非空的顶点集合和一个描述之间关系的集合组成</p>
-<p>形式化定义：</p>
-<ul>
-<li><p>Graph = (V,E)  </p>
-</li>
-<li><p>V={x | x∈某个数据对象}  </p>
-</li>
-<li><p>E={<u,v> | P(u,v)^(u,v∈V)}</p>
-<p>V是具有相同特性的数据元素的集合，V中数据元素通常称为顶点(Vertex)</p>
-<p>E是两个顶点之间的集合，P(u,v)表示u和v之间有特定的关联属性</p>
-</li>
-<li><p>若<u,v>∈E，则<u,v>表示从顶点u到顶点v的一条弧，并称u为弧尾或起始点，称v为弧头或终止点，此时图的顶点之间的连线是有方向的，称之为<strong>有向图</strong>(<code>directed graph</code>)</p>
-</li>
-<li>若<u,v>∈E，则必有<v,u>∈E，即关系是对称的，此时可以使用一个无序对(u,v)来代替两个有序对，它表示顶点u和顶点v之间的一条边，此时图中顶点之间的连线是没有方向的，称之为<strong>无向图</strong>(<code>undirected graph</code>)</li>
-</ul>
-<a id="more"></a>
-<p>在无向图和有向图中V的元素都称为顶点，而顶点之间的关系却又不同的称谓，即<strong>弧</strong>或<strong>边</strong>，在不影响理解的前提下，统称为<strong>边</strong>(<code>edge</code>)</p>
-<p>顶点集与边集都是有限的，并记顶点与边的数量为|V|和|E|</p>
-<p><img data-src="https://i.loli.net/2020/04/11/gLHlX3bun8zMKOc.png" alt="有向图与无向图.png"></p>
-<p>无向图实际上也是有向图，是双向图</p>
-<hr>
-<p>带权图：图的每条边都与它相关的实数，称之为权，这些权值可以并表示一个顶点到另一个顶点的距离或消耗等信息，这种边上具有权值的图称为<strong>带权图</strong>(<code>weighted graph</code>)</p>
-<p><img data-src="https://i.loli.net/2020/04/11/IVHT4lDUem3WJnC.png" alt="加权图.png"></p>
-<h4 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h4><h6 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h6><p>二维数组（顺序存储结构），无向图关于对角线对称</p>
-<p><img data-src="https://i.loli.net/2020/04/11/gfWwLFYU1rIuy9d.png" alt="图的存储-邻接矩阵.png"></p>
-<h6 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h6><p>链表（链式存储结构）</p>
-<p><img data-src="https://i.loli.net/2020/04/11/PGmLUVzS4YaNoTk.png" alt="图的存储-邻接表.png"></p>
-<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><p>图的遍历：从图中某个顶点出发，按某种方法对图中所有顶点访问且仅访问一次</p>
-<p>图的遍历算法是求解图的连通性问题、拓扑排序和求关键路径等算法的基础</p>
-<ul>
-<li><strong>深度优先排序</strong>(DFS depth-first search)：类似于树的先根排序，是树的先根遍历的推广（可采用递归和借助栈的非递归方式实现）</li>
-<li><strong>广度优先排序</strong>(BFS breadth-first search)：类似于树的层次遍历，是树的按层次遍历的推广（借助队列的非递归方式实现）</li>
-</ul>
-<p><img data-src="https://i.loli.net/2020/04/11/CAftQBO9Rzvrlaq.png" alt="图的遍历-图例.png"></p>
-<ul>
-<li>无向图的深度优先遍历：0-&gt;1-&gt;3-&gt;7-&gt;4-&gt;2-&gt;5-&gt;6</li>
-<li>无向图的广度优先遍历：0-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7</li>
-</ul>
-<p><img data-src="https://i.loli.net/2020/04/11/eU6MfF7P9EnOpAu.png" alt="图的遍历-图例2.png"></p>
-<ul>
-<li>无向图的深度优先遍历：A-&gt;B-&gt;E-&gt;F-&gt;C-&gt;D-&gt;G-&gt;H-&gt;I</li>
-<li>无向图的广度优先遍历：A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F-&gt;G-&gt;H-&gt;I</li>
-</ul>
-<h4 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h4><h6 id="最短路径概念"><a href="#最短路径概念" class="headerlink" title="最短路径概念"></a>最短路径概念</h6><p>带权图两点之间的最小消耗路径</p>
-<ul>
-<li><p><strong>段数最少的最短路径</strong>：类似于树的层次遍历，需要借助队列来实现（广度优先搜索）</p>
-<p>算法：对于已经检查过结点，标记为已检查，且不再检查它，可以使用另一个列表存放已经检查过的结点，找到即为可达，第一次找到，即为跳转最少，如果到最后队列为空，则表明没有路径可以到达</p>
-</li>
-<li><p><strong>权值最小的最短路径</strong>：权值之和最小，狄克斯特拉算法</p>
-<p>狄克斯特拉算法是从一个顶点到其余各顶点的最短路径算法，解决的是有权图中最短路径问题。迪杰斯特拉算法主要特点是从起始点开始，采用贪心算法的策略，每次遍历到始点距离最近且未访问过的顶点的邻接节点，直到扩展到终点为止。</p>
-</li>
-</ul>
-<h4 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h4><h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><p>该算法复杂度为$n^2$,我们可以发现，如果边数远小于$n^2$,对此可以考虑用堆这种数据结构进行优化，取出最短路径的复杂度降为O(1)；每次调整的复杂度降为$O（e log_2 n）$；e为该点的边数，所以复杂度降为$O((m+n)log_2 n)$。</p>
-<h6 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h6><ul>
-<li>将源点加入堆，并调整堆</li>
-<li>选出堆顶元素u（即代价最小的元素），从堆中删除，并对堆进行调整</li>
-<li>处理与u相邻的，未被访问过的，满足三角不等式的顶点</li>
-<li>若该点在堆里，更新距离，并调整该元素在堆中的位置</li>
-<li>若该点不在堆里，加入堆，更新堆</li>
-<li>若取到的u为终点，结束算法；否则重复步骤2、3</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//假设起点为src, 终点为dst, 图以二维矩阵的形式存储，若graph[i][j] == 0, 代表i,j不相连    </span></span><br><span class="line"><span class="comment">//visit[i] == 0,代表未访问,visit[0] == -1代表已访问    </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span>[][] graph,<span class="keyword">int</span>[] visit)</span></span>&#123;</span><br><span class="line">    <span class="comment">//节点个数        </span></span><br><span class="line">    <span class="keyword">int</span> n = graph.length;        </span><br><span class="line">    PriorityQueue&lt;Node&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Node());        </span><br><span class="line">    <span class="comment">//将起点加入pq        </span></span><br><span class="line">    pq.add(<span class="keyword">new</span> Node(src, <span class="number">0</span>));        </span><br><span class="line">    <span class="keyword">while</span> (!pq.isEmpty())&#123;            </span><br><span class="line">        Node t = pq.poll();            </span><br><span class="line">        <span class="comment">//当前节点是终点，即可返回最短路径            </span></span><br><span class="line">        <span class="keyword">if</span>(t.node == dst)                </span><br><span class="line">            <span class="keyword">return</span> t.cost;            </span><br><span class="line">        <span class="comment">//t节点表示还未访问            </span></span><br><span class="line">        <span class="keyword">if</span> (visit[t.node]==<span class="number">0</span>)&#123;                </span><br><span class="line">            <span class="comment">//将节点设置为已访问                </span></span><br><span class="line">            visit[t.node] = -<span class="number">1</span>;                </span><br><span class="line">            <span class="comment">//将当前节点相连且未访问的节点遍历                </span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;                    </span><br><span class="line">                <span class="keyword">if</span> (graph[t.node][i]!=<span class="number">0</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;                        </span><br><span class="line">                    pq.add(<span class="keyword">new</span> Node(i, t.cost + graph[t.node][i]));                    </span><br><span class="line">                &#125;                </span><br><span class="line">            &#125;            </span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;    </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">//定义一个存储节点和离起点相应距离的数据结构    </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Node</span>&gt; </span>&#123;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> node;        </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> cost;</span><br><span class="line">             </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> cost)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">this</span>.node = node;            </span><br><span class="line">        <span class="keyword">this</span>.cost = cost;        </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="meta">@Override</span>        </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Node node1, Node node2)</span></span>&#123;            </span><br><span class="line">        <span class="keyword">return</span> node1.cost-node2.cost;       </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>notes</category>
-        <category>java</category>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>图</tag>
       </tags>
   </entry>
   <entry>
@@ -8370,8 +8365,6 @@ next[j]\end{cases}</script><p>nextval[j]数组：相同填next值对应的比较
 <h6 id="使用栈实现进制转换"><a href="#使用栈实现进制转换" class="headerlink" title="使用栈实现进制转换"></a>使用栈实现进制转换</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">13</span>;</span><br><span class="line"><span class="keyword">int</span> temp = num;</span><br><span class="line"><span class="comment">//定义空栈</span></span><br><span class="line">Deque&lt;Integer&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"><span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//取余数</span></span><br><span class="line">    <span class="keyword">int</span> mod = temp % <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//入栈</span></span><br><span class="line">    stack.push(mod);</span><br><span class="line">    <span class="comment">//除2</span></span><br><span class="line">    temp = temp &gt;&gt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.print(num + <span class="string">"---&gt;"</span>);</span><br><span class="line"><span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">    <span class="comment">//出栈</span></span><br><span class="line">    System.out.print(stack.pop());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>notes</category>
-        <category>java</category>
         <category>数据结构与算法</category>
       </categories>
       <tags>
